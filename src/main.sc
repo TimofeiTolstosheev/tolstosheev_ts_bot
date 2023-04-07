@@ -15,6 +15,9 @@ theme: /
     state: Start
         q!: $regex</start>
         q!: $hi
+        script:
+            $jsapi.startSession();
+        
         random:
             a: Здравствуйте!
             a: Привет!
@@ -56,7 +59,7 @@ theme: /Phone
                 $session.probablyPhone = $parseTree._mobilePhoneNumber
             go!: /Phone/Confirm
     
-        state: localCatchAll
+        state: CatchAll
             event: noMatch
             a: Это не номер телефона!
             go!: ..
