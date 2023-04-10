@@ -4,6 +4,11 @@ require: patterns.sc
 
 require: phoneNumber/phoneNumber.sc
   module = sys.zb-common
+  
+require: city/cities-ru.csv
+    module = sys.zb-common
+    name = Cities
+    var = $Cities
 
 init:
     bind("postProcess", function($context){
