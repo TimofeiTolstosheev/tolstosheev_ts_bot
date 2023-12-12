@@ -1,0 +1,67 @@
+<!--360_3расторгнуть договор - не авторизован - рабочее время гск - что - перевод nua 360/8-->
+<!--360_4расторгнуть договор - не авторизован - не рабочее время гск - что - перевод nckabon 360/6-->
+<test>
+    <test-case id="360_3 расторгнуть договор - не авторизован - рабочее время гск - что - перевод nua 360/8">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "gskWorkTime": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>я ухожу от вас</q>
+        <!--"/StopAgreementFinal/Намерение расторгнуть договор (НРД)"-->
+        <a>Я позову на помощь коллегу, он сейчас ответит.</a>
+        <a>А пока напишите номер договора или ФИО и адрес (например, Москва, 3-я улица Строителей, дом 25, кв 12), после вашего сообщения оператор подключится к чату.</a>
+        <q>Строителей, 55</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="360_4 расторгнуть договор - не авторизован - не рабочее время гск - что - перевод nckabon 360/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "gskWorkTime": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>я ухожу от вас</q>
+        <!--"/StopAgreementFinal/Намерение расторгнуть договор (НРД)"-->
+        <a>Я позову на помощь коллегу, он сейчас ответит.</a>
+        <a>А пока напишите номер договора или ФИО и адрес (например, Москва, 3-я улица Строителей, дом 25, кв 12), после вашего сообщения оператор подключится к чату.</a>
+        <q>Строителей, 55</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+</test>

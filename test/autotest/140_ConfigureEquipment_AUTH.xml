@@ -1,0 +1,206 @@
+<!--140_1настроить оборудование - авторизован - роутер - переход в сценарий настройка роутера 140/0 130/0-->
+<!--140_2настроить оборудование - авторизован - кам-модуль - переход в сценарий настройка декодера 140/0 120/0-->
+<!--140_5настроить оборудование - авторизован - ТВ - оборудование рядом - перевод 140/6-->
+<!--140_7настроить оборудование - авторизован - ТВ - оборудование НЕ рядом - вопросов нет 140/0-->
+<!--140_9настроить оборудование - авторизован - Другое - оборудование НЕ рядом - вопросы есть - список ТВ каналов 140/0 90/0-->
+<!--140_11настроить оборудование - авторизован - Другое - оборудование НЕ рядом - список ТВ каналов 140/0 90/0-->
+
+<test>
+    <test-case id="140_1 настроить оборудование - авторизован - роутер - переход в сценарий настройка роутера 140/0 130/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>хочу настроить ваше устройство</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+        <q>роутер</q>
+        <a state = "/SetupRouter/Настройка роутера" />
+        <a state = "/SetupRouter/Настройка роутера" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="140_2 настроить оборудование - авторизован - кам-модуль - переход в сценарий настройка декодера 140/0 120/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>купил у вас адаптер</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+        <q>отрегулировать Cam-модуль</q>
+        <a state = "/SetupDecoder/Настройка декодера/Около ТВ?" />
+    </test-case>
+    
+    <test-case id="140_5 настроить оборудование - авторизован - ТВ - оборудование рядом - перевод 140/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>падключить шлюз</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+        <q>Другое</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования/Находится дома?" />
+        <q>да</q>
+        <a>Я позову на помощь коллегу, он сейчас ответит.</a>
+        <state>/Transfer/Transfer</state>
+    </test-case>
+    
+    <test-case id="140_7 настроить оборудование - авторизован - ТВ - оборудование НЕ рядом - вопросов нет 140/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>помогите мне настроить оборудование</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+        <q>на телевизоре</q>
+        <a state = "/SetupDecoder/Настройка декодера/Около ТВ?" />
+        <q>нет</q>
+        <a state = "/SetupDecoder/Настройка декодера/Не дома" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="140_9 настроить оборудование - авторизован - Другое - оборудование НЕ рядом - вопросы есть - список ТВ каналов 140/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>настройте мне ваше устройство</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+        <q>Другое</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования/Находится дома?" />
+        <q>Нет</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования/Не дома" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>список тв каналов</q>
+        <a state = "/ChannelsPackages/Вопрос по составу пакетов каналов" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="140_11 настроить оборудование - авторизован - Другое - оборудование НЕ рядом - список ТВ каналов 140/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>настройте мне ваше устройство</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+        <q>Другое</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования/Находится дома?" />
+        <q>Нет</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования/Не дома" />
+        <a state = "/Еще вопросы?" />
+        <q>список тв каналов</q>
+        <a state = "/ChannelsPackages/Вопрос по составу пакетов каналов" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+</test>

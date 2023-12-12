@@ -1,0 +1,553 @@
+<test>
+
+    <test-case id="405 - кейс 1 - не авторизован - оператор - оператор - абракадабра - абракадабра - перевод на окц">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+    
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>что</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>что</q>
+        <a state="/AgentRequest/Transfer"/>
+        <q>жду</q>  
+        <a state="/Transfer/Transfer"/>        
+    </test-case>
+    
+    <test-case id="405 - кейс 2 - не авторизован - оператор - оператор - абракадабра - оператор - перевод на окц">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>что</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>оператор</q>    
+        <a state="/AgentRequest/Transfer"/>
+        <q>жду</q>        
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 3 - не авторизован - оператор - оператор - абракадабра - адреса СЦ - вопросов нет">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>что</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 4 - не авторизован - оператор - оператор - абракадабра - тех вопрос - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>что</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>Технический вопрос</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="405 - кейс 5 - не авторизован - оператор - оператор - абракадабра - консультация - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>что</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>консультация</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 6 - не авторизован - оператор - оператор - оператор - абракадабра - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>что</q>
+        <a state="/AgentRequest/Transfer"/>
+        <q>жду</q>  
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 7 - не авторизован - оператор - оператор - оператор - оператор - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/Transfer"/>
+        <q>жду</q>  
+        <a state="/Transfer/Transfer"/>   
+    </test-case>
+    
+  <test-case id="405 - кейс 8 - не авторизован - оператор - оператор - оператор - адреса СЦ - вопросов нет">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 9 - не авторизован - оператор - оператор - оператор - тех вопрос - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>Технический вопрос</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="405 - кейс 10 - не авторизован - оператор - оператор - оператор - консультация - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme/SelectTheme2"/>
+        <q>консультация</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+  <test-case id="405 - кейс 11 - не авторизован - оператор - оператор - адреса СЦ - вопросов нет">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 12 - не авторизован - оператор - оператор - тех вопрос - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>Технический вопрос</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="405 - кейс 13 - не авторизован - оператор - оператор - консультация - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/AgentRequestFromStart"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>консультация</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 14 - не авторизован - привет - оператор - тех вопрос - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>привет</q>
+        <a state="/Greeting/FirstIntent"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>Технический вопрос</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="405 - кейс 15 - не авторизован - приветствие - оператор - консультация - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>привет</q>
+        <a state="/Greeting/FirstIntent"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>консультация</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+   <test-case id="405 - кейс 16 - не авторизован - адреса СЦ - оператор - консультация - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>оператор</q>
+        <a state="/AgentRequest/SelectTheme"/>
+        <q>консультация</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+</test>
+

@@ -1,0 +1,31 @@
+<test>
+    
+    <test-case id="350 - Кейс 1 - телефония - авторизован - перевод">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>не работает домашний телефон</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+</test> 

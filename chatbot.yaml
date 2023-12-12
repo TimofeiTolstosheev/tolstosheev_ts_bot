@@ -5,14 +5,38 @@ entryPoint: main.sc
 botEngine: v2
 language: ru
 
+injector:
+    timeZone: "Europe/Moscow"
+    dateFormat: "yyyy-MM-ddTH:m:s.521Z"
+    actionTimeout: 10000
+    noMatchLimit: 2
+    noInputLimit: 2
+    agentRequestLimit: 3
+    intentInArowLimit: 2
+    authServiceEndpoint: 'https://auth.prod.dcc.movixlab.yc.r-one.io/dcc'
+    authServiceEndpointTest: 'https://auth.stage.dcc.movixlab.yc.r-one.io/dcc'
+    actionServiceEndpoint: 'https://action.prod.dcc.movixlab.yc.r-one.io/dcc'
+    actionServiceEndpointTest: 'https://action.stage.dcc.movixlab.yc.r-one.io/dcc'
+    defaultTransferLine: 'OKC'
+    transferTimeFrom: '05:00'
+    transferTimeTo: '01:00'
+    reactionTimeout: '6 minutes'
+    
+
 tests:
   include:
     - test.xml
+    # - autotest/*.xml
+    # - autotest/0_NoMatch_AUTH.xml
+    - autotest/120_SetupDecoder_AUTH.xml
+
 
 nlp:
   intentNoMatchThresholds:
-    phrases: 0.2
-    patterns: 0.2
+    phrases: 0.4
+    patterns: 0.4
     
-injector:
-    botName: Робот
+  lengthLimit:
+    enabled: true
+    symbols: 400
+    words: 50

@@ -1,0 +1,106 @@
+{
+  "positions" : [ {
+    "id" : "/Balance1",
+    "x" : -2327,
+    "y" : 1239
+  }, {
+    "id" : "/Balance",
+    "x" : -2382,
+    "y" : 937
+  }, {
+    "id" : "/Balance/balance unauthorized",
+    "name" : "balance unauthorized",
+    "x" : 731,
+    "y" : 519
+  }, {
+    "id" : "/Balance/balance lastPayment",
+    "name" : "balance lastPayment",
+    "x" : 730,
+    "y" : 1093
+  }, {
+    "id" : "/Balance/balance lastPayment/last payment true",
+    "name" : "last payment true",
+    "x" : 790,
+    "y" : 550
+  }, {
+    "id" : "/Balance/balance lastPayment/error code balance",
+    "name" : "error code balance",
+    "x" : 793,
+    "y" : 958
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 0",
+    "name" : "balance error 0",
+    "x" : 1241,
+    "y" : 557
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 1",
+    "name" : "balance error 1",
+    "x" : 1559,
+    "y" : 553
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 2",
+    "name" : "balance error 2",
+    "x" : 1870,
+    "y" : 554
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 3",
+    "name" : "balance error 3",
+    "x" : 1240,
+    "y" : 979
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 4",
+    "name" : "balance error 4",
+    "x" : 1558,
+    "y" : 980
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 5",
+    "name" : "balance error 5",
+    "x" : 1870,
+    "y" : 981
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 6",
+    "name" : "balance error 6",
+    "x" : 1238,
+    "y" : 1405
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 7",
+    "name" : "balance error 7",
+    "x" : 1560,
+    "y" : 1400
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 10",
+    "name" : "balance error 10",
+    "x" : 1873,
+    "y" : 1399
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 11",
+    "name" : "balance error 11",
+    "x" : 1243,
+    "y" : 1835
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 12",
+    "name" : "balance error 12",
+    "x" : 1560,
+    "y" : 1831
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 13",
+    "name" : "balance error 13",
+    "x" : 1871,
+    "y" : 1828
+  }, {
+    "id" : "/Balance/balance lastPayment/balance error 14",
+    "name" : "balance error 14",
+    "x" : 1239,
+    "y" : 2280
+  }, {
+    "id" : "/Balance/balance lastPayment/balance phone",
+    "name" : "balance phone",
+    "x" : 1565,
+    "y" : 2279
+  }, {
+    "id" : "/Balance/balance lastPayment/balance phone true",
+    "name" : "balance phone true",
+    "x" : 1876,
+    "y" : 2279
+  } ]
+}

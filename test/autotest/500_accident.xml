@@ -1,0 +1,401 @@
+<test>
+    <test-case id="500 - кейс 1 - аварии и ппр - не работает инет - авария - нет инфы о плановых - вопросов нет">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/get/base/info</query>
+            <response status="200">
+                {
+                  "ktv": true,
+                  "gorsv": true,
+                  "dctv": true,
+                  "mobile": true,
+                  "ktvSocial": true,
+                  "internet": true,
+                  "domRuTV": true,
+                  <!--"appTypes": {-->
+                  <!--  "additionalProp1": {},-->
+                  <!--  "additionalProp2": {},-->
+                  <!--  "additionalProp3": {}-->
+                  <!--},-->
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": true,
+                  "accidentEndDate": "2023-09-29T10:30:56.862Z",
+                  "ppr": 0,
+                  <!--"currentPprEndDate": "string",-->
+                  <!--"futurePprStartDate": "string",-->
+                  <!--"futurePprEndDate": "string",-->
+                  "potentialAccident": true,
+                  "errorMessage": "Other error",
+                  "errorCode": 0,
+                  "octpAppTypeTransfer": true,
+                  "subscriptionFeeIncrease": true
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>мне сказали что на адресе ведутся работы</q>
+        <a>По вашему адресу наблюдаются технические сложности, сейчас услуги связи могут не работать. Нам очень жаль, что так вышло, мы уже чиним. Постараемся восстановить услуги к 10:30 29.09.2023.</a>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+
+    <test-case id="500 - кейс 2 - аварии и ппр - не работает инет - авария - нет инфы о плановых - вопросы есть - адреса СЦ.">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/get/base/info</query>
+            <response status="200">
+                {
+                  "ktv": true,
+                  "gorsv": true,
+                  "dctv": true,
+                  "mobile": true,
+                  "ktvSocial": true,
+                  "internet": true,
+                  "domRuTV": true,
+                  <!--"appTypes": {-->
+                  <!--  "additionalProp1": {},-->
+                  <!--  "additionalProp2": {},-->
+                  <!--  "additionalProp3": {}-->
+                  <!--},-->
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": true,
+                  "accidentEndDate": "2023-09-29T10:30:56.862Z",
+                  "ppr": 0,
+                  <!--"currentPprEndDate": "string",-->
+                  <!--"futurePprStartDate": "string",-->
+                  <!--"futurePprEndDate": "string",-->
+                  "potentialAccident": true,
+                  "errorMessage": "Other error",
+                  "errorCode": 0,
+                  "octpAppTypeTransfer": true,
+                  "subscriptionFeeIncrease": true
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>мне сказали что на адресе ведутся работы</q>
+        <a>По вашему адресу наблюдаются технические сложности, сейчас услуги связи могут не работать. Нам очень жаль, что так вышло, мы уже чиним. Постараемся восстановить услуги к 10:30 29.09.2023.</a>
+        <a state="/Еще вопросы?"/>
+        <q>Да</q>
+        <a state="/Какие вопросы?"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+    
+    
+    <test-case id="500 - кейс 3 - аварии и ппр - не работает инет - авария - нет инфы о плановых - конс - адреса СЦ">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/get/base/info</query>
+            <response status="200">
+                {
+                  "ktv": true,
+                  "gorsv": true,
+                  "dctv": true,
+                  "mobile": true,
+                  "ktvSocial": true,
+                  "internet": true,
+                  "domRuTV": true,
+                  <!--"appTypes": {-->
+                  <!--  "additionalProp1": {},-->
+                  <!--  "additionalProp2": {},-->
+                  <!--  "additionalProp3": {}-->
+                  <!--},-->
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": true,
+                  "accidentEndDate": "2023-09-29T10:30:56.862Z",
+                  "ppr": 0,
+                  <!--"currentPprEndDate": "string",-->
+                  <!--"futurePprStartDate": "string",-->
+                  <!--"futurePprEndDate": "string",-->
+                  "potentialAccident": true,
+                  "errorMessage": "Other error",
+                  "errorCode": 0,
+                  "octpAppTypeTransfer": true,
+                  "subscriptionFeeIncrease": true
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>мне сказали что на адресе ведутся работы</q>
+        <a>По вашему адресу наблюдаются технические сложности, сейчас услуги связи могут не работать. Нам очень жаль, что так вышло, мы уже чиним. Постараемся восстановить услуги к 10:30 29.09.2023.</a>
+        <a state="/Еще вопросы?"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+    
+    <test-case id="500 - кейс 4 - аварии и ппр - не работает инет - авария - есть инфа о плановых - вопросов нет">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/get/base/info</query>
+            <response status="200">
+                {
+                  "ktv": true,
+                  "gorsv": true,
+                  "dctv": true,
+                  "mobile": true,
+                  "ktvSocial": true,
+                  "internet": true,
+                  "domRuTV": true,
+                  <!--"appTypes": {-->
+                  <!--  "additionalProp1": {},-->
+                  <!--  "additionalProp2": {},-->
+                  <!--  "additionalProp3": {}-->
+                  <!--},-->
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": true,
+                  "accidentEndDate": "2023-09-29T10:30:56.862Z",
+                  "ppr": 2,
+                  <!--"currentPprEndDate": "string",-->
+                  "futurePprStartDate": "2023-09-29T12:00:56.862Z",
+                  "futurePprEndDate": "2023-09-29T12:30:56.862Z",
+                  "potentialAccident": true,
+                  "errorMessage": "Other error",
+                  "errorCode": 0,
+                  "octpAppTypeTransfer": true,
+                  "subscriptionFeeIncrease": true
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>мне сказали что на адресе ведутся работы</q>
+        <a>По вашему адресу наблюдаются технические сложности, сейчас услуги связи могут не работать. Нам очень жаль, что так вышло, мы уже чиним. Постараемся восстановить услуги к 10:30 29.09.2023.</a>
+        <a>Обратите внимание, что с 12:00 29.09.2023 до 12:30 29.09.2023 будут проводиться плановые профилактические работы. В это время интернет, телевещание и телефония могут временно отсутствовать. Это необходимо, чтобы в дальнейшем услуги продолжали радовать Вас. Надеемся на ваше понимание.</a>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+
+
+    <test-case id="500 - кейс 5 - аварии и ппр - не работает инет - авария - есть инфа о плановых - вопросы есть - адреса СЦ.">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/get/base/info</query>
+            <response status="200">
+                {
+                  "ktv": true,
+                  "gorsv": true,
+                  "dctv": true,
+                  "mobile": true,
+                  "ktvSocial": true,
+                  "internet": true,
+                  "domRuTV": true,
+                  <!--"appTypes": {-->
+                  <!--  "additionalProp1": {},-->
+                  <!--  "additionalProp2": {},-->
+                  <!--  "additionalProp3": {}-->
+                  <!--},-->
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": true,
+                  "accidentEndDate": "2023-09-29T10:30:56.862Z",
+                  "ppr": 2,
+                  <!--"currentPprEndDate": "string",-->
+                  "futurePprStartDate": "2023-09-29T12:00:56.862Z",
+                  "futurePprEndDate": "2023-09-29T12:30:56.862Z",
+                  "potentialAccident": true,
+                  "errorMessage": "Other error",
+                  "errorCode": 0,
+                  "octpAppTypeTransfer": true,
+                  "subscriptionFeeIncrease": true
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>мне сказали что на адресе ведутся работы</q>
+        <a>По вашему адресу наблюдаются технические сложности, сейчас услуги связи могут не работать. Нам очень жаль, что так вышло, мы уже чиним. Постараемся восстановить услуги к 10:30 29.09.2023.</a>
+        <a>Обратите внимание, что с 12:00 29.09.2023 до 12:30 29.09.2023 будут проводиться плановые профилактические работы. В это время интернет, телевещание и телефония могут временно отсутствовать. Это необходимо, чтобы в дальнейшем услуги продолжали радовать Вас. Надеемся на ваше понимание.</a>
+        <a state="/Еще вопросы?"/>
+        <q>Да</q>
+        <a state="/Какие вопросы?"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+    
+    
+    <test-case id="500 - кейс 6 - аварии и ппр - не работает инет - авария - есть инфа о плановых - конс - адреса СЦ">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/get/base/info</query>
+            <response status="200">
+                {
+                  "ktv": true,
+                  "gorsv": true,
+                  "dctv": true,
+                  "mobile": true,
+                  "ktvSocial": true,
+                  "internet": true,
+                  "domRuTV": true,
+                  <!--"appTypes": {-->
+                  <!--  "additionalProp1": {},-->
+                  <!--  "additionalProp2": {},-->
+                  <!--  "additionalProp3": {}-->
+                  <!--},-->
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": true,
+                  "accidentEndDate": "2023-09-29T10:30:56.862Z",
+                  "ppr": 2,
+                  <!--"currentPprEndDate": "string",-->
+                  "futurePprStartDate": "2023-09-29T12:00:56.862Z",
+                  "futurePprEndDate": "2023-09-29T12:30:56.862Z",
+                  "potentialAccident": true,
+                  "errorMessage": "Other error",
+                  "errorCode": 0,
+                  "octpAppTypeTransfer": true,
+                  "subscriptionFeeIncrease": true
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>мне сказали что на адресе ведутся работы</q>
+        <a>По вашему адресу наблюдаются технические сложности, сейчас услуги связи могут не работать. Нам очень жаль, что так вышло, мы уже чиним. Постараемся восстановить услуги к 10:30 29.09.2023.</a>
+        <a>Обратите внимание, что с 12:00 29.09.2023 до 12:30 29.09.2023 будут проводиться плановые профилактические работы. В это время интернет, телевещание и телефония могут временно отсутствовать. Это необходимо, чтобы в дальнейшем услуги продолжали радовать Вас. Надеемся на ваше понимание.</a>
+        <a state="/Еще вопросы?"/>
+        <q>Адреса СЦ</q>
+        <a state="/ServiceCentersAddress/Адреса СЦ"/>
+        <a state="/Еще вопросы?"/>
+        <q>Нет</q>
+        <a state="/Прощание"/>
+    </test-case>
+</test>

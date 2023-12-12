@@ -1,0 +1,180 @@
+10_PaymentsMethods:
+  intentCode: 10
+  transferLine: NCKAbon
+100_ChangeTariff:
+  intentCode: 100
+  transferLine: NCKAbon
+110_TarifActivate:
+  intentCode: 110
+  transferLine: NCKAbon
+120_DisambiguationSetupTV:
+  intentCode: 120
+  transferLine: OKC
+120_SetupDecoder:
+  intentCode: 120
+  transferLine: OKC
+130_SetupRouter:
+  intentCode: 130
+  transferLine: OKC
+140_ConfigureEquipment:
+  intentCode: 140
+  transferLine: OKC
+Other_provider:
+  intentCode: 150
+  transferLine: NCKAbon
+150_AgreementStop:
+  intentCode: 150
+  transferLine: NCKAbon
+ContractDetailAddressIntent:
+  intentCode: 160
+  transferLine: NCKAbon
+ContractDetailPersonIntent:
+  intentCode: 160
+  transferLine: NCKAbon
+160_ContractDetails:
+  intentCode: 160
+  transferLine: NCKAbon
+170_SubscriptionFeeIncrease:
+  intentCode: 170
+  transferLine: NCKAbon
+180_OffersHelpIntent:
+  intentCode: 180
+  transferLine: NCKAbon
+190_ApplicationTVtoGoHelp:
+  intentCode: 190
+  transferLine: NCKAbon
+20_ServiceCentersAddress:
+  intentCode: 20
+  transferLine: NCKAbon
+200_ApplicationHelp:
+  intentCode: 200
+  transferLine: NCKAbon
+210_SMSInformIntent:
+  intentCode: 210
+  transferLine: NCKAbon
+220_ConfigureInternetConnection:
+  intentCode: 220
+  transferLine: OKC
+230_RestoreLogoPass:
+  intentCode: 230
+  transferLine: NCKAbon
+240_EquipmentReturn:
+  intentCode: 240
+  transferLine: NCKAbon
+250_TechQuestion:
+  intentCode: 250
+  transferLine: OKC
+260_PageNotOpen:
+  intentCode: 260
+  transferLine: OKC
+270_TVQualityProblem:
+  intentCode: 270
+  transferLine: OKC
+280_LowInetSpeed:
+  intentCode: 280
+  transferLine: OKC
+TV_home:
+  intentCode: 290
+  transferLine: OKC
+TV_not_home:
+  intentCode: 290
+  transferLine: OKC
+TV_not_work:
+  intentCode: 290
+  transferLine: OKC
+TV_work:
+  intentCode: 290
+  transferLine: OKC
+290_TVChannelProblem:
+  intentCode: 290
+  transferLine: OKC
+Antivirus:
+  intentCode: 30
+  transferLine: NCKAbon
+ChannelPackages:
+  intentCode: 30
+  transferLine: NCKAbon
+SpeedBonus:
+  intentCode: 30
+  transferLine: NCKAbon
+Subscriptions:
+  intentCode: 30
+  transferLine: NCKAbon
+ViewControl:
+  intentCode: 30
+  transferLine: NCKAbon
+30_ManageService:
+  intentCode: 30
+  transferLine: NCKAbon
+OtherServices:
+  intentCode: 30
+  transferLine: NCKAbon
+300_NoLink6xxIntent:
+  intentCode: 300
+  transferLine: OKC
+310_ConnectProblemPPoEIntent:
+  intentCode: 310
+  transferLine: OKC
+330_BonusesOffers:
+  intentCode: 330
+  transferLine: NCKAbon
+340_PotentionalClient:
+  intentCode: 340
+  transferLine: NCKAbon
+360_StopAgreementFinal:
+  intentCode: 360
+  transferLine: NCKAbon
+370_IntercomAndCCTV:
+  intentCode: 370
+  transferLine: SMARTDOM
+40_ChannelsPackages:
+  intentCode: 40
+  transferLine: NCKAbon
+405_AgentRequest:
+  intentCode: 405
+  transferLine: OKC
+460_ServiceRequestInfo:
+  intentCode: 460
+  transferLine: OKC
+5_Consultation:
+  intentCode: 5
+  transferLine: NCKAbon
+50_LostInvoice:
+  intentCode: 50
+  transferLine: NCKAbon
+50_SumProbInvoice:
+  intentCode: 50
+  transferLine: NCKAbon
+50_Invoice:
+  intentCode: 50
+  transferLine: NCKAbon
+500_accident:
+  intentCode: 500
+  transferLine: OKC
+60_SMS:
+  intentCode: 60
+  transferLine: NCKAbon
+70_StillNotGetCharge:
+  intentCode: 70
+  transferLine: NCKAbon
+740_Pretension:
+  intentCode: 740
+  transferLine: NCKAbon
+745_Thanks:
+  intentCode: 745
+  transferLine: NCKAbon
+80_PromisedPayment:
+  intentCode: 80
+  transferLine: NCKAbon
+90_Balance:
+  intentCode: 90
+  transferLine: NCKAbon
+NoMatch:
+  intentCode: 0
+  transferLine: OKC
+350_PhoneProblem:
+  intentCode: 350
+  transferLine: OKC
+155_CancelSuspend:
+  intentCode: 155
+  transferLine: NCKAbon

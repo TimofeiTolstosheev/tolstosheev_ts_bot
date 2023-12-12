@@ -1,0 +1,453 @@
+<!--270_1_1авторизован - рябь на каналах - в спасе flow_loss - оператор 270/7-->
+<!--270_1_2авторизован - рябь на каналах - в спасе action_category technical_support - оператор 270/7-->
+<!--270_12авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - дома - оператор - 270/6-->
+<!--270_13авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не дома - вопросов нет - 270/0-->
+<!--270_14авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не дома - вопросы есть - баланс 270/0 90/0-->
+<!--270_15авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не дома - баланс  270/0 90/0-->
+<!--270_16авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка помогла - вопросов нет 270/0-->
+<!--270_17авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка помогла - вопросы есть - баланс 270/0 90/0-->
+<!--270_18авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка помогла - баланс 270/0 90/0-->
+<!--270_19авторизован - проактива нет, спаса нет - рябь на каналах - после перезагрузки не понятная фраза - дома - оператор 270/6-->
+<!--270_20авторизован - проактива нет, спаса нет - рябь на каналах - после перезагрузки не понятная фраза - не дома - вопросов нет 270/0-->
+<!--270_21авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не понятная фраза на вопрос о том, дома ли клиент - оператор 270/6-->
+
+<test>
+    <test-case id="270_1_1 авторизован - рябь на каналах - в спасе flow_loss - оператор 270/7">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": true, "technicalSupport": false, "drtvTicket": false}},
+                "proactiveResult": "spas"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/spas/data</query>
+            <response status="200">
+                {
+                    "tvProblem": {"flowLoss": true, 
+                            "technicalSupport": false,
+                            "drtvTicket": false
+                            },
+                     "internetProblem": {"technicalServiceRequest": false}
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>цвета и изображение искажено</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="270_1_2 авторизован - рябь на каналах - в спасе action_category technical_support - оператор 270/7">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": true, "drtvTicket": false, "actionCategories": true}},
+                "proactiveResult": "spas"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/spas/data</query>
+            <response status="200">
+                {
+                    "tvProblem": {"flowLoss": false, 
+                            "technicalSupport": true,
+                            "drtvTicket": false
+                            },
+                     "internetProblem": {"technicalServiceRequest": false}
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>у меня всё зависло на телевизоре</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="270_12 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - дома - оператор - 270/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>телевизор рябит</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>нет</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>да</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="270_13 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не дома - вопросов нет - 270/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>сыпитца картинка</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>нихрена не работает</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>нет</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="270_14 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не дома - вопросы есть - адреса СЦ 270/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>сложности с качеством</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>не работает</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>нет</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="270_15 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не дома - адреса СЦ  270/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>тормозят hd каналы</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>не работает</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>нет</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="270_16 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка помогла - вопросов нет 270/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>рябь на каналах</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>вроде норм</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/Fixed" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="270_17 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка помогла - вопросы есть - адреса СЦ 270/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>рассыпание на пикселя</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>вроде норм</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="270_18 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка помогла - адреса СЦ 270/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>прерываются телепрограммы</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>да</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="270_19 авторизован - проактива нет, спаса нет - рябь на каналах - после перезагрузки не понятная фраза - дома - оператор 270/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>прерывание звука</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>а я красавица</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>да</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="270_20 авторизован - проактива нет, спаса нет - рябь на каналах - после перезагрузки не понятная фраза - не дома - вопросов нет 270/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>плохой звук</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>мне надоело</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>нет</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome/NotHome" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="270_21 авторизован - проактива нет, спаса нет - рябь на каналах - перезагрузка не помогла - не понятная фраза на вопрос о том, дома ли клиент - оператор 270/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false,
+                "spas": {"tvProblem": {"flowLoss": false, "technicalSupport": false, "drtvTicket": false}},
+                "internetProblem": {"technicalServiceRequest": false}
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>низкое разрешение</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV" />
+        <q>не изменилось</q>
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <a state = "/TVChannelTVqualityProblem/Auth/RefreshCKTV/AreYouHome" />
+        <q>а вам какое дело</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+</test>

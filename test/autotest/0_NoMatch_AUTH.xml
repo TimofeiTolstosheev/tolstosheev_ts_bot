@@ -1,0 +1,131 @@
+<!--0_3авторизован - намерение не определено 2 раза - оператор-->
+<!--0_4_1 авторизован - намерение не определено - Консультация по тарифу (кнопка) - вопросов нет-->
+<!--0_4_2 авторизован - намерение не определено - узнать пароль от договора - вопросов нет-->
+<!--0_5авторизован - намерение не определено - намерение не определено-->
+<test>
+    
+    <test-case id="0_3 авторизован - намерение не определено 2 раза - оператор">
+        
+        <context var="session">
+            {
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2604160\",\"agreementNumber\":\"780001894866\",\"uniqueFrom\":\"Mobile_chat_353618_556_b2c\",\"alias\":\"\",\"region\":\"dev-dcc-spb\",\"cityId\":\"556\",\"newVer\":\"0\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\",\"InteractionId\":\"jaicpTest\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>радость в массы</q>
+        <a state = "/NoMatch"/>
+        <q>радость в массы</q>
+        <a state = "/NoMatch/Transfer" />
+        <a state = "/Transfer/Transfer" />
+        <!--<state>/Transfer/Transfer</state>-->
+    </test-case>
+    
+     <test-case id="0_4_1 авторизован - намерение не определено - Консультация по тарифу (кнопка) - вопросов нет">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>проверка</q>
+        <a state = "/NoMatch" />
+        <q>Консультация по тарифу</q>
+        <a state = "/OffersHelpIntent/Консультация по тарифным планам" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="0_4_2 авторизован - намерение не определено - узнать пароль от договора - вопросов нет">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>проверка</q>
+        <a state = "/NoMatch" />
+        <q>узнать пароль от договора</q>
+        <a state = "/RestoreLogoPass/Восстановление и смена учетных данных" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="0_5 авторизован - намерение не определено - намерение не определено">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>проверка</q>
+        <a state = "/NoMatch" />
+        <q>проверка</q>
+        <a state = "/NoMatch/Transfer"/>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+</test>

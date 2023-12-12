@@ -1,0 +1,104 @@
+<!--90_1Баланс - не авторизован - инфа где найти - вопросов нет - прощание 90/0 -->
+<!--90_2Баланс - не авторизован - инфа где найти - вопросы есть - адреса СЦ 90/0 20/0-->
+<!--90_3Баланс - не авторизован - инфа где найти - адреса СЦ 90/0 20/0-->
+<test>
+    <test-case id="90_1 Баланс - не авторизован - инфа где найти - вопросов нет - прощание 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>сколько нужно заплатить</q>
+        <state>/BalanceInquiry/CheckAuth</state>
+        <a state = "/BalanceInquiry/CheckAuth/balance unauthorized" />
+        <a state = "/BalanceInquiry/CheckAuth/balance unauthorized" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="90_2 Баланс - не авторизован - инфа где найти - вопросы есть - адреса СЦ 90/0 20/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>сколько нужно заплатить</q>
+        <state>/BalanceInquiry/CheckAuth</state>
+        <a state = "/BalanceInquiry/CheckAuth/balance unauthorized" />
+        <a state = "/BalanceInquiry/CheckAuth/balance unauthorized" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="90_3 Баланс - не авторизован - инфа где найти - вопросы есть - адреса СЦ 90/0 20/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>сколько нужно заплатить</q>
+        <state>/BalanceInquiry/CheckAuth</state>
+        <a state = "/BalanceInquiry/CheckAuth/balance unauthorized" />
+        <a state = "/BalanceInquiry/CheckAuth/balance unauthorized" />
+        <a state = "/Еще вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+</test>

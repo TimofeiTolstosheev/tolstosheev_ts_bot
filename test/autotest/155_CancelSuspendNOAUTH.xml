@@ -1,0 +1,328 @@
+<test>
+    
+    <test-case id="кейс 1 - Авторизован - отмена приостановления - обращение с сайта - РМ про ЛК - вопросов нет - 155/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Web\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановку договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense web" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="кейс 2 - Авторизован - отмена риостановления - обращение с web - РМ про ЛК - вопросы есть - способы оплаты - 155/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Web\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense web" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>хочу пополнить счет в офисе</q>
+        <a state = "/PaymentsMetods/Способы оплаты" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+
+    <test-case id="кейс 3 - Авторизован - отмена риостановления - обращение с сайта - РМ про ЛК- способы оплаты - 155/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Web\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense web"/>
+        <a state = "/Еще вопросы?" />
+        <q>хочу пополнить счет в офисе</q>
+        <a state = "/PaymentsMetods/Способы оплаты" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание"/>
+    </test-case>
+
+    <test-case id="Кейс 4 - Авторизован - отменить приостановление - обращение с ios - РМ про приостановить обслуживание - вопросов нет - 155/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"iOS\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense ios"/>
+        <a state = "/Еще вопросы?"/>
+        <q>нет</q>
+        <a state = "/Прощание"/>
+    </test-case>
+
+    <test-case id="кейс 5 - Авторизован - отмена риостановления - обращение с ios - РМ про приостановить обслуживание - вопросы есть - консультация по переоформлению договора - 155/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"iOS\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановку договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense ios" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>хочу пополнить счет в офисе</q>
+        <a state = "/PaymentsMetods/Способы оплаты" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание"/>
+    </test-case>
+    
+    <test-case id="кейс 6 - Авторизован - отмена риостановки - обращение с ios - РМ про приостановить обслуживание - Консультация по переоформлению договора - 155/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"iOS\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense ios" />
+        <a state = "/Еще вопросы?" />
+        <q>хочу пополнить счет в офисе</q>
+        <a state = "/PaymentsMetods/Способы оплаты" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание"/>
+    </test-case>
+    
+    <test-case id="кейс 7 - Авторизован - Приостановить договор - обращение с android - РМ про приостановить услуги - вопросов нет - 155/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense android" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="кейс 8 - Авторизован - отменить приостановление - обращение с android - РМ про приостановить услуги - вопросы есть - адреса СЦ - 155/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense android" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />        
+    </test-case>
+    
+    <test-case id="кейс 9 - Авторизован - отменить приостановление - обращение с android - РМ про приостановить услуги - баланс - 155/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense android" />
+        <a state = "/Еще вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />        
+    </test-case>
+    
+    <test-case id="150_22 Авторизован - отмена приостановления - отмена приостановления - отмена приостановления - перевод на оператора 150/0 150/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense android" />
+        <a state = "/Еще вопросы?" />
+        <q>отменить приостановление договора</q>
+        <a state = "/CancelSuspend/CheckOS/suspense android" />
+        <a state = "/Еще вопросы?" />
+        <q>отменить приостановление договора</q>
+        <a>Я позову на помощь коллегу, он сейчас ответит.</a>
+    </test-case>
+    
+</test>

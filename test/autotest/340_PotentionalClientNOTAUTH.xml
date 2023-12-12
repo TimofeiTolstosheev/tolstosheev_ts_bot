@@ -1,0 +1,31 @@
+<test>
+    
+    <test-case id="340 - Кейс 1 - ПК - не авторизован - перевод оцп">
+        
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "cifral": true,
+                "genesysData": "{\"agreementId\":\"2606508\",\"agreementNumber\":\"780001906916\",\"clientId\":\"Mobile_chat_354581_556_b2c\",\"alias\":\"dev-dcc-spb\",\"region\":\"interzet\",\"cityId\":\"556\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.60.4\",\"bld\":\"3060040\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>подключить ваши услуги</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+</test>

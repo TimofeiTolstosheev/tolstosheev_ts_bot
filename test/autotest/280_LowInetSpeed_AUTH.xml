@@ -1,0 +1,429 @@
+<!--280_7авторизован - низкая скорость - проактива нет - просим ребутнуть - НЕ заработало - НЕ дома - прощание 280/4-->
+<!--280_8авторизован - низкая скорость - проактива нет - просим ребутнуть - НЕ заработало - ДОМА - перевод в окц 280/6-->
+<!--280_9авторизован - низкая скорость - проактива нет - просим ребутнуть - НЕ заработало - абракадабра - перевод в окц 280/6-->
+<!--280_10авторизован - низкая скорость - проактива нет - просим ребутнуть - абракадабра - перевод в окц 280/6-->
+<!--280_11авторизован - низкая скорость - проактива нет - просим ребутнуть - заработало - вопросов нет 280/0-->
+<!--280_12авторизован - низкая скорость -проактива нет - просим ребутнуть - заработало - вопросы есть - Консультация по переоформлению договора-->
+<!--280_13авторизован - низкая скорость - в проактиве приостановка 280/0-->
+<!--280_14авторизован - низкая скорость - в проактиве Есть заявка на отключение ао ДЗ 280/0-->
+<!--280_15авторизован - низкая скорость - Есть ДЗ (инет не раб по задолженности) 280/0-->
+<!--280_16авторизован - низкая скорость - не активирован ТП 280/0-->
+<!--280_17авторизован - низкая скорость - есть СЗ без времени 280/0-->
+<!--280_18авторизован - низкая скорость - есть СЗ со временем, не просрок 280/0-->
+
+<test>
+    <test-case id="280_7 авторизован - низкая скорость - проактива нет - просим ребутнуть - НЕ заработало - НЕ дома - прощание 280/4">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>низкая скорость</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>нет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="280_8 авторизован - низкая скорость - проактива нет - просим ребутнуть - НЕ заработало - ДОМА - перевод в окц 280/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>ужасно медленно открываются страницы</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>да</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="280_9 авторизован - низкая скорость - проактива нет - просим ребутнуть - НЕ заработало - абракадабра - перевод в окц 280/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>медленно загружается сайт</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>вы ваще там работать будете</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="280_10 авторизован - низкая скорость - проактива нет - просим ребутнуть - абракадабра - перевод в окц 280/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>низкая скорость</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>вы меня достали</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>вы ваще там работать будете</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="280_11 авторизован - низкая скорость - проактива нет - просим ребутнуть - заработало - вопросов нет 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>медленно загружается сайт</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>Работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="280_12 авторизован - низкая скорость - проактива нет - просим ребутнуть - заработало - вопросы есть - Консультация по переоформлению договора">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>ютуб не грузит</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>да работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>Консультация по переоформлению договора</q>
+        <a state = "/ContractDetails/Консультация по переоформлению договора" />
+    </test-case>
+    
+    <test-case id="280_13 авторизован - низкая скорость - в проактиве приостановка 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "suspended",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>низкая скорость</q>
+        <a state = "/Proactive/Suspension" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="280_14 авторизован - низкая скорость - в проактиве Есть заявка на отключение ао ДЗ 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "dz",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z",
+                    "recommendSum": "450,00"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что со скоростью</q>
+        <a state = "/Proactive/Debit" />
+        <a state = "/Proactive/Debit" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="280_15 авторизован - низкая скорость - Есть ДЗ (инет не раб по задолженности) 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "negativeBalance",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z",
+                    "recommendSum": "450,00"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где заявленная скорость</q>
+        <a state = "/Proactive/NegativeBalance" />
+        <a state = "/Proactive/NegativeBalance" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="280_16 авторизован - низкая скорость - не активирован ТП 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "noActivation",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z",
+                    "recommendSum": "450,00"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>низкая скорость</q>
+        <a state = "/Proactive/NoActivation" />
+    </test-case>
+    
+    <test-case id="280_17 авторизован - низкая скорость - есть СЗ без времени 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "serviceRequestStatus": "request-undefined",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>не грузит сайт</q>
+        <a state = "/Proactive/ServiceRequest/NoPlanTime" />
+        <a state = "/Proactive/ServiceRequest/AskOperator" />
+    </test-case>
+    
+    <test-case id="280_18 авторизован - низкая скорость - есть СЗ со временем, не просрок 280/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "serviceRequestStatus": "request-pending",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z"
+                    <!--"srvPlanDateFrom": "2023-09-22T09:00:00.862Z",-->
+                    <!--"srvPlanDateTo": "2023-09-22T18:00:00.862Z"-->
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>низкая скорость</q>
+        <a>На ваш адрес назначена заявка на выезд специалиста. Инженер приедет с 09:35 22.09.2023 до 10:35 22.09.2023.</a>
+        <a state = "/Proactive/ServiceRequest/AskOperator" />
+    </test-case>
+</test>

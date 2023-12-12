@@ -1,0 +1,946 @@
+<!--300_7авторизован - не работает интернет - проактива нет - просим ребутнуть - НЕ заработало - НЕ дома - прощание 300/4-->
+<!--300_8авторизован - не работает интернет - проактива нет - просим ребутнуть - НЕ заработало - ДОМА - перевод в окц 300/6-->
+<!--300_9авторизован - не работает интернет - проактива нет - просим ребутнуть - НЕ заработало - абракадабра - перевод в окц 300/6-->
+<!--300_10авторизован - не работает интернет - проактива нет - просим ребутнуть - абракадабра - перевод в окц 300/6-->
+<!--300_11авторизован - не работает интернет - проактива нет - просим ребутнуть - заработало - вопросов нет 300/0-->
+<!--300_12авторизован - не работает интернет -проактива нет - просим ребутнуть - заработало - вопросы есть - Консультация по переоформлению договора-->
+<!--300_13авторизован - не работает интернет - в проактиве приостановка 300/0-->
+<!--300_14авторизован - не работает интернет - в проактиве Есть заявка на отключение по ДЗ 300/0-->
+<!--300_15авторизован - не работает интернет - Есть ДЗ (инет не раб по задолженности) 300/0-->
+<!--300_16авторизован - не работает интернет - не активирован ТП 300/0-->
+<!--300_17авторизован - не работает интернет - есть СЗ без времени 300/0-->
+<!--300_18авторизован - не работает интернет - есть СЗ со временем, не просрок 300/0-->
+<!--300_19авторизован - не работает интернет - просим ребутнуть - НАПИШУ ПОЗДНЕЕ - вопросов нет - прощание 300/0-->
+<!--300_20авторизован - не работает интернет - просим ребутнуть - НАПИШУ ПОЗДНЕЕ - вопросы есть - Консультация по переоформлению договора 300/0 90/0-->
+<!--300_21авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - заработало - вопросов нет 300/0-->
+<!--300_22авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - НЕ заработало - дома - перевод в окц 300/6-->
+<!--300_23авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - НЕ заработало - НЕ дома - вопросов нет - прощание 300/0-->
+<!--300_24авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - НЕ заработало - НЕ дома - вопросы есть - приостановка 300/0 90/0-->
+<!--300_25авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - заработало - вопросов нет 300/0-->
+<!--300_26авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - НЕ заработало - дома - перевод в окц 300/6-->
+<!--300_27авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - НЕ заработало - НЕ дома - вопросов нет - прощание 300/0-->
+<!--300_28авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - НЕ заработало - НЕ дома - вопросы есть - баланс 300/0 90/0-->
+<!--300_29авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - заработало - вопросов нет 300/0-->
+<!--300_30авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - НЕ заработало - дома - перевод в окц 300/6-->
+<!--300_31авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - НЕ заработало - НЕ дома - вопросов нет - прощание 300/0-->
+<!--300_32авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - НЕ заработало - НЕ дома - вопросы есть - баланс 300/0 90/0-->
+
+<test>
+    <test-case id="300_7 авторизован - не работает интернет - проактива нет - просим ребутнуть - НЕ заработало - НЕ дома - прощание 300/4">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с интернетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>нет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_8 авторизован - не работает интернет - проактива нет - просим ребутнуть - НЕ заработало - ДОМА - перевод в окц 300/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с интернетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>да</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="300_9 авторизован - не работает интернет - проактива нет - просим ребутнуть - НЕ заработало - абракадабра - перевод в окц 300/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отрубился интернет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>вы ваще там работать будете</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="300_10 авторизован - не работает интернет - проактива нет - просим ребутнуть - абракадабра - перевод в окц 300/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отрубился интернет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>вы меня достали</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>вы ваще там работать будете</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="300_11 авторизован - не работает интернет - проактива нет - просим ребутнуть - заработало - вопросов нет 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отключился вай фай</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>Работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_12 авторизован - не работает интернет - проактива нет - просим ребутнуть - заработало - вопросы есть - Консультация по переоформлению договора">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отключился вай фай</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>да работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>Консультация по переоформлению договора</q>
+        <a state = "/ContractDetails/Консультация по переоформлению договора" />
+    </test-case>
+    
+    <test-case id="300_13 авторизован - не работает интернет - в проактиве приостановка 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "suspended",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отключился вай фай</q>
+        <a state = "/Proactive/Suspension" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="300_14 авторизован - не работает интернет - в проактиве Есть заявка на отключение ао ДЗ 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "dz",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z",
+                    "recommendSum": "450,00"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отключился вай фай</q>
+        <a state = "/Proactive/Debit" />
+        <a state = "/Proactive/Debit" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="300_15 авторизован - не работает интернет - Есть ДЗ (инет не раб по задолженности) 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "negativeBalance",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z",
+                    "recommendSum": "450,00"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отключился вай фай</q>
+        <a state = "/Proactive/NegativeBalance" />
+        <a state = "/Proactive/NegativeBalance" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="300_16 авторизован - не работает интернет - не активирован ТП 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "result": "noActivation",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z",
+                    "recommendSum": "450,00"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>удаленный компьютер не отвечает</q>
+        <a state = "/Proactive/NoActivation" />
+        <q>да</q>
+        <a state = "/TarifActivate/ActivationInfo" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="300_17 авторизован - не работает интернет - есть СЗ без времени 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "serviceRequestStatus": "request-undefined",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>удаленный компьютер не отвечает</q>
+        <a state = "/Proactive/ServiceRequest/NoPlanTime" />
+        <a state = "/Proactive/ServiceRequest/AskOperator" />
+    </test-case>
+    
+    <test-case id="300_18 авторизован - не работает интернет - есть СЗ со временем, не просрок 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/billing/check/services/access</query>
+            <response status="200">
+                {
+                    "serviceRequestStatus": "request-pending",
+                    "servicePlanDate": "2023-09-22T09:35:56.862Z"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>че с интернетом</q>
+        <a>На ваш адрес назначена заявка на выезд специалиста. Инженер приедет с 09:35 22.09.2023 до 10:35 22.09.2023.</a>
+        <a state = "/Proactive/ServiceRequest/AskOperator" />
+    </test-case>
+    
+    <test-case id="300_19 авторизован - не работает интернет - просим ребутнуть - НАПИШУ ПОЗДНЕЕ - вопросов нет - прощание 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с интернетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>ждите</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Expect" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_20 авторизован - не работает интернет - просим ребутнуть - НАПИШУ ПОЗДНЕЕ - вопросы есть - Консультация по переоформлению договора 300/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с интернетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>ждите</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Expect" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>Консультация по переоформлению договора</q>
+        <a state = "/ContractDetails/Консультация по переоформлению договора" />
+    </test-case>
+    
+    <test-case id="300_21 авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - заработало - вопросов нет 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>постоянно перезагружаю</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/AlreadyRebooted" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>заработало</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_22 авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - НЕ заработало - дома - перевод в окц 300/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>постоянно перезагружаю</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/AlreadyRebooted" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>услуги не восстановились</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>разумеется</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="300_23 авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - НЕ заработало - НЕ дома - вопросов нет - прощание 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>постоянно перезагружаю</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/AlreadyRebooted" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>значок оранжевый</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>не нахожусь дома</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+
+    <test-case id="300_24 авторизован - не работает интернет - просим ребутнуть - УЖЕ ПЕРЕЗАГРУЖАЛ - еще раз просим ребутнуть и проверить - НЕ заработало - НЕ дома - вопросы есть - приостановка 300/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>уже перезагружал</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/AlreadyRebooted" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>значок оранжевый</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>не нахожусь дома</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>уезжаю на время не буду пользоваться</q>
+        <a state = "/AgreementStop/Приостановление договора" />
+    </test-case>
+    
+    <test-case id="300_25 авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - заработало - вопросов нет 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>что с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>не знаю как проверить</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>все работает</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_26 авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - НЕ заработало - дома - перевод в окц 300/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>че с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>как проверить</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>значок оранжевый</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>да дома</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="300_27 авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - НЕ заработало - НЕ дома - вопросов нет - прощание 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>че с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>как проверить</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>интернет не появился</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>нет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    
+    <test-case id="300_28 авторизован - не работает интернет - просим ребутнуть - КАК ПРОВЕРИТЬ - рассказываем как проверить - НЕ заработало - НЕ дома - вопросы есть - адреса СЦ 300/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>че с инетом</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>как проверить</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/HowToCheck" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>интернет не появился</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>нет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="300_29 авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - заработало - вопросов нет 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>у меня нет интернета</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>устраняйте проблему</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckByYourself" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>интернет появился</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/Fixed" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_30 авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - НЕ заработало - дома - перевод в окц 300/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>пропал интернет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>у вас проблемы на линии</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckByYourself" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>интернет не появился</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>да дома</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="300_31 авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - НЕ заработало - НЕ дома - вопросов нет - прощание 300/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>я без инета</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>отправляйте мастера</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckByYourself" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>не изменилось</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>нет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="300_32 авторизован - не работает интернет - просим ребутнуть - ПРОБЛЕМА У ВАС - рассказываем, что нужно ребутнуть и проверить - НЕ заработало - НЕ дома - вопросы есть - настройка оборудования 300/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}",
+                "proactiveProblem": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>я без инета</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot" />
+        <q>отправляйте мастера</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckByYourself" />
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/CheckAgain" />
+        <q>не изменилось</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed" />
+        <q>нет</q>
+        <a state = "/PageNotOpenLowSpeedNoLinkPPoE/Auth/Reboot/AfterReboot/NotFixed/NotHome" />
+        <a state = "/Еще вопросы?" />
+        <q>купил у вас адаптер</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+    </test-case>
+    
+</test>

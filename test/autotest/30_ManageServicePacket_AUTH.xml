@@ -1,0 +1,696 @@
+<!--30_2авторизован - подключить услугу - пакеты каналов - вопросов нет 30/0-->
+<!--30_3авторизован - подключить услугу - пакеты каналов - вопросы есть - хочу настроить приёмник - нет 30/0 90/0-->
+<!--30_4авторизован - подключить услугу - пакеты каналов - список тв каналов - нет 30/0 90/0-->
+<!--30_5авторизован - подключить услугу - бонус скорости - вопросов нет 30/0-->
+<!--30_6авторизован - подключить услугу - бонус скорости - вопросы есть - список тв каналов - нет 30/0 90/0-->
+<!--30_7авторизован - подключить услугу - бонус скорости - список тв каналов - нет 30/0 90/0-->
+<!--30_8авторизован - подключить услугу - антивирус - вопросов нет 30/0-->
+<!--30_9авторизован - подключить услугу - антивирус - вопросы есть - смс об оплате - нет 30/0 90/0-->
+<!--30_10авторизован - подключить услугу - антивирус - смс об оплате - нет 30/0 90/0-->
+<!--30_11авторизован - подключить услугу - подписки - вопросов нет 30/0-->
+<!--30_12авторизован - подключить услугу - подписки - вопросы есть - адреса СЦ - нет 30/0 90/0-->
+<!--30_13авторизован - подключить услугу - подписки - адреса СЦ - нет 30/0 90/0-->
+<!--30_14авторизован - подключить услугу - управляй просмотром - вопросов нет 30/0-->
+<!--30_15авторизован - подключить услугу - управляй просмотром - вопросы есть - смс об оплате - нет 30/0 90/0-->
+<!--30_16авторизован - подключить услугу - управляй просмотром - смс об оплате - нет 30/0 90/0-->
+<!--30_17авторизован - подключить услугу - что - оператор нцкабон 30/6-->
+<!--30_18авторизован - пакеты каналов - вопросов нет 30/0-->
+<!--30_19авторизован - бонус скорости - вопросов нет 30/0-->
+<!--30_20авторизован - антивирус - вопросов нет 30/0-->
+<!--30_21авторизован - подписки - вопросов нет 30/0-->
+<!--30_22авторизован - управляй просмотром - вопросов нет 30/0-->
+
+<test>
+    <test-case id="30_2 авторизован - подключить услугу - пакеты каналов - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>хочу контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>хочу пакеты каналов</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Пакеты каналов" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="30_3 авторизован - подключить услугу - пакеты каналов - вопросы есть - хочу настроить приёмник - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>хочу контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>хочу пакеты каналов</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Пакеты каналов" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>хочу настроить приёмник</q>
+        <a state = "/ConfigureEquipment/Настройка дополнительного оборудования" />
+    </test-case>
+    
+    <test-case id="30_4 авторизован - подключить услугу - пакеты каналов - список тв каналов - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>у вас есть научные каналы</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Пакеты каналов" />
+        <a state = "/Еще вопросы?" />
+        <q>список тв каналов</q>
+        <a state = "/ChannelsPackages/Вопрос по составу пакетов каналов" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_4 авторизован - подключить услугу - пакеты каналов - список тв каналов - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>у вас есть научные каналы</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Пакеты каналов" />
+        <a state = "/Еще вопросы?" />
+        <q>список тв каналов</q>
+        <a state = "/ChannelsPackages/Вопрос по составу пакетов каналов" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_5 авторизован - подключить услугу - бонус скорости - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>бонус скорости</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Бонус скорости" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a>Рад вам помочь! Если у вас появятся вопросы, пишите в любое удобное время. Рад помочь. Пишите в любое время. Персонально от себя рекомендую мобильное приложение «Мой Дом.ру»: в нём можно управлять услугами, получать информацию о начислениях и спецпредложениях, а также писать мне в онлайн-чат. На сайте доступны ссылки https://dom.ru/service/agent для скачивания версии для iOS и Android. Удачного дня!</a>
+    </test-case>
+    
+    <test-case id="30_6 авторизован - подключить услугу - бонус скорости - вопросы есть - баланс - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>хочу пользоваться бонусом скорости</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Бонус скорости" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>список тв каналов</q>
+        <a state = "/ChannelsPackages/Вопрос по составу пакетов каналов" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_7 авторизован - подключить услугу - бонус скорости - список тв каналов - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>подключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>бонус скорости</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Бонус скорости" />
+        <a state = "/Еще вопросы?" />
+        <q>список тв каналов</q>
+        <a state = "/ChannelsPackages/Вопрос по составу пакетов каналов" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_8 авторизован - подключить услугу - антивирус - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>отключите мне Dr.Wed</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Антивирус" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a>Рад вам помочь! Если у вас появятся вопросы, пишите в любое удобное время. Рад помочь. Пишите в любое время. Персонально от себя рекомендую мобильное приложение «Мой Дом.ру»: в нём можно управлять услугами, получать информацию о начислениях и спецпредложениях, а также писать мне в онлайн-чат. На сайте доступны ссылки https://dom.ru/service/agent для скачивания версии для iOS и Android. Удачного дня!</a>
+    </test-case>
+    
+    <test-case id="30_9 авторизован - подключить услугу - антивирус - вопросы есть - смс об оплате - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>отключите мне Dr.Wed</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Антивирус" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>смс об оплате</q>
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_10 авторизован - подключить услугу - антивирус - смс об оплате - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>подключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>антивирус</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Антивирус" />
+        <a state = "/Еще вопросы?" />
+        <q>смс об оплате</q>
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_11 авторизован - подключить услугу - подписки - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>яндекс плюс отключить</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Подписки" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a>Рад вам помочь! Если у вас появятся вопросы, пишите в любое удобное время. Рад помочь. Пишите в любое время. Персонально от себя рекомендую мобильное приложение «Мой Дом.ру»: в нём можно управлять услугами, получать информацию о начислениях и спецпредложениях, а также писать мне в онлайн-чат. На сайте доступны ссылки https://dom.ru/service/agent для скачивания версии для iOS и Android. Удачного дня!</a>
+    </test-case>
+    
+    <test-case id="30_12 авторизован - подключить услугу - подписки - вопросы есть - адреса СЦ - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>нужен родительский контроль</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Подписки" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_13 авторизован - подключить услугу - подписки - адреса СЦ - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>подключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>хочу подключить амедиатеку</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Подписки" />
+        <a state = "/Еще вопросы?" />
+        <q>время работы офиса</q>
+        <a state = "/ServiceCentersAddress/Адреса СЦ" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_14 авторизован - подключить услугу - управляй просмотром - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>хочу услугу Управляй просмотром</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Управляй просмотром" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a>Рад вам помочь! Если у вас появятся вопросы, пишите в любое удобное время. Рад помочь. Пишите в любое время. Персонально от себя рекомендую мобильное приложение «Мой Дом.ру»: в нём можно управлять услугами, получать информацию о начислениях и спецпредложениях, а также писать мне в онлайн-чат. На сайте доступны ссылки https://dom.ru/service/agent для скачивания версии для iOS и Android. Удачного дня!</a>
+    </test-case>
+    
+    <test-case id="30_15 авторизован - подключить услугу - управляй просмотром - вопросы есть - смс об оплате - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>где в личном кабинете отключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>функция управляй просмотром платная?</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Управляй просмотром" />
+        <a state = "/Еще вопросы?" />
+        <q>да</q>
+        <a state = "/Какие вопросы?" />
+        <q>смс об оплате</q>
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_16 авторизован - подключить услугу - управляй просмотром - смс об оплате - нет 30/0 90/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>подключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>стоимость перемотки</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Управляй просмотром" />
+        <a state = "/Еще вопросы?" />
+        <q>смс об оплате</q>
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/SMS/Не пришла СМС" />
+        <a state = "/Еще вопросы?" />
+    </test-case>
+    
+    <test-case id="30_17 авторизован - подключить услугу - что - оператор нцкабон 30/6">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>подключить контент</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>я не об этом</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации" />
+        <q>не подключайте мне ничего</q>
+        <a state = "/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="30_18 авторизован - пакеты каналов - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>хочу пакеты каналов</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Пакеты каналов" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="30_19 авторизован - бонус скорости - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>бонус скорости</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Бонус скорости" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a>Рад вам помочь! Если у вас появятся вопросы, пишите в любое удобное время. Рад помочь. Пишите в любое время. Персонально от себя рекомендую мобильное приложение «Мой Дом.ру»: в нём можно управлять услугами, получать информацию о начислениях и спецпредложениях, а также писать мне в онлайн-чат. На сайте доступны ссылки https://dom.ru/service/agent для скачивания версии для iOS и Android. Удачного дня!</a>
+    </test-case>
+    
+    <test-case id="30_20 авторизован - антивирус - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>отключите мне Dr.Wed</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Антивирус" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="30_21 авторизован - подписки - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>яндекс плюс отключить</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Подписки" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+    
+    <test-case id="30_22 авторизован - управляй просмотром - вопросов нет 30/0">
+        <context var="session">
+            {
+                "autoTest": true,
+                "int": true,
+                "genesysData": "{\"agreementId\":\"2035701\",\"agreementNumber\":\"161009575815\",\"clientId\":\"Mobile_chat_1257196_231_b2c\",\"alias\":\"chelny\",\"region\":\"chelny\",\"cityId\":\"231\",\"newVer\":\"1\",\"os\":\"Android\",\"ver\":\"3.56.1\",\"bld\":\"3056010\"}"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/chatbot/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state = "/Start">Привет! Я Робот-помощник Дом.ру.</a>
+        <q>хочу услугу Управляй просмотром</q>
+        <a state = "/ManageServicePacket/Управление контентом/Проверка авторизации/Управляй просмотром" />
+        <a state = "/Еще вопросы?" />
+        <q>нет</q>
+        <a state = "/Прощание" />
+    </test-case>
+</test>
