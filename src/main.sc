@@ -4,6 +4,9 @@ require: common.js
     module = sys.zb-common
 require: dateTime/dateTime.sc
   module = sys.zb-common
+require: Scripts/globals.js
+    type = scriptEs6
+    name = globals
 
 # словари
 require: Dicts/intents.yaml
@@ -39,7 +42,7 @@ init:
     });
     
     bind("onScriptError", function($context) {
-        if($context.testContext){
+        if($context.testContext || $.request.channelType == 'chatwidget'){
             $reactions.answer($context.exception.message);
         }
         customLog('Script error: ' + $context.exception.message);
@@ -48,7 +51,7 @@ init:
     }, "/", "Handle script errors");
     
     bind("onDialogError", function($context) {
-        if($context.testContext){
+        if($context.testContext || $.request.channelType == 'chatwidget'){
             $reactions.answer($context.exception.message);
         }
         customLog('Dialog error: ' + $context.exception.message);
@@ -57,7 +60,7 @@ init:
     }, "/", "Handle dialog errors");
     
     bind("onAnyError", function($context) {
-        if($context.testContext){
+        if($context.testContext || $.request.channelType == 'chatwidget'){
             $reactions.answer($context.exception.message);
         }
         customLog('Unhandled error: '+ $context.exception.message);
@@ -298,3 +301,10 @@ theme: /
                 sendDialogLog();
             }
             $jsapi.stopSession();
+
+    state: Test
+        q!: test
+        a: test
+        scriptEs6:
+            auth.authByAgreementId();
+        a: {{$.session.token}}

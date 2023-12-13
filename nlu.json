@@ -1,7 +1,7 @@
 {
   "project" : {
-    "id" : "develop_jaicp_chatbo-1000003-wyd",
-    "name" : "develop_jaicp_chatbo-1000003-wyd",
+    "id" : "tolstosheev_ts-1000084025-CoU",
+    "name" : "tolstosheev_ts-1000084025-CoU",
     "folder" : "/platform"
   },
   "settings" : {
@@ -6622,7 +6622,7 @@
     "classificationRules" : {
       "refs" : [ ]
     },
-    "patterns" : [ "* {(стоимост*/цен*/стоит*) * (приостанов*/замороз*/блокиров*/заблокиров*/останов*)} *", "* {[врем*] * (приостанов*/замороз*/блокиров*/заблокиров*/останов*) * (догов*/интернет*/тв/услуг*/телефиден*/инет*)} *", "* {врем* * (приостанов*/замороз*/блокиров*/заблокиров*/останов*/отключ*)} *", "* {пауз* * (догов*/интернет*/тв/услуг*/телефиден*/инет*)} *" ],
+    "patterns" : [ "* {(стоимост*/цен*/стоит*) * (приостанов*/замороз*/блокиров*/заблокиров*/останов*)} *", "* {[врем*] * (приостанов*/замороз*/блокиров*/заблокиров*/останов*) * (догов*/интернет*/тв/услуг*/телефиден*/инет*)} *", "* {врем* * (приостанов*/замороз*/блокиров*/заблокиров*/останов*/отключ*)} *" ],
     "priority" : 0
   }, {
     "path" : "/160_ContractDetails",
@@ -25379,19 +25379,37 @@
   } ],
   "enabledSystemEntities" : [ "mystem.geo", "mystem.persn", "mystem.obsc", "mystem.patrn", "mystem.famn", "duckling.number", "duckling.amount-of-money", "duckling.time", "duckling.date", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url", "duckling.interval" ],
   "spellerDictionary" : [ {
-    "word" : "movix",
+    "word" : "домофон",
+    "frequency" : 1
+  }, {
+    "word" : "tplink",
+    "frequency" : 1
+  }, {
+    "word" : "заработать",
+    "frequency" : 2
+  }, {
+    "word" : "работает",
+    "frequency" : -1
+  }, {
+    "word" : "gamer",
+    "frequency" : 1
+  }, {
+    "word" : "заработаю",
+    "frequency" : 1
+  }, {
+    "word" : "договора",
+    "frequency" : 1
+  }, {
+    "word" : "ютуб",
+    "frequency" : 1
+  }, {
+    "word" : "dom",
+    "frequency" : 1
+  }, {
+    "word" : "modul",
     "frequency" : 1
   }, {
     "word" : "заработал",
-    "frequency" : 1
-  }, {
-    "word" : "геймер",
-    "frequency" : 1
-  }, {
-    "word" : "договор",
-    "frequency" : -1
-  }, {
-    "word" : "dom",
     "frequency" : 1
   }, {
     "word" : "заработает",
@@ -25400,83 +25418,65 @@
     "word" : "тплинк",
     "frequency" : 1
   }, {
-    "word" : "megogo",
-    "frequency" : 1
-  }, {
-    "word" : "ютуб",
-    "frequency" : 1
-  }, {
-    "word" : "gamer",
-    "frequency" : 1
-  }, {
     "word" : "ротек",
-    "frequency" : 1
-  }, {
-    "word" : "qwerty",
-    "frequency" : 1
-  }, {
-    "word" : "заработали",
-    "frequency" : 1
-  }, {
-    "word" : "виасат",
-    "frequency" : 1
-  }, {
-    "word" : "mego",
-    "frequency" : -1
-  }, {
-    "word" : "кешбэк",
-    "frequency" : 1
-  }, {
-    "word" : "антивируса",
-    "frequency" : -1
-  }, {
-    "word" : "мегого",
-    "frequency" : -1
-  }, {
-    "word" : "mega",
-    "frequency" : 1
-  }, {
-    "word" : "modul",
-    "frequency" : 1
-  }, {
-    "word" : "заработаю",
-    "frequency" : 1
-  }, {
-    "word" : "вайфай",
-    "frequency" : 1
-  }, {
-    "word" : "договора",
-    "frequency" : 1
-  }, {
-    "word" : "заработаем",
-    "frequency" : 1
-  }, {
-    "word" : "перезагружал",
-    "frequency" : -1
-  }, {
-    "word" : "tplink",
-    "frequency" : 1
-  }, {
-    "word" : "мувикс",
-    "frequency" : 1
-  }, {
-    "word" : "работает",
-    "frequency" : -1
-  }, {
-    "word" : "работаете",
     "frequency" : 1
   }, {
     "word" : "заработало",
     "frequency" : 1
   }, {
-    "word" : "домофон",
+    "word" : "виасат",
     "frequency" : 1
   }, {
-    "word" : "заработать",
-    "frequency" : 2
+    "word" : "movix",
+    "frequency" : 1
+  }, {
+    "word" : "кешбэк",
+    "frequency" : 1
+  }, {
+    "word" : "мувикс",
+    "frequency" : 1
+  }, {
+    "word" : "заработаем",
+    "frequency" : 1
+  }, {
+    "word" : "геймер",
+    "frequency" : 1
+  }, {
+    "word" : "мегого",
+    "frequency" : -1
+  }, {
+    "word" : "mego",
+    "frequency" : -1
+  }, {
+    "word" : "заработали",
+    "frequency" : 1
   }, {
     "word" : "роутер",
     "frequency" : 3
+  }, {
+    "word" : "mega",
+    "frequency" : 1
+  }, {
+    "word" : "вайфай",
+    "frequency" : 1
+  }, {
+    "word" : "договор",
+    "frequency" : -1
+  }, {
+    "word" : "работаете",
+    "frequency" : 1
+  }, {
+    "word" : "megogo",
+    "frequency" : 1
+  }, {
+    "word" : "qwerty",
+    "frequency" : 1
+  }, {
+    "word" : "перезагружал",
+    "frequency" : -1
+  }, {
+    "word" : "антивируса",
+    "frequency" : -1
   } ],
   "systemEntities" : [ {
     "name" : "mystem.geo",
