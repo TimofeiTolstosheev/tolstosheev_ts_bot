@@ -1,4 +1,4 @@
-import { axios } from "axios";
+import axios from "axios";
 
 // Запросы к сервису авторизации
 
@@ -18,22 +18,24 @@ const executeAuthAction = (method, inputParams) => {
         dataType: "json",
         headers: {
             "Content-Type": "application/json"
-        },
-        body: inputParams.body,
-        timeout: inputParams.timeout|| $context.injector.actionTimeout
-    };
-    var response;
-    try{
-        response = $http.post(url, options);
-        customLog('response: ' + toPrettyString(response));
-    }catch(e){
-        customLog('request failed. Error: ' + e);
-    }
+            }
+        };
+        
+    //timeout: inputParams.timeout|| $context.injector.actionTimeout
+    var response = {};
+    /*
+    axios.post(url, inputParams.body, options)
+        .then((resp) => {
+            customLog('response: ' + toPrettyString(resp));
+            response = res;
+        }, (error) => {
+            customLog('request failed. Error: ' + error);
+        });*/
     
-    // TODO обработка таймаутов - тут, либо в каждом методе отдельно
-    if(response.status === -1){
-        $context.session.requestTimeout = true;
-    }
+    //// TODO обработка таймаутов - тут, либо в каждом методе отдельно
+    //if(response.status === -1){
+    //    $context.session.requestTimeout = true;
+    //}
     
     return response;
 };
@@ -72,4 +74,25 @@ const authByAgreementId = () => {
     
 };
 
-export default { authByAgreementId };
+const sleep = async (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+const req = async () =>{
+    $conversationApi.sendTextToClient("start request");
+    var r = {};
+    axios.get("https://www.cbr-xml-daily.ru/latest.js")
+        .then((response) => {
+            $conversationApi.sendTextToClient("response: " + toPrettyString(response.status));
+            r = response;
+            customLog('Axios response: ' + toPrettyString(response));
+        }, (error) => {
+            $conversationApi.sendTextToClient("error: " + error);
+            customLog('request failed. Error: ' + error);
+        });
+    $conversationApi.sendTextToClient("r before sleep: " + toPrettyString(r.status));
+    await sleep(5000);
+    $conversationApi.sendTextToClient("r after sleep: " + toPrettyString(r.status));
+}
+
+export default { authByAgreementId, req };

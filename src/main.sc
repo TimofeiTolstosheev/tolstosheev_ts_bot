@@ -155,7 +155,7 @@ theme: /
             $.session.transferLine = $injector.defaultTransferLine;
             $.session.chatEndType = 'near-hup'; // по-умолчанию считаем, что диалог успешно завершится в боте
             getGenesysData();
-            authByAgreementId();
+            //authByAgreementId();
             if($.session.userType == 'user'){
                 getBaseInfo();
             }
@@ -304,7 +304,6 @@ theme: /
 
     state: Test
         q!: test
-        a: test
         scriptEs6:
-            auth.authByAgreementId();
-        a: {{$.session.token}}
+            await auth.req();
+            //auth.authByAgreementId();
