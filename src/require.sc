@@ -5,6 +5,9 @@ require: Scripts/dialogLog.js
 require: Scripts/chatApiAdapter.js
 require: Scripts/BackendActions/auth.js
 require: Scripts/BackendActions/actions.js
+require: Scripts/BackendActionsES6/auth.js
+    type = scriptEs6
+    name = auth
 
 # паттерны
 require: Patterns/patterns.sc

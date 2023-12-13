@@ -1,10 +1,5 @@
-// Вместо function здесь используется стрелочная функция
-const sayHello = () => {
-    // Получение $client.name через деструктуризацию
-    const { client: { name } } = $jsapi.context();
-    // Вместо || используется ?? — оператор нулевого слияния
-    $reactions.answer(`Привет, ${name ?? DEFAULT_CLIENT_NAME}!`);
-};
+import { axios } from "axios";
+
 // Запросы к сервису авторизации
 
 // Выполняет переданный запрос в Auth Service
