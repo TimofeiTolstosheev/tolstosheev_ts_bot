@@ -87,21 +87,4 @@ const sleep = async (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-const req = async () =>{
-    $conversationApi.sendTextToClient("start request");
-    var r = {};
-    axios.get("https://www.cbr-xml-daily.ru/latest.js")
-        .then((response) => {
-            $conversationApi.sendTextToClient("response: " + toPrettyString(response.status));
-            r = response;
-            customLog('Axios response: ' + toPrettyString(response));
-        }, (error) => {
-            $conversationApi.sendTextToClient("error: " + error);
-            customLog('request failed. Error: ' + error);
-        });
-    $conversationApi.sendTextToClient("r before sleep: " + toPrettyString(r.status));
-    await sleep(5000);
-    $conversationApi.sendTextToClient("r after sleep: " + toPrettyString(r.status));
-}
-
-export default { authByAgreementId, req };
+export default { authByAgreementId };
