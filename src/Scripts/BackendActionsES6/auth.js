@@ -42,7 +42,7 @@ const executeAuthAction = (method, inputParams) => {
         });
     
     await sleep(500);
-    while (!response.status){
+    while(!response.status){
         await sleep(inputParams.waitTimeout ?? $context.injector.waitTimeout);
         $conversationApi.sendTextToClient(inputParams.waitTimeoutPrompt ?? $context.injector.waitTimeoutPrompt);
     }
