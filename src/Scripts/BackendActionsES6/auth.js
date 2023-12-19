@@ -19,6 +19,7 @@ const executeAuthAction = (method, inputParams) => {
     logAuthAction(method, 'request URL', url);
     logAuthAction(method, 'inputParams', toPrettyString(inputParams));
     inputParams.body.secretKey = $secrets.get("auth_secret_key", "null");
+    inputParams.body.dialogId = $.sessionId ?? "test";
     var options = {
         timeout: inputParams.timeout ?? $context.injector.actionTimeout,
         dataType: "json",
@@ -53,7 +54,6 @@ const authByAgreementId = () => {
     var method = '/chatbot/token';
     var inputParams = {};
     inputParams.body = {
-          "dialogId": $context.sessionId,
           "region": $context.session.region ?? 'perm', // если неизвестный регион, пробуем в Пермь
           "userId": $context.session.userId,
           "agreementId": $context.session.agreementId
