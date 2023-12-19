@@ -1,6 +1,11 @@
+// Запросы к сервису авторизации
 import axios from "axios";
 
-// Запросы к сервису авторизации
+const logAuthAction = (method, message, suffix) => {
+    var output = "Auth action " + method + " " + message;
+    if (suffix) output += ": " + suffix;
+    return customLog(output);
+}
 
 // Выполняет переданный запрос в Auth Service
 const executeAuthAction = (method, inputParams) => {
@@ -11,32 +16,36 @@ const executeAuthAction = (method, inputParams) => {
     }
     
     var url = authServiceEndpoint + method;
-    customLog('request URL: ' + url);
-    customLog('inputParams: ' + toPrettyString(inputParams));
+    logAuthAction(method, 'request URL', url);
+    logAuthAction(method, 'inputParams', toPrettyString(inputParams));
     inputParams.body.secretKey = $secrets.get("auth_secret_key", "null");
     var options = {
+        timeout: inputParams.timeout ?? $context.injector.actionTimeout,
         dataType: "json",
         headers: {
             "Content-Type": "application/json"
             }
         };
-        
-    //timeout: inputParams.timeout|| $context.injector.actionTimeout
+    
     var response = {};
-    /*
     axios.post(url, inputParams.body, options)
-        .then((resp) => {
-            customLog('response: ' + toPrettyString(resp));
-            response = res;
-        }, (error) => {
-            customLog('request failed. Error: ' + error);
-        });*/
+        .then((r) => {
+            response = r;
+            logAuthAction(method, 'response', toPrettyString(response));
+        }, (e) => {
+            response.status = -1;
+            if (e.code === 'ECONNABORTED') {
+                logAuthAction(method, 'request timed out', toPrettyString(e));
+            }else{
+                logAuthAction(method, 'request failed with error', toPrettyString(e));
+            }
+        });
     
-    //// TODO обработка таймаутов - тут, либо в каждом методе отдельно
-    //if(response.status === -1){
-    //    $context.session.requestTimeout = true;
-    //}
-    
+    await sleep(500);
+    while (!response.status){
+        await sleep(inputParams.waitTimeout ?? $context.injector.waitTimeout);
+        $conversationApi.sendTextToClient(inputParams.waitTimeoutPrompt ?? $context.injector.waitTimeoutPrompt);
+    }
     return response;
 };
 
@@ -45,14 +54,14 @@ const authByAgreementId = () => {
     var inputParams = {};
     inputParams.body = {
           "dialogId": $context.sessionId,
-          "region": $context.session.region || 'perm', // если неизвестный регион, пробуем в Пермь
+          "region": $context.session.region ?? 'perm', // если неизвестный регион, пробуем в Пермь
           "userId": $context.session.userId,
           "agreementId": $context.session.agreementId
     };
     var response = executeAuthAction(method, inputParams);
     
     if(response.status != 200){
-        var errorMessage = toPrettyString(response.error) || 'unknown error';
+        var errorMessage = toPrettyString(response.error) ?? 'unknown error';
         customLog('Request failed with status ' + response.status +'. Error: ' + errorMessage);
         $context.session.userType = 'guest'; // считаем пользователя неавторизованным
         return;
