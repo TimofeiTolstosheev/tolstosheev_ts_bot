@@ -1,0 +1,76 @@
+<test integration="true">
+    
+    <test-case id="Авторизованный, мобильный, интент 240, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>поломка пульта</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+    
+
+    
+    <test-case id="Авторизованный, домашний, интент 240, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "78412999981",
+                "cellPhone": false
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>поломка пульта</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+    
+
+    
+    <test-case id="Авторизованный, мобильный, Запрос оператора, потом интент 240, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>поломка пульта</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+        
+    
+</test>

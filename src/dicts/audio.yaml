@@ -1,0 +1,3183 @@
+GetFirstIntent_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_1.wav
+  value: GetFirstIntent_1. Слушаю Вас ...
+GetFirstIntent_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_1.wav
+  value: GetFirstIntent_1. Чем я могу вам помочь?
+GetFirstIntent_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_2.wav
+  value: GetFirstIntent_2. Как я могу вам помочь?
+GetFirstIntent_3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_3.wav
+  value: GetFirstIntent_3. Какой у вас вопрос?
+GetFirstIntent_4:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_4.wav
+  value: GetFirstIntent_4. Слушаю вас.
+GetFirstIntent_greet:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_greet.wav
+  value: GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?
+GetFirstIntent_repeat_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_repeat_1.wav
+  value: GetFirstIntent_repeat_1. Пожалуйста попробуйте задать вопрос другими словами, либо скажите 'что ты умеешь' и я расскажу все, чему меня научили.
+GetFirstIntent_onAgentRequest_01:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GetFirstIntent_onAgentRequest_01.wav
+  value: GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос
+WhatElseIntent_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_1.wav
+  value: WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ
+WhatElseIntent_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_2.wav
+  value: WhatElseIntent_2. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ
+WhatElseIntent_3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_3.wav
+  value: WhatElseIntent_3. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ
+WhatElseIntent_4:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_4.wav
+  value: WhatElseIntent_4. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите Да или Нет. Если необходима консультация специалиста - скажите Оператор, и я переведу звонок.
+DIALOG_NO_MATCH_EVENT_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DIALOG_NO_MATCH_EVENT_1.wav
+  value: DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.
+DIALOG_NO_MATCH_EVENT_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DIALOG_NO_MATCH_EVENT_2.wav
+  value: DIALOG_NO_MATCH_EVENT_2. Я только учусь, поэтому некоторые вещи понимаю не сразу.
+DIALOG_NO_MATCH_EVENT_3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DIALOG_NO_MATCH_EVENT_3.wav
+  value: DIALOG_NO_MATCH_EVENT_3. Не поняла вас.
+DIALOG_WELCOME_EVENT_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DIALOG_WELCOME_EVENT_1.wav
+  value: DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.
+DIALOG_No_Input_Event:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DIALOG_No_Input_Event.wav
+  value: DIALOG_No_Input_Event. Извините, я не расслышала вас. Если вы используете громкую связь на телефоне, пожалуйста отключите ее
+DIALOG_No_Input_Event_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DIALOG_No_Input_Event_2.wav
+  value: DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?
+ServiceUnavailable:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ServiceUnavailable.wav
+  value: ServiceUnavailable. The service is temporarily unavailable.
+noinput:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/noinput.wav
+  value: noinput. К сожалению, я вас не слышу. Пожалуйста, перезвоните или напишите нам в чате.
+No_Input1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/No_Input1.wav
+  value: No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.
+No_Input2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/No_Input2.wav
+  value: No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.
+No_Input3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/No_Input3.wav
+  value: No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!
+whatcanido2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/whatcanido2.wav
+  value: whatcanido2. Финансовая или Техническая?
+whatcanido:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/whatcanido.wav
+  value: whatcanido. Какого рода консультация вас интересует?
+Greeting_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Greeting_1.wav
+  value: Greeting_1. Рада вас слышать!
+Greeting_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Greeting_2.wav
+  value: Greeting_2. Здравствуйте.
+Greeting_3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Greeting_3.wav
+  value: Greeting_3. Как поживаете?
+zapros_FIO:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zapros_FIO.wav
+  value: zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.
+promisedPaySetInfo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPaySetInfo.wav
+  value: promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору.
+DRT_0001:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_0001.wav
+  value: DRT_0001. Соединяю вас со специалистом для дальнейшей консультации.
+DRT_0002:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_0002.wav
+  value: DRT_0002. В целях повышения качества обслуживания все разговоры записываются.
+DRT_0003:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_0003.wav
+  value: DRT_0003. Итоговая стоимость в рублях составляет
+DRT_0004:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_0004.wav
+  value: DRT_0004. Спасибо за обращение. Была рада вам помочь.
+promisedPayCheckInfo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayCheckInfo.wav
+  value: promisedPayCheckInfo. К сожалению, сейчас я не могу активировать эту услугу.
+promisedPaySetInfo_FAIL:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPaySetInfo_FAIL.wav
+  value: promisedPaySetInfo_FAIL. Уважаемый клиент, возникла ошибка в ходе подключения обещанного платежа.
+invalidDaysOp:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/invalidDaysOp.wav
+  value: invalidDaysOp. Извините, но вы называете неподходящее количество дней.
+toAgentRequest:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/toAgentRequest.wav
+  value: toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.
+toExit:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/toExit.wav
+  value: toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!
+maxDayOpPrewview:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/maxDayOpPrewview.wav
+  value: maxDayOpPrewview. Максимально возможное для вас количество дней
+request_days:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/request_days.wav
+  value: request_days. На сколько дней вы хотите подключить услугу Обещанный платёж?
+days_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/days_1.wav
+  value: days_1. Извините, но указанное вами количество дней превышает максимально доступное для вас значение. На сколько дней вы хотите подключить услугу обещанный платеж?
+days_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/days_2.wav
+  value: days_2. Указанное вами количество дней не входит в допустимый диапазон. На сколько дней вы хотите подключить услугу Обещанный платеж?
+daysCostPreview:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/daysCostPreview.wav
+  value: daysCostPreview. Стоимость дня для вас в рублях составляет
+promisedPaySetInfo_OK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPaySetInfo_OK.wav
+  value: promisedPaySetInfo_OK. Обещанный платеж подключен. Доступ к услугам появится в течение нескольких минут, не забудьте перезагрузить роутер.
+promisedPaySetInfo_OK_besplatno:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPaySetInfo_OK_besplatno.wav
+  value: promisedPaySetInfo_OK_besplatno. Обещанный платеж успешно подключен.
+ConfirmIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ConfirmIntent.wav
+  value: ConfirmIntent. Если хотите подключить услугу, скажите да
+initialWait:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/initialWait.wav
+  value: initialWait. Мне нужно немного времени, чтобы получить данные.
+additionalWait:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/additionalWait.wav
+  value: additionalWait. Ещё немножко.
+proverka_vozmozhnost_op:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/proverka_vozmozhnost_op.wav
+  value: proverka_vozmozhnost_op. Проверяю возможность подключения обещанного платежа.
+utochnau_stoimost_op:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/utochnau_stoimost_op.wav
+  value: utochnau_stoimost_op. Уточняю стоимость дня услуги обещанного платежа по вашему тарифному плану.
+ustanavlivau_op:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ustanavlivau_op.wav
+  value: ustanavlivau_op. Подключаю услугу обещанный платеж.
+promisedPayError11:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError11.wav
+  value: promisedPayError11. К сожалению, я не могу подключить вам Обещанный платеж, так как у вас не подключена услуга Интернет.
+promisedPayError14Mono:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError14Mono.wav
+  value: promisedPayError14Mono. К сожалению, не смогу активировать вам Обещанный платеж сегодня. Подключение услуги возможно только с 1 по 15 число.
+promisedPayError14KP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError14KP.wav
+  value: promisedPayError14KP. К сожалению, не смогу активировать вам Обещанный платеж сегодня. Подключение услуги возможно только с 21 числа текущего месяца.
+promisedPayError16:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError16.wav
+  value: promisedPayError16. К сожалению, не смогу активировать вам Обещанный платеж из-за задолженности на договоре.
+promisedPayError12:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError12.wav
+  value: promisedPayError12. Вижу, что на вашем договоре услуга уже активирована. Она будет автоматически отключена на следующий день после поступления оплаты. Если нет доступа в интернет, пожалуйста перезагрузите ваш роутер и компьютер и попробуйте открыть любую страницу. Если это не помогает - скажите нет интернета.
+promisedPayError17:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError17.wav
+  value: promisedPayError17. Вижу, что на вашем договоре интернет активен и обещанный платеж не требуется. Пожалуйста перезагрузите ваш роутер и компьютер и попробуйте открыть любую страницу, а я пока перевожу звонок на специалиста.
+aftererrorop:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/aftererrorop.wav
+  value: aftererrorop. Рассказать вам о способах оплаты?
+balance_period:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_period.wav
+  value: balance_period. Оплатите за период с
+balance_period_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_period_2.wav
+  value: balance_period_2. Стоимость услуг за период с
+balance_reactive_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_reactive_2.wav
+  value: balance_reactive_2. Чтобы восстановить доступ к услугам оплатите за период c
+balance_save2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_save2.wav
+  value: balance_save2. Чтобы сохранить доступ к услугам оплатите за период c
+balance_nomer_dogovor:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_nomer_dogovor.wav
+  value: balance_nomer_dogovor. Уважаемый клиент, для того чтобы узнать баланс, пожалуйста, произнесите двенадцатизначный номер вашего договора по одной цифре.
+p1_nomer_dogovora:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/p1_nomer_dogovora.wav
+  value: p1_nomer_dogovora. Попробуем ещё раз? Пожалуйста, назовите номер вашего договора.
+p2_nomer_dogovora:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/p2_nomer_dogovora.wav
+  value: p2_nomer_dogovora. Пожалуйста, произнесите двенадцати значный номер вашего договора по одной цифре
+podtderdite_dogovor:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/podtderdite_dogovor.wav
+  value: podtderdite_dogovor. Подтвердите, пожалуйста, ваш номер договора
+plus_balance:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/plus_balance.wav
+  value: plus_balance. Ваш баланс на сегодняшний день составляет
+minus_balance:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/minus_balance.wav
+  value: minus_balance. Ваша задолженность на сегодняшний день составляет
+DRT_0005:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_0005.wav
+  value: DRT_0005. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте.
+perevod_na_okc:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc.wav
+  value: perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.
+perevod_na_okc_SetupTVChannels:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_SetupTVChannels.wav
+  value: perevod_na_okc_SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_Recalculation:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_Recalculation.wav
+  value: perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.Recalculation
+perevod_na_okc_RentAccruals:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_RentAccruals.wav
+  value: perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.RentAccruals
+perevod_na_okc_Invoice:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_Invoice.wav
+  value: perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_Accruals:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_Accruals.wav
+  value: perevod_na_okc_Accruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.
+perevod_na_okc_RestoreAgreement:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_RestoreAgreement.wav
+  value: perevod_na_okc_RestoreAgreement. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.RestoreAgreement
+perevod_na_okc_DeviceReplacement:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_DeviceReplacement.wav
+  value: perevod_na_okc_DeviceReplacement. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.DeviceReplacement
+perevod_na_okc_ServiceRequestInfo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_ServiceRequestInfo.wav
+  value: perevod_na_okc_ServiceRequestInfo. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.ServiceRequestInfo
+perevod_na_okc_ChangeAgreementData:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_ChangeAgreementData.wav
+  value: perevod_na_okc_ChangeAgreementData. Обращаю внимание, что для изменения большинства данных на договоре понадобится паспорт человека, на которого изначально был заключен договор. Пожалуйста, заранее приготовьте его. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_UserMoving:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_UserMoving.wav
+  value: perevod_na_okc_from_UserMoving. Оставить заявку на переезд вы можете самостоятельно через мобильное приложение мой домру, либо в личном кабинете на сайте домру точка ру. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_ReissueAgreement:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_ReissueAgreement.wav
+  value: perevod_na_okc_from_ReissueAgreement. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте...В целях повышения качества обслуживания, все разговоры записываются.ReissueAgreement
+perevod_na_okc_from_WebCabCredentials:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_WebCabCredentials.wav
+  value: perevod_na_okc_from_WebCabCredentials. Узнать или изменить данные для авторизации вы можете в мобильном приложений мой домру, либо в личном кабинете на сайте домру точка ру. Пожалуйста, попробуйте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_RestoreWiFipassword:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_RestoreWiFipassword.wav
+  value: perevod_na_okc_from_RestoreWiFipassword. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.(perevod_na_okc_from_RestoreWiFipassword_GN)
+perevod_na_okc_from_HotSpotIssue:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_HotSpotIssue.wav
+  value: perevod_na_okc_from_HotSpotIssue. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте... В целях повышения качества обслуживания все разговоры записываются.HotSpotIssue
+perevod_na_okc_from_AgreementSuspend:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_AgreementSuspend.wav
+  value: perevod_na_okc_from_AgreementSuspend. Оставить заявку на приостановление, или снять его, вы можете самостоятельно через мобильное приложение мой дом ру, либо в личном кабинете на сайте домру точка ру. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_Repeat:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_Repeat.wav
+  value: perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_CommonIssueInternet:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_CommonIssueInternet.wav
+  value: perevod_na_okc_from_CommonIssueInternet. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются. (CommonIssueInternet)
+perevod_na_okc_from_CommonIssueTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_CommonIssueTV.wav
+  value: perevod_na_okc_from_CommonIssueTV. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются. (CommonIssueTV)
+Configuring_router_transfer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Configuring_router_transfer.wav
+  value: Configuring_router_transfer. Для настройки роутера пожалуйста приготовьте логин и пароль от интернета, а так же убедитесь, что ваш компьютер подключён к роутеру проводным или беспроводным способом. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.
+error_perevod_na_okc:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/error_perevod_na_okc.wav
+  value: error_perevod_na_okc. Номер договора не найден. Перевожу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте.
+5_next_month_activate_TP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/5_next_month_activate_TP.wav
+  value: 5_next_month_activate_TP. Для активации тарифного плана в следующем месяце рекомендуем вам пополнить счет на
+4_this_month_activate_TP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/4_this_month_activate_TP.wav
+  value: 4_this_month_activate_TP. Для активации тарифного плана в текущем месяце рекомендуем вам пополнить счет на
+3_bring_offer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/3_bring_offer.wav
+  value: 3_bring_offer. Для комфортного пользования услугами рекомендуем вам пополнить счет на
+6_next_month_bring_balance_and_more2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/6_next_month_bring_balance_and_more2.wav
+  value: 6_next_month_bring_balance_and_more2. Сумма к оплате расчитана с учетом звонков на мобильные телефоны в другие города и страны, если вы их совершали.
+2_next_month_balance_enough:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/2_next_month_balance_enough.wav
+  value: 2_next_month_balance_enough. Для комфортного пользования услугами в следующем месяце на вашем счете средств достаточно.
+6_next_month_bring_balance_and_more1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/6_next_month_bring_balance_and_more1.wav
+  value: 6_next_month_bring_balance_and_more1. Для комфортного пользования услугами в следующем месяце рекомендуем пополнить баланс на
+7_next_month_balance_enough_and_more:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/7_next_month_balance_enough_and_more.wav
+  value: 7_next_month_balance_enough_and_more. Для комфортного пользования услугами в следующем месяце на вашем счете средств достаточно. Обратите, пожалуйста, внимание что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.
+prochnie_blagodarnoct:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/prochnie_blagodarnoct.wav
+  value: prochnie_blagodarnoct. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаю, что вы так же можете получить консультацию онлайн с помощью мобильного приложения мой домру, онлайн-чата на сайте домру.ru, а также в социальных сетях
+verno_v2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_v2.wav
+  value: verno_v2. Правильно?
+eche_nemnogo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/eche_nemnogo.wav
+  value: eche_nemnogo. Проверка займёт ещё немного времени.
+proverau_chslo_dney_op:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/proverau_chslo_dney_op.wav
+  value: proverau_chslo_dney_op. Проверяю, входит ли названное количество дней в допустимый для вас диапазон.
+raschet_itogo_op:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/raschet_itogo_op.wav
+  value: raschet_itogo_op. Рассчитываю итоговую стоимость услуги на выбранное вами количество дней.
+eche_nemnogo_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/eche_nemnogo_2.wav
+  value: eche_nemnogo_2. Потребуется ещё немного времени.
+1_minutu_balance:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/1_minutu_balance.wav
+  value: 1_minutu_balance. Одну минуту. Получаю баланс вашего счёта.
+eche_mgnovenie:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/eche_mgnovenie.wav
+  value: eche_mgnovenie. Ещё несколько мгновений, и я вернусь с результатом.
+initTokenWait:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/initTokenWait.wav
+  value: initTokenWait. Мне нужно немного времени, чтобы найти ваш договор.
+baseInfoWait:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/baseInfoWait.wav
+  value: baseInfoWait. Мне нужно еще несколько секунд для уточнения информации.
+FIOBalans:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/FIOBalans.wav
+  value: FIOBalans. Для того, чтобы узнать баланс, назовите ваши Фамилию Имя и Отчетство
+agreementNumber:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/agreementNumber.wav
+  value: agreementNumber. Номер вашего договора
+UBalans:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UBalans.wav
+  value: UBalans. Ваш баланс
+StoimistZa:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/StoimistZa.wav
+  value: StoimistZa. Стоимость услуг за
+OplataZa:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OplataZa.wav
+  value: OplataZa. Оплатите за
+BalansChangeZa:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/BalansChangeZa.wav
+  value: BalansChangeZa. Баланс может измениться после выставления счёта за
+BalansChangePeriod:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/BalansChangePeriod.wav
+  value: BalansChangePeriod. Баланс может измениться после выставления счета за период с
+Oplatite:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Oplatite.wav
+  value: Oplatite. Оплатите
+DostuSave:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DostuSave.wav
+  value: DostuSave. Чтобы сохранить доступ к услугам оплатите за
+VostanovitDostup:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/VostanovitDostup.wav
+  value: VostanovitDostup. Чтобы восстановить доступ к услугам оплатите за
+OplataDo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OplataDo.wav
+  value: OplataDo. Чтобы сохранить доступ к услугам, оплатите до
+SOplataZa:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SOplataZa.wav
+  value: SOplataZa. Со счёта будет списана оплата за
+balance_period3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_period3.wav
+  value: balance_period3. Со счёта будет списана оплата за период с
+agreementClos:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/agreementClos.wav
+  value: agreementClos. Договор будет закрыт
+Vnesite:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Vnesite.wav
+  value: Vnesite. Чтобы восстановить доступ к услугам, внесите
+saveServices:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/saveServices.wav
+  value: saveServices. Чтобы сохранить доступ к услугам
+saveServices_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/saveServices_2.wav
+  value: saveServices_2. Чтобы сохранить доступ к услугам, внесите
+OplataClos:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OplataClos.wav
+  value: OplataClos. Оплатите до закрытия
+BalansChange:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/BalansChange.wav
+  value: BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.
+SMSGo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMSGo.wav
+  value: SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут
+SMSBalance:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMSBalance.wav
+  value: SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?
+SMSpayment:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMSpayment.wav
+  value: SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ
+transferToAgentForFurtherSMS:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/transferToAgentForFurtherSMS.wav
+  value: transferToAgentForFurtherSMS. К сожалению, при отправке СМС возникла ошибка. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.
+paymentsMethods_ALL:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/paymentsMethods_ALL.wav
+  value: paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.
+paymentsMethods_SPB:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/paymentsMethods_SPB.wav
+  value: paymentsMethods_SPB. Мы рады предложить вам надежный и современный способ оплаты – автоматический платеж. Бесплатно подключите автоплатёж в личном кабинете и каждый месяц с вашей банковской карты автоматически будет списываться сумма, достаточная для оплаты услуг. Для этого зайдите во вкладку платежи и выберите раздел «Автоплатёж». Оплатить услуги вы можете банковской картой, не выходя из дома, а также  наличными в платежных терминалах, банкоматах и отделениях банков, отделениях почты россии, салонах сотовой связи. Подробная информация на сайтах интерзет.ру и домру.ру. Размер комиссии уточняйте до совершения платежа, сохраняйте чеки до зачисления платежа на ваш счет.
+fin3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/fin3.wav
+  value: fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?
+obchiy_finans:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/obchiy_finans.wav
+  value: obchiy_finans. Если вы хотите узнать текущий баланс на договоре, скажите Баланс. Если хотите узнать о способах оплаты, скажите Способы оплаты. Если хотите узнать Адрес+а и режимы работы сервисных центров и центров продаж, скажите Сервисные центры. Если вы хотите подключить услугу  Обещанного платежа, то скажите Обещанный платеж.
+bonus_perevod_na_okc:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bonus_perevod_na_okc.wav
+  value: bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.
+tarif_perevod_na_okc:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tarif_perevod_na_okc.wav
+  value: tarif_perevod_na_okc. Всю актуальную информацию по существующим тарифам и акциям вы можете получить в любое время на сайте домру точка ру или в мобильном приложении мой домру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте
+AttentionSCCP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/AttentionSCCP.wav
+  value: AttentionSCCP. Уважаемые клиенты обращаем ваше внимание что режим работы центров продаж изменен.
+doYouWantPayMethodsOrAgent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWantPayMethodsOrAgent.wav
+  value: doYouWantPayMethodsOrAgent. Могу ли я вам рассказать про способы оплаты?
+matchEntityNoMatchIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/matchEntityNoMatchIntent.wav
+  value: matchEntityNoMatchIntent. В такой формулировке я не поняла.
+whichCityServiceCenter_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/whichCityServiceCenter_1.wav
+  value: whichCityServiceCenter_1. Адреса сервисных центров в каком городе вас интересуют?
+whichCityServiceCenter_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/whichCityServiceCenter_2.wav
+  value: whichCityServiceCenter_2. Назовите, пожалуйста, город, в котором вы хотите узнать адрес наших сервисных центров?
+whichCityServiceCenter_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/whichCityServiceCenter_1.wav
+  value: whichCityServiceCenter_1. В каком городе вас интересуют сервисные центры?
+noServiceCentersInTheCity:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/noServiceCentersInTheCity.wav
+  value: noServiceCentersInTheCity. В вашем городе нет сервисных центров и центров продаж.
+gettingServiceAddressDelay:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/gettingServiceAddressDelay.wav
+  value: gettingServiceAddressDelay. Одну минуту. Получаю информацию о сервисных центрах.
+ekaterinburg:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ekaterinburg.wav
+  value: ekaterinburg. Адреса в Екатеринбурге
+ulanUde:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ulanUde.wav
+  value: ulanUde. Адреса в Улан-удэ
+irkutsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/irkutsk.wav
+  value: irkutsk. Адреса в Иркутске
+barnaul:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/barnaul.wav
+  value: barnaul. Адреса в Барнауле
+perm:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perm.wav
+  value: perm. Адреса в Перми
+bryansk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bryansk.wav
+  value: bryansk. Адреса в Брянске
+volgograd:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/volgograd.wav
+  value: volgograd. Адреса в Волгограде
+volzsky:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/volzsky.wav
+  value: volzsky. Адреса в Волжском
+voronezh:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/voronezh.wav
+  value: voronezh. Адреса в Воронеже
+dzerzinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/dzerzinsk.wav
+  value: dzerzinsk. Адреса в Дзержинске
+izhevsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/izhevsk.wav
+  value: izhevsk. Адреса в Ижевске
+ioskarola:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ioskarola.wav
+  value: ioskarola. Адреса в Йошкар-Оле
+kazan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kazan.wav
+  value: kazan. Адреса в Казани
+kirov:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kirov.wav
+  value: kirov. Адреса в Кирове
+krasnoyarsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/krasnoyarsk.wav
+  value: krasnoyarsk. Адреса в Красноярске
+kurgan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kurgan.wav
+  value: kurgan. Адреса в Кургане
+kursk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kursk.wav
+  value: kursk. Адреса в Курске
+lipetsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/lipetsk.wav
+  value: lipetsk. Адреса в Липецке
+magnitogorsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/magnitogorsk.wav
+  value: magnitogorsk. Адреса в Магнитогорске
+nab_chelny:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/nab_chelny.wav
+  value: nab_chelny. Адреса в Набережных Челнах
+niznekamsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/niznekamsk.wav
+  value: niznekamsk. Адреса в Нижнекамске
+nizniy_novgorod:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/nizniy_novgorod.wav
+  value: nizniy_novgorod. Адреса в Нижнем Новгороде
+novosibirsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/novosibirsk.wav
+  value: novosibirsk. Адреса в Новосибирске
+omsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/omsk.wav
+  value: omsk. Адреса в Омске
+orenburg:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/orenburg.wav
+  value: orenburg. Адреса в Оренбурне
+penza:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/penza.wav
+  value: penza. Адреса в Пензе
+rostov_on_don:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/rostov_on_don.wav
+  value: rostov_on_don. Адреса в Ростов-на-Дону
+ryazan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ryazan.wav
+  value: ryazan. Адреса в Рязани
+samara:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/samara.wav
+  value: samara. Адреса в Самаре
+spb:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/spb.wav
+  value: spb. Адреса в Петербурге
+saratov:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/saratov.wav
+  value: saratov. Адреса в Саратове
+syzran:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/syzran.wav
+  value: syzran. Адреса в Сызрани
+tver:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tver.wav
+  value: tver. Адреса в Твери
+tomsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tomsk.wav
+  value: tomsk. Адреса в Томске
+tula:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tula.wav
+  value: tula. Адреса в Туле
+tumen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tumen.wav
+  value: tumen. Адреса в Тюмени
+uliyanovsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/uliyanovsk.wav
+  value: uliyanovsk. Адреса в Ульяновске
+ufa:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ufa.wav
+  value: ufa. Адреса в Уфе
+cheboksary:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/cheboksary.wav
+  value: cheboksary. Адреса в Чебоксарах
+chelyabinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/chelyabinsk.wav
+  value: chelyabinsk. Адреса в Челябинске
+engels:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/engels.wav
+  value: engels. Адреса в Энегльсе
+yaroslavl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/yaroslavl.wav
+  value: yaroslavl. Адреса в Ярославле
+angarsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/angarsk.wav
+  value: angarsk. Адреса в Ангарске
+berezniki:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/berezniki.wav
+  value: berezniki. Адреса в Березниках
+chusovoy:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/chusovoy.wav
+  value: chusovoy. Адреса в Чусовом
+dimitrovgrad:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/dimitrovgrad.wav
+  value: dimitrovgrad. Адреса в Димитровграде
+dobryanka:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/dobryanka.wav
+  value: dobryanka. Адреса в Добрянке
+krasnokamsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/krasnokamsk.wav
+  value: krasnokamsk. Адреса в Краснокамске
+kungur:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kungur.wav
+  value: kungur. Адреса в Кунгуре
+michurinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/michurinsk.wav
+  value: michurinsk. Адреса в Мичуринске
+novocheboksarsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/novocheboksarsk.wav
+  value: novocheboksarsk. Адреса в Новочебоксарске
+polazna:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/polazna.wav
+  value: polazna. Адреса в Полазне
+shchelekhov:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/shchelekhov.wav
+  value: shchelekhov. Адреса в Шелехове
+slyudianka:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/slyudianka.wav
+  value: slyudianka. Адреса в Слюдянке
+solikamsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/solikamsk.wav
+  value: solikamsk. Адреса в Солкамске
+sosnovoborsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sosnovoborsk.wav
+  value: sosnovoborsk. Адреса в Сосновоборске
+sosnovyBor:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sosnovyBor.wav
+  value: sosnovyBor. Адреса в Сосновом бору
+svirsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/svirsk.wav
+  value: svirsk. Адреса в Свирске
+tulun:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tulun.wav
+  value: tulun. Адреса в Тулуне
+usolyeSiberian:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/usolyeSiberian.wav
+  value: usolyeSiberian. Адреса в Усолье сибирском
+tayshet:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tayshet.wav
+  value: tayshet. Адреса в Тайшете
+selenginsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/selenginsk.wav
+  value: selenginsk. Адреса в Селенгинске
+nizhneudinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/nizhneudinsk.wav
+  value: nizhneudinsk. Адреса в Нижнеудинске
+seversk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/seversk.wav
+  value: seversk. Адреса в Северске
+RebootRouter:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RebootRouter.wav
+  value: RebootRouter. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту
+RebootRouter2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RebootRouter2.wav
+  value: RebootRouter2. Спасибо за ожидание. Я проверила работу систем и провела перезагрузку.
+RebootRouter3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RebootRouter3.wav
+  value: RebootRouter3. Пожалуйста, уточните решило ли это проблему. Скажите Да или Нет.
+perevod_na_okc_from_NoLink6xxIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_NoLink6xxIntent.wav
+  value: perevod_na_okc_from_NoLink6xxIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent)
+perevod_na_okc_from_NoLink6xxIntent1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_NoLink6xxIntent1.wav
+  value: perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)
+NoLink6xxIntentReboot:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoLink6xxIntentReboot.wav
+  value: NoLink6xxIntentReboot. Мы перезагрузили Ваше оборудование, пожалуйста, проверьте, а пока я перевожу Вас на оператора. В целях повышения качества обслуживания все разговоры записываются. (NoLink6xxIntent)
+perevod_na_okc_from_PageNotOpenIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_PageNotOpenIntent.wav
+  value: perevod_na_okc_from_PageNotOpenIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (PageNotOpenIntent)
+perevod_na_okc_from_PageNotOpenIntent1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_PageNotOpenIntent1.wav
+  value: perevod_na_okc_from_PageNotOpenIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите роутер и устройство, с которого вы выходите в интернет, а так же убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры! (PageNotOpenIntent)
+PageNotOpenperevodReboot:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PageNotOpenperevodReboot.wav
+  value: PageNotOpenperevodReboot. Мы перезагрузили Ваше оборудование, пожалуйста, проверьте, а пока я перевожу Вас на оператора. В целях повышения качества обслуживания все разговоры записываются. (PageNotOpenIntent)
+perevod_na_okc_from_ConnectProblemPPoEIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_ConnectProblemPPoEIntent.wav
+  value: perevod_na_okc_from_ConnectProblemPPoEIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, проверьте целостность интернет-кабеля, идущего из подъезда, а так же плотность его подключения в ваш роутер или компьютер. Зачастую разрывы связи вызваны физическими повреждениями линии или неплотным контактом. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (ConnectProblemPPoEIntent)
+perevod_na_okc_from_ConnectProblemPPoEIntent1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_ConnectProblemPPoEIntent1.wav
+  value: perevod_na_okc_from_ConnectProblemPPoEIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, проверьте целостность интернет-кабеля, идущего из подъезда, а так же плотность его подключения в ваш роутер или компьютер. Зачастую разрывы связи вызваны физическими повреждениями линии или неплотным контактом. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (ConnectProblemPPoEIntent2)
+ConnectProblemPPoEInteReboot:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ConnectProblemPPoEInteReboot.wav
+  value: ConnectProblemPPoEInteReboot. Мы перезагрузили Ваше оборудование, пожалуйста, проверьте, а пока я перевожу Вас на оператора. В целях повышения качества обслуживания все разговоры записываются. (ConnectProblemPPoEIntent)
+CommonTechnicalProblemsReboot:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CommonTechnicalProblemsReboot.wav
+  value: CommonTechnicalProblemsReboot. Мы перезагрузили Ваше оборудование, пожалуйста, проверьте, а пока я перевожу Вас на оператора. В целях повышения качества обслуживания все разговоры записываются. (CommonTechnicalProblems)
+perevod_na_okc_from_LowInetSpeedIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_LowInetSpeedIntent.wav
+  value: perevod_na_okc_from_LowInetSpeedIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Сейчас я переведу вас на оператора, а пока, пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также временно отключите программы для загрузки файлов такие, как торрэнт, шарэман и медиагет. При возможности временно отключите антивирус. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры! (LowInetSpeedIntent)
+perevod_na_okc_from_LowInetSpeedIntent1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_LowInetSpeedIntent1.wav
+  value: perevod_na_okc_from_LowInetSpeedIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите роутер и устройство, с которого вы выходите в интернет, а так же убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры! (LowInetSpeedIntent)
+LowInetSpeedIntentReboot:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/LowInetSpeedIntentReboot.wav
+  value: LowInetSpeedIntentReboot. Мы перезагрузили Ваше оборудование, пожалуйста, проверьте, а пока я перевожу Вас на оператора. В целях повышения качества обслуживания все разговоры записываются. (LowInetSpeedIntent)
+perevod_na_okc_from_TVQualityProblemIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_TVQualityProblemIntent.wav
+  value: perevod_na_okc_from_TVQualityProblemIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Сейчас я переведу вас на оператора, а пока, пожалуйста, перезагрузите вашу тв-приставку и телевизор, а также проверьте плотность подключения всех кабелей к оборудованию – чаще всего это решает проблему. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!
+perevod_na_okc_from_TVQualityProblemIntent1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_TVQualityProblemIntent1.wav
+  value: perevod_na_okc_from_TVQualityProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!
+perevod_na_okc_from_TVChannelProblemIntent:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_TVChannelProblemIntent.wav
+  value: perevod_na_okc_from_TVChannelProblemIntent. Сейчас я переведу вас на оператора, а пока, пожалуйста, перезагрузите вашу тв-приставку и телевизор, а также проверьте плотность подключения всех кабелей к оборудованию – чаще всего это решает проблему. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!
+perevod_na_okc_from_TVChannelProblemIntent1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_TVChannelProblemIntent1.wav
+  value: perevod_na_okc_from_TVChannelProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!
+techProblems_accident_header:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/techProblems_accident_header.wav
+  value: techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.
+avaria_time:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/avaria_time.wav
+  value: avaria_time. Время до завершения.
+severalAgreements_requestStreetAndHouse:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/severalAgreements_requestStreetAndHouse.wav
+  value: severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.
+requestStreetAndHouse:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/requestStreetAndHouse.wav
+  value: requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.
+techProblems_ppr_header:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/techProblems_ppr_header.wav
+  value: techProblems_ppr_header. Для улучшения качества услуг связи по вашему адресу будут проводиться планово профилактические работы до
+techProblems_ppr_header_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/techProblems_ppr_header_1.wav
+  value: techProblems_ppr_header_1. Для улучшения качества услуг связи по вашему адресу будут проводиться планово профилактические работы
+techProblems_accident_ending:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/techProblems_accident_ending.wav
+  value: techProblems_accident_ending. Приносим извинения за временные неудобства.
+zakaz_sms_info1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zakaz_sms_info1.wav
+  value: zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?
+zakaz_sms_info2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zakaz_sms_info2.wav
+  value: zakaz_sms_info2. Хорошо, мы отправим сообщение на ваш мобильный телефон, как только восстановительные работы будут завершены.
+Oplati_DZ_ktv:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Oplati_DZ_ktv.wav
+  value: Oplati_DZ_ktv. Вижу, что произошло физическое отключение. Телевидение включится после поступления оплаты в течение 24 часов.
+Oplati_DZ:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Oplati_DZ.wav
+  value: Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.
+Oplati_recplatezh:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Oplati_recplatezh.wav
+  value: Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере
+activeTP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/activeTP.wav
+  value: activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма
+active_OK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/active_OK.wav
+  value: active_OK. Тарифный план активирован. Доступ к услугам откроется через 5 минут. Не забудьте перезагрузить роутер.
+active_notOK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/active_notOK.wav
+  value: active_notOK. Что-то пошло не так. Тарифный план не активирован.
+activeTPnow:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/activeTPnow.wav
+  value: activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.
+ask_promisedPay:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ask_promisedPay.wav
+  value: ask_promisedPay. Если вы еще не производили оплату, могу попробовать подключить вам услугу обещанный платеж. Вам это, интересно?
+wait_for_the_payment:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/wait_for_the_payment.wav
+  value: wait_for_the_payment. Если вы уже произвели оплату, пожалуйста подождите немного. обычно деньги поступают на счет мгновенно, но иногда это может занять несколько часов.
+PerevodNaStarshego:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PerevodNaStarshego.wav
+  value: PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.
+verno_angarsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_angarsk.wav
+  value: verno_angarsk. Ваш город ангарск?
+verno_arhangelsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_arhangelsk.wav
+  value: verno_arhangelsk. Ваш город Архангельск, верно?
+verno_astrahan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_astrahan.wav
+  value: verno_astrahan. Ваш город Астрахань, верно?
+verno_belgorod:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_belgorod.wav
+  value: verno_belgorod. Ваш город Белгород, верно?
+verno_blagoveschensk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_blagoveschensk.wav
+  value: verno_blagoveschensk. Ваш город Благовещенск, верно?
+verno_chita:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_chita.wav
+  value: verno_chita. Ваш город Чита, верно?
+verno_cherepovec:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_cherepovec.wav
+  value: verno_cherepovec. Ваш город Череповец, верно?
+verno_kaliningrad:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kaliningrad.wav
+  value: verno_kaliningrad. Ваш город Калининград, верно?
+verno_ivanovo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_ivanovo.wav
+  value: verno_ivanovo. Ваш город Иваново, верно?
+verno_habarovsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_habarovsk.wav
+  value: verno_habarovsk. Ваш город Хабаровск, верно?
+verno_kaluga:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kaluga.wav
+  value: verno_kaluga. Ваш город Калуга, верно?
+verno_mahachkala:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_mahachkala.wav
+  value: verno_mahachkala. Ваш город Махачкала, верно?
+verno_murmansk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_murmansk.wav
+  value: verno_murmansk. Ваш город Мурманск, верно?
+verno_novokuzneck:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_novokuzneck.wav
+  value: verno_novokuzneck. Ваш город Новокузнецк, верно?
+verno_smolensk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_smolensk.wav
+  value: verno_smolensk. Ваш город Смоленск, верно?
+verno_saransk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_saransk.wav
+  value: verno_saransk. Ваш город Саранск, верно?
+verno_stavropol:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_stavropol.wav
+  value: verno_stavropol. Ваш город Ставрополь, верно?
+verno_yujno_sahalinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_yujno_sahalinsk.wav
+  value: verno_yujno_sahalinsk. Ваш город Южно-Сахалинск, верно?
+verno_vladimir:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_vladimir.wav
+  value: verno_vladimir. Ваш город Владимир, верно?
+verno_vladivostok:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_vladivostok.wav
+  value: verno_vladivostok. Ваш город Владивосток, верно?
+verno_barnaul:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_barnaul.wav
+  value: verno_barnaul. Ваш город барнаул?
+verno_berezniki:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_berezniki.wav
+  value: verno_berezniki. Ваш город березники?
+verno_bransk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_bransk.wav
+  value: verno_bransk. Ваш город брянск?
+verno_volgograd:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_volgograd.wav
+  value: verno_volgograd. Ваш город волгоград?
+verno_volzhsky:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_volzhsky.wav
+  value: verno_volzhsky. Ваш город волжский?
+verno_voronezh:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_voronezh.wav
+  value: verno_voronezh. Ваш город воронеж?
+verno_dzerzhinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_dzerzhinsk.wav
+  value: verno_dzerzhinsk. Ваш город дзержинск?
+verno_dmitrovgrad:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_dmitrovgrad.wav
+  value: verno_dmitrovgrad. Ваш город дмитровград?
+verno_dimitrovgrad:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_dimitrovgrad.wav
+  value: verno_dimitrovgrad. Ваш город димитровград?
+verno_dobrynka:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_dobrynka.wav
+  value: verno_dobrynka. Ваш город добрянка?
+verno_ekaterinburg:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_ekaterinburg.wav
+  value: verno_ekaterinburg. Ваш город екатеринбург?
+verno_izevsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_izevsk.wav
+  value: verno_izevsk. Ваш город ижевск?
+verno_irkutsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_irkutsk.wav
+  value: verno_irkutsk. Ваш город иркутск?
+verno_ioshkar-ola:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_ioshkar-ola.wav
+  value: verno_ioshkar-ola. Ваш город йошкар ола?
+verno_kazan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kazan.wav
+  value: verno_kazan. Ваш город казань?
+verno_kirov:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kirov.wav
+  value: verno_kirov. Ваш город киров?
+verno_krasnodar:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_krasnodar.wav
+  value: verno_krasnodar. Ваш город краснодар?
+verno_krasnokamsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_krasnokamsk.wav
+  value: verno_krasnokamsk. Ваш город краснокамск?
+verno_krasnoyarsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_krasnoyarsk.wav
+  value: verno_krasnoyarsk. Ваш город красноярск?
+verno_kungur:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kungur.wav
+  value: verno_kungur. Ваш город кунгур?
+verno_kurgan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kurgan.wav
+  value: verno_kurgan. Ваш город курган?
+verno_kursk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kursk.wav
+  value: verno_kursk. Ваш город курск?
+verno_lipetsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_lipetsk.wav
+  value: verno_lipetsk. Ваш город липецк?
+verno_magnitogorsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_magnitogorsk.wav
+  value: verno_magnitogorsk. Ваш город магнитогорск?
+verno_michurinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_michurinsk.wav
+  value: verno_michurinsk. Ваш город мичуринск?
+verno_naberezhnye-chelny:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_naberezhnye-chelny.wav
+  value: verno_naberezhnye-chelny. Ваш город набережные челны?
+verno_nizhniy-nivgorod:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_nizhniy-nivgorod.wav
+  value: verno_nizhniy-nivgorod. Ваш город нижний новгород?
+verno_nizhnekamsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_nizhnekamsk.wav
+  value: verno_nizhnekamsk. Ваш город нижнекамск?
+verno_novosibirsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_novosibirsk.wav
+  value: verno_novosibirsk. Ваш город новосибирск?
+verno_novocheboksarsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_novocheboksarsk.wav
+  value: verno_novocheboksarsk. Ваш город новочебоксарск?
+verno_omsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_omsk.wav
+  value: verno_omsk. Ваш город омск?
+verno_orenburg:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_orenburg.wav
+  value: verno_orenburg. Ваш город оренбург?
+verno_penza:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_penza.wav
+  value: verno_penza. Ваш город пенза?
+verno_perm:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_perm.wav
+  value: verno_perm. Ваш город пермь?
+verno_polazna:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_polazna.wav
+  value: verno_polazna. Ваш город полазна?
+verno_rostov-na-donu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_rostov-na-donu.wav
+  value: verno_rostov-na-donu. Ваш город ростов на дону?
+verno_razan:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_razan.wav
+  value: verno_razan. Ваш город рязань?
+verno_samara:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_samara.wav
+  value: verno_samara. Ваш город самара?
+verno_spb:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_spb.wav
+  value: verno_spb. Ваш город санкт петербург?
+verno_saratov:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_saratov.wav
+  value: verno_saratov. Ваш город саратов?
+verno_svirsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_svirsk.wav
+  value: verno_svirsk. Ваш город свирск?
+verno_selenginsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_selenginsk.wav
+  value: verno_selenginsk. Ваш город селенгинск?
+verno_sludyanka:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_sludyanka.wav
+  value: verno_sludyanka. Ваш город слюдянка?
+verno_salikamsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_salikamsk.wav
+  value: verno_salikamsk. Ваш город соликамск?
+verno_sosnovoborsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_sosnovoborsk.wav
+  value: verno_sosnovoborsk. Ваш город сосновоборск?
+verno_sosnovyibor:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_sosnovyibor.wav
+  value: verno_sosnovyibor. Ваш город сосновый бор?
+verno_syzran:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_syzran.wav
+  value: verno_syzran. Ваш город сызрань?
+verno_tver:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_tver.wav
+  value: verno_tver. Ваш город тверь?
+verno_tomsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_tomsk.wav
+  value: verno_tomsk. Ваш город томск?
+verno_tula:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_tula.wav
+  value: verno_tula. Ваш город тула?
+verno_tulun:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_tulun.wav
+  value: verno_tulun. Ваш город тулун?
+verno_tumen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_tumen.wav
+  value: verno_tumen. Ваш город тюмень?
+verno_uland-ude:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_uland-ude.wav
+  value: verno_uland-ude. Ваш город улан удэ?
+verno_ulyanovsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_ulyanovsk.wav
+  value: verno_ulyanovsk. Ваш город ульяновск?
+verno_ussibirskoe:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_ussibirskoe.wav
+  value: verno_ussibirskoe. Ваш город усолье сибирское?
+verno_ufa:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_ufa.wav
+  value: verno_ufa. Ваш город уфа?
+verno_cheboksary:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_cheboksary.wav
+  value: verno_cheboksary. Ваш город чебоксары?
+verno_chelyabinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_chelyabinsk.wav
+  value: verno_chelyabinsk. Ваш город челябинск?
+verno_chusovoy:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_chusovoy.wav
+  value: verno_chusovoy. Ваш город чусовой?
+verno_shelehov:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_shelehov.wav
+  value: verno_shelehov. Ваш город шелехов?
+verno_engels:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_engels.wav
+  value: verno_engels. Ваш город энгельс?
+verno_yaroslavl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_yaroslavl.wav
+  value: verno_yaroslavl. Ваш город ярославль?
+verno_moskva:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_moskva.wav
+  value: verno_moskva. Ваш город москва?
+verno_nizhneudinsk:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_nizhneudinsk.wav
+  value: verno_nizhneudinsk. Ваш город нижнеудинск?
+fizik_yurik:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/fizik_yurik.wav
+  value: fizik_yurik. Вы физическое или юридическое лицо?
+nowWeCannotConnect:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/nowWeCannotConnect.wav
+  value: nowWeCannotConnect. На данный момент по адресу нет технической возможности подключения. Перевести вас на специалиста для консультации?
+domPodklyuchenAgnetWillConnectInWorkTime:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/domPodklyuchenAgnetWillConnectInWorkTime.wav
+  value: domPodklyuchenAgnetWillConnectInWorkTime. Дом подключен к услугам. Будем рады видеть вас нашим клиентом! По вопросам подключения с вами свяжется специалист в рабочее время по телефону, с которого вы звоните. Я могу вам чем-либо ещё помочь?
+alreadyOurClient:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/alreadyOurClient.wav
+  value: alreadyOurClient. Скажите, вы пользуетесь нашими услугами?
+relocateOrOthers:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/relocateOrOthers.wav
+  value: relocateOrOthers. Уточните, пожалуйста, вы переезжаете, хотите переоформить договор или подключить дополнительные услуги?
+pleaseSayYoutCity:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/pleaseSayYoutCity.wav
+  value: pleaseSayYoutCity. Назовите, пожалуйста, ваш город.
+pleaseSayYourName:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/pleaseSayYourName.wav
+  value: pleaseSayYourName. Назовите, пожалуйста, ваше имя.
+pleaseSayYourAddress:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/pleaseSayYourAddress.wav
+  value: pleaseSayYourAddress. Уточните, пожалуйста, ваш адрес название улицы, номер дома, корпус и номер квартиры, и я проверю техническую возможность подключения к нашим услугам.
+transferToAgentForFurther:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/transferToAgentForFurther.wav
+  value: transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.
+yurikForFurther:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/yurikForFurther.wav
+  value: yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.
+transferToAgentForFurther_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/transferToAgentForFurther_2.wav
+  value: transferToAgentForFurther_2. Хорошо, перевожу вас на специалиста, пожалуйста, ожидайте.
+doNotUnderstandCity:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doNotUnderstandCity.wav
+  value: doNotUnderstandCity. Мне не удалось определить город. Перевожу на специалиста. Ожидайте, пожалуйста, ответа оператора.
+weAlreadyHaveRequest:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/weAlreadyHaveRequest.wav
+  value: weAlreadyHaveRequest. По вашему номеру есть заявка на подключение.
+transferToAgentForFurther_3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/transferToAgentForFurther_3.wav
+  value: transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.
+houseAlreadyConnected:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/houseAlreadyConnected.wav
+  value: houseAlreadyConnected. Дом подключён.
+backendGectCityInfo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/backendGectCityInfo.wav
+  value: backendGectCityInfo. Одну минуту. Получаю информацию о городе.
+ifCanConnectInTheCity:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ifCanConnectInTheCity.wav
+  value: ifCanConnectInTheCity. Одну минуту. Проверяю возможность подключения в вашем городе.
+infoAbouRequests:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/infoAbouRequests.wav
+  value: infoAbouRequests. Одну минуту. Получаю информацию о текущих заявках.
+ifCanConnectInTheAddress:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ifCanConnectInTheAddress.wav
+  value: ifCanConnectInTheAddress. Одну минуту. Проверяю техническую возможность подключения по вашему адресу.
+manyThanks:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/manyThanks.wav
+  value: manyThanks. Спасибо.
+thanksForYourInteresting:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/thanksForYourInteresting.wav
+  value: thanksForYourInteresting. Благодарим вас за обращение в нашу компанию! Будем рады видеть вас нашим клиентом, когда появится техническая возможность подключения к нашим услугам. Оставайтесь, пожалуйста, на линии и оцените качество моей работы.
+simpleThanks:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/simpleThanks.wav
+  value: simpleThanks. Благодарим вас за обращение! Оставайтесь, пожалуйста, на линии и оцените качество моей работы.
+agentRequestConfirmation:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/agentRequestConfirmation.wav
+  value: agentRequestConfirmation. Задайте ваш вопрос. Я попробую помочь или переведу на оператора.
+minus:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/minus.wav
+  value: minus. минус
+daysCostPreview_besplatno:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/daysCostPreview_besplatno.wav
+  value: daysCostPreview_besplatno. Услуга для вас предоставляется
+besplatno:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/besplatno.wav
+  value: besplatno. бесплатно
+ru_digit_0_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_0_nom.wav
+  value: ru_digit_0_nom. ноль
+ru_digit_1_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_1_nom.wav
+  value: ru_digit_1_nom. один
+ru_digit_1_nom_fem:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_1_nom_fem.wav
+  value: ru_digit_1_nom_fem. одна
+ru_digit_1_nom2_fem:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_1_nom2_fem.wav
+  value: ru_digit_1_nom2_fem. одну
+ru_digit_2_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_2_nom.wav
+  value: ru_digit_2_nom. два
+ru_digit_2_nom_fem:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_2_nom_fem.wav
+  value: ru_digit_2_nom_fem. две
+ru_digit_3_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_3_nom.wav
+  value: ru_digit_3_nom. три
+ru_digit_4_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_4_nom.wav
+  value: ru_digit_4_nom. четыре
+ru_digit_5_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_5_nom.wav
+  value: ru_digit_5_nom. пять
+ru_digit_6_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_6_nom.wav
+  value: ru_digit_6_nom. шесть
+ru_digit_7_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_7_nom.wav
+  value: ru_digit_7_nom. семь
+ru_digit_8_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_8_nom.wav
+  value: ru_digit_8_nom. восемь
+ru_digit_9_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_9_nom.wav
+  value: ru_digit_9_nom. девять
+ru_digit_11_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_11_nom.wav
+  value: ru_digit_11_nom. одиннадцать
+ru_digit_12_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_12_nom.wav
+  value: ru_digit_12_nom. двенадцать
+ru_digit_13_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_13_nom.wav
+  value: ru_digit_13_nom. тринадцать
+ru_digit_14_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_14_nom.wav
+  value: ru_digit_14_nom. четырнадцать
+ru_digit_15_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_15_nom.wav
+  value: ru_digit_15_nom. пятнадцать
+ru_digit_16_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_16_nom.wav
+  value: ru_digit_16_nom. шестнадцать
+ru_digit_17_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_17_nom.wav
+  value: ru_digit_17_nom. семнадцать
+ru_digit_18_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_18_nom.wav
+  value: ru_digit_18_nom. восемнадцать
+ru_digit_19_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_19_nom.wav
+  value: ru_digit_19_nom. девятнадцать
+ru_digit_10_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_10_nom.wav
+  value: ru_digit_10_nom. десять
+ru_digit_20_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_20_nom.wav
+  value: ru_digit_20_nom. двадцать
+ru_digit_30_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_30_nom.wav
+  value: ru_digit_30_nom. тридцать
+ru_digit_40_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_40_nom.wav
+  value: ru_digit_40_nom. сорок
+ru_digit_50_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_50_nom.wav
+  value: ru_digit_50_nom. пятьдесят
+ru_digit_60_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_60_nom.wav
+  value: ru_digit_60_nom. шестьдесят
+ru_digit_70_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_70_nom.wav
+  value: ru_digit_70_nom. семьдесят
+ru_digit_80_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_80_nom.wav
+  value: ru_digit_80_nom. восемьдесят
+ru_digit_90_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_90_nom.wav
+  value: ru_digit_90_nom. девяносто
+ru_digit_100_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_100_nom.wav
+  value: ru_digit_100_nom. сто
+ru_digit_200_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_200_nom.wav
+  value: ru_digit_200_nom. двести
+ru_digit_300_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_300_nom.wav
+  value: ru_digit_300_nom. триста
+ru_digit_400_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_400_nom.wav
+  value: ru_digit_400_nom. четыреста
+ru_digit_500_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_500_nom.wav
+  value: ru_digit_500_nom. пятьсот
+ru_digit_600_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_600_nom.wav
+  value: ru_digit_600_nom. шестьсот
+ru_digit_700_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_700_nom.wav
+  value: ru_digit_700_nom. семьсот
+ru_digit_800_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_800_nom.wav
+  value: ru_digit_800_nom. восемьсот
+ru_digit_900_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_900_nom.wav
+  value: ru_digit_900_nom. девятьсот
+ru_digit_1000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_1000_nom.wav
+  value: ru_digit_1000_nom. тысяча
+ru_digit_1000_fem2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_1000_fem2.wav
+  value: ru_digit_1000_fem2. тысячу
+ru_digit_2000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_2000_nom.wav
+  value: ru_digit_2000_nom. две тысячи
+ru_digit_3000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_3000_nom.wav
+  value: ru_digit_3000_nom. три тысячи
+ru_digit_4000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_4000_nom.wav
+  value: ru_digit_4000_nom. четыре тысячи
+ru_digit_5000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_5000_nom.wav
+  value: ru_digit_5000_nom. пять тысяч
+ru_digit_6000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_6000_nom.wav
+  value: ru_digit_6000_nom. шесть тысяч
+ru_digit_7000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_7000_nom.wav
+  value: ru_digit_7000_nom. семь тысяч
+ru_digit_8000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_8000_nom.wav
+  value: ru_digit_8000_nom. восемь тысяч
+ru_digit_9000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_9000_nom.wav
+  value: ru_digit_9000_nom. девять тысяч
+ru_digit_10000_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_digit_10000_nom.wav
+  value: ru_digit_10000_nom. десять тысяч
+ru_unit_kop_gen_pl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_kop_gen_pl.wav
+  value: ru_unit_kop_gen_pl. копеек
+ru_unit_kop_gen_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_kop_gen_sn.wav
+  value: ru_unit_kop_gen_sn. копейки
+ru_unit_kop_nom_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_kop_nom_sn.wav
+  value: ru_unit_kop_nom_sn. копейка
+ru_unit_kop_fem_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_kop_fem_sn.wav
+  value: ru_unit_kop_fem_sn. копейку
+ru_unit_rub_gen_pl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_rub_gen_pl.wav
+  value: ru_unit_rub_gen_pl. рублей
+ru_unit_rub_gen_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_rub_gen_sn.wav
+  value: ru_unit_rub_gen_sn. рубля
+ru_unit_rub_nom_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ru_unit_rub_nom_sn.wav
+  value: ru_unit_rub_nom_sn. рубль
+Ru_unit_hour_gen_pl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_hour_gen_pl.wav
+  value: Ru_unit_hour_gen_pl. часов
+Ru_unit_hour_gen_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_hour_gen_sn.wav
+  value: Ru_unit_hour_gen_sn. часа
+Ru_unit_hour_nom_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_hour_nom_sn.wav
+  value: Ru_unit_hour_nom_sn. час
+Ru_unit_hour_gen_pl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_hour_gen_pl.wav
+  value: Ru_unit_hour_gen_pl. часов.
+Ru_unit_hour_gen_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_hour_gen_sn.wav
+  value: Ru_unit_hour_gen_sn. часа.
+Ru_unit_hour_nom_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_hour_nom_sn.wav
+  value: Ru_unit_hour_nom_sn. час.
+Ru_unit_min_gen_pl:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_min_gen_pl.wav
+  value: Ru_unit_min_gen_pl. минут
+Ru_unit_min_gen_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_min_gen_sn.wav
+  value: Ru_unit_min_gen_sn. минуты
+Ru_unit_min_nom_sn:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_unit_min_nom_sn.wav
+  value: Ru_unit_min_nom_sn. минута
+empty:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/empty.wav
+  value: empty. empty
+balance_period_po:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/balance_period_po.wav
+  value: balance_period_po. по
+digit_1000:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/digit_1000.wav
+  value: digit_1000. тысяч
+digit_1000s:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/digit_1000s.wav
+  value: digit_1000s. тысячи
+Ru_digit_10_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_10_gen.wav
+  value: Ru_digit_10_gen. десяти
+Ru_digit_11_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_11_gen.wav
+  value: Ru_digit_11_gen. одиннадцати
+Ru_digit_12_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_12_gen.wav
+  value: Ru_digit_12_gen. двенадцати
+Ru_digit_13_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_13_gen.wav
+  value: Ru_digit_13_gen. тринадцати
+Ru_digit_14_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_14_gen.wav
+  value: Ru_digit_14_gen. четырнадцати
+Ru_digit_15_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_15_gen.wav
+  value: Ru_digit_15_gen. пятнадцати
+Ru_digit_16_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_16_gen.wav
+  value: Ru_digit_16_gen. шестнадцати
+Ru_digit_17_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_17_gen.wav
+  value: Ru_digit_17_gen. семнадцати
+Ru_digit_18_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_18_gen.wav
+  value: Ru_digit_18_gen. восемнадцати
+Ru_digit_19_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_19_gen.wav
+  value: Ru_digit_19_gen. девятнадцати
+Ru_digit_20_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_20_gen.wav
+  value: Ru_digit_20_gen. двадцати
+Ru_digit_0_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_0_gen.wav
+  value: Ru_digit_0_gen. нуля
+Ru_digit_1_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_1_gen.wav
+  value: Ru_digit_1_gen. одного
+Ru_digit_2_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_2_gen.wav
+  value: Ru_digit_2_gen. двух
+Ru_digit_3_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_3_gen.wav
+  value: Ru_digit_3_gen. трех
+Ru_digit_4_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_4_gen.wav
+  value: Ru_digit_4_gen. четырех
+Ru_digit_5_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_5_gen.wav
+  value: Ru_digit_5_gen. пяти
+Ru_digit_6_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_6_gen.wav
+  value: Ru_digit_6_gen. шести
+Ru_digit_7_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_7_gen.wav
+  value: Ru_digit_7_gen. семи
+Ru_digit_8_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_8_gen.wav
+  value: Ru_digit_8_gen. восьми
+Ru_digit_9_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_9_gen.wav
+  value: Ru_digit_9_gen. девяти
+Ru_digit_30_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_30_gen.wav
+  value: Ru_digit_30_gen. тридцати
+Ru_digit_40_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_40_gen.wav
+  value: Ru_digit_40_gen. сорока
+Ru_digit_50_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_50_gen.wav
+  value: Ru_digit_50_gen. пятидесяти
+Ru_digit_60_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_60_gen.wav
+  value: Ru_digit_60_gen. шестидесяти
+Ru_digit_1_gen_fem:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_digit_1_gen_fem.wav
+  value: Ru_digit_1_gen_fem. одной
+Ru_ord_1_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_1_gen_mas.wav
+  value: Ru_ord_1_gen_mas. первого
+Ru_ord_2_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_2_gen_mas.wav
+  value: Ru_ord_2_gen_mas. второго
+Ru_ord_3_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_3_gen_mas.wav
+  value: Ru_ord_3_gen_mas. третьего
+Ru_ord_4_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_4_gen_mas.wav
+  value: Ru_ord_4_gen_mas. четвертого
+Ru_ord_5_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_5_gen_mas.wav
+  value: Ru_ord_5_gen_mas. пятого
+Ru_ord_6_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_6_gen_mas.wav
+  value: Ru_ord_6_gen_mas. шестого
+Ru_ord_7_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_7_gen_mas.wav
+  value: Ru_ord_7_gen_mas. седьмого
+Ru_ord_8_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_8_gen_mas.wav
+  value: Ru_ord_8_gen_mas. восьмого
+Ru_ord_9_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_9_gen_mas.wav
+  value: Ru_ord_9_gen_mas. девятого
+Ru_ord_10_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_10_gen_mas.wav
+  value: Ru_ord_10_gen_mas. десятого
+Ru_ord_11_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_11_gen_mas.wav
+  value: Ru_ord_11_gen_mas. одиннадцатого
+Ru_ord_12_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_12_gen_mas.wav
+  value: Ru_ord_12_gen_mas. двенадцатого
+Ru_ord_13_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_13_gen_mas.wav
+  value: Ru_ord_13_gen_mas. тринадцатого
+Ru_ord_14_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_14_gen_mas.wav
+  value: Ru_ord_14_gen_mas. четырнадцатого
+Ru_ord_15_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_15_gen_mas.wav
+  value: Ru_ord_15_gen_mas. пятнадцатого
+Ru_ord_16_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_16_gen_mas.wav
+  value: Ru_ord_16_gen_mas. шестнадцатого
+Ru_ord_17_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_17_gen_mas.wav
+  value: Ru_ord_17_gen_mas. семнадцатого
+Ru_ord_18_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_18_gen_mas.wav
+  value: Ru_ord_18_gen_mas. восемнадцатого
+Ru_ord_19_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_19_gen_mas.wav
+  value: Ru_ord_19_gen_mas. девятнадцатого
+Ru_ord_20_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_20_gen_mas.wav
+  value: Ru_ord_20_gen_mas. двадцатого
+Ru_ord_30_gen_mas:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_30_gen_mas.wav
+  value: Ru_ord_30_gen_mas. тридцатого
+bal1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal1.wav
+  value: bal1. b_один
+bal2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal2.wav
+  value: bal2. b_два
+bal3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal3.wav
+  value: bal3. b_три
+bal4:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal4.wav
+  value: bal4. b_четыре
+bal5:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal5.wav
+  value: bal5. b_пять
+bal6:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal6.wav
+  value: bal6. b_шесть
+bal7:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal7.wav
+  value: bal7. b_семь
+bal8:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal8.wav
+  value: bal8. b_восемь
+bal9:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal9.wav
+  value: bal9. b_девять
+bal10:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal10.wav
+  value: bal10. b_десять
+bal11:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal11.wav
+  value: bal11. b_одиннадцать
+bal12:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal12.wav
+  value: bal12. b_двенадцать
+bal13:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal13.wav
+  value: bal13. b_тринадцать
+bal14:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal14.wav
+  value: bal14. b_четырнадцать
+bal15:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal15.wav
+  value: bal15. b_пятнадцать
+bal16:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal16.wav
+  value: bal16. b_шестнадцать
+bal17:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal17.wav
+  value: bal17. b_семнадцать
+bal18:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal18.wav
+  value: bal18. b_восемнадцать
+bal19:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal19.wav
+  value: bal19. b_девятнадцать
+bal20:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal20.wav
+  value: bal20. b_двадцать
+bal30:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal30.wav
+  value: bal30. b_тридцать
+bal40:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal40.wav
+  value: bal40. b_сорок
+bal50:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal50.wav
+  value: bal50. b_пятьдесят
+bal60:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal60.wav
+  value: bal60. b_шестьдесят
+bal70:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal70.wav
+  value: bal70. b_семьдесят
+bal80:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal80.wav
+  value: bal80. b_восемьдесят
+bal90:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal90.wav
+  value: bal90. b_девяносто
+bal100:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal100.wav
+  value: bal100. b_сто
+bal200:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal200.wav
+  value: bal200. b_двесте
+bal300:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal300.wav
+  value: bal300. b_триста
+bal400:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal400.wav
+  value: bal400. b_четыреста
+bal500:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal500.wav
+  value: bal500. b_пятьсот
+bal600:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal600.wav
+  value: bal600. b_шестьсот
+bal700:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal700.wav
+  value: bal700. b_семьсот
+bal800:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal800.wav
+  value: bal800. b_восемьсот
+bal900:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bal900.wav
+  value: bal900. b_девятьсот
+Ru_ord_1_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_1_nom_neu.wav
+  value: Ru_ord_1_nom_neu. первое
+Ru_ord_2_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_2_nom_neu.wav
+  value: Ru_ord_2_nom_neu. второе
+Ru_ord_3_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_3_nom_neu.wav
+  value: Ru_ord_3_nom_neu. третие
+Ru_ord_3_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_3_nom_neu.wav
+  value: Ru_ord_3_nom_neu. третье
+Ru_ord_4_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_4_nom_neu.wav
+  value: Ru_ord_4_nom_neu. четвертое
+Ru_ord_5_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_5_nom_neu.wav
+  value: Ru_ord_5_nom_neu. пятое
+Ru_ord_6_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_6_nom_neu.wav
+  value: Ru_ord_6_nom_neu. шестое
+Ru_ord_7_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_7_nom_neu.wav
+  value: Ru_ord_7_nom_neu. седьмое
+Ru_ord_8_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_8_nom_neu.wav
+  value: Ru_ord_8_nom_neu. восьмое
+Ru_ord_9_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_9_nom_neu.wav
+  value: Ru_ord_9_nom_neu. девятое
+Ru_ord_10_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_10_nom_neu.wav
+  value: Ru_ord_10_nom_neu. десятое
+Ru_ord_11_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_11_nom_neu.wav
+  value: Ru_ord_11_nom_neu. одиннадцатое
+Ru_ord_12_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_12_nom_neu.wav
+  value: Ru_ord_12_nom_neu. двенадцатое
+Ru_ord_13_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_13_nom_neu.wav
+  value: Ru_ord_13_nom_neu. тринадцатое
+Ru_ord_14_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_14_nom_neu.wav
+  value: Ru_ord_14_nom_neu. четырнадцатое
+Ru_ord_15_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_15_nom_neu.wav
+  value: Ru_ord_15_nom_neu. пятнадцатое
+Ru_ord_16_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_16_nom_neu.wav
+  value: Ru_ord_16_nom_neu. шестнадцатое
+Ru_ord_17_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_17_nom_neu.wav
+  value: Ru_ord_17_nom_neu. семнадцатое
+Ru_ord_18_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_18_nom_neu.wav
+  value: Ru_ord_18_nom_neu. восемнадцатое
+Ru_ord_19_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_19_nom_neu.wav
+  value: Ru_ord_19_nom_neu. девятнадцатое
+Ru_ord_20_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_20_nom_neu.wav
+  value: Ru_ord_20_nom_neu. двадцатое
+Ru_ord_30_nom_neu:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_ord_30_nom_neu.wav
+  value: Ru_ord_30_nom_neu. тридцатое
+Ru_month_1_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_1_gen.wav
+  value: Ru_month_1_gen. января
+Ru_month_2_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_2_gen.wav
+  value: Ru_month_2_gen. февраля
+Ru_month_3_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_3_gen.wav
+  value: Ru_month_3_gen. марта
+Ru_month_4_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_4_gen.wav
+  value: Ru_month_4_gen. апреля
+Ru_month_5_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_5_gen.wav
+  value: Ru_month_5_gen. мая
+Ru_month_6_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_6_gen.wav
+  value: Ru_month_6_gen. июня
+Ru_month_7_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_7_gen.wav
+  value: Ru_month_7_gen. июля
+Ru_month_8_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_8_gen.wav
+  value: Ru_month_8_gen. августа
+Ru_month_9_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_9_gen.wav
+  value: Ru_month_9_gen. сентября
+Ru_month_10_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_10_gen.wav
+  value: Ru_month_10_gen. октября
+Ru_month_11_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_11_gen.wav
+  value: Ru_month_11_gen. ноября
+Ru_month_12_gen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_12_gen.wav
+  value: Ru_month_12_gen. декабря
+Ru_month_1_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_1_nom.wav
+  value: Ru_month_1_nom. январь
+Ru_month_2_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_2_nom.wav
+  value: Ru_month_2_nom. февраль
+Ru_month_3_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_3_nom.wav
+  value: Ru_month_3_nom. март
+Ru_month_4_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_4_nom.wav
+  value: Ru_month_4_nom. апрель
+Ru_month_5_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_5_nom.wav
+  value: Ru_month_5_nom. май
+Ru_month_6_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_6_nom.wav
+  value: Ru_month_6_nom. июнь
+Ru_month_7_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_7_nom.wav
+  value: Ru_month_7_nom. июль
+Ru_month_8_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_8_nom.wav
+  value: Ru_month_8_nom. август
+Ru_month_9_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_9_nom.wav
+  value: Ru_month_9_nom. сентябрь
+Ru_month_10_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_10_nom.wav
+  value: Ru_month_10_nom. октябрь
+Ru_month_11_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_11_nom.wav
+  value: Ru_month_11_nom. ноябрь
+Ru_month_12_nom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Ru_month_12_nom.wav
+  value: Ru_month_12_nom. декабрь
+DRT_00:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_00.wav
+  value: DRT_00. ноль ноль
+DRT_01:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_01.wav
+  value: DRT_01. ноль один
+DRT_02:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_02.wav
+  value: DRT_02. ноль два
+DRT_03:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_03.wav
+  value: DRT_03. ноль три
+DRT_04:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_04.wav
+  value: DRT_04. ноль четыре
+DRT_05:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_05.wav
+  value: DRT_05. ноль пять
+DRT_06:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_06.wav
+  value: DRT_06. ноль шесть
+DRT_07:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_07.wav
+  value: DRT_07. ноль семь
+DRT_08:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_08.wav
+  value: DRT_08. ноль восемь
+DRT_09:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_09.wav
+  value: DRT_09. ноль девять
+DRT_10:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_10.wav
+  value: DRT_10. десять
+DRT_11:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_11.wav
+  value: DRT_11. одиннадцать
+DRT_12:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_12.wav
+  value: DRT_12. двенадцать
+DRT_13:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_13.wav
+  value: DRT_13. тринадцать
+DRT_14:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_14.wav
+  value: DRT_14. четырнадцать
+DRT_15:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_15.wav
+  value: DRT_15. пятнадцать
+DRT_16:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_16.wav
+  value: DRT_16. шестнадцать
+DRT_17:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_17.wav
+  value: DRT_17. семнадцать
+DRT_18:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_18.wav
+  value: DRT_18. восемнадцать
+DRT_19:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_19.wav
+  value: DRT_19. девятнадцать
+DRT_20:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_20.wav
+  value: DRT_20. двадцать
+DRT_21:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_21.wav
+  value: DRT_21. двадцать один
+DRT_22:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_22.wav
+  value: DRT_22. двадцать два
+DRT_23:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_23.wav
+  value: DRT_23. двадцать три
+DRT_24:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_24.wav
+  value: DRT_24. двадцать четыре
+DRT_25:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_25.wav
+  value: DRT_25. двадцать пять
+DRT_26:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_26.wav
+  value: DRT_26. двадцать шесть
+DRT_27:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_27.wav
+  value: DRT_27. двадцать семь
+DRT_28:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_28.wav
+  value: DRT_28. двадцать восемь
+DRT_29:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_29.wav
+  value: DRT_29. двадцать девять
+DRT_30:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_30.wav
+  value: DRT_30. тридцать
+DRT_31:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_31.wav
+  value: DRT_31. тридцать один
+DRT_32:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_32.wav
+  value: DRT_32. тридцать два
+DRT_33:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_33.wav
+  value: DRT_33. тридцать три
+DRT_34:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_34.wav
+  value: DRT_34. тридцать четыре
+DRT_35:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_35.wav
+  value: DRT_35. тридцать пять
+DRT_36:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_36.wav
+  value: DRT_36. тридцать шесть
+DRT_37:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_37.wav
+  value: DRT_37. тридцать семь
+DRT_38:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_38.wav
+  value: DRT_38. тридцать восемь
+DRT_39:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_39.wav
+  value: DRT_39. тридцать девять
+DRT_40:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_40.wav
+  value: DRT_40. сорок
+DRT_41:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_41.wav
+  value: DRT_41. сорок один
+DRT_42:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_42.wav
+  value: DRT_42. сорок два
+DRT_43:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_43.wav
+  value: DRT_43. сорок три
+DRT_44:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_44.wav
+  value: DRT_44. сорок четыре
+DRT_45:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_45.wav
+  value: DRT_45. сорок пять
+DRT_46:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_46.wav
+  value: DRT_46. сорок шесть
+DRT_47:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_47.wav
+  value: DRT_47. сорок семь
+DRT_48:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_48.wav
+  value: DRT_48. сорок восемь
+DRT_49:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_49.wav
+  value: DRT_49. сорок девять
+DRT_50:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_50.wav
+  value: DRT_50. пятьдесят
+DRT_51:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_51.wav
+  value: DRT_51. пятьдесят один
+DRT_52:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_52.wav
+  value: DRT_52. пятьдесят два
+DRT_53:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_53.wav
+  value: DRT_53. пятьдесят три
+DRT_54:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_54.wav
+  value: DRT_54. пятьдесят четыре
+DRT_55:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_55.wav
+  value: DRT_55. пятьдесят пять
+DRT_56:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_56.wav
+  value: DRT_56. пятьдесят шесть
+DRT_57:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_57.wav
+  value: DRT_57. пятьдесят семь
+DRT_58:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_58.wav
+  value: DRT_58. пятьдесят восемь
+DRT_59:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_59.wav
+  value: DRT_59. пятьдесят девять
+DRT_60:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_60.wav
+  value: DRT_60. шестьдесят
+DRT_61:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_61.wav
+  value: DRT_61. шестьдесят один
+DRT_62:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_62.wav
+  value: DRT_62. шестьдесят два
+DRT_63:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_63.wav
+  value: DRT_63. шестьдесят три
+DRT_64:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_64.wav
+  value: DRT_64. шестьдесят четыре
+DRT_65:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_65.wav
+  value: DRT_65. шестьдесят пять
+DRT_66:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_66.wav
+  value: DRT_66. шестьдесят шесть
+DRT_67:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_67.wav
+  value: DRT_67. шестьдесят семь
+DRT_68:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_68.wav
+  value: DRT_68. шестьдесят восемь
+DRT_69:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_69.wav
+  value: DRT_69. шестьдесят девять
+DRT_70:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_70.wav
+  value: DRT_70. семьдесят
+DRT_71:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_71.wav
+  value: DRT_71. семьдесят один
+DRT_72:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_72.wav
+  value: DRT_72. семьдесят два
+DRT_73:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_73.wav
+  value: DRT_73. семьдесят три
+DRT_74:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_74.wav
+  value: DRT_74. семьдесят четыре
+DRT_75:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_75.wav
+  value: DRT_75. семьдесят пять
+DRT_76:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_76.wav
+  value: DRT_76. семьдесят шесть
+DRT_77:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_77.wav
+  value: DRT_77. семьдесят семь
+DRT_78:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_78.wav
+  value: DRT_78. семьдесят восемь
+DRT_79:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_79.wav
+  value: DRT_79. семьдесят девять
+DRT_80:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_80.wav
+  value: DRT_80. восемьдесят
+DRT_81:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_81.wav
+  value: DRT_81. восемьдесят один
+DRT_82:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_82.wav
+  value: DRT_82. восемьдесят два
+DRT_83:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_83.wav
+  value: DRT_83. восемьдесят три
+DRT_84:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_84.wav
+  value: DRT_84. восемьдесят четыре
+DRT_85:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_85.wav
+  value: DRT_85. восемьдесят пять
+DRT_86:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_86.wav
+  value: DRT_86. восемьдесят шесть
+DRT_87:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_87.wav
+  value: DRT_87. восемьдесят семь
+DRT_88:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_88.wav
+  value: DRT_88. восемьдесят восемь
+DRT_89:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_89.wav
+  value: DRT_89. восемьдесят девять
+DRT_90:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_90.wav
+  value: DRT_90. девяносто
+DRT_91:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_91.wav
+  value: DRT_91. девяносто один
+DRT_92:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_92.wav
+  value: DRT_92. девяносто два
+DRT_93:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_93.wav
+  value: DRT_93. девяносто три
+DRT_94:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_94.wav
+  value: DRT_94. девяносто четыре
+DRT_95:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_95.wav
+  value: DRT_95. девяносто пять
+DRT_96:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_96.wav
+  value: DRT_96. девяносто шесть
+DRT_97:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_97.wav
+  value: DRT_97. девяносто семь
+DRT_98:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_98.wav
+  value: DRT_98. девяносто восемь
+DRT_99:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_99.wav
+  value: DRT_99. девяносто девять
+perevod_na_okc_TVEquipmentProblem:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_TVEquipmentProblem.wav
+  value: perevod_na_okc_TVEquipmentProblem. Пожалуйста, убедитесь, что все кабели плотно подключены в нужные разъемы, а так же выключите, а затем включите телевизор и приставку. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_TVEquipmentProblem1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_TVEquipmentProblem1.wav
+  value: perevod_na_okc_TVEquipmentProblem1. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются. (SPASTVEquipment)
+perevod_na_okc_TVServiceProblem:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_TVServiceProblem.wav
+  value: perevod_na_okc_TVServiceProblem. Пожалуйста, проверьте работу интернета, а так же выключите, и затем включите приставку. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_TVServiceProblem1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_TVServiceProblem1.wav
+  value: perevod_na_okc_TVServiceProblem1. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.(WithoutSPASTVService)
+perevod_na_okc_from_TVChannelProblemIntent_undoneAnswer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_TVChannelProblemIntent_undoneAnswer.wav
+  value: perevod_na_okc_from_TVChannelProblemIntent_undoneAnswer. Сожалею, что не смогла помочь. Перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.
+howmuch_channels:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/howmuch_channels.wav
+  value: howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов
+refreshTVpacks:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/refreshTVpacks.wav
+  value: refreshTVpacks. Пожалуйста, включите канал, который перестал показывать. Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.
+lalaWait:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/lalaWait.wav
+  value: lalaWait. Музыка 90 секунд
+after_refreshTVpacks:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/after_refreshTVpacks.wav
+  value: after_refreshTVpacks. Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась
+perevod_na_okc_from_TVChannelProblemIntent_noMatchAnswer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_TVChannelProblemIntent_noMatchAnswer.wav
+  value: perevod_na_okc_from_TVChannelProblemIntent_noMatchAnswer. К сожалению, не поняла Вас. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.
+WhatElseIntent_channels:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_channels.wav
+  value: WhatElseIntent_channels. Рада, что у нас все получилось. У вас остались еще какие-нибудь вопросы?
+lalaWait10:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/lalaWait10.wav
+  value: lalaWait10. Музыка 10 секунд
+sms_NastroykaRoutera:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_NastroykaRoutera.wav
+  value: sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.
+sms_AutorisationData:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_AutorisationData.wav
+  value: sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.
+doYouWant_sms:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_sms.wav
+  value: doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ
+sms_Otpravlena:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_Otpravlena.wav
+  value: sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты
+sms_neOtpravlena_transfer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_neOtpravlena_transfer.wav
+  value: sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры
+configuring_router_noMatchAnswer_transfer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/configuring_router_noMatchAnswer_transfer.wav
+  value: configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.
+doYouWant_helpWithConfigurungRouter:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_helpWithConfigurungRouter.wav
+  value: doYouWant_helpWithConfigurungRouter. Нужна ли Вам помощь оператора для настройки? Пожалуйста, скажите ДА или НЕТ.
+OKC_WebCabCredentials:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OKC_WebCabCredentials.wav
+  value: OKC_WebCabCredentials. Я умею отправлять вам данные для подключения в виде СМС, но для этого необходимо обращаться с актуального сотового телефона. Привязку можно выполнить самостоятельно в личном кабинете или через оператора. А сейчас я перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
+SMS_authorization:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMS_authorization.wav
+  value: SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ
+Need_operator:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Need_operator.wav
+  value: Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?
+Router_instructions:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Router_instructions.wav
+  value: Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?
+OKC_RestoreWiFipassword_NOMATCH:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OKC_RestoreWiFipassword_NOMATCH.wav
+  value: OKC_RestoreWiFipassword_NOMATCH. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры. (RestoreWiFipassword_NOMATCH)
+perevod_na_okc_from_RestoreWiFipassword_GN:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_RestoreWiFipassword_GN.wav
+  value: perevod_na_okc_from_RestoreWiFipassword_GN. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.(perevod_na_okc_from_RestoreWiFipassword_GN)
+perevod_na_okc_from_RestoreWiFipassword_noRouter:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_RestoreWiFipassword_noRouter.wav
+  value: perevod_na_okc_from_RestoreWiFipassword_noRouter. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры. (perevod_na_okc_from_RestoreWiFipassword_noRouter)
+perevod_na_okc_from_RestoreWiFipassword_noActual:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_RestoreWiFipassword_noActual.wav
+  value: perevod_na_okc_from_RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры. (perevod_na_okc_from_RestoreWiFipassword_noActual)
+perevod_na_okc_from_RestoreWiFipassword_noSession:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_RestoreWiFipassword_noSession.wav
+  value: perevod_na_okc_from_RestoreWiFipassword_noSession. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры. (perevod_na_okc_from_RestoreWiFipassword_noSession)
+perevod_na_okc_from_RestoreWiFipassword_nekhochukha:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_RestoreWiFipassword_nekhochukha.wav
+  value: perevod_na_okc_from_RestoreWiFipassword_nekhochukha. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры. (perevod_na_okc_from_RestoreWiFipassword_nekhochukha)
+sms_RestoreWiFipassword:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_RestoreWiFipassword.wav
+  value: sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.
+SmsTarif:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SmsTarif.wav
+  value: SmsTarif. Я могу отправить Вам СМС со ссылкой на актуальный тарифные планы компании.Хотите получить СМС?
+PaymentCame:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PaymentCame.wav
+  value: PaymentCame. Вижу, что недавно Вы пополнили счет на
+CancelSuspension:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CancelSuspension.wav
+  value: CancelSuspension. Вижу, что на вашем договоре имеется приостановление услуг. Я могу отменить приостановление всех услуг ближайшей датой.
+CancelSuspension1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CancelSuspension1.wav
+  value: CancelSuspension1. Если вы хотите снять приостановление скажите ДА, если у вас другой вопрос, либо нужно снять приостановление только одной услуги - скажите Нет
+CancelBlocking:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CancelBlocking.wav
+  value: CancelBlocking. Сейчас я сниму приостановление всех услуг. Пожалуйста, подождите несколько секунд.
+ErrorBlocking:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ErrorBlocking.wav
+  value: ErrorBlocking. К сожалению при снятии приостановления произошла ошибка. Перевожу звонок на оператора. В целях повышения качества обслуживания, все разговоры записываются
+DiscontinuedSuspension:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DiscontinuedSuspension.wav
+  value: DiscontinuedSuspension. Приостановление снято. Услуги восстановятся в ближайшее время.
+AgentGoP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/AgentGoP.wav
+  value: AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются
+ReasonBlocking:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ReasonBlocking.wav
+  value: ReasonBlocking. Пожалуйста, уточните причину приостановления
+UEntity:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UEntity.wav
+  value: UEntity. Если я правильно поняла Ваш вопрос, то Вы обращаетесь как юридическое лицо или индивидуальный предприниматель. Пожалуйста, скажите ДА или НЕТ.
+GoEntity:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/GoEntity.wav
+  value: GoEntity. В таком случае перевожу Вас в поддержку юридических лиц. Пожалуйста, оставайтесь на линии, и дождитесь ответа оператора.
+ForgiveMe:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ForgiveMe.wav
+  value: ForgiveMe. Простите, видимо не так Вас поняла. Пожалуйста, попробуйте переформулировать свой вопрос и задайте его снова
+UnderstoodU:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UnderstoodU.wav
+  value: UnderstoodU. К сожалению я еще не умею решать такие вопросы, но точно знаю, кто сможет вам помочь. Перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.
+doYouWant_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_TS_request.wav
+  value: doYouWant_TS_request. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?
+doYouWant_admin_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_admin_request.wav
+  value: doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.
+perezagruzhayVsyo_transferToOKC:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perezagruzhayVsyo_transferToOKC.wav
+  value: perezagruzhayVsyo_transferToOKC. Пожалуйста, перезагрузите Ваше оборудование и проверьте плотность подключения всех кабелей. А я пока перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.
+YaNeSozdal_billingError:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaNeSozdal_billingError.wav
+  value: YaNeSozdal_billingError. Что-то пошло не так и мне не удалось создать заявку. Извините. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что все разговоры записываются.
+YaNeSozdal_noMatchAnswer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaNeSozdal_noMatchAnswer.wav
+  value: YaNeSozdal_noMatchAnswer. К сожалению, не поняла Вас. Извините. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что все разговоры записываются.
+bestDay_forTS:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bestDay_forTS.wav
+  value: bestDay_forTS. В какой день Вам удобней принять техника? Пожалуйста, скажите завтра или послезавтра.
+mnogoPolovin:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/mnogoPolovin.wav
+  value: mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.
+mnogoPolovin_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/mnogoPolovin_CatchAll.wav
+  value: mnogoPolovin_CatchAll. Извините, не совсем вас поняла. В первую или вторую половину дня вам будет удобно?
+I_sprosil_u_technica:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/I_sprosil_u_technica.wav
+  value: I_sprosil_u_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.
+I_sprosil_u_technica1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/I_sprosil_u_technica1.wav
+  value: I_sprosil_u_technica1. Пожалуйста назовите вариант из списка.
+YaNeSplanirovala_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaNeSplanirovala_TS_request.wav
+  value: YaNeSplanirovala_TS_request. Я создала заявку, но мне не удалось забронировать выбранное время. Извините. Перевожу звонок на оператора, он поможет завершить формирование заявки. Напоминаю, что все разговоры записываются.
+YaSozdal_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaSozdal_TS_request.wav
+  value: YaSozdal_TS_request. Спасибо, техник подойдет к Вам
+YaSozdal_admin_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaSozdal_admin_request.wav
+  value: YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.
+goZayavku1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/goZayavku1.wav
+  value: goZayavku1. Давайте проверим я передаю технику заявку на
+goZayavku2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/goZayavku2.wav
+  value: goZayavku2. Скажите, все верно?
+SPAS_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SPAS_TS_request.wav
+  value: SPAS_TS_request. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.
+SPAS_admin_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SPAS_admin_request.wav
+  value: SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.
+from_five:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_five.wav
+  value: from_five. с пяти
+from_six:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_six.wav
+  value: from_six. с шести
+from_seven:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_seven.wav
+  value: from_seven. с семи
+from_eight:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_eight.wav
+  value: from_eight. с восьми
+from_nine:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_nine.wav
+  value: from_nine. с девяти
+from_ten:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_ten.wav
+  value: from_ten. с десяти
+from_eleven:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_eleven.wav
+  value: from_eleven. с одиннадцати
+from_twelve:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_twelve.wav
+  value: from_twelve. с двенадцати
+from_thirteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_thirteen.wav
+  value: from_thirteen. с тринадцати
+from_fourteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_fourteen.wav
+  value: from_fourteen. с четырнадцати
+from_fifteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_fifteen.wav
+  value: from_fifteen. с пятнадцати
+from_sixteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_sixteen.wav
+  value: from_sixteen. с шестнадцати
+from_seventeen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_seventeen.wav
+  value: from_seventeen. с семнадцати
+from_eighteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_eighteen.wav
+  value: from_eighteen. с восемнадцати
+from_nineteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_nineteen.wav
+  value: from_nineteen. с девятнадцати
+from_twenty:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_twenty.wav
+  value: from_twenty. с двадцати
+from_twenty_one:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_twenty_one.wav
+  value: from_twenty_one. с двадцати одного
+from_twenty_two:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_twenty_two.wav
+  value: from_twenty_two. с двадцати двух
+from_twenty_three:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_twenty_three.wav
+  value: from_twenty_three. с двадцати трех
+till_five:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_five.wav
+  value: till_five. до пяти
+till_six:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_six.wav
+  value: till_six. до шести
+till_seven:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_seven.wav
+  value: till_seven. до семи
+till_eight:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_eight.wav
+  value: till_eight. до восьми
+till_nine:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_nine.wav
+  value: till_nine. до девяти
+till_ten:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_ten.wav
+  value: till_ten. до десяти
+till_eleven:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_eleven.wav
+  value: till_eleven. до одиннадцати
+till_twelve:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twelve.wav
+  value: till_twelve. до двенадцати
+till_thirteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_thirteen.wav
+  value: till_thirteen. до тринадцати
+till_fourteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_fourteen.wav
+  value: till_fourteen. до четырнадцати
+till_fifteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_fifteen.wav
+  value: till_fifteen. до пятнадцати
+till_sixteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_sixteen.wav
+  value: till_sixteen. до шестнадцати
+till_seventeen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_seventeen.wav
+  value: till_seventeen. до семнадцати
+till_eighteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_eighteen.wav
+  value: till_eighteen. до восемнадцати
+till_nineteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_nineteen.wav
+  value: till_nineteen. до девятнадцати
+till_twenty:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty.wav
+  value: till_twenty. до двадцати
+till_twenty_one:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty_one.wav
+  value: till_twenty_one. до двадцати одного
+till_twenty_two:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty_two.wav
+  value: till_twenty_two. до двадцати двух
+till_twenty_three:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty_three.wav
+  value: till_twenty_three. до двадцати трех
+till_five:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_five.wav
+  value: till_five. до пяти.
+till_six:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_six.wav
+  value: till_six. до шести.
+till_seven:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_seven.wav
+  value: till_seven. до семи.
+till_eight:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_eight.wav
+  value: till_eight. до восьми.
+till_nine:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_nine.wav
+  value: till_nine. до девяти.
+till_ten:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_ten.wav
+  value: till_ten. до десяти.
+till_eleven:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_eleven.wav
+  value: till_eleven. до одиннадцати.
+till_twelve:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twelve.wav
+  value: till_twelve. до двенадцати.
+till_thirteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_thirteen.wav
+  value: till_thirteen. до тринадцати.
+till_fourteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_fourteen.wav
+  value: till_fourteen. до четырнадцати.
+till_fifteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_fifteen.wav
+  value: till_fifteen. до пятнадцати.
+till_sixteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_sixteen.wav
+  value: till_sixteen. до шестнадцати.
+till_seventeen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_seventeen.wav
+  value: till_seventeen. до семнадцати.
+till_eighteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_eighteen.wav
+  value: till_eighteen. до восемнадцати.
+till_nineteen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_nineteen.wav
+  value: till_nineteen. до девятнадцати.
+till_twenty:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty.wav
+  value: till_twenty. до двадцати.
+till_twenty_one:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty_one.wav
+  value: till_twenty_one. до двадцати одного.
+till_twenty_two:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty_two.wav
+  value: till_twenty_two. до двадцати двух.
+till_twenty_three:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_twenty_three.wav
+  value: till_twenty_three. до двадцати трех.
+twenty_first:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_first.wav
+  value: twenty_first. двадцать первое
+twenty_second:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_second.wav
+  value: twenty_second. двадцать второе
+twenty_third:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_third.wav
+  value: twenty_third. двадцать третье
+twenty_fourth:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_fourth.wav
+  value: twenty_fourth. двадцать четвертое
+twenty_fifth:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_fifth.wav
+  value: twenty_fifth. двадцать пятое
+twenty_sixth:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_sixth.wav
+  value: twenty_sixth. двадцать шестое
+twenty_seventh:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_seventh.wav
+  value: twenty_seventh. двадцать седьмое
+twenty_eighth:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_eighth.wav
+  value: twenty_eighth. двадцать восьмое
+twenty_nineth:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_nineth.wav
+  value: twenty_nineth. двадцать девятое
+thirty_first:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/thirty_first.wav
+  value: thirty_first. тридцать первое
+twenty_first_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_first_2.wav
+  value: twenty_first_2. двадцать первого
+twenty_second_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_second_2.wav
+  value: twenty_second_2. двадцать второго
+twenty_third_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_third_2.wav
+  value: twenty_third_2. двадцать третьего
+twenty_fourth_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_fourth_2.wav
+  value: twenty_fourth_2. двадцать четвертого
+twenty_fifth_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_fifth_2.wav
+  value: twenty_fifth_2. двадцать пятого
+twenty_sixth_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_sixth_2.wav
+  value: twenty_sixth_2. двадцать шестого
+twenty_seventh_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_seventh_2.wav
+  value: twenty_seventh_2. двадцать седьмого
+twenty_eight_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_eight_2.wav
+  value: twenty_eight_2. двадцать восьмого
+twenty_nineth_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/twenty_nineth_2.wav
+  value: twenty_nineth_2. двадцать девятого
+thirty_first_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/thirty_first_2.wav
+  value: thirty_first_2. тридцать первого
+IUnderstoodUMust:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/IUnderstoodUMust.wav
+  value: IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но
+OperatorHelpU:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OperatorHelpU.wav
+  value: OperatorHelpU. Чтобы оператор смог вас проконсультировать сразу после перевода звонка уточните, пожалуйста, данные
+OperatorHelpUnderstand:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OperatorHelpUnderstand.wav
+  value: OperatorHelpUnderstand. К сожалению так и не поняла Вас, чтобы оператор смог вас проконсультировать сразу после перевода звонка уточните, пожалуйста, данные
+NotUnderstandableRequest:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NotUnderstandableRequest.wav
+  value: NotUnderstandableRequest. К сожалению так и не поняла Вас, но
+NoTime:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoTime.wav
+  value: NoTime. К сожалению, мне не удается запланировать заявку. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что мы записываем все разговоры.
+NaOperatorAvtorizovat:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NaOperatorAvtorizovat.wav
+  value: NaOperatorAvtorizovat. Чтобы оператор смог вас проконсультировать сразу после перевода звонка, пожалуйста, уточните
+DTMFStepOne:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DTMFStepOne.wav
+  value: DTMFStepOne. Пожалуйста, задайте вопрос голосом, я не реагирую на кнопки
+DTMFStepTwo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DTMFStepTwo.wav
+  value: DTMFStepTwo. Лучше скажите голосом, либо напишите в чат - меня не обучали понимать кнопки
+DTMFStepThree:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DTMFStepThree.wav
+  value: DTMFStepThree. И все же, пожалуйста, спросите голосом! это легче и быстрее, чем выбирать нужный пункт кнопками
+DTMFStepFour:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DTMFStepFour.wav
+  value: DTMFStepFour. Если вы пытаетесь что-то сказать, но я не слышу - возможно, возникли проблемы на стороне оператора телефонии. Пожалуйста, перезвоните.
+DTMFStepFive:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DTMFStepFive.wav
+  value: DTMFStepFive. К сожалению, у нас ничего не получается. Попробую соединить вас с оператором, возможно он сможет помочь
+verno_kamyshin:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_kamyshin.wav
+  value: verno_kamyshin. Ваш город Камышин?
+kamyshin:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kamyshin.wav
+  value: kamyshin. Адреса в Камышине
+UHomeInternet:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternet.wav
+  value: UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.
+UHomeInternetNoAvtor:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternetNoAvtor.wav
+  value: UHomeInternetNoAvtor. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите. да. или , Нет.
+UHomeInternet2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternet2.wav
+  value: UHomeInternet2. К сожалению, провести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и произвела его перезагрузку. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.
+UHomeInternet3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternet3.wav
+  value: UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.
+TimeAvailable:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/TimeAvailable.wav
+  value: TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника
+TimeNoAvailable:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/TimeNOAvailable.wav
+  value: TimeNoAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.
+OperatorZayvka:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OperatorZayvka.wav
+  value: OperatorZayvka. Если вы хотите отменить заявку, скажите Отмена. Если вам необходима помощь нашего специалиста - скажите Оператор
+PodtverdiOtmeny:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PodtverdiOtmeny.wav
+  value: PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.
+ZayakaOtmena:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ZayakaOtmena.wav
+  value: ZayakaOtmena. Ваша заявка успешно отменена.
+OperatorIzSZ:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OperatorIzSZ.wav
+  value: OperatorIzSZ. Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются
+OperatorZayvkaYes:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OperatorZayvkaYes.wav
+  value: OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются
+S:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/S.wav
+  value: S. с
+Do:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Do.wav
+  value: Do. до
+Za:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Za.wav
+  value: Za. за
+AgentHelpU:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/AgentHelpU.wav
+  value: AgentHelpU. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация
+AgentHelpU2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/AgentHelpU2.wav
+  value: AgentHelpU2. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация
+DnotUnderstandU2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DnotUnderstandU2.wav
+  value: DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация
+DnotUnderstandU1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DnotUnderstandU1.wav
+  value: DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами
+No_answer3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/No_answer3.wav
+  value: No_answer3. Пожалуйста, задайте вопрос голосом
+No_answer4:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/No_answer4.wav
+  value: No_answer4. Я умею решать многие вопросы, чем Вам помочь?
+URatHomeTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/URatHomeTV.wav
+  value: URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ
+RUNotAtHomeTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RUNotAtHomeTV.wav
+  value: RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.
+CifralGo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CifralGo.wav
+  value: CifralGo. Сейчас я переведу вас на отдел по поддержке домофонии. Пожалуйста. ожидайте соединения. В целях повышения качества обслуживания все разговоры записываются
+SorryNotWork:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SorryNotWork.wav
+  value: SorryNotWork. Сожалею, что не смогла помочь. Перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.
+SpecifyQuestion:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SpecifyQuestion.wav
+  value: SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи
+SpecifyIntTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SpecifyIntTV.wav
+  value: SpecifyIntTV. Подскажите Ваш вопрос по услуге телевидения или интернета?
+SpecifyBroadcasting:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SpecifyBroadcasting.wav
+  value: SpecifyBroadcasting. Пожалуйста уточните у Вас помехи в виде рассыпания картинки или полностью отсутствует вещание?
+NoIntTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoIntTV.wav
+  value: NoIntTV. Не вижу на вашем договоре подключенных услуг интернета и телевидения. перевожу вызов на оператора., он обязательно поможет. В целях повышения качества обслуживания мы записываем все разговоры.
+NewSession:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NewSession.wav
+  value: NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.
+NewSessionWorking:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NewSessionWorking.wav
+  value: NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.
+NoConnection:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoConnection.wav
+  value: NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.
+NoConnectionDefeat:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoConnectionDefeat.wav
+  value: NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.
+NoConnectionSuccess:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoConnectionSuccess.wav
+  value: NoConnectionSuccess. Здорово! Вижу, что сессия установилась. Пожалуйста, проверьте открываются ли страницы. Скажите Да или Нет.
+HappySuccess:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/HappySuccess.wav
+  value: HappySuccess. Рада, что у нас получилось.
+SorryNotWork1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SorryNotWork1.wav
+  value: SorryNotWork1. Сожалею, что не смогла помочь.
+ThisIsStrange:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ThisIsStrange.wav
+  value: ThisIsStrange. Это очень странно. Пожалуйста, убедитесь, что Ваше устройствао соединено с роутером по кабелю или через беспроводную wifi сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.
+NewSessionReboot:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NewSessionReboot.wav
+  value: NewSessionReboot. NewSessionReboot Music
+NewSessionReboot_short:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NewSessionReboot_short.wav
+  value: NewSessionReboot_short. NewSessionReboot Music Short
+InstructionsSMS:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InstructionsSMS.wav
+  value: InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.
+CommonInternetQuestion:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CommonInternetQuestion.wav
+  value: CommonInternetQuestion. Пожалуйста, опишите подробнее вашу проблему с услугой Интернет
+OCPOmilia:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OCPOmilia.wav
+  value: OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.
+OborudovaniePK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/OborudovaniePK.wav
+  value: OborudovaniePK. Поняла вас, перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.
+UtochneniePK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/UtochneniePK.wav
+  value: UtochneniePK. Я правильно поняла, что Вы хотите подключить новую услугу? Скажите Да или Нет.
+SetupTVChannels:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SetupTVChannels.wav
+  value: SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.
+RestoreWiFipassword_noActual:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RestoreWiFipassword_noActual.wav
+  value: RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.
+InitMSHi:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InitMSHi.wav
+  value: InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.
+InitPodklOborudovanie:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InitPodklOborudovanie.wav
+  value: InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?
+Answering1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Answering1.wav
+  value: Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас
+Answering2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Answering2.wav
+  value: Answering2. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас
+Answering3:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Answering3.wav
+  value: Answering3. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас
+Answering4:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Answering4.wav
+  value: Answering4. К сожалению, я не смогу решить ваш вопрос, т.к вызов поставлен на удержание. Пожалуйста, перезвоните или напишите в чате, когда будете готовы продолжить разговор, а сейчас я вынуждена прервать вызов. Хорошего вам дня!
+CallsOnHoldPickedUp:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CallsOnHoldPickedUp.wav
+  value: CallsOnHoldPickedUp. Слышу, что вы сняли трубку, но не разобрала, что вы сказали. Повторите, пожалуйста, свой вопрос.
+CommonTVQuestion:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CommonTVQuestion.wav
+  value: CommonTVQuestion. Пожалуйста, уточните конкретнее. у вас не работает телевидение? помехи на каналах? либо не работает ТВ приставка?
+ZayavkaBezOperatorPerenos:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ZayavkaBezOperatorPerenos.wav
+  value: ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.
+sms_OtpravlenaPerenosSZ:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_OtpravlenaPerenosSZ.wav
+  value: sms_OtpravlenaPerenosSZ. Я отправила вам смс со ссылкой для переноса вашей заявки. Там вы сможете выбрать удобное для вас время. Доставка смс обычно занимает не более минуты.
+wait_timeout:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/wait_timeout.wav
+  value: wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.
+CommutatorAvaria:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CommutatorAvaria.wav
+  value: CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности
+promisedPayError11:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError11.wav
+  value: promisedPayError11. К сожалению, я не могу подключить вам "Обещаный платеж", так как у вас не подключена услуга Интернет.
+promisedPayError13_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError13_1.wav
+  value: promisedPayError13_1. Вы не можете активировать обещанный платеж, поскольку уже брали его в этом месяце. Повторная активация невозможна. Для того, чтобы услуги заработали, достаточно оплатить
+promisedPayError14Mono_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError14Mono_1.wav
+  value: promisedPayError14Mono_1. Я могу помочь активировать обещанный платеж только с первого по пятнадцатое число. Вы можете активировать самостоятельно обещанный платеж в любой день в личном кабинете. Обратите внимание, что при активации после 15 числа, стоимость абонентской платы пересчитается пропорционально оставшимся дням до конца месяца.
+promisedPayError16_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError16_1.wav
+  value: promisedPayError16_1. К сожалению, не смогу активировать вам Обещаный платеж из-за задолженности на договоре.
+promisedPayError16_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError16_2.wav
+  value: promisedPayError16_2. После оплаты мы сможем активировать обещанный платеж. Также вы можете внести сразу всю сумму
+promisedPayError12_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError12_1.wav
+  value: promisedPayError12_1. На вашем договоре Обещаный платеж уже активирован. Он будет автоматически отключен на следующий день после поступления оплаты.
+promisedPayError17_1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError17_1.wav
+  value: promisedPayError17_1. Вижу, что на вашем договоре интернет активен и обещанный платеж не требуется.
+promisedPayWhatElse:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayWhatElse.wav
+  value: promisedPayWhatElse. Если у вас не работает какая-то услуга, или есть другой вопрос, скажите мне об этом, и я помогу вам.
+promisedPayError14Mono_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError14Mono_2.wav
+  value: promisedPayError14Mono_2. Если Вам необходимо восстановить номер договора и пароль, скажите ДА. Если это не требуется, скажите нет.
+PerevodnaOKC_activatetarif:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PerevodnaOKC_activatetarif.wav
+  value: PerevodnaOKC_activatetarif. Для того, чтобы услуги заработали, необходимо активировать тариф. Сейчас я соединю вас со специалистом для дальнейшей консультации. В целях повышения качества обслуживания. все разговоры записываются.
+SMSGoTariff:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMSGoTariff.wav
+  value: SMSGoTariff. Сообщение отправлено, пожалуйста, проверьте
+CommonTarif:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CommonTarif.wav
+  value: CommonTarif. Вы хотите узнать характеристики вашего тарифного плана, либо узнать об актуальных тарифах компании?
+SmenaTarif:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SmenaTarif.wav
+  value: SmenaTarif. Вы хотите узнать. как сменить тариф. или получить информацию о действующих предложениях?
+SmenaTarifInfo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SmenaTarifInfo.wav
+  value: SmenaTarifInfo. Я поняла, что вы интересуетесь информацией о тарифах и возможности смены
+WhichTarif:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhichTarif.wav
+  value: WhichTarif. Каждый тарифный план содержит в себе очень много характеристик, рассказывать про них по телефону займет очень много времени
+SMATarifAkt:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMATarifAkt.wav
+  value: SMATarifAkt. Сейчас я отправлю ссылку на ваш личный кабинет. Там вы можете ознакомиться с наполнением вашего текущего тарифа и другими тарифами компании.
+SMATarifNOAkt:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMATarifNOAkt.wav
+  value: SMATarifNOAkt. Сейчас я отправлю ссылку на ваш личный кабинет, для входа потребуется авторизоваться. Там вы можете ознакомиться с наполнением вашего текущего тарифа и другими тарифами компании.
+tarif_perevod_na_okc:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tarif_perevod_na_okc.wav
+  value: tarif_perevod_na_okc. Всю актуальную информацию по существующим тарифам и акциям вы можете получить в любое время на сайте домру точка ру или в мобильном приложении мой домру.
+suspensionLK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/suspensionLK.wav
+  value: suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру
+no_servicecenters:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/no_servicecenters.wav
+  value: no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.
+sms_Otpravlena_suspension:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_Otpravlena_suspension.wav
+  value: sms_Otpravlena_suspension. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте
+sms_Otpravlena_servicecenters:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_Otpravlena_servicecenters.wav
+  value: sms_Otpravlena_servicecenters. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте
+sms_Otpravlena_CancelSuspension:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_Otpravlena_CancelSuspension.wav
+  value: sms_Otpravlena_CancelSuspension. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте
+CancelSuspensionLK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/CancelSuspensionLK.wav
+  value: CancelSuspensionLK. Снять приостановление с одной услуги, перенести сроки приостановления, а также уточнить детали по стоимости и оплате, можно в личном кабинете на сайте дом точка ру.
+potential_accident:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/potential_accident.wav
+  value: potential_accident. Вижу, что по вашему адресу могут быть временно недоступны услуги телевидения и интернета. Мы уже устраняем аварию, работы продлятся в течение часа. Приносим извинения за временные неудобства. К сожалению, пока работы не завершены, провести диагностику и решить технический вопрос по телефону не удастся. Пожалуйста, после завершения работ проверьте работоспособность услуг и если ваш вопрос не будет решен - перезвоните в любое удобное время
+Avaria_Wait:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Avaria_Wait.wav
+  value: Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.
+DiscountMessage:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DiscountMessage.wav
+  value: DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК
+ConnectedDiscount:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ConnectedDiscount.wav
+  value: ConnectedDiscount. Акция успешно подключена
+DiscountError:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DiscountError.wav
+  value: DiscountError. При подключении РА возникла ошибка, перевожу вас на агента.
+23cheaper:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/23cheaper.wav
+  value: 23cheaper. Вам доступно для подключения оптом дешевле на
+23cheaper2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/23cheaper2.wav
+  value: 23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств
+1cheaper:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/1cheaper.wav
+  value: 1cheaper. Вам доступно подключение услуги оптом дешевле на
+KTVcheaper:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/KTVcheaper.wav
+  value: KTVcheaper. К сожалению, для клиентов без услуги интернет не доступно подключение акции Оптом дешевле.
+ActivCheaper:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ActivCheaper.wav
+  value: ActivCheaper. В данный момент РА на вашем договоре уже активна. Срок действия акции до
+ActivCheaper2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ActivCheaper2.wav
+  value: ActivCheaper2. Управлять своим договором вы всегда можете самостоятельно в вашем ЛК
+NoAvtorCheaper:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoAvtorCheaper.wav
+  value: NoAvtorCheaper. Подключить РА вы можете самостоятельно в ЛК
+EnoughMoney:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/EnoughMoney.wav
+  value: EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?
+NotEnoughMoney:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NotEnoughMoney.wav
+  value: NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере
+NotEnoughMoney2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NotEnoughMoney2.wav
+  value: NotEnoughMoney2. Далее в вашем ЛК активировать РА
+month:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/month.wav
+  value: month. месяц
+months:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/months.wav
+  value: months. месяцев
+montha:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/montha.wav
+  value: montha. месяца
+sound_i:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sound_i.wav
+  value: sound_i. и
+year_word:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/year_word.wav
+  value: year_word. года
+Subscription:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Subscription.wav
+  value: Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+sms_Otpravlena_Subscription:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sms_Otpravlena_Subscription.wav
+  value: sms_Otpravlena_Subscription. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте
+perevod_na_okc_from_othercontract:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_othercontract.wav
+  value: perevod_na_okc_from_othercontract. Я поняла, что вас интересует информация по другому договору. Чтобы в дальнейшем получать информирование по актуальному номеру договора, пожалуйста обновите контактные данные в личном кабинете на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.
+New_Bonuses:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/New_Bonuses.wav
+  value: New_Bonuses. Всю актуальную информацию по подключенным бонусам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+Antivirus:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Antivirus.wav
+  value: Antivirus. Всю актуальную информацию по подключенным Антивирусам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+Channel_package:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Channel_package.wav
+  value: Channel_package. Всю актуальную информацию по подключенным Пакетам каналов, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+bonuses:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/bonuses.wav
+  value: bonuses. Всю актуальную информацию по доступным бонусам и акциям, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+Discount:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Discount.wav
+  value: Discount. Всю актуальную информацию по доступным Спецпредложениям, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+spasTimeout:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/spasTimeout.wav
+  value: spasTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.
+perevod_na_okc_from_autopayment:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_autopayment.wav
+  value: perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_pretension:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_pretension.wav
+  value: perevod_na_okc_from_pretension. Я поняла, что у вас возникли вопросы по качеству оказанного сервиса. К сожалению, иногда так случается, пожалуйста извините. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_cable_replacement:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_cable_replacement.wav
+  value: perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.
+perevod_na_okc_from_subscription_feeIncrease:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_from_subscription_feeIncrease.wav
+  value: perevod_na_okc_from_subscription_feeIncrease. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста ожидайте. В целях повышения качества обслуживания все разговоры записываются.
+perevod_na_okc_monoKTV_TV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_monoKTV_TV.wav
+  value: perevod_na_okc_monoKTV_TV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Сейчас я переведу вас на оператора, а пока, пожалуйста, перезагрузите ваш телевизор, а так же провреьте плотность подключения всех кабелей к нему, чаще всего это решает проблему. Перевожу звонок и напоминаю, что вв целях улучшения качества обслуживания мы записываем все разговоры.
+SZmnogoPolovin:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZmnogoPolovin.wav
+  value: SZmnogoPolovin. В какой половине дня вам удобнее принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста, скажите - первая или - вторая.
+InetOnly:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InetOnly.wav
+  value: InetOnly. Не вижу на вашем договоре услуг Кабельного или цифрового телевидения. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.
+IPTV651:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/IPTV651.wav
+  value: IPTV651. Вижу, что вы используете цифровую приставку, которая получает телевизионный сигнал по кабелю Интернета. Я уже обновила пакеты каналов на вашем договоре, а сейчас проверяю соединение с интернетом.
+TVsetupGo:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/TVsetupGo.wav
+  value: TVsetupGo. Если проблема наблюдается только на одном телевизоре, то необходима проверка целостности и корректности подключения кабеля к телевизору или приставке, а также перенастройка вашего оборудования.
+Problem1or2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Problem1or2.wav
+  value: Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?
+1or2TV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/1or2TV.wav
+  value: 1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?
+1DecoderKTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/1DecoderKTV.wav
+  value: 1DecoderKTV. Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.
+AvariaIPTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/AvariaIPTV.wav
+  value: AvariaIPTV. Вижу, что на вашем доме зафиксирована аварийная ситуация, наши специалисты уже оповещены. Пожалуйста, повторно проверьте работу телевидения в течение часа.
+TV_dostupen_kanal_paket:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/TV_dostupen_kanal_paket.wav
+  value: TV_dostupen_kanal_paket. Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане. Ознакомиться со списком каналов вы можете в вашем Личном кабинете на сайте дом точка ру.
+TV_dostupen_kanal_paket1:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/TV_dostupen_kanal_paket1.wav
+  value: TV_dostupen_kanal_paket1. Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане. Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.
+IPTVOkc:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/IPTVOkc.wav
+  value: IPTVOkc. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Сейчас я переведу вас на оператора, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию, чаще всего это решает проблему. (okc) Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры
+IPTVOctp:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/IPTVOctp.wav
+  value: IPTVOctp. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Сейчас я переведу вас на оператора, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию, чаще всего это решает проблему. (octp) Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры
+SZProverilaDey:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZProverilaDey.wav
+  value: SZProverilaDey. Я проверила информацию по доступным дням.
+SZWhen:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZWhen.wav
+  value: SZWhen. Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите да. Eсли не готовы выбрать время визита - скажите нет.
+SZIPTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZIPTV.wav
+  value: SZIPTV. В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.
+SZDostypno:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZDostypno.wav
+  value: SZDostypno. Вот какие варианты доступны
+today:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/today.wav
+  value: today. сегодня
+tomorrow:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/tomorrow.wav
+  value: tomorrow. завтра
+after_tomorrow:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/after_tomorrow.wav
+  value: after_tomorrow. послезавтра
+SZDostypno2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZDostypno2.wav
+  value: SZDostypno2. Пожалуйста выберите вариант из списка.
+SMS_dostupen_kanal_paket:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMS_dostupen_kanal_paket.wav
+  value: SMS_dostupen_kanal_paket. Сообщение отправлено. Пожалуйста проверьте.
+SZNoTime:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZNoTime.wav
+  value: SZNoTime. К сожалению, мне не удается запланировать заявку. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что мы записываем все разговоры. (V2)
+SZYaNeSozdal_noMatchAnswer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZYaNeSozdal_noMatchAnswer.wav
+  value: SZYaNeSozdal_noMatchAnswer. К сожалению, не поняла Вас. Извините. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что все разговоры записываются. (V2)
+SZI_sprosil_u_technica:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZI_sprosil_u_technica.wav
+  value: SZI_sprosil_u_technica. Я уточнила информацию о доступном времени, вот какие есть варианты. (V2)
+SZI_sprosil_u_technica2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZI_sprosil_u_technica2.wav
+  value: SZI_sprosil_u_technica2. С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.
+SZgoZayavku:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZgoZayavku.wav
+  value: SZgoZayavku. Давайте проверим я передаю технику заявку на (V2)
+SZgoZayavku2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZgoZayavku2.wav
+  value: SZgoZayavku2. Если все верно, скажите - да. Если я неверно вас поняла, скажите - нет (V2)
+SZYaNeSplaniroval_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZYaNeSplaniroval_TS_request.wav
+  value: SZYaNeSplaniroval_TS_request. Я создала заявку, но мне не удалось забронировать выбранное вами время. Извините. Перевожу звонок на оператора, он поможет завершить формирование заявки. Напоминаю, что все разговоры записываются.
+SZYaSozdal_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZYaSozdal_TS_request.wav
+  value: SZYaSozdal_TS_request. Спасибо, техник подойдет к Вам (V2)
+YaNeSozdal_billingError:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaNeSozdal_billingError.wav
+  value: YaNeSozdal_billingError. Что-то пошло не так и мне не удалось создать заявку. Извините. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что все разговоры записываются. (V2)
+SZNotunderstood:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZNotunderstood.wav
+  value: SZNotunderstood. Пожалуйста, перезагрузите ваше оборудование и проверьте плотность подключения всех кабелей. А я пока перевожу звонок на оператора и напоминаю, что мы записываем все разговоры. (V2)
+SZYaNeSozdal_clientDisagree:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZYaNeSozdal_clientDisagree.wav
+  value: SZYaNeSozdal_clientDisagree. Видимо неправильно вас поняла. Извините. Перевожу звонок на оператора, он поможет оформить визит техника.
+SZYaNeSozdal_billingError:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZYaNeSozdal_billingError.wav
+  value: SZYaNeSozdal_billingError. Что-то пошло не так и мне не удалось создать заявку. Извините. Перевожу звонок на оператора, он поможет оформить визит техника. Напоминаю, что все разговоры записываются.
+chckSrvWithFioTimeout:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/chckSrvWithFioTimeout.wav
+  value: chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.
+chckSrvWithHouseTimeout:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/chckSrvWithHouseTimeout.wav
+  value: chckSrvWithHouseTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.
+chckSrvWithHouseIdTimeout:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/chckSrvWithHouseIdTimeout.wav
+  value: chckSrvWithHouseIdTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.
+getBalanceWithFioTimeout:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/getBalanceWithFioTimeout.wav
+  value: getBalanceWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.
+DetelBalanceNoAvtorizGorod:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DetelBalanceNoAvtorizGorod.wav
+  value: DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.
+DetelBalanceNoAvtoriz:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DetelBalanceNoAvtoriz.wav
+  value: DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.
+DetelBalance:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DetelBalance.wav
+  value: DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.
+DetelBalanceAvtorizGorod:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DetelBalanceAvtorizGorod.wav
+  value: DetelBalanceAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.
+match_sport:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/match_sport.wav
+  value: match_sport. Матч! Спорт
+kino_music_HD:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/kino_music_HD.wav
+  value: kino_music_HD. Кино и музыка HD
+insomnia:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/insomnia.wav
+  value: insomnia. Бессонница
+khl_HD:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/khl_HD.wav
+  value: khl_HD. КХЛ HD
+nastroi_kino:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/nastroi_kino.wav
+  value: nastroi_kino. Настрой кино
+umka:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/umka.wav
+  value: umka. Умка
+mix_HD:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/mix_HD.wav
+  value: mix_HD. Микс HD
+sport_hobbies_HD:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/sport_hobbies_HD.wav
+  value: sport_hobbies_HD. Спорт и увлечения HD
+national:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/national.wav
+  value: national. Национальный
+starting_plus:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/starting_plus.wav
+  value: starting_plus. Стартовый+
+match_prime:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/match_prime.wav
+  value: match_prime. Матч! Премьер
+match_football:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/match_football.wav
+  value: match_football. Матч! Футбол
+amedia_premium_HD:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/amedia_premium_HD.wav
+  value: amedia_premium_HD. Amedia Premium HD
+real_male:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/real_male.wav
+  value: real_male. Настоящий мужской
+gamer:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/gamer.wav
+  value: gamer. Геймер
+amazing_planet:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/amazing_planet.wav
+  value: amazing_planet. Удивительная планета
+russian_kino:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/russian_kino.wav
+  value: russian_kino. Русское кино
+shant_premium_HD:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/shant_premium_HD.wav
+  value: shant_premium_HD. Шант Premium HD
+vip_channel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/vip_channel.wav
+  value: vip_channel. ViP
+dorama:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/dorama.wav
+  value: dorama. Дорама
+movix_smart_channel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/movix_smart_channel.wav
+  value: movix_smart_channel. Movix Smart
+Empty_OneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Empty_OneChannel.wav
+  value: Empty_OneChannel. Динамический ролик. Содержимое зависит от содержания звукового файла.
+indicate_channelnameOneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/indicate_channelnameOneChannel.wav
+  value: indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности.
+channel_nameOneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/channel_nameOneChannel.wav
+  value: channel_nameOneChannel. Повторите, пожалуйста, название канала, с которым возникла проблема.
+validity_OneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/validity_OneChannel.wav
+  value: validity_OneChannel. Истек срок действия пакета
+packageExpired_OneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/packageExpired_OneChannel.wav
+  value: packageExpired_OneChannel. Хотите получить консультацию о пакетах каналов. Скажите Да или Нет.
+notIncluded_OneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/notIncluded_OneChannel.wav
+  value: notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен.
+timeout_OneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/timeout_OneChannel.wav
+  value: timeout_OneChannel. timeout_OneChannel
+checked_OneChannel:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/checked_OneChannel.wav
+  value: checked_OneChannel. Очень жаль. Я проверила информация по пакетам каналов и не нашла каких-либо проблем. В этой ситуации рекомендую вам перенастроить ваше оборудование.
+PovAP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PovAP.wav
+  value: PovAP. В период роста цен на телекоммуникационное оборудование, стоимости поддержки и обслуживания сети в хорошем качестве нам важно продолжать обеспечивать вас надёжным и быстрым интернетом, поэтому мы изменили стоимость услуг по вашему договору. Мы подготовили для вас специальные бонусы, они доступны в личном кабинете или в мобильном приложении Мой дом ру.
+SMSPovAP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMSPovAP.wav
+  value: SMSPovAP. Я отправила вам сообщение. Обычно доставка занимает не более минуты. Пожалуйста, проверьте.
+NoPovAP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoPovAP.wav
+  value: NoPovAP. Ознакомиться с актуальной информацией по начислениям и доступным предложениям вы всегда можете в личном кабинете или в мобильном приложении Мой дом ру.
+NeedSMSPovAP:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/NeedSMSPovAP.wav
+  value: NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?
+KeyBuy:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/KeyBuy.wav
+  value: KeyBuy. Купить ключ можно на сайте дом точка ру в разделе Домофон, а также на марктеплейсах. Там есть подробная инструкция...
+KeyActivate:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/KeyActivate.wav
+  value: KeyActivate. Для активации ключа необходимо заполнить на сайте дом.ру простую форму в разделе Домофон, после чего все заработает само.
+KeyNotWork:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/KeyNotWork.wav
+  value: KeyNotWork. Пожалуйста, проверьте корректность работы других Ключей. Если они работают, скорей всего поможет привязка ключа к договору
+SmartDom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SmartDom.wav
+  value: SmartDom. Я поняла, что у вас вопрос по приложению Умный дом точка ру. Подскажите, что конкретно не работает?
+DomofonNotWork:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DomofonNotWork.wav
+  value: DomofonNotWork. Я поняла, что у вас наблюдаются проблемы с домофоном. Пожалуйста, уточните, сложность с подъездным домофоном или трубкой в квартире
+KeyClarify:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/KeyClarify.wav
+  value: KeyClarify. Я поняла, что ваш вопрос связан с Ключом для домофона. Что конкретно вас интересует? Например покупка ключа или его привязка.
+Domofon:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Domofon.wav
+  value: Domofon. Я поняла, что у вас вопрос по домофону, пожалуйста, уточните, что конкретно вас интересует?
+DomofonCons:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DomofonCons.wav
+  value: DomofonCons. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры
+Videonabludenie:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Videonabludenie.wav
+  value: Videonabludenie. Я поняла, что у вас вопрос по видеонаблюдению. Пожалуйста, опишите, более подробно
+PereezdAdres:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/PereezdAdres.wav
+  value: PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.
+HouseConnected:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/HouseConnected.wav
+  value: HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.
+HouseNotConnected:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/HouseNotConnected.wav
+  value: HouseNotConnected. К сожалению, данный адрес не подключен, сейчас соединю вас со специалистом для решения вопроса.  В целях повышения качества обслуживания. все разговоры записываются.
+InetIPTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InetIPTV.wav
+  value: InetIPTV. Вижу, что вы используете цифровую приставку, которая получает телевизионный сигнал по кабелю Интернета. Я уже обновила пакеты каналов на вашем договоре, а сейчас проверяю соединение с интернетом.
+MusicTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/MusicTV.wav
+  value: MusicTV. Музыка минута
+RebutKabelTV:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RebutKabelTV.wav
+  value: RebutKabelTV. В большинстве случаев проблема заключается в телевизионном кабеле. Проверьте кабель на отсутствие повреждений, а так же достаньте и вставьте его назад в приставку. Не лишним будет так же перезагрузить приставку по питанию. Пожалуйста, сделайте это, а я пока проведу проверку со своей стороны. Вернусь к вам через минуту.
+ZayavkaBezOperator:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ZayavkaBezOperator.wav
+  value: ZayavkaBezOperator. Если вы хотите отменить заявку, скажите отмена. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.
+i_will_send_sms:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/i_will_send_sms.wav
+  value: i_will_send_sms. Сейчас отправлю вам СМС.
+aftererrorop_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/aftererrorop_CatchAll.wav
+  value: aftererrorop_CatchAll. Извините, не уверена, что верно вас поняла.
+zakaz_sms_proactive_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zakaz_sms_proactive_CatchAll.wav
+  value: zakaz_sms_proactive_CatchAll. Извините, не уверена, что верно вас поняла. Скажите, отправить вам смс о восстановлении доступа к услугам?
+ask_promisedPay_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ask_promisedPay_CatchAll.wav
+  value: ask_promisedPay_CatchAll. Прошу прощения, не уверена, что верно вас поняла. Вы бы хотели воспользоваться услугой обещанный платеж?
+zakaz_sms_info1_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zakaz_sms_info1_ThemeMatch.wav
+  value: zakaz_sms_info1_ThemeMatch. С удовольствием отвечу на ваш вопрос, но перед этим уточните, пожалуйста, вы хотите получить смс о восстановлении доступа к услугам?
+aftererrorop_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/aftererrorop_ThemeMatch.wav
+  value: aftererrorop_ThemeMatch. С удовольствием отвечу на ваш вопрос далее. Но сначала уточните, требуется ли вам информация о способах оплаты?
+ask_promisedPay_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ask_promisedPay_ThemeMatch.wav
+  value: ask_promisedPay_ThemeMatch. Поняла вас, в удовольствием отвечу на все ваши вопросы. Но перед этим, пожалуйста, уточните, вы бы хотели воспользоваться услугой обещанный платеж?
+SetupTVChannels_SMS:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SetupTVChannels_SMS.wav
+  value: SetupTVChannels_SMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.
+at:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/at.wav
+  value: at. в
+doYouWant_TS_request_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_TS_request_ThemeMatch.wav
+  value: doYouWant_TS_request_ThemeMatch. С удовольствием отвечу на все ваши вопросы, но перед эти уточните, пожалуйста, вы готовы сейчас оформить заявку на визит техника?
+SZDostypno_outOfRangeDate:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZDostypno_outOfRangeDate.wav
+  value: SZDostypno_outOfRangeDate. Я  могу  оформить визит техника только на озвученные дни. Скажите, пожалуйста, какой из вариантов вам подходит?
+callbackInThreeDays:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/callbackInThreeDays.wav
+  value: callbackInThreeDays. Я могу создать заявку на техника только на ближайшие три дня. Позвоните, пожалуйста, ближе к удобной дате для оформления визита.
+I_sprosil_u_technica_unavailableTime:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/I_sprosil_u_technica_unavailableTime.wav
+  value: I_sprosil_u_technica_unavailableTime. К сожалению, указанное вами время не доступно. Скажите,  в какое время из перечисленного,  вы бы смогли принять специалиста?
+I_sprosil_u_technica_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/I_sprosil_u_technica_CatchAll.wav
+  value: I_sprosil_u_technica_CatchAll. Извините, не поняла. Какое время вы выбираете?
+YaNeSplaniroval_TS_request:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaNeSplaniroval_TS_request.wav
+  value: YaNeSplaniroval_TS_request. Я создала заявку, но мне не удалось забронировать выбранное вами время. Перевожу звонок на оператора, он поможет завершить оформление заявки.
+YaNeSozdal_clientDisagree:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/YaNeSozdal_clientDisagree.wav
+  value: YaNeSozdal_clientDisagree. Извините, возможно не верно вас поняла. Перевожу звонок на оператора, он поможет завершить оформление заявки.
+goZayavku_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/goZayavku_CatchAll.wav
+  value: goZayavku_CatchAll. Извините, не уверена, что правильно вас поняла. Скажите, все ли верно в оформленной заявке?
+doYouWant_TS_request_timeIssue:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_TS_request_timeIssue.wav
+  value: doYouWant_TS_request_timeIssue. Я смогу проверить доступное время только после того, как мы с вами выберем день. Для этого скажите, пожалуйста, верно понимаю, что вы готовы перейти к оформлению визита, да?
+doYouWant_admin_request_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_admin_request_ThemeMatch.wav
+  value: doYouWant_admin_request_ThemeMatch. Я с удовольствием отвечу на все ваши вопросы далее. Но, перед этим, пожалуйста, уточните создать ли мне заявку на удаленную проверку оборудования?
+doYouWant_admin_request_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/doYouWant_admin_request_CatchAll.wav
+  value: doYouWant_admin_request_CatchAll. Извините, не поняла вас. Мне создать заявку на удаленную проверку оборудования?
+activeTPnow_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/activeTPnow_CatchAll.wav
+  value: activeTPnow_CatchAll. Прошу прощения, возможно не верно вас поняла. Поэтому уточните, пожалуйста, вы хотите активировать тарифный план прямо сейчас?
+activeTPnow_CatchAll_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/activeTPnow_CatchAll_2.wav
+  value: activeTPnow_CatchAll_2. Активировать тарифный план вы можете самостоятельно в личном кабинете на сайте дом точка ру.
+SZDostypno_timeIssue:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/SZDostypno_timeIssue.wav
+  value: SZDostypno_timeIssue. Я смогу проверить доступное время только после того, как мы с вами выберем день. Для этого скажите, пожалуйста, какой из предложенных дней вы выбираете?
+mnogoPolovin_outOfRangeHalfDay:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/mnogoPolovin_outOfRangeHalfDay.wav
+  value: mnogoPolovin_outOfRangeHalfDay. К сожалению,  нет возможности оформить визит техника на это время.В какой половине дня вам будет удобно принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов.
+Initialization:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Initialization.wav
+  value: Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? 
+Initialization_Operator:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Initialization_Operator.wav
+  value: Initialization_Operator. Понимаю, что вы хотите как можно скорее решить ваш вопрос. Уточните, пожалуйста, вы пользуетесь услугами нашей компании?
+Initialization_nonowner:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Initialization_nonowner.wav
+  value: Initialization_nonowner. Поняла вас. 
+Initialization_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Initialization_CatchAll.wav
+  value: Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?
+InitPodklOborudovanie_operator:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InitPodklOborudovanie_operator.wav
+  value: InitPodklOborudovanie_operator. Для того, чтобы мы смогли оперативно и качественно вам помочь уточните, пожалуйста, какой именно у вас вопрос?
+InitPodklOborudovanie_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InitPodklOborudovanie_CatchAll.wav
+  value: InitPodklOborudovanie_CatchAll. Не уверена, что верно вас поняла. Скажите, вы хотите подключить наши услуги, приобрести оборудование или у вас другой вопрос?
+InitPodklOborudovanie_CatchAll_2:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/InitPodklOborudovanie_CatchAll_2.wav
+  value: InitPodklOborudovanie_CatchAll_2. Прошу вас повторить, какой у вас вопрос. подключение наших услуг, приобретение оборудования или другой вопрос?
+zapros_FIO_noMiddleName:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zapros_FIO_noMiddleName.wav
+  value: zapros_FIO_noMiddleName. Поняла вас. Тогда назовите, пожалуйста, фамилию  [микропауза] и имя на кого оформлен договор. 
+zapros_FIO_dontRemember:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zapros_FIO_dontRemember.wav
+  value: zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор. 
+zapros_FIO_nonowner:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zapros_FIO_nonowner.wav
+  value: zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор. 
+zapros_FIO_FullName:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zapros_FIO_FullName.wav
+  value: zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор. 
+zapros_FIO_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/zapros_FIO_CatchAll.wav
+  value: zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор. 
+requestStreetAndHouse_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/requestStreetAndHouse_CatchAll.wav
+  value: requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь. 
+requestStreetAndHouse_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/requestStreetAndHouse_ThemeMatch.wav
+  value: requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес
+requestStreetAndHouse_fullAddress:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/requestStreetAndHouse_fullAddress.wav
+  value: requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.
+severalAgreements_requestStreetAndHouse_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/severalAgreements_requestStreetAndHouse_ThemeMatch.wav
+  value: severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес
+verno_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/verno_CatchAll.wav
+  value: verno_CatchAll. Извините, не поняла.
+pleaseSayYoutCity_CatchAll:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/pleaseSayYoutCity_CatchAll.wav
+  value: pleaseSayYoutCity_CatchAll. Извините, не уверена, что верно вас услышала. Уточните, пожалуйста, из какого города вы обращаетесь?
+pleaseSayYoutCity_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/pleaseSayYoutCity_ThemeMatch.wav
+  value: pleaseSayYoutCity_ThemeMatch. Понимаю, что вы хотите как можно скорее решить ваш вопрос. И именно для этого, назовите, пожалуйста ваш город, чтобы я смогла определить необходимый договор.
+Operator:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Operator.wav
+  value: Operator. Для того, чтобы мы смогли оперативно и качественно вам помочь, пожалуйста, ответьте на мой вопрос. 
+RequestFIO_ThemeMatch:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/RequestFIO_ThemeMatch.wav
+  value: RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор
+DomofonTech:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DomofonTech.wav
+  value: DomofonTech. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры
+ConfirmCity_subject:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/ConfirmCity_subject.wav
+  value: ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста
+noInternetProduct:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/noInternetProduct.wav
+  value: noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.

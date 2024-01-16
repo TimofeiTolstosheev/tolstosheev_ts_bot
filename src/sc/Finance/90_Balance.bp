@@ -1,0 +1,15 @@
+{
+  "positions" : [ {
+    "id" : "/Balance/Balance",
+    "x" : -351,
+    "y" : 516
+  }, {
+    "id" : "/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms",
+    "x" : 790,
+    "y" : 791
+  }, {
+    "id" : "/Balance/Balance/CheckAuth/NotAuth/GoToWebCab",
+    "x" : 790,
+    "y" : 1233
+  } ]
+}

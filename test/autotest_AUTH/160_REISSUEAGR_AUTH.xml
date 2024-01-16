@@ -1,0 +1,57 @@
+<test integration="true">
+    
+    <test-case id="Авторизованный, мобильный, интент 160, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужно переоформить договор</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+
+    
+    <test-case id="Авторизованный, домашний, интент 160, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужно переоформить договор</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+    
+    
+
+</test>

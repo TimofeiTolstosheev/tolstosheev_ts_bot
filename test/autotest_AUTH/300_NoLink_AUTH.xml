@@ -1,0 +1,3067 @@
+<test>
+    
+    
+    <test-case id="300_ERR-651_Строка 10 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Нет. Рекомендуем перезвонить из дома. код 300 и 0. В ВА фиксируется обращение на договоре. 300 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>UHomeInternet. URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>UHomeInternet2. RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    
+    
+    <test-case id="300_ERR-651_Строка 11 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутсвует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия НЕ появилась через 2,5 м Омилия информирует,кого сессия НЕ поднялась. Уходим на оператора. 300 и 1. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее чем через 3 минуты.</a>
+        <a>NoConnectionReboot. Музыка 2,5 минуты</a>
+        <q>нет</q>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a state="/NoLink/ToOperator">perevod_na_okc_from_NoLink6xxIntent1. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+    
+    
+    <test-case id="300_ERR-651_Строка 12 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия появилась через 1 м Омилия информирует,кого сессия поднялась. Клиент говорит,кого не заработало - 300 и 1. Фиксируется обращение в АРМ ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее чем через 3 минуты.</a>
+        <a>NoConnectionReboot. Музыка 2,5 минуты</a>
+        <a>NoConnectionSuccess. Здорово! Вижу,что сессия установилась. Пожалуйста, проверьте открываются ли страницы. Скажите Да или нет.</a>
+        <q>нет</q>
+        <a state="/NoLink/ToOperator">perevod_na_okc_from_NoLink6xxIntent1. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+    
+    <test-case id="300_ERR-651_Строка 13 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия появилась через 1 м Омилия информирует,кого сессия поднялась. Клиент говорит,кого заработало - 300 и 0. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 14 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, непонятная фраза 2ы. Перевод на агента. 300 и 1. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 15 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, непонятная фраза 1раз, на 2ой ДА. У вас остались вопросы. 300 и 0. Фиксируется обращение в АРМ 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 16 Aвторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, молчание 2ы. Перевод на агента. 300 и 1. Фиксируется обращение в АРМ 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 17 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, молчание 1, на 2ой раз ДА. Вопросов нет 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 17.1 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да. Биллинг - ребут порта, Играет музыкальный ролик, после него клиент молчит. На ОЦТП. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 18 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Нет. Сожалеем,кого не помогли. Оператор 300 и 1 . Обращение в АРМ открытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>Сожалею, что не смогла помочь.</a>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 19 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Да. Радуемся,кого помогли. Есть вопросы? Нет 300 и 0 . Обращение в АРМ закрытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 2 Авторизованный, проактив ок. Проверка на аварию. Ожидаем 25 секунд, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросов НЕТ.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 20 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент непонятная фраза 2ы. Сожалеем, перевод на агента. 300 и 1 . Обращение в АРМ открытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 21 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент 1 раз непонятная фраза, 2ой раз ДА. Радуемся,кого помогли. Есть вопросы?300 и 0 . Обращение в АРМ закрытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 10 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Нет. Рекомендуем перезвонить из дома. код 300 и 0. В ВА фиксируется обращение на договоре. 300 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>UHomeInternet. URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>UHomeInternet2. RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    
+    
+    <test-case id="300_ERR-651_Строка 11 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутсвует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия НЕ появилась через 2,5 м Омилия информирует,кого сессия НЕ поднялась. Уходим на оператора. 300 и 1. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее чем через 3 минуты.</a>
+        <a>NoConnectionReboot. Музыка 2,5 минуты</a>
+        <q>нет</q>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a state="/NoLink/ToOperator">perevod_na_okc_from_NoLink6xxIntent1. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+    
+    <test-case id="300_ERR-651_Строка 12 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия появилась через 1 м Омилия информирует,кого сессия поднялась. Клиент говорит,кого не заработало - 300 и 1. Фиксируется обращение в АРМ ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее чем через 3 минуты.</a>
+        <a>NoConnectionReboot. Музыка 2,5 минуты</a>
+        <a>NoConnectionSuccess. Здорово! Вижу,что сессия установилась. Пожалуйста, проверьте открываются ли страницы. Скажите Да или нет.</a>
+        <q>нет</q>
+        <a state="/NoLink/ToOperator">perevod_na_okc_from_NoLink6xxIntent1. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+    
+    
+    <test-case id="300_ERR-651_Строка 13 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия появилась через 1 м Омилия информирует,кого сессия поднялась. Клиент говорит,кого заработало - 300 и 0. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 14 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, непонятная фраза 2ы. Перевод на агента. 300 и 1. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 15 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, непонятная фраза 1раз, на 2ой ДА. У вас остались вопросы. 300 и 0. Фиксируется обращение в АРМ 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 16 Aвторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, молчание 2ы. Перевод на агента. 300 и 1. Фиксируется обращение в АРМ 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 17 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутствует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Омилия информирует,кого сессия поднялась через 1м. Клиент говорит, молчание 1, на 2ой раз ДА. Вопросов нет 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 17.1 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да. Биллинг - ребут порта, Играет музыкальный ролик, после него клиент молчит. На ОЦТП. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 18 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Нет. Сожалеем,кого не помогли. Оператор 300 и 1 . Обращение в АРМ открытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>Сожалею, что не смогла помочь.</a>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 19 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Да. Радуемся,кого помогли. Есть вопросы? Нет 300 и 0 . Обращение в АРМ закрытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 2 Авторизованный, проактив ок. Проверка на аварию. Ожидаем 25 секунд, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросов НЕТ.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 20 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент непонятная фраза 2ы. Сожалеем, перевод на агента. 300 и 1 . Обращение в АРМ открытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 21 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент 1 раз непонятная фраза, 2ой раз ДА. Радуемся,кого помогли. Есть вопросы?300 и 0 . Обращение в АРМ закрытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 24 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Нет. Условия НЕ совпадают - есть метки (все остальное норм)">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>Сожалею, что не смогла помочь.</a>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 26 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Нет. Условия НЕ совпадают - есть СПАС с переводом на ОЦТП">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": true,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>да</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 27 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да. Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - ДА. Радуемся за клиента. У вас есть вопросы? 300 и 0 . Обращение в АРМ закрытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ннн</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>HappySuccess. Рада, что у нас получилось.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 28 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - Нет . Огорчаемся за клиента. Нужен оператор - Да. 300 и 1 . Обращение в АРМ открытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>да</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 29 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - Нет . Огорчаемся за клиента. Нужен оператор - Нет. 300 и 0 . Обращение в АРМ открытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 3 Авторизованный, проактив ок. Проверка на аварию. Ожидаем 25 секунд, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросы ЕСТЬ. Новый интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 30 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - непонятная фраза 2ы. Огорчаемся за клиента. На оператора. 300 и 1 . Обращение в АРМ открытое 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ппп</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ппп</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 31 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - непонятная фраза 1 раз, 2ая - НЕТ. Огорчаемся за клиента. На оператора. 300 и 1 . Обращение в АРМ открытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>ппп</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>да</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 32 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - молчание 2ы. Огорчаемся за клиента. На оператора. 300 и 1 . Обращение в АРМ открытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 33 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - нет. Условия совпадают для НТП.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": true,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>да</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 34 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - нет. Условия НЕ совпадают, есть метки (все остальное ок), перевод на ОКЦ.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <event>speechNotRecognized</event>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 35 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - нет. Условия НЕ совпадают, есть СПАС с переводом на ОКЦ (зашумленная среда).">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <event>speechNotRecognized</event>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 35 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия новая. Информируем клиента,кого перед звонком у него поднялась сессия. Играет музыка 60 сек. Спрашиваем клиента - заработало? Клиент - нет. Условия НЕ совпадают, есть СПАС с переводом на ОКЦ (зашумленная среда).">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <event>speechNotRecognized</event>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 37 Авторизован. В блоке проактива ошибка - ДЗ. 300 и 29">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>3300</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>wait_for_the_payment. Если вы уже произвели оплату, пожалуйста подождите немного. обычно деньги поступают на счет мгновенно, но иногда это может занять несколько часов.</a>
+        <a>ask_promisedPay. Если вы еще не производили оплату, могу попробовать подключить вам услугу обещанный платеж. Вам это, интересно?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 38 Авторизован. В блоке проактива ошибка - Авария. 500 и 29">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся. Время до завершения.</a>
+        <a>1</a>
+        <a>час.</a>
+        <a>Приносим извинения за временные неудобства.</a>
+        <a>Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 39 Авторизован. В проактиве ош. ТП не активирован. 300 и 0 580012948925">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>650,00</a>
+        <a>Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строкa 40 Не авторизован. В блоке проактива Клиента не авторизовали.Перевод на агента. 300 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_angarsk. Ваш город ангарск?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строкa 4 Не авторизован. В блоке проактива Клиента не авторизовали.Перевод на агента. 300 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_angarsk. Ваш город ангарск?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица чайковского дом тридцатьшесть</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>афанасьев григорий иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 6 Авторизованный. Проактив ок. Проверка на аварию менее 5 сек, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "true",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "false",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "needTechDeviceReboot": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+
+    <test-case id="300_ERR-651_Строка 10 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Нет. Рекомендуем перезвонить из дома. код 300 и 0. В ВА фиксируется обращение на договоре. 300 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>UHomeInternet. URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>UHomeInternet2. RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    
+    
+    <test-case id="300_ERR-651_Строка 11 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия отсутсвует. Омилия говорит,кого сессии нет. Биллинг - ребут порта, Играет музыкальный ролик 2,5м. Сессия НЕ появилась через 2,5 м Омилия информирует,кого сессия НЕ поднялась. Уходим на оператора. 300 и 1. Фиксируется обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее чем через 3 минуты.</a>
+        <a>NoConnectionReboot. Музыка 2,5 минуты</a>
+        <q>нет</q>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 2 Авторизованный, проактив ок. Проверка на аварию. Ожидаем 25 секунд, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросов НЕТ.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 22 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент молчание 2ы. Сожалеем, перевод на агента. 300 и 1 . Обращение в АРМ открытое">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <event>speechNotRecognized</event>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 25 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Да.Сессия старая. Перезагружаем роутер /порт. Информируем клиента о перезагрузке. Музыка 60сек. Уточняем заработало ли? Клиент Нет. Условия НЕ совпадают - есть СПАС с переводом на ОКЦ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>да</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    
+    
+    <test-case id="300_ERR-651_Строка 26 Авторизованный. В блоке проактива ошибок нет. На вопрос дома ли клиент - Нет. Рекомендуем перезвонить из дома. Повторный переход в интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>     
+    
+</test>

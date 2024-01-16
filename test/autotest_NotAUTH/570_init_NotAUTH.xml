@@ -1,0 +1,319 @@
+<test>
+    <!--не будет использоваться в общем файле-->
+    <test-case id="3 /token: guest">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization"/>
+    </test-case>
+    
+    <!--9 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Купить роутер. Переход в потенциальника. Любая ветка.-->
+    <test-case id="7 InitPodklOborudovanie 3">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <q>/start</q>
+        <a state ="/Init/Initialization"/>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie"/>
+        <q>хочу купить роутер</q>
+        <!--<a state="/Init/Initialization/InitPodklOborudovanie/Device"/>-->
+        <!--<a state="/PotentialClient/Device" />-->
+        <a state="/PotentialClient/PhysicalOrLegal"/>
+    </test-case>
+
+    <!--10 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Подключить телевидение. Переход в потенциальника. Любая ветка.-->
+    <test-case id="8 InitPodklOborudovanie 4">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie"/>
+        <q>хочу подлкючить услугу</q>
+        <!--<a state="/Init/Initialization/InitPodklOborudovanie/ActivateService"/>-->
+        <!--<a state="/PotentialClient/Service" />-->
+        <a state="/PotentialClient/PhysicalOrLegal"/>
+    </test-case>
+
+    <!--3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Другой вопрос. Интент 280. Любая ветка.-->
+    <test-case id="9 InitPodklOborudovanie 5">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization"/>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie"/>
+        <q>у меня другой вопрос</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <!--13 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Не на меня оформлено. Ваш город X? - ноуматч х2. Переход в 650. Любая ветка далее.-->
+    <test-case id="16 Initialization ConfirmCity 1">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>у лукоморья дуб зеленый</q>
+        <a state="/Init/Initialization/ConfirmCity/CatchAll"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>златая цепь на дубе том</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+    </test-case>
+    
+    <test-case id="18 Initialization ConfirmCity 3">
+        <context var="session">
+            { "city": { "code": "dev-dcc-spb", "name": "СПБ (DEV-DCC-SPB)" } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор не на мое имя</q>
+        <a state="/Init/Initialization/InitializationNonOwner" />
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>Кирово-Чепецк</q>
+        <!--<q>Саратов</q>-->
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="22 Initialization PleaseSayYourCity 2">
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор не на мое имя</q>
+        <a state="/Init/Initialization/InitializationNonOwner" />
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity" />
+        <q>Кирово-Чепецк</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="24 Initialization PleaseSayYourCity 4">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+        <q>вопрос про финансы</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity/ThemeMatch"/>
+        <q>вопрос про финансы</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion"/>
+    </test-case>
+    
+    <test-case id="28 Initialization RequestStreetAndHouse 4">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>сильвупле мадам</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/CatchAll"/>
+        <q>каждый охотник желает</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+    </test-case>
+    
+    <test-case id="29 Initialization RequestStreetAndHouse 5">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>вопрос про финансы</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/ThemeMatch"/>
+        <q>вопрос про финансы</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion"/>
+    </test-case>
+    
+    <test-case id="37 Initialization RequestFIO 8">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>Ключевая, 9</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>я не помню на кого оформлен договор</q>
+        <a state="/Init/Initialization/RequestFIO/DontRemember"/>
+        <q>вылетело из головы</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="38 Initialization RequestFIO 9">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/RequestFIO/CatchAll"/>
+        <q>интересует меня</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+    </test-case>
+    
+    <test-case id="39 Initialization RequestFIO 10">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>вопрос про финансы</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch"/>
+        <q>вопрос про финансы</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion"/>
+    </test-case>
+</test>

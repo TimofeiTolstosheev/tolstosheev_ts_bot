@@ -1,0 +1,3364 @@
+ <test>
+    <test-case id="290_TVCH_Строка 6 Авторизованный клиент. Отсутствие вещания на каналах. В проактиве ОК. На вопрос дома ли клиент - Да, договор определен однозначно. нет проблем спас. Не вещают ВСЕ_каналы.unknowntvsetup, перевод с кодом 3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a state="/TvChannelProblem/CheckProducts">Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Сейчас я переведу вас на оператора, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию, чаще всего это решает проблему. (octp)</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+  
+
+
+    <test-case id="290_TVCH_Строка 2 Авторизованный клиент. Отсутствие вещания на каналах. В проактиве ДЗ. \ 290 и 29">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": "true",
+                "proactiveResult": "KP_NoDZ_NotActive",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>КП нет ДЗ, услуги неактивны</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_Строка 3 Авторизованный клиент. Отсутствие вещания на каналах. В проактиве Авария. \ 500 и 29">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "accident": true,
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>Авария</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    
+    
+    <test-case id="290_TVCH_Строка 4 Авторизованный клиент. Отсутствие вещания на каналах. В проактиве ОК. Клиент НЕ дома, вопросов нет. \ 290 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>UHomeInternet2. К сожалению, провести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и произвела его перезагрузку. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_Строка 8 Авторизованный клиент. Отсутствие вещания на каналах. Нет услуг КТВ\ЦКТВ. На оператора. ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a state="/TvChannelProblem/AreYouAtHome/HowMuchChannels/InternetOnly">Не вижу на вашем договоре услуг кабельного телевидения.</a>
+        <a state="/TvChannelProblem/AreYouAtHome/HowMuchChannels/InternetOnly">Перевожу звонок на оператора, он поможет решить вопрос.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_Строка 30 Авторизованный клиент. Отсутствие вещания на каналах. В проактиве ОК. Клиент дома, не показывают все каналы. Договоре есть несколько приставок без iptv. Проговариваем РМ кто Проблема на всех ТВ или на 1. Клиент - молчит. Перевод на оператора с РМ 290 и 1 \\">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>ввв</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>ввв</q>
+        <a>Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. </a>
+        <a>Сейчас я переведу вас на оператора, а пока, пожалуйста, перезагрузите ваш телевизор, а так же провреьте плотность подключения всех кабелей к нему, чаще всего это решает проблему. Перевожу звонок и напоминаю, что вв целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+
+
+
+    <test-case id="290_TVCH_31Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех телевизорах</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>нет</q>
+        <a>Пожалуйста, перезагрузите ваше оборудование и проверьте плотность подключения всех кабелей. А я пока перевожу звонок на оператора и напоминаю, что мы записываем все разговоры. (V2)</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>    
+
+
+
+    <test-case id="290_TVCH_32Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех телевизорах</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>Вижу, что на вашем доме зафиксирована аварийная ситуация, наши специалисты уже оповещены. Пожалуйста, повторно проверьте работу телевидения в течение часа.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>    
+
+
+
+    <test-case id="290_TVCH_33Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvOnly",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>на одном телевизоре</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>Вижу, что на вашем доме зафиксирована аварийная ситуация, наши специалисты уже оповещены. Пожалуйста, повторно проверьте работу телевидения в течение часа.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>   
+
+
+
+    <test-case id="290_TVCH_34Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvOnly",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>на одном телевизоре</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок.</a>
+        <a>Сейчас я переведу вас на оператора, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию, чаще всего это решает проблему. (okc)</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>   
+
+
+
+    <test-case id="290_TVCH_35Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvOnly",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>несколько</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на одну</q>
+        <a>TVsetupGo. Если проблема наблюдается только на одном телевизоре, то необходима проверка целостности и корректности подключения кабеля к телевизору или приставке, а также перенастройка вашего оборудования.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>нет</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>   
+
+
+
+    <test-case id="290_TVCH_43.1Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvPlusBox",
+                "dvbc": "1",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>ффф</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>ффф</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>Вижу, что на вашем доме зафиксирована аварийная ситуация, наши специалисты уже оповещены. Пожалуйста, повторно проверьте работу телевидения в течение часа.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+ 
+
+
+    <test-case id="290_TVCH_45Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvPlusBox",
+                "dvbc": "1",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsSrvResult": "4",
+                    "techProblemsSrvPlanDate": "13.10.2023 14:00",
+                    "techProblemsSrvPlanDateHoursFromDecimal": "14",
+                    "techProblemsSrvPlanDateHoursToDecimal": "15",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника тринадцатого октября с четырнадцати до пятнадцати часов</a>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>ввв</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>ввв</q>
+        <a state="/Transfer/IntentLimiTransfer">@@Превышен лимит попадания в интент.</a>
+        <a state="/Transfer/IntentLimiTransfer">Перевожу на оператора и напоминаю, что в целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_46Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvPlusBox",
+                "dvbc": "1",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsSrvResult": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>нет</q>
+        <a>Пожалуйста, перезагрузите ваше оборудование и проверьте плотность подключения всех кабелей. </a>
+        <a>Перевожу на оператора и напоминаю, что в целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_47Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsSrvResult": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>нет</q>
+        <a>Пожалуйста, перезагрузите ваше оборудование и проверьте плотность подключения всех кабелей. </a>
+        <a>Перевожу на оператора и напоминаю, что в целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_48Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsSrvResult": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>ннн</q>
+        <a>Пожалуйста, перезагрузите ваше оборудование и проверьте плотность подключения всех кабелей. </a>
+        <a>Перевожу на оператора и напоминаю, что в целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_49Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsSrvResult": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>да</q>
+        <a>Я проверила информацию по доступным дням. Вот какие варианты доступны сегодня завтра послезавтра Пожалуйста выберите вариант из списка.</a>
+        <q>завтра</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>с 17</q>
+        <a>Давайте проверим: я передаю технику заявку на:</a>
+        <a>с 17.07.2023 17:00</a>
+        <a>Если все верно, скажите - да. Если я неверно вас поняла, скажите - нет (V2)</a>
+        <q>да</q>
+        <a>Спасибо, техник подойдет к Вам:</a>
+        <a>17.07.2023</a>
+        <a>с</a>
+        <a>17:00</a>
+        <a>до</a>
+        <a>18:00</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_49Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsSrvResult": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>да</q>
+        <a>Я проверила информацию по доступным дням. Вот какие варианты доступны сегодня завтра послезавтра Пожалуйста выберите вариант из списка.</a>
+        <q>завтра</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>с 17</q>
+        <a>Давайте проверим: я передаю технику заявку на:</a>
+        <a>с 17.07.2023 17:00</a>
+        <a>Если все верно, скажите - да. Если я неверно вас поняла, скажите - нет (V2)</a>
+        <q>да</q>
+        <a>Спасибо, техник подойдет к Вам:</a>
+        <a>17.07.2023</a>
+        <a>с</a>
+        <a>17:00</a>
+        <a>до</a>
+        <a>18:00</a>
+        <a>часов.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_50Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsServiceRequest": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>да</q>
+        <a>Я проверила информацию по доступным дням. Вот какие варианты доступны сегодня завтра послезавтра Пожалуйста выберите вариант из списка.</a>
+        <q>сегодня</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>ввв</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>ввв</q>
+        <a>Перевожу звонок на оператора, он поможет оформить визит техника.</a>
+        <a>Напоминаю, что все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_51Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsServiceRequest": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>да</q>
+        <a>Я проверила информацию по доступным дням. Вот какие варианты доступны сегодня завтра послезавтра Пожалуйста выберите вариант из списка.</a>
+        <q>завтра</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>ввв</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>ввв</q>
+        <a>Перевожу звонок на оператора, он поможет оформить визит техника.</a>
+        <a>Напоминаю, что все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="290_TVCH_51.1Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsServiceRequest": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>да</q>
+        <a>Я проверила информацию по доступным дням. Вот какие варианты доступны сегодня завтра послезавтра Пожалуйста выберите вариант из списка.</a>
+        <q>послезавтра</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>в 20</q>
+        <a>Давайте проверим: я передаю технику заявку на:</a>
+        <a>с 17.07.2023 17:00</a>
+        <a>Если все верно, скажите - да. Если я неверно вас поняла, скажите - нет (V2)</a>
+        <q>да</q>
+        <a>Спасибо, техник подойдет к Вам:</a>
+        <a>08.07.2023 /a>
+        <a>с</a>
+        <a>20:00</a>
+        <a>до</a>
+        <a>21:00</a>
+        <a>часа.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_51.2Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "multipleBoxNoIptv",
+                "dvbc": "2",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio</query>
+            <response status="200">
+                {
+                    "techProblemsServiceRequest": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на всех</q>
+        <a>Сейчас я проверю наличие ограничений на подъездном оборудовании. Пожалуйста подождите, это может занять до тридцати секунд.</a>
+        <a>В данном случае рекомендую вам вместе со мной завести сервисную заявку на приход специалиста к вам домой.</a>
+        <a>Я могу создать заявку на сегодня, завтра, или послезавтра. Если вы готовы запланировать заявку, пожалуйста, скажите: да. Eсли не готовы выбрать время визита - скажите: нет.</a>
+        <q>да</q>
+        <a>Я проверила информацию по доступным дням. Вот какие варианты доступны сегодня завтра послезавтра Пожалуйста выберите вариант из списка.</a>
+        <q>сегодня</q>
+        <a>Я уточнила информацию о доступном времени, вот какие есть варианты:</a>
+        <a>с 15</a>
+        <a>с 16</a>
+        <a>с 17</a>
+        <a>с 18</a>
+        <a>С какого часа вам удобнее принять техника? Пожалуйста, назовите вариант из списка.</a>
+        <q>в 20</q>
+        <a>Давайте проверим: я передаю технику заявку на:</a>
+        <a>с 06.07.2023 20:00</a>
+        <a>Если все верно, скажите - да. Если я неверно вас поняла, скажите - нет (V2)</a>
+        <q>да</q>
+        <a>Спасибо, техник подойдет к Вам:</a>
+        <a>08.07.2023/a>
+        <a>с</a>
+        <a>20:00</a>
+        <a>до</a>
+        <a>21:00</a>
+        <a>часа.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_52Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет сигнала на каналах</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>часть каналов</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>грозный</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Очень жаль.</a>
+        <a>Я проверила информация по пакетам каналов и не нашла каких-либо проблем. В этой ситуации рекомендую вам перенастроить ваше оборудование.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_53Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает телевидение</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>часть каналов</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_54Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет сигнала на каналах</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>часть каналов</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.</a>
+        <a>Сообщение отправлено. Пожалуйста проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_55Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет сигнала на каналах</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>часть каналов</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>оружие</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.</a>
+        <a>Сообщение отправлено. Пожалуйста проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_56Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет сигнала на каналах</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>часть каналов</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>дорама</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Channel_package. Всю актуальную информацию по подключенным Пакетам каналов, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
+        <a>sms_Otpravlena_Subscription. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_59Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Очень жаль.</a>
+        <a>Я проверила информация по пакетам каналов и не нашла каких-либо проблем. В этой ситуации рекомендую вам перенастроить ваше оборудование.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>да</q>
+        <a>Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_60Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_61Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_62Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>ррр</q>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>ррр</q>
+        <a state="/Transfer/IntentLimiTransfer">@@Превышен лимит попадания в интент.</a>
+        <a state="/Transfer/IntentLimiTransfer">Перевожу на оператора и напоминаю, что в целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_63Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>ррр</q>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>ррр</q>
+        <a state="/Transfer/IntentLimiTransfer">@@Превышен лимит попадания в интент.</a>
+        <a state="/Transfer/IntentLimiTransfer">Перевожу на оператора и напоминаю, что в целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_64Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_65Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>ррр</q>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Очень жаль.</a>
+        <a>Я проверила информация по пакетам каналов и не нашла каких-либо проблем. В этой ситуации рекомендую вам перенастроить ваше оборудование.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>да</q>
+        <a>Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+    <test-case id="290_TVCH_66Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>К сожалению произвести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и обновила пакеты каналов...</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_67Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>К сожалению произвести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и обновила пакеты каналов...</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_68Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Сейчас я переведу вас на оператора, а пока, пожалуйста, перезагрузите ваш телевизор, а так же провреьте плотность подключения всех кабелей к нему, чаще всего это решает проблему. Перевожу звонок и напоминаю, что вв целях улучшения качества обслуживания мы записываем все разговоры.</a>
+
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_69Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_71Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_72Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывают каналы триста двадцать девять</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_73Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывают каналы триста двадцать девять</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_74Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.</a>
+        <a>Сообщение отправлено. Пожалуйста проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_75Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">
+                {
+                    "SMSstatus": false
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.</a>
+        <a>К сожалению, при отправке СМС возникла ошибка.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_76Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">
+                {
+                    "SMSstatus": 200
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.</a>
+        <a>К сожалению, при отправке СМС возникла ошибка.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_77Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "false",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Ознакомиться со списком каналов вы можете в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_78Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "false",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                    "status": "500",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Ознакомиться со списком каналов вы можете в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_79Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "iptvOnly",
+                "appType2": "1",
+                "appType7": "1",
+                "appType11": "1",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Сейчас я переведу вас на оператора, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию, чаще всего это решает проблему. (okc)</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_80Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+         <q>да</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_81Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал триста двадцать девять</q>
+        <a>Повторите, пожалуйста, название канала, с которым возникла проблема.</a>
+        <q>канал триста двадцать девять</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>ррр</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Пожалуйста убедитесь, что выбранный канал входит в список каналов, доступных на вашем тарифном плане.</a>
+        <a>Я отправила вам сообщение со ссылкой на личный кабинет, где вы сможете посмотреть текущий список каналов, а также подключить новые каналы.</a>
+        <a>Сообщение отправлено. Пожалуйста проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_83Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал грозный</q>
+        <a>indicate_channelnameOneChannel. Укажите, пожалуйста, название канала, с которым наблюдаются сложности</a>
+        <q>канал грозный</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>Пожалуйста, включите канал, который перестал показывать.</a>
+        <a>Сейчас я обновлю информацию о пакетах каналов на вашем тарифном плане и вернусь к Вам через полторы минуты.</a>
+        <a>Музыка 90 секунд</a>
+        <a>Пожалуйста, проверьте, появилось ли вещание на интересующем канале? Скажите ДА, если все заработало. Скажите НЕТ, если ситуация не изменилась</a>
+        <q>нет</q>
+        <a>Очень жаль.</a>
+        <a>Я проверила информация по пакетам каналов и не нашла каких-либо проблем. В этой ситуации рекомендую вам перенастроить ваше оборудование.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>нет</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_84Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает каналы оружие</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_85Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает каналы оружие</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Channel_package. Всю актуальную информацию по подключенным Пакетам каналов, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
+        <a>sms_Otpravlena_Subscription. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_86Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает каналы оружие</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Channel_package. Всю актуальную информацию по подключенным Пакетам каналов, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
+        <a>sms_Otpravlena_Subscription. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_87Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает каналы оружие</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_88Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает каналы оружие</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>Channel_package. Всю актуальную информацию по подключенным Пакетам каналов, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
+        <a>sms_Otpravlena_Subscription. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="290_TVCH_89Avt">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/checkTVpackageByChannels</query>
+            <response status="200">
+                {
+                    "hasActivePacket": "false",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/initSPAS</query>
+            <response status="200">
+                {
+                    "actionCategory53IsTp": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает канал дорама</q>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет..</a>
+        <a>notIncluded_OneChannel. Пакет с указанным каналом сейчас не подключен. Хотите получить консультацию о пакете каналов? Скажите Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="290_TVCH_90 переход в тот же интент">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "1",
+                "domrutv": "1",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "ktvOnly",
+                "dvbc": "0",
+                "autoTest": "true"
+
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "0",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>несколько</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на одну</q>
+        <a>TVsetupGo. Если проблема наблюдается только на одном телевизоре, то необходима проверка целостности и корректности подключения кабеля к телевизору или приставке, а также перенастройка вашего оборудования.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>нет</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>не показывает телевидение</q>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>howmuch_channels. Если не показывают все каналы, пожалуйста, скажите Все каналы. Если не работают только некоторые каналы, скажите Часть каналов</a>
+        <q>все каналы</q>
+        <a>1or2TV. Уточните, у вас дома установлен только 1 телевизор или несколько?</a>
+        <q>несколько</q>
+        <a>Problem1or2. Скажите, проблема наблюдается на всех телевизорах или только на одном?</a>
+        <q>на одну</q>
+        <a>TVsetupGo. Если проблема наблюдается только на одном телевизоре, то необходима проверка целостности и корректности подключения кабеля к телевизору или приставке, а также перенастройка вашего оборудования.</a>
+        <a>InstructionsSMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>нет</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+</test>

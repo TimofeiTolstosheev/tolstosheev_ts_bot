@@ -1,0 +1,184 @@
+<test>
+    
+        <test-case id="360_Строка 1 НЕавторизованный, НРД. Время нерабочее, перевод на OKC">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "proactiveResult": "spas",
+                "int": true,
+                "domrutv": true,
+                "gskWorkTime": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>я покидаю дом ру</q>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKnotWork">transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+    
+    <test-case id="360_Строка 2 НЕавторизованный, НРД. Время рабочее, перевод на НСК">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "int": true,
+                "gskWorkTime": true,
+                "isFirstGskApplication": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>я покидаю дом ру</q>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+
+
+    <test-case id="360_Строка 3 НЕавторизованный, НРД. Время НЕрабочее, перевод на OKC">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "int": true,
+                "gskWorkTime": false,
+                "isFirstGskApplication": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>я покидаю дом ру</q>
+        <a>transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+
+    
+    <test-case id="360_Строка 4 НЕавторизованный, не смогли авторизовать по адресу, НРД. Время рабочее, перевод на НСК">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "int": true,
+                "gskWorkTime": true,
+                "isFirstGskApplication": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Петра Великого. 999</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>я покидаю дом ру</q>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+
+    
+    <test-case id="360_Строка 4.1 НЕавторизованный, не смогли авторизовать по ФИО, НРД. Время рабочее, перевод на НСК">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "int": true,
+                "gskWorkTime": true,
+                "isFirstGskApplication": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>я покидаю дом ру</q>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

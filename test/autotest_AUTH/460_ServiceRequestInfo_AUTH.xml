@@ -1,0 +1,1745 @@
+<test>
+    <test-case id="460_SZ_Строка 10 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ИНОЕ 2 раза - перевод на оператора 460/1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>ннн</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>ннн</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 11 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ДА - ОШИБКА биллинга отмены заявки - перевод на оператора 460/3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 12 Авторизован - есть СЗ, нет времени выполнения - ИНОЕ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 13 Авторизован - есть СЗ, есть время выполнения - ОТМЕНИТЬ заявку - НЕТ - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>нет</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 14 Авторизован - есть СЗ, есть время выполнения - ОТМЕНИТЬ заявку - ДА - ОШИБКА биллинга отмены заявки - перевод на оператора 460/3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 15 Авторизован - ДОМАШНИЙ номер - есть СЗ, есть время выполнения - ОТМЕНИТЬ - ОШИБКА биллинга отмены - оператор 460/3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 16 Авторизован - ДОМАШНИЙ номер - есть СЗ, есть время выполнения - ОТМЕНИТЬ - НЕТ - оператор 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>нет</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 17 Авторизован - ДОМАШНИЙ номер - есть СЗ, есть время выполнения - ОТМЕНИТЬ -непонятное, потом НЕТ - оператор 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>нет</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+
+
+    <test-case id="460_SZ_Строка 18 Авторизован - есть СЗ, ЕСТЬ время выполнения - ОТМЕНИТЬ заявку - ИНОЕ 1 раз - затем НЕТ - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>нет</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 19 Авторизован - есть СЗ, ЕСТЬ время выполнения - ОТМЕНИТЬ заявку - ИНОЕ 2 раза - перевод на оператора 460/1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 20 Авторизован - есть СЗ, ЕСТЬ время выполнения - ОТМЕНИТЬ заявку - ДА - ОШИБКА отмены заявки - перевод на оператора 460/3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 21 Авторизован - есть СЗ, ЕСТЬ время выполнения - ИНОЕ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 22 Авторизован, номер актуальный - есть СЗ, ЕСТЬ время выполнения - ПЕРЕНЕСТИ - смс с авторизованной ссылкой - вопросов нет 460/0 и 810/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/service/request</query>
+            <response>
+                {
+                    "errorCode": 0
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>перенос</q>
+        <a>sms_OtpravlenaPerenosSZ. Я отправила вам смс со ссылкой для переноса вашей заявки. Там вы сможете выбрать удобное для вас время. Доставка смс обычно занимает не более минуты.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 23 Авторизован, номер актуальный - есть СЗ, ЕСТЬ время выполнения - ПЕРЕНЕСТИ - смс с авторизованной ссылкой - вопросы есть - новый интент 460/0 и 810/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/service/request</query>
+            <response>
+                {
+                    "errorCode": 0
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>перенос</q>
+        <a>sms_OtpravlenaPerenosSZ. Я отправила вам смс со ссылкой для переноса вашей заявки. Там вы сможете выбрать удобное для вас время. Доставка смс обычно занимает не более минуты.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+    <test-case id="460_SZ_Строка 24 Авторизован, номер не актуальный - есть СЗ, ЕСТЬ время выполнения - ПЕРЕНЕСТИ - смс с не авторизованной ссылкой - вопросов нет 460/0 и 810/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "2",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/service/request</query>
+            <response>
+                {
+                    "errorCode": 0
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>перенос</q>
+        <a>sms_OtpravlenaPerenosSZ. Я отправила вам смс со ссылкой для переноса вашей заявки. Там вы сможете выбрать удобное для вас время. Доставка смс обычно занимает не более минуты.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 25 Авторизован, номер не актуальный - есть СЗ, ЕСТЬ время выполнения - ПЕРЕНЕСТИ - смс с не авторизованной ссылкой - вопросы есть - новый интент 460/0 и 810/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "2",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/service/request</query>
+            <response>
+                {
+                    "errorCode": 0
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>перенос</q>
+        <a>sms_OtpravlenaPerenosSZ. Я отправила вам смс со ссылкой для переноса вашей заявки. Там вы сможете выбрать удобное для вас время. Доставка смс обычно занимает не более минуты.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+
+    <test-case id="460_SZ_Строка 26 Авторизован, номер актуальный - есть СЗ, ЕСТЬ время выполнения - вопрос о переносе заявки - добавить информацию в заявку - перевод 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "2",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>добавить информацию заявки</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 27 Авторизован, номер актуальный - есть СЗ, НЕТ времени выполнения - вопрос об отмене заявки - добавить информацию в заявку - перевод 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "2",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>добавить информацию заявки</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 28 Авторизован - ДОМАШНИЙ номер - есть СЗ, есть время выполнения - ОТМЕНИТЬ - ОТМЕНЯЕМ - вопросов НЕТ 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 29 Авторизован - ДОМАШНИЙ номер - есть СЗ, есть время выполнения - ОТМЕНИТЬ - ДА - вопросы ЕСТЬ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 30 Авторизован - есть СЗ, ЕСТЬ время выполнения - ОТМЕНИТЬ заявку - ДА - заявка отменена - вопросов НЕТ 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 31 Авторизован - есть СЗ, ЕСТЬ время выполнения - ОТМЕНИТЬ заявку - ДА - заявка отменена - вопросы ЕСТЬ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+         <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+    <test-case id="460_SZ_Строка 33 Авторизован - есть СЗ, есть время выполнения - ОТМЕНИТЬ заявку - ДА - заявка отменена - вопросов НЕТ 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "14.09.2023",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeAvailable. Вижу, что на вашем договоре активна заявка. Ожидайте прихода техника</a>
+        <a>Ru_ord_14_gen_mas. четырнадцатого</a>
+        <a>Ru_month_9_gen. сентября</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 34 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ИНОЕ 1 раз - затем ДА - заявка отменена - вопросы ЕСТЬ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>ннн</q>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 35 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ДА - заявка отменена - вопросов НЕТ 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 36 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ДА - заявка отменена - вопросы ЕСТЬ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
+            <response status="200">
+                {
+                    "errorCode": "0"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>да</q>
+        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+         <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+
+    <test-case id="460_SZ_Строка 4 Авторизован - нет СЗ - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": ""
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a state="/ServiceRequestInfo/ToOperator">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 5 Авторизован - СЗ есть, время просрочено - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "0",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a state="/ServiceRequestInfo/ToOperator">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 6 Авторизован - есть СЗ, нет времени выполнения, нет плановой даты - вопросов НЕТ 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>ггг</q>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+    <test-case id="460_SZ_Строка 7 Авторизован - есть СЗ, нет времени выполнения, нет плановой даты - вопросы ЕСТЬ - новый интент 460/0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "serviceRequestStatus": "pending",
+                    "SrvPlanDate": "",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>да</q>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+         <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 8 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - НЕТ - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "pendingServiceRequest": "",
+                    "SrvPlanDate": "",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>нет</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+
+
+    <test-case id="460_SZ_Строка 8.1 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - Оператор - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "pendingServiceRequest": "",
+                    "SrvPlanDate": "",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>оператор</q>
+        <a state="/ServiceRequestInfo/ToOperator">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        
+    </test-case>
+
+    <test-case id="460_SZ_Строка 9 Авторизован - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ИНОЕ 1 раз - затем НЕТ - перевод на оператора 460/6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "",
+                "phoneStatus": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "serviceRequest": "true",
+                    "pendingServiceRequest": "",
+                    "SrvPlanDate": "",
+                    "serviceRequestId": "1123",
+                    "result": "spas"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>где техник по заявке</q>
+        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
+        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
+        <q>отмена</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>ккк</q>
+        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
+        <q>нет</q>
+        <a>OperatorZayvkaYes. Перевожу звонок на оператора и напоминаю. В целях повышения качества обслуживания. все разговоры записываются</a>
+        
+    </test-case>
+</test>

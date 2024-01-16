@@ -1,0 +1,37 @@
+<test>
+    
+    
+    <test-case id="260_PAGENOTOPEN /490_CTPINT_Строка Множественный договор. В проактиве нет ошибок.  ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "proactiveResult": "spas",
+                "mono": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>иванов иван иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблемы с интернетом</q>
+        <a>CommonInternetQuestion. Пожалуйста, опишите подробнее вашу проблему с услугой Интернет</a>
+        <q>не открываются страницы</q>
+        <a>perevod_na_okc_from_PageNotOpenIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (PageNotOpenIntent)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру common_tech</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+</test>

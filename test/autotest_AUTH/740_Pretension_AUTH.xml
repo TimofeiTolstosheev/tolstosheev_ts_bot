@@ -1,0 +1,59 @@
+<test>
+    
+    <test-case id="740_COMPLAIN Cтрока 1 Авторизованный, мобильный, интент 740, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",                
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>претензия</q>
+        <a>perevod_na_okc_from_pretension. Я поняла, что у вас возникли вопросы по качеству оказанного сервиса. К сожалению, иногда так случается, пожалуйста извините. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+    
+
+    
+    <test-case id="740_COMPLAIN Строка 2 Авторизованный, домашний, интент 740, на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",                
+                "cellPhone": "false",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>претензия</q>
+        <a>perevod_na_okc_from_pretension. Я поняла, что у вас возникли вопросы по качеству оказанного сервиса. К сожалению, иногда так случается, пожалуйста извините. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+    
+    
+
+</test>

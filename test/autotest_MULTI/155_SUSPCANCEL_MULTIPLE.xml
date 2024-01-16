@@ -1,0 +1,114 @@
+<!--155_MULTI_1 Множественная. Мобильный.  Не смогли авторизовать по адресу. 155 интент. На оператора-->
+<!--155_MULTI_2 Множественная. Мобильный.  Не смогли авторизовать по ФИО. 155 интент. На оператора-->
+<!--155_MULTI_3 Множественная. Мобильный.  2 договора по ФИО, авторизовали по ФИО. Авторизовали. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - 2 непонятные фразы. СМС с мануалом по отмене успешно. Вопросов нет.-->
+<test>
+    <test-case id="155_MULTI_1 Множественная. Мобильный.  Не смогли авторизовать по адресу. 155 интент. На оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "errorCode": 9, "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>Благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="155_MULTI_2 Множественная. Мобильный.  Не смогли авторизовать по ФИО. 155 интент. На оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    <test-case id="155_MULTI_3 Множественная. Мобильный.  2 договора по ФИО, авторизовали по ФИО. Авторизовали. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - 2 непонятные фразы. СМС с мануалом по отмене успешно. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "cellPhone": true,
+                "autoTest": true,
+                "suspension": true,
+                "phoneStatus": "1"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>соколов Максим Иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>CancelSuspension. Вижу, что на вашем договоре имеется приостановление услуг. Я могу отменить приостановление всех услуг ближайшей датой.</a>
+        <a>CancelSuspension1. Если вы хотите снять приостановление скажите ДА, если у вас другой вопрос, либо нужно снять приостановление только одной услуги - скажите Нет</a>
+        <q>сильвуплемедам</q>
+        <a>CancelSuspension1. Если вы хотите снять приостановление скажите ДА, если у вас другой вопрос, либо нужно снять приостановление только одной услуги - скажите Нет</a>
+        <q>сильвуплемедам</q>
+        <a>CancelSuspensionLK. Снять приостановление с одной услуги, перенести сроки приостановления, а также уточнить детали по стоимости и оплате, можно в личном кабинете на сайте дом точка ру.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

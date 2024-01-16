@@ -1,0 +1,15 @@
+{
+  "positions" : [ {
+    "id" : "/WhatElse/ToExit",
+    "x" : 711,
+    "y" : -228
+  }, {
+    "id" : "/WhatElse/PromisedPayWhatElse",
+    "x" : -1494,
+    "y" : -808
+  }, {
+    "id" : "/WhatElse/WhatElse",
+    "x" : 2225,
+    "y" : -877
+  } ]
+}

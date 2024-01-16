@@ -1,0 +1,320 @@
+0_NoMatch:
+    intentCode: 0
+    callerInput: no_match
+10_PaymentsMethods:
+    intentCode: 10
+    callerInput: sposoby
+20_ServiceCentersAddress:
+    intentCode: 20
+    callerInput: address
+80_PromisedPayment:
+    intentCode: 80
+    callerInput: o_p
+130_SetupRouter:
+    intentCode: 130
+    callerInput: con_router
+150_AgreementSuspend:
+    intentCode: 150
+    callerInput: suspend
+155_CancelSuspend: 
+    intentCode: 155
+    callerInput: cancel_suspend
+170_SubscriptionFeeIncrease:
+    intentCode: 170
+    callerInput: promotion
+160_ReissueAgreement:
+    intentCode: 160
+    callerInput: contract_details
+240_DeviceReplacement:
+    intentCode: 240
+    callerInput: equipment
+250_CommonTechnicalProblems:
+    intentCode: 250
+    callerInput: common_tech
+260_PageNotOpen:
+    intentCode: 260
+    callerInput: pagenotopen
+270_TVQualityProblem:
+    intentCode: 270
+    callerInput: tvquality_problem
+275_TVSeveralChannelsMalfunction:
+    intentCode: 275
+    callerInput: tvchannel_problem
+280_LowSpeed:
+    intentCode: 280
+    callerInput: lowspeed
+290_TVChannelProblem:
+    intentCode: 290
+    callerInput: tvchannel_problem
+300_NoLink:
+    intentCode: 300
+    callerInput: nolink
+310_ConnectProblem:
+    intentCode: 310
+    callerInput: ppoe_problem
+320_CommonInfoTariff:
+    intentCode: 320
+    callerInput: tariff
+321_ChangeTariff:
+    intentCode: 321
+    callerInput: tariff   
+322_TariffInfo:
+    intentCode: 322
+    callerInput: tariff
+323_TariffType:
+    intentCode: 323
+    callerInput: tariff
+330_OtherPromo:
+    intentCode: 330
+    callerInput: bonus  
+331_ManageSubscription:
+    intentCode: 331
+    callerInput: subscription   
+332_Antivirus:
+    intentCode: 332
+    callerInput: antivirus
+333_ChannelPackage:
+    intentCode: 333
+    callerInput: packages 
+334_NewBonuses:
+    intentCode: 334
+    callerInput: bonus   
+335_Discount:
+    intentCode: 335
+    callerInput: discount
+340_PotentialClient:
+    intentCode: 340
+    callerInput: ocp
+340_PotentialClientService:
+    intentCode: 340
+    callerInput: ocp
+340_PotentialClientDevice:
+    intentCode: 340
+    callerInput: ocp
+350_PhoneProblem:
+    intentCode: 350
+    callerInput: phone_problem
+360_StopAgreement:
+    intentCode: 360
+    callerInput: smart_nsk
+370_Domofon:
+    intentCode: 370
+    callerInput: DMF
+371_KeyIntercom:
+    intentCode: 371
+    callerInput: DMF
+372_KeyBuy:
+    intentCode: 372
+    callerInput: DMF
+373_KeyActivate:
+    intentCode: 373
+    callerInput: DMF
+374_KeyNotWork:
+    intentCode: 374
+    callerInput: DMF
+375_DomofonActivate:
+    intentCode: 375
+    callerInput: DMF
+376_OtherDomofon:
+    intentCode: 376
+    callerInput: DMF
+377_SmartDom:
+    intentCode: 377
+    callerInput: dmftech
+378_DomofonNotWork:
+    intentCode: 378
+    callerInput: dmftech
+390_NoAnswer:
+    intentCode: 390
+    callerInput: no_answer
+379_CCTV:
+    intentCode: 379
+    callerInput: dmftech
+405_AgentRequest:
+    intentCode: 405
+    callerInput: agent
+420_AgreementNumber:
+    intentCode: 420
+    callerInput: agreement
+430_UserMoving:
+    intentCode: 430
+    callerInput: moving
+440_RestoreWiFipassword:
+    intentCode: 440
+    callerInput: network_key 
+460_ServiceRequestInfo:
+    intentCode: 460
+    callerInput: request    
+470_ChangeAgreementData:
+    intentCode: 470
+    callerInput: data_change
+475_TVServiceProblem:
+    intentCode: 475
+    callerInput: service_problem
+480_RestoreAgreement:
+    intentCode: 480
+    callerInput: recovery
+485_TVEquipmentProblem:
+    intentCode: 485
+    callerInput: tv_problem
+490_CommonInternetUnd:
+    intentCode: 490
+    callerInput: common_tech
+490_CommonInternetNoAct:
+    intentCode: 490
+    callerInput: common_tech
+495_CommonIssueTV:
+    intentCode: 495
+    callerInput: common_tech
+5_FinanceQuestion:
+    intentCode: 5
+    callerInput: o_fin
+50_ReceiptIssue:
+    intentCode: 50
+    callerInput: receipt
+510_HotSpotIssue:
+    intentCode: 510
+    callerInput: hotspot
+530_PaymentIssue:
+    intentCode: 530
+    callerInput: balance
+540_SetupTVChannels:
+    intentCode: 540
+    callerInput: setting_tv
+550_RentAccruals:
+    intentCode: 550
+    callerInput: rent_accruals
+560_Recalculation:
+    intentCode: 560
+    callerInput: recalculation
+580_LegalEntity:
+    intentCode: 580
+    callerInput: legal_entity
+590_OtherIntent:
+    intentCode: 590
+    callerInput: otherintent
+610_CallsOnHold:
+    intentCode: 610
+    callerInput: Silence
+650_СommonQuestion:
+    intentCode: 650
+    callerInput: selfInformation
+710_WholeCheaper:
+    intentCode: 710
+    callerInput: cheaper
+720_Autopay:
+    intentCode: 720
+    callerInput: autopay
+730_OtherContract:
+    intentCode: 730
+    callerInput: othercontract
+740_ComplaintsAndPretension:
+    intentCode: 740
+    callerInput: complaint
+750_CableReplacement:
+    intentCode: 750
+    callerInput: replacement
+90_Balance:
+    intentCode: 90
+    callerInput: balance
+380_NoInput:
+    intentCode: 380
+    callerInput: silence
+230_WebCabCredentials:
+    intentCode: 230
+    callerInput: credentials
+800_AccountBalanceSMS:
+    intentCode: 800
+    method: /ivr/billing/sms/balance
+801_AgreementNumber:
+    intentCode: 801
+    method: /ivr/billing/sms/balance
+803_SetupRouterSMS:
+    intentCode: 803
+    method: /ivr/billing/sms/setup/router
+804_CredentialsSMS:
+    intentCode: 804
+    method: /ivr/billing/sms/login
+806_RestoreWiFiPasswordSMS:
+    intentCode: 806
+    method: /ivr/billing/sms/login
+807_SMSCredentials:
+    intentCode: 807
+    method: /ivr/billing/sms/login
+808_SMSSetupRouter:
+    intentCode: 808
+    method: /ivr/billing/sms/setup/router
+810_ServiceRequestSMS:
+    intentCode: 810
+    method: /ivr/billing/sms/service/request
+833_TVpackagesSMS:
+    intentCode: 833
+    smsTemplateName: tv-packages-sms
+834_SMSDetelBalance:
+    intentCode: 834
+    smsTemplateName: detail-balance-sms
+821_DiscountSMS:
+    intentCode: 821
+    smsTemplateName: discount-sms
+802_PaymentsMethodsSMS:
+    intentCode: 802
+    smsTemplateName: detail-balance-sms
+811_ChangeTariffSMS:
+    intentCode: 811
+    method: /ivr/billing/sms/tariff/detail
+812_TariffInfoSMS:
+    intentCode: 812
+    method: /ivr/billing/sms/tariff/info
+813_TariffTypeSMS:
+    intentCode: 813
+    method: /ivr/billing/sms/tariff/info
+814_SuspensionSMS:
+    intentCode: 814
+    smsTemplateName: suspension-sms
+815_SCAddressesSMS:
+    intentCode: 815
+    smsTemplateName: service-center-address-sms
+816_CancelSuspensionSMS:
+    intentCode: 816
+    smsTemplateName: cancel-suspension-sms
+817_WholeCheaperSMS:
+    intentCode: 817
+    smsTemplateName: whole-cheaper-sms
+824_ManageSubscriptionSMS:
+    intentCode: 824
+    smsTemplateName: manage-subscription-sms
+825_NewBonusesSMS:
+    intentCode: 825
+    smsTemplateName: new-bonuses-sms
+826_BonusesSMS:
+    intentCode: 826
+    smsTemplateName: bonuses-sms
+822_AntivirusSMS:
+    intentCode: 822
+    smsTemplateName: antivirus-sms
+823_TVpackagesSMS:
+    intentCode: 823
+    smsTemplateName: tv-packages-sms
+835_BuyKeySMS:
+    intentCode: 835
+    smsTemplateName: buy-key-sms
+836_ActivateKeySMS:
+    intentCode: 836
+    smsTemplateName: activate-key-sms
+837_NotWorkingKeySMS:
+    intentCode: 837
+    smsTemplateName: not-working-key-sms
+805_SetupTVchannelsSMS:
+    intentCode: 805
+    smsTemplateName: tv-channels-sms
+838_SubscriptionFeeIncreaseSMS:
+    intentCode: 838
+    smsTemplateName: subscription-fee-increase-sms
+500_Accident:
+    intentCode: 500
+650_CommonQuestion:
+    intentCode: 650
+    callerInput: selfInformation
+570_Initialization:
+    intentCode: 570
+    callerInput: initial

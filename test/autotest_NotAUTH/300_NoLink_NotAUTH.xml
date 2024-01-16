@@ -1,0 +1,308 @@
+<test>
+    
+
+    <test-case id="300_ERR-651_Строка 41 Не авторизован. В проактиве авторизовали, ошибко нет. На вопрос дома ли клиент - Нет. Информируем,кого нужно обращаться из дома. 300 и 0. Обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_angarsk. Ваш город ангарск?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная дом один</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>соколов максим иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>нет</q>
+        <a>UHomeInternet2. RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 42 Не авторизован. В проактиве авторизовали. Ош нет. На вопрос дома ли клиент - Да. Сессии старая. Ребутаем портроутер. музыка 60 сек. Уточняем помогло - ДА. Радуемся. Чем помочь? 300 и 0. Обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_angarsk. Ваш город ангарск?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица чайковского дом тридцатьшесть</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>долгих семен петрович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>HappySuccess. Рада, что у нас получилось.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 43 Не авторизован. В проактиве авторизовали. Ош нет. На вопрос дома ли клиент - Да. Сессии новая. Информируем,кого сесся поднялась и просим проверить. Музыка 60сек. Клиент говрит не работает НЕТ. Нужен оператор - ДА 300 и 1. Обращение в АРМ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_angarsk. Ваш город ангарск?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица чайковского дом тридцатьшесть</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>долгих геннадий сергеевич</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NewSession. Вижу, что сессия интернета у вас уже установлена - Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную вай-фай сеть. Я пока повторно проверю работу систем с нашей стороны. Вернусь к вам через минуту Музыка 90 секунд</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>нет</q>
+         <a>ThisIsStrange.  Это очень странно. Пожалуйста, убедитесь, что ваше устройство соединено с роутером по кабелю или через беспроводную ви - фи сеть. Если есть возможность, то проверьте доступ на других устройствах - сделайте это самостоятельно.</a>
+        <a>Need_operator. Соединить вас с оператором для дальнейшей консультации?</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+ 
+
+    <test-case id="300_ERR-651_Строка 7 НЕавторизованный. Проактив ок. Проверка на аварию менее 5 сек, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросы ЕСТЬ. Новый интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_angarsk. Ваш город ангарск?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица чайковского дом тридцатьшесть</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>иванов михаил иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+   
+    
+    
+</test>

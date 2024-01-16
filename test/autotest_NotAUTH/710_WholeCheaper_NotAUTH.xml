@@ -1,0 +1,42 @@
+<test>
+    <test-case id="710_OPTOM_Строка 2 Неавторизованный, не авторизуем. Сотовый. Отправляем СМС, вопросов нет. 710 + 0 и 817 + 0">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "proactiveResult": "spas"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>NoAvtorCheaper. Подключить РА вы можете самостоятельно в ЛК</a>
+         <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

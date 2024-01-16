@@ -1,0 +1,98 @@
+<test>
+    <test-case id="710_OPTOM_Строка 32 Множественная связка. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросы есть - новый интент. 570 и 0 + 710 и 0 + 420 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "initializationError": "9",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "proactiveResult": "spas"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>montha. месяца</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>months. месяцев</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
+        <q>три месяца</q>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>да</q>
+        <a>ConnectedDiscount. Акция успешно подключена</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>780</a>
+        <a>046</a>
+        <a>998</a>
+        <a>264</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="710_OPTOM_Строка 33 Множественная связка. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Вопросов нет. 570 и 0 + 710 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "initializationError": "9",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "proactiveResult": "spas"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>1cheaper. Вам доступно подключение услуги оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>montha. месяца</a>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>да</q>
+        <a>ConnectedDiscount. Акция успешно подключена</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

@@ -1,0 +1,178 @@
+<!--17 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не нашли - В проактиве нет ошибок - 1 смс ответ Нет - перевод на оператора-->
+<!--18 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да - Вопросов нет-->
+<!--19 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да (ошибка отправки) - перевод на оператора-->
+<!--20 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - В проактиве нет ошибок - 1я смс - 2 раза непонятное - перевод на оператора-->
+<test>
+    <test-case id="17 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не нашли - В проактиве нет ошибок - 1 смс ответ Нет - перевод на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000000",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "phoneStatus": 2,
+                "autoTest": true    
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a>requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>Configuring_router_transfer. Для настройки роутера пожалуйста приготовьте логин и пароль от интернета, а так же убедитесь, что ваш компьютер подключён к роутеру проводным или беспроводным способом. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="18 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да - Вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "autoTest": true    
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
+            <response>{ "errorCode": 0 }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a>requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="19 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да (ошибка отправки) - перевод на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "autoTest": true
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
+            <response>{ "errorCode": 1 }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a>requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="20 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - В проактиве нет ошибок - 1я смс - 2 раза непонятное - перевод на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000000",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "autoTest": true   
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a>requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>ннн</q>
+        <a>configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

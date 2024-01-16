@@ -1,0 +1,196 @@
+<!--80_96 не авторизовали по адресу, мобильный - перезвоните-->
+<!--80_96.1 неавторизовали по фио, мобильный - перезвоните-->
+<!--80_96.2 авторизовали по фио, мобильный - нет ошибок - не может взять ОП - перевод на оператора-->
+<!--80_96.3 авторизовали по адресу, мобильный - ошибка 14 - долг есть - баланс - способы оплаты? - да - Способы оплаты - отправить смс? - noMatch - отправить смс? - noMatch - перевод на оператора-->
+<test>
+    <test-case id="80_96 не авторизовали по адресу, мобильный - перезвоните">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>доверительный платёж</q>
+        <a>promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+
+    <test-case id="80_96.1 неавторизовали по фио, мобильный - перезвоните">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петрищев алексей самуилович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>доверительный платёж</q>
+        <a>promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="80_96.2 авторизовали по фио, мобильный - нет ошибок - не может взять ОП - перевод на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/promised/payment</query>
+            <response status="200">
+                {
+                  "errorMessage": "Other error",
+                  "errorCode": 20,
+                  "canGet": false
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петрищева зоя константиновна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отложить платеж на 3 дня</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="80_96.3 авторизовали по адресу, мобильный - ошибка 14 - долг есть - баланс - способы оплаты? - да - Способы оплаты - отправить смс? - noMatch - отправить смс? - noMatch - перевод на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/promised/payment</query>
+            <response status="200">
+                {
+                    "errorMessage": "Error14",
+                    "errorCode": 14,
+                    "canGet": false,
+                    "mono": true,
+                    "promisedPaymentMaxDay": 0,
+                    "promisedPaymentCost": 0,
+                    "balanceActiveFrom": "-454,50",
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отсрочка нужна</q>
+        <a>promisedPayError14KP. К сожалению, не смогу активировать вам Обещанный платеж сегодня. Подключение услуги возможно только с 21 числа текущего месяца.</a>
+        <a>UBalans. Ваш баланс</a>
+        <a>minus. минус</a>
+        <a>ru_digit_400_nom. четыреста</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>ru_unit_rub_gen_sn. рубля</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>да</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>мне некогда реши мой вопрос</q>
+        <a>DIALOG_NO_MATCH_EVENT_3. Не поняла вас.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>я устал</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+</test>

@@ -1,0 +1,13 @@
+<test>
+    <!--2 Начало. user (авторизованный). Пожалуйста, задайте Ваш вопрос голосом. Чем я могу вам помочь?-->
+    <test-case id="2 /token: user">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+</test>

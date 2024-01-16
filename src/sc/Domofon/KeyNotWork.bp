@@ -1,0 +1,15 @@
+{
+  "positions" : [ {
+    "id" : "/KeyNotWork/KeyNotWorkOKC",
+    "x" : -23,
+    "y" : -82
+  }, {
+    "id" : "/KeyNotWork/KeyNotWorkOKC/Cifral",
+    "x" : 340,
+    "y" : 330
+  }, {
+    "id" : "/KeyNotWork/KeyNotWorkOKC/NotCifral",
+    "x" : 340,
+    "y" : 736
+  } ]
+}

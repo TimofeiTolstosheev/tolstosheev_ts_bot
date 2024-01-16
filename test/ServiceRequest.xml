@@ -1,0 +1,167 @@
+<test>
+    <test-case id="низкая скорость - в спасе создаем СЗ - создать? - да - доступные дни - выбор дня - доступное время - выбор времени - проверка даты/времени, верно? - да - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000016",
+                "agreementId": "121212",
+                "agreementNumber": "785000097451",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "0",
+                    "connectionRequest": false,
+                    "result": "spas",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": true,
+                                  "requestComment": "string",
+                                  "flowLoss": true,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": true,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": false
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": false,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>низкая скорость</q>
+        <a>SPAS_TS_request. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWant_TS_request. Я могу создать заявку на завтра или послезавтра, Вам нужно будет присутствовать дома. Заявка для Вас бесплатна. Если Вы готовы выбрать время визита техника, скажите Да. Если не готовы, скажите Нет.</a>
+        <q>готов</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>tomorrow. завтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>на сегодня</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <q>первая</q>
+        <a>I_sprosil_u_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_eleven. с одиннадцати</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>from_twelve. с двенадцати</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>I_sprosil_u_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>в 11</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>today. сегодня</a>
+        <a>Ru_ord_5_nom_neu. пятое</a>
+        <a>Ru_month_12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_11. одиннадцать</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaNeSplaniroval_TS_request. Я создала заявку, но мне не удалось забронировать выбранное вами время. Перевожу звонок на оператора, он поможет завершить оформление заявки.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+</test>

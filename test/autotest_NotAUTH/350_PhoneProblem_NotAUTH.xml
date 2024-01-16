@@ -1,0 +1,240 @@
+<test>
+    
+    <test-case id="350_TEL Строка 1 НЕавторизованный, мобильный, 350 интент. Проактив ок. На оператора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблема с телефоном</q>
+        <a>transferToAgentForFurther. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте...В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+
+    <test-case id="350_TEL Строка 1.1 НЕавторизованный, домашний, 350 интент. Проактив ок. На оператора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблема с телефоном</q>
+        <a>transferToAgentForFurther. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте...В целях повышения качества обслуживания. все разговоры записываются.</a>
+
+        <a state="/Transfer/Transfer"/>
+    </test-case>   
+    
+    
+    
+    <test-case id="350_TEL Строка 2 НЕавторизованный, мобильный, 350 интент. НЕактивный тариф. Вопросов нет.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "proactiveResult": "mono_EnoughBalance_NotActive"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблема с телефоном</q>
+        <a>Активаровать ТП</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="350_TEL Строка 2.1 НЕавторизованный, мобильный, 350 интент. НЕактивный тариф. Вопросы есть, номер договора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "proactiveResult": "mono_EnoughBalance_NotActive"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+                
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблема с телефоном</q>
+        <a>Активаровать ТП</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>какой у меня номер договора?</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>     
+    
+    
+    
+    <test-case id="350_TEL Строка 3 НЕавторизованный, не смогли авторизовать по адресу, мобильный, 350 интент. Проактив ок. На оператора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Петра Великого. 999</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблема с телефоном</q>
+        <a>transferToAgentForFurther. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте...В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    
+    
+    <test-case id="350_TEL Строка 3.11 НЕавторизованный, не смогли авторизовать по ФИО, мобильный, 350 интент. Проактив ок. На оператора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>проблема с телефоном</q>
+        <a>transferToAgentForFurther. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте...В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

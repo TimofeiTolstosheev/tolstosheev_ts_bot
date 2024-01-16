@@ -1,0 +1,71 @@
+{
+  "positions" : [ {
+    "id" : "/Proactive/RouteProactive",
+    "x" : 668,
+    "y" : 4383
+  }, {
+    "id" : "/Proactive/MonoNoDzNotActive",
+    "x" : 1088,
+    "y" : 4372
+  }, {
+    "id" : "/Proactive/PPR",
+    "x" : -1074,
+    "y" : -176
+  }, {
+    "id" : "/Proactive/Accident",
+    "x" : 1085,
+    "y" : 674
+  }, {
+    "id" : "/Proactive/mono_EnoughBalance_NotActive",
+    "x" : -1016,
+    "y" : 1136
+  }, {
+    "id" : "/Proactive/mono_NotEnoughBalance_NotActive",
+    "x" : 394,
+    "y" : 1515
+  }, {
+    "id" : "/Proactive/KP_NoDZ_NotActive",
+    "x" : -1056,
+    "y" : 249
+  }, {
+    "id" : "/Proactive/KP_DZ_NotActive",
+    "x" : -1033,
+    "y" : 678
+  }, {
+    "id" : "/Proactive/monoKTV_NoDZ_NotActive",
+    "x" : -960,
+    "y" : 1577
+  }, {
+    "id" : "/Proactive/monoKTV_DZ_NotActive",
+    "x" : -966,
+    "y" : 2027
+  }, {
+    "id" : "/Proactive/AskPromisedPayment",
+    "x" : 1581,
+    "y" : -1049
+  }, {
+    "id" : "/Proactive/PaymentMethods",
+    "x" : 718,
+    "y" : -1068
+  }, {
+    "id" : "/Proactive/AskPromisedPayment/ToPromisedPayment",
+    "x" : 262,
+    "y" : 313
+  }, {
+    "id" : "/Proactive/AskPromisedPayment/ToPaymentMethods",
+    "x" : 240,
+    "y" : 803
+  }, {
+    "id" : "/Proactive/AskPromisedPayment/ThemeMatch",
+    "x" : 240,
+    "y" : 1368
+  }, {
+    "id" : "/Proactive/AskPromisedPayment/ToOperator",
+    "x" : 240,
+    "y" : 1942
+  }, {
+    "id" : "/Proactive/AskPromisedPayment/CatchAll",
+    "x" : 240,
+    "y" : 2301
+  } ]
+}

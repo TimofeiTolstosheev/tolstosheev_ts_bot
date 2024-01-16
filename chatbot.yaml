@@ -5,38 +5,106 @@ entryPoint: main.sc
 botEngine: v2
 language: ru
 
-injector:
-    timeZone: "Europe/Moscow"
-    dateFormat: "yyyy-MM-ddTH:m:s.521Z"
-    actionTimeout: 10000
-    noMatchLimit: 2
-    noInputLimit: 2
-    agentRequestLimit: 3
-    intentInArowLimit: 2
-    authServiceEndpoint: 'https://auth.prod.dcc.movixlab.yc.r-one.io/dcc'
-    authServiceEndpointTest: 'https://auth.stage.dcc.movixlab.yc.r-one.io/dcc'
-    actionServiceEndpoint: 'https://action.prod.dcc.movixlab.yc.r-one.io/dcc'
-    actionServiceEndpointTest: 'https://action.stage.dcc.movixlab.yc.r-one.io/dcc'
-    defaultTransferLine: 'OKC'
-    transferTimeFrom: '05:00'
-    transferTimeTo: '01:00'
-    reactionTimeout: '6 minutes'
-    
-
 tests:
   include:
-    - test.xml
-    # - autotest/*.xml
-    # - autotest/0_NoMatch_AUTH.xml
-    - autotest/120_SetupDecoder_AUTH.xml
-
+    # test.xml
+    - autotest_AUTH/0_NoMatch_AUTH.xml
+    # autotest_AUTH/10_PaymentMethods_AUTH.xml
+    # autotest_AUTH/130_SetupRouter_AUTH.xml
+    # autotest_AUTH/150_Suspension_AUTH.xml
+    # autotest_AUTH/20_CPADDRESS_AUTH.xml
+    - autotest_AUTH/280_LOWSPEED_AUTH.xml
+    # autotest_AUTH/50_RECEIPT_AUTH.xml
+    # autotest_AUTH/5_FinanceQuestion_AUTH.xml
+    # autotest_AUTH/80_PromisedPayment_AUTH.xml
+    # autotest_AUTH/90_Balance_AUTH.xml
+    # autotest_AUTH/90_Balance_AUTH_error_0.xml
+    # autotest_AUTH/90_Balance_AUTH_error_1.xml
+    # autotest_AUTH/90_Balance_AUTH_error_10.xml
+    # autotest_AUTH/90_Balance_AUTH_error_11.xml
+    # autotest_AUTH/90_Balance_AUTH_error_12.xml
+    # autotest_AUTH/90_Balance_AUTH_error_13.xml
+    # autotest_AUTH/90_Balance_AUTH_error_14.xml
+    # autotest_AUTH/90_Balance_AUTH_error_2.xml
+    # autotest_AUTH/90_Balance_AUTH_error_20.xml
+    # autotest_AUTH/90_Balance_AUTH_error_3.xml
+    # autotest_AUTH/90_Balance_AUTH_error_4.xml
+    # autotest_AUTH/90_Balance_AUTH_error_5.xml
+    # autotest_AUTH/90_Balance_AUTH_error_6.xml
+    # autotest_AUTH/90_Balance_AUTH_error_7.xml
+    # - autotest_AUTH/155_SUSPCANCEL_AUTH.xml
+    # - autotest_AUTH/160_REISSUEAGR_AUTH.xml
+    # - autotest_AUTH/240_DEVREPLACEMENT_AUTH.xml
+    # autotest_AUTH/250_CTP_AUTH.xml _____Нужно сделать моки будет и с таймаутами в получении данных с биллинга сделать подстановки на фикс. значения
+    - autotest_AUTH/320_Tariff_AUTH.xml
+    # autotest_MULTI/0_NoMatch_MULTI.xml
+    # - autotest_MULTI/130_SetupRouter_MULTI.xml
+    # autotest_MULTI/150_Suspention_MULTI.xml
+    # - autotest_MULTI/155_SUSPCANCEL_MULTIPLE.xml
+    # - autotest_MULTI/160_REISSUEAGR_MULTIPLE.xml
+    # - autotest_MULTI/240_DEVREPLACEMENT_MULTIPLE.xml
+    # - autotest_MULTI/250_CTP_MULTIPLE.xml
+    - autotest_MULTI/320_Tariff_MULTI.xml
+    # autotest_MULTI/20_CPADDRESS_MULTIPLE.xml
+    # autotest_MULTI/50_RECEIPT_MULTIPLE.xml
+    # autotest_MULTI/5_FinanceQuestion_MULTI.xml
+    # autotest_MULTI/80_PromysedPayment_MULTI.xml
+    # autotest_NotAUTH/0_NoMatch_NotAUTH.xml
+    # autotest_NotAUTH/10_PaymentMethods_NotAUTH.xml
+    # autotest_NotAUTH/130_SetupRouter_NotAUTH.xml
+    # autotest_NotAUTH/150_Suspension_NotAUTH.xml
+    # - autotest_NotAUTH/155_SUSPCANCEL_NotAUTH.xml
+    # - autotest_NotAUTH/160_REISSUEAGR_UNAUTH.xml
+    # autotest_NotAUTH/20_CPADDRESS_NotAUTH.xml
+    # - autotest_NotAUTH/240_DEVREPLACEMENT_UNAUTH.xml
+    # - autotest_NotAUTH/250_CTP_UNAUTH.xml
+    - autotest_NotAUTH/320_Tariff_NotAuth.xml
+    # autotest_NotAUTH/50_RECEIPT_NotAUTH.xml
+    # autotest_NotAUTH/5_FinanceQuestion_NotAUTH.xml
+    # autotest_NotAUTH/80_PromisedPayment_NotAUTH.xml
+    # autotest_NotAUTH/90_Balance_NotAUTH.xml
+    
+    - autotest_common/570.xml
+    # checkNLU.xml
+    
+    #address/address.xml
+    
+injector:
+    version: "0.0.4"
+    mode: test
+    timeZone: "Europe/Moscow"
+    dateFormat: "yyyy-MM-ddTH:m:s.521Z"
+    defaultCallerInput: 'operator'
+    actionTimeout: 7000
+    actionReadTimeout: 4000
+    noMatchLimit: 2 # не разрешаем пока 3
+    noInputLimit: 2
+    agentRequestLimit: 2
+    intentInArowLimit: 2
+    authServiceEndpoint:
+        prod: 'https://auth.prod.dcc.movixlab.yc.r-one.io/dcc'
+        test: 'https://auth.stage.dcc.movixlab.yc.r-one.io/dcc'
+    actionServiceEndpoint: 'https://action.prod.dcc.movixlab.yc.r-one.io/dcc'
+    actionServiceEndpointTest: 'https://action.stage.dcc.movixlab.yc.r-one.io/dcc'
+    ciscoExitPhoneNumberTest: "75480"
+    ciscoExitPhoneNumberProd: "75489"
+    transferTimeout: 20
+    
+    techProblemsIntents: ["260_PageNotOpen",
+                          "270_TVQualityProblem",
+                          "275_TVSeveralChannelsMalfunction",
+                          "280_LowSpeed",
+                          "290_TVChannelProblem",
+                          "310_ConnectProblem",
+                          "300_NoLink",
+                          "490_CommonInternetUnd",
+                          "495_CommonIssueTV",
+                          "500_Accident",
+                          "540_SetupTVChannels"]
 
 nlp:
+  considerContextDepthInStateSelectionV2: true
   intentNoMatchThresholds:
     phrases: 0.4
     patterns: 0.4
     
-  lengthLimit:
-    enabled: true
-    symbols: 400
-    words: 50

@@ -1,0 +1,19 @@
+{
+  "positions" : [ {
+    "id" : "/Transfer/CheckOCTP",
+    "x" : 296,
+    "y" : 3450
+  }, {
+    "id" : "/Transfer/Transfer",
+    "x" : 715,
+    "y" : 3495
+  }, {
+    "id" : "/Transfer/TransferOnError",
+    "x" : 935,
+    "y" : -740
+  }, {
+    "id" : "/Transfer/IntentLimiTransfer",
+    "x" : -322,
+    "y" : -185
+  } ]
+}

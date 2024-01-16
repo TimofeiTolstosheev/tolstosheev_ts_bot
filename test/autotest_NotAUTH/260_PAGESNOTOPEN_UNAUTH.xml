@@ -1,0 +1,30 @@
+<test>
+    
+    <test-case id="260_PAGENOTOPEN Строка 1 Неавторизованный, не открываются страницы">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "proactiveResult": "spas",
+                "mono": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не открываются страницы</q>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>OperatorIzSZ. Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+    </test-case>
+    
+</test>

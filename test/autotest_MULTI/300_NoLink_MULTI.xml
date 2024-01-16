@@ -1,0 +1,399 @@
+<test>
+    
+
+    <test-case id="300_ERR-651_Строка 44 Множественная связка. Не смогли выделить 1 уникальный договор. Перевод на агент 300 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>достоевский фёдор михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 45 Множественная связка. В проактиве нашли 1 уникальный договор. Ош - ДЗ. 300 и 0 580009307593 и 580011584188">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>иванова елена васильевна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>3300</a>
+        <a>wait_for_the_payment. Если вы уже произвели оплату, пожалуйста подождите немного. обычно деньги поступают на счет мгновенно, но иногда это может занять несколько часов.</a>
+        <a>ask_promisedPay. Если вы еще не производили оплату, могу попробовать подключить вам услугу обещанный платеж. Вам это, интересно?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 46 Множественная связка. В проактиве нашли 1 уникальный договор. Ош нет. Клиент Дома. Сессии нет. Музыка 2,5мин, через 2,5 минуты мы вернулись к клиенту с инф ,кого сессия поднялась. Вопросов нет. 300 и 0. Обращение в АРМ ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>костина татьяна петровна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем черезе 3 минуты.</a>
+        <a>NoConnectionReboot. Музыка 2,5 минуты</a>
+        <a>NoConnectionSuccess. Здорово! Вижу,что сессия установилась. Пожалуйста, проверьте открываются ли страницы. Скажите Да или нет.</a>
+        <q>да</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 5 Множественная, авторизовали. Проактив ок. Проверка на аварию. Ожидаем 25 секунд, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросы ЕСТЬ. Новый интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>афанасьев григорий иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    
+
+    <test-case id="300_ERR-651_Строка 8 Множественная. Проактив ок. Проверка на аварию менее 5 сек, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросы ЕСТЬ. Новый интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>иванов михаил иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+
+
+    <test-case id="300_ERR-651_Строка 8 Множественная. Проактив ок. Проверка на аварию менее 5 сек, Омилия говорит, кого авария на свитче. Фиксация обращения в АРМ, вопросы ЕСТЬ. Новый интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "svCheck": "1",
+                "redirectOctp": false,
+                "productId": "5",
+                "actionCategory5IsNull": "false",
+                "actionCategory5IsTp": "false",
+                "actionCategory5IsDiagnostics": "true",
+                "autoTest": "true"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "true",
+                    "adminStatus": "1",
+                    "operStatus": "1",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/switch/accident</query>
+            <response status="200">
+                {
+                    "switchAccident": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>иванов михаил иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии./a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+    
+</test>

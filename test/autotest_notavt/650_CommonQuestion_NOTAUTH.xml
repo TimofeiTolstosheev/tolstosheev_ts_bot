@@ -1,0 +1,277 @@
+<test>
+    <test-case id="650_1 Что умеет Омилия - финансовый вопрос - невторизованный, мобильный - на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "rebooted": true,
+                "suspension": false,
+                "phoneStatus": "1",
+                "cancelSuspensionStatus": true    
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.voice.movixlab.r-one.io/dcc/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Start">Initialization. К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица *ВСТАВИТЬУЛИЦУ*</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>*ВСТАВИТЬФИО*</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нам нужна консультация</q>
+        <a>whatcanido. Какого рода консультация вас интересует?</a>
+        <a>whatcanido2. Финансовая или Техническая?</a>
+        <q>вопрос по балансу</q>
+        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс и озвучить сумму рекомендованного платежа. Какой из этих вопросов вас интересует?</a>
+        <q>откуда у меня долг</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state = "/Transfer/Transfer" />
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="650_2 Что умеет Омилия - технический вопрос - невторизованный, мобильный - на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "rebooted": true,
+                "suspension": false,
+                "phoneStatus": "1",
+                "cancelSuspensionStatus": true    
+            }
+        </context>
+            
+        <mockData>
+            <query method="POST">https://auth.voice.movixlab.r-one.io/dcc/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+            
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                  "errorCode": 0,
+                  "errorMessage": "string",
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": false,
+                  "accidentEndDate": "string",
+                  "ppr": 0,
+                  "currentPprEndDate": "string",
+                  "futurePprStartDate": "string",
+                  "futurePprEndDate": "string",
+                  "potentialAccident": false
+                }
+            </response>
+        </mockData>  
+            
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                  "internetProblem": {
+                    "firstActionCategoryIsRequest": false,
+                    "requestComment": "string",
+                    "diagnostics": false,
+                    "networkAdministrationRequest": false,
+                    "drtvTicket": false,
+                    "technicalSupport": false,
+                    "technicalServiceRequest": false
+                  },
+                  "tvProblem": {
+                    "firstActionCategoryIsRequest": false,
+                    "requestComment": "string",
+                    "flowLoss": false,
+                    "networkAdministrationRequest": false,
+                    "drtvTicket": false,
+                    "technicalSupport": false,
+                    "technicalServiceRequest": false
+                  }
+                }
+            </response>
+        </mockData>     
+        
+        <q>/start</q>
+        <a state="/Start">Initialization. К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица *ВСТАВИТЬУЛИЦУ*</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>*ВСТАВИТЬФИО*</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нам нужна консультация</q>
+        <a>whatcanido. Какого рода консультация вас интересует?</a>
+        <a>whatcanido2. Финансовая или Техническая?</a>
+        <q>попробовать позднее либо позвонить провайдеру</q>
+        <a>perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state = "/Transfer/Transfer" />
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="650_3 Что умеет Омилия - финансовый вопрос - невторизованный, домашний - на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "autoTest": true,
+                "int": true,
+                "domrutv": true,
+                "rebooted": true,
+                "suspension": false,
+                "phoneStatus": "1",
+                "cancelSuspensionStatus": true    
+            }
+        </context>
+            
+        <mockData>
+            <query method="POST">https://auth.voice.movixlab.r-one.io/dcc/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+            
+        <q>/start</q>
+        <a state="/Start">Initialization. К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица *ВСТАВИТЬУЛИЦУ*</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>*ВСТАВИТЬФИО*</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>вы меня слышите хорошо мне нужна консультация</q>
+        <a>whatcanido. Какого рода консультация вас интересует?</a>
+        <a>whatcanido2. Финансовая или Техническая?</a>
+        <q>вопрос по балансу</q>
+        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс и озвучить сумму рекомендованного платежа. Какой из этих вопросов вас интересует?</a>
+        <q>откуда у меня долг</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state = "/Transfer/Transfer" />
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="650_4 Что умеет Омилия - технический вопрос - невторизованный, домашний - на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "autoTest": true    
+            }
+        </context>
+            
+        <mockData>
+            <query method="POST">https://auth.voice.movixlab.r-one.io/dcc/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "guest"
+                }
+            </response>
+        </mockData>
+            
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                  "errorCode": 0,
+                  "errorMessage": "string",
+                  "askSms": true,
+                  "accidentId": 0,
+                  "accident": false,
+                  "accidentEndDate": "string",
+                  "ppr": 0,
+                  "currentPprEndDate": "string",
+                  "futurePprStartDate": "string",
+                  "futurePprEndDate": "string",
+                  "potentialAccident": false
+                }
+            </response>
+        </mockData>  
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                  "internetProblem": {
+                    "firstActionCategoryIsRequest": false,
+                    "requestComment": "string",
+                    "diagnostics": false,
+                    "networkAdministrationRequest": false,
+                    "drtvTicket": false,
+                    "technicalSupport": false,
+                    "technicalServiceRequest": false
+                  },
+                  "tvProblem": {
+                    "firstActionCategoryIsRequest": false,
+                    "requestComment": "string",
+                    "flowLoss": false,
+                    "networkAdministrationRequest": false,
+                    "drtvTicket": false,
+                    "technicalSupport": false,
+                    "technicalServiceRequest": false
+                  }
+                }
+            </response>
+        </mockData>
+
+        <q>/start</q>
+        <a state="/Start">Initialization. К сожалению, не нашла в базе ваш договор. Вы уже являетесь нашим Клиентом? Скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица *ВСТАВИТЬУЛИЦУ*</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>*ВСТАВИТЬФИО*</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>вы меня слышите хорошо мне нужна консультация</q>
+        <a>whatcanido. Какого рода консультация вас интересует?</a>
+        <a>whatcanido2. Финансовая или Техническая?</a>
+        <q>почему прервалось подключение к домру</q>
+        <a>perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state = "/Transfer/Transfer" />
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

@@ -1,0 +1,924 @@
+<test>
+    <!--1 Начало. undefined-guest. Переход в Чем могу помочь? - Интент баланса-->
+    <test-case id="1 /token: undefined-guest">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "undefined-guest" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <test-case id="5 InitPodklOborudovanie 1">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>нет</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie"/>
+        <q>какая то чушь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll"/>
+        <q>число пи</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll"/>
+        <q>что</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="6 InitPodklOborudovanie 2">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>не являюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie"/>
+        <q>переведите на специалиста</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport"/>
+        <q>позовите человека говорю</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="10 Initialization 1">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+    </test-case>
+
+    <test-case id="11 Initialization 2">
+        <context var="session">
+            { "city": { "code": "dev-dcc-spb", "name": "СПБ (DEV-DCC-SPB)" } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+    </test-case>
+
+    <test-case id="12 Initialization 3">
+        <context var="session">
+            { "city": { "code": "dev-dcc-spb", "name": "СПБ (DEV-DCC-SPB)" } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+    </test-case>
+
+    <test-case id="13 Initialization 4">
+        <context var="session">
+            { "city": { } }
+        </context>
+        <state>Init/Initialization</state>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+    </test-case>
+
+    <test-case id="14 Initialization 5">
+        <context var="session">
+            { "cisco": { } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <!--<state>Init/Initialization</state>-->
+        <q>соедините с оператором</q>
+        <a state="/Init/Initialization/ToOperator"/>
+        <q>вы издеваетесь надо мной</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>снова все повторять</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+    </test-case>
+    
+    <test-case id="15 Initialization 6">
+        <state>Init/Initialization</state>
+        <q>меня одолевают мысли</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>во поле березка стояла</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+    </test-case>
+
+    <test-case id="17 Initialization ConfirmCity 2">
+        <state>Init/Initialization/ConfirmCity</state>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+    </test-case>
+
+    <test-case id="19 Initialization ConfirmCity 4">
+        <context var="session">
+            { "city": { "code": "dev-dcc-spb", "name": "СПБ (DEV-DCC-SPB)" } }
+        </context>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity" />
+        <q>Саратов</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+    </test-case>
+    
+    <test-case id="20 Initialization ConfirmCity 5">
+        <state>Init/Initialization/ConfirmCity</state>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+    </test-case>
+
+    <test-case id="21 Initialization PleaseSayYourCity 1">
+        <state>Init/Initialization/ConfirmCity/PleaseSayYourCity</state>
+        <q>Киров</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+    </test-case>
+
+    <test-case id="23 Initialization PleaseSayYourCity 3">
+        <!--<context var="session">-->
+        <!--    { "cisco": { } }-->
+        <!--</context>-->
+        <!--<mockData>-->
+        <!--    <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>-->
+        <!--    <response status="200">{ "type": "guest" }</response>-->
+        <!--</mockData>-->
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+        <q>вы меня утомили</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity/CatchAll"/>
+        <q>кого</q>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <!--авторизовали неавторизованного-->
+    <test-case id="25 Initialization RequestStreetAndHouse 1">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина д 24</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <test-case id="26 Initialization RequestStreetAndHouse 2">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+    </test-case>
+
+    <test-case id="27 Initialization RequestStreetAndHouse 3">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+    </test-case>
+
+    <test-case id="30 Initialization RequestFIO 1">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/base/info</query>
+            <response status="200">{
+                              "agreementId": 0,
+                              "agreementNumber": "string",
+                              "phoneStatus": 0,
+                              "suspension": true,
+                              "domofon": true,
+                              "cifral": true,
+                              "ktv": true,
+                              "gorsv": true,
+                              "dctv": true,
+                              "mobile": true,
+                              "tvPackagesInfo": [
+                                {
+                                  "packageId": 0,
+                                  "jetId": 0,
+                                  "paymentScheme": "string",
+                                  "dateFrom": "2023-10-20T06:23:02.066Z",
+                                  "dateTo": "2023-10-20T06:23:02.066Z",
+                                  "daysToClose": 0
+                                }
+                              ],
+                              "ktvSocial": true,
+                              "internet": true,
+                              "domRuTV": true,
+                              "appTypes": {
+                                "additionalProp1": {},
+                                "additionalProp2": {},
+                                "additionalProp3": {}
+                              },
+                              "errorMessage": "string",
+                              "errorCode": 0,
+                              "octpAppTypeTransfer": true,
+                              "subscriptionFeeIncrease": true,
+                              "tvSetup": "string",
+                              "hasIptv": true,
+                              "b2bexists": true
+                            }
+            </response>
+        </mockData>
+        
+        <state>Init/Initialization/RequestFIO</state>
+        <q>Иван Иванович Иванов</q>
+        <!--<a state="/Init/Initialization/RequestFIO/GetFIO" />-->
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>замена кабеля</q>
+        <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+
+    <test-case id="31 Initialization RequestFIO 2">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <!--<a state="/Init/Initialization/RequestStreetAndHouse/GetAddress"/>-->
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+    </test-case>
+
+    <test-case id="32 Initialization RequestFIO 3">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>Иван Иванович</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO"/>
+        <q>Иван Иванович</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <!--авторизовали неавторизованного-->
+    <test-case id="33 Initialization RequestFIO 4">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>Иванов Иван</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO"/>
+        <q>Иванов Иван Иванович</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <!--авторизовали неавторизованного-->
+    <test-case id="34 Initialization RequestFIO 5">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/base/info</query>
+            <response status="200">{
+                              "agreementId": 0,
+                              "agreementNumber": "string",
+                              "phoneStatus": 0,
+                              "suspension": true,
+                              "domofon": true,
+                              "cifral": true,
+                              "ktv": true,
+                              "gorsv": true,
+                              "dctv": true,
+                              "mobile": true,
+                              "tvPackagesInfo": [
+                                {
+                                  "packageId": 0,
+                                  "jetId": 0,
+                                  "paymentScheme": "string",
+                                  "dateFrom": "2023-10-20T06:23:02.066Z",
+                                  "dateTo": "2023-10-20T06:23:02.066Z",
+                                  "daysToClose": 0
+                                }
+                              ],
+                              "ktvSocial": true,
+                              "internet": true,
+                              "domRuTV": true,
+                              "appTypes": {
+                                "additionalProp1": {},
+                                "additionalProp2": {},
+                                "additionalProp3": {}
+                              },
+                              "errorMessage": "string",
+                              "errorCode": 0,
+                              "octpAppTypeTransfer": true,
+                              "subscriptionFeeIncrease": true,
+                              "tvSetup": "string",
+                              "hasIptv": true,
+                              "b2bexists": true
+                            }
+            </response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>договор на мужа оформлен</q>
+        <a state="/Init/Initialization/RequestFIO/NonOwner"/>
+        <q>Иван Иванович Иванов</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <!--авторизовали неавторизованного-->
+    <test-case id="35 Initialization RequestFIO 6">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>у меня нет отчества</q>
+        <a state="/Init/Initialization/RequestFIO/NoMiddleName"/>
+        <q>Иван Иванов</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <!--авторизовали неавторизованного-->
+    <test-case id="36 Initialization RequestFIO 7">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "4321", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>меня интересует</q>
+        <a state="/Init/Initialization/CatchAll"/>
+        <q>важная информация</q>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/Initialization/RequestFIO"/>
+        <q>Иван Иванов а отчества у меня нет</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+
+    <!--авторизовали мульти связку-->
+    <test-case id="40 InitMSHi RequestFIO 1">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "user", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/base/info</query>
+            <response status="200">{
+                              "agreementId": 0,
+                              "agreementNumber": "string",
+                              "phoneStatus": 0,
+                              "suspension": true,
+                              "domofon": true,
+                              "cifral": true,
+                              "ktv": true,
+                              "gorsv": true,
+                              "dctv": true,
+                              "mobile": true,
+                              "tvPackagesInfo": [
+                                {
+                                  "packageId": 0,
+                                  "jetId": 0,
+                                  "paymentScheme": "string",
+                                  "dateFrom": "2023-10-20T06:23:02.066Z",
+                                  "dateTo": "2023-10-20T06:23:02.066Z",
+                                  "daysToClose": 0
+                                }
+                              ],
+                              "ktvSocial": true,
+                              "internet": true,
+                              "domRuTV": true,
+                              "appTypes": {
+                                "additionalProp1": {},
+                                "additionalProp2": {},
+                                "additionalProp3": {}
+                              },
+                              "errorMessage": "string",
+                              "errorCode": 0,
+                              "octpAppTypeTransfer": true,
+                              "subscriptionFeeIncrease": true,
+                              "tvSetup": "string",
+                              "hasIptv": true,
+                              "b2bexists": true
+                            }
+            </response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Иванов</q>
+        <!--<a state="/Init/InitMSHi/RequestFIO/GetFIO"/>-->
+        <!--<a state="/Init/GetBaseInfo" />-->
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <!--авторизовали мульти связку-->
+    <test-case id="41 InitMSHi RequestFIO 2">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest", "errorCode": "0" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Иванов</q>
+        <!--<a state="/Init/InitMSHi/RequestFIO/GetFIO"/>-->
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="42 InitMSHi RequestFIO 3">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        <state>Init/InitMSHi/RequestFIO</state>
+        <q>Иван Иванович Иванов</q>
+        <!--<a state="/Init/InitMSHi/RequestFIO/GetFIO"/>-->
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+    </test-case>
+    
+    <!--авторизовали мульти связку-->
+    <test-case id="44 InitMSHi RequestFIO 5">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest", "errorCode": "0" }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иванов Иван</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO"/>
+        <q>Иванов Иван Иванович</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="45 InitMSHi RequestFIO 6">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO"/>
+        <q>Иван Иванович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+    </test-case>
+    
+    <test-case id="46 InitMSHi RequestFIO 7">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иванов Иван</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO"/>
+        <q>Иванов Иван Иванович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+    </test-case>
+    
+    <!--авторизовали мульти связку-->
+    <test-case id="47 InitMSHi RequestFIO 8">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/base/info</query>
+            <response status="200">{
+                              "agreementId": 0,
+                              "agreementNumber": "string",
+                              "phoneStatus": 0,
+                              "suspension": true,
+                              "domofon": true,
+                              "cifral": true,
+                              "ktv": true,
+                              "gorsv": true,
+                              "dctv": true,
+                              "mobile": true,
+                              "tvPackagesInfo": [
+                                {
+                                  "packageId": 0,
+                                  "jetId": 0,
+                                  "paymentScheme": "string",
+                                  "dateFrom": "2023-10-20T06:23:02.066Z",
+                                  "dateTo": "2023-10-20T06:23:02.066Z",
+                                  "daysToClose": 0
+                                }
+                              ],
+                              "ktvSocial": true,
+                              "internet": true,
+                              "domRuTV": true,
+                              "appTypes": {
+                                "additionalProp1": {},
+                                "additionalProp2": {},
+                                "additionalProp3": {}
+                              },
+                              "errorMessage": "string",
+                              "errorCode": 0,
+                              "octpAppTypeTransfer": true,
+                              "subscriptionFeeIncrease": true,
+                              "tvSetup": "string",
+                              "hasIptv": true,
+                              "b2bexists": true
+                            }
+            </response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>договор на мужа оформлен</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner"/>
+        <q>Иван Иванович Иванов</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <!--авторизовали мульти связку-->
+    <test-case id="48 InitMSHi RequestFIO 9">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "user", "errorCode": 0 }</response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>у меня нет отчества</q>
+        <a state="/Init/InitMSHi/RequestFIO/NoMiddleName"/>
+        <q>Иван Иванов</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <!--авторизовали мульти связку-->
+    <test-case id="49 InitMSHi RequestFIO 10">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        <state>Init/InitMSHi/RequestFIO</state>
+        <q>Иван Иванов а отчества у меня нет</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="50 InitMSHi RequestFIO 11">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        <state>Init/InitMSHi/RequestFIO</state>
+        <q>Иван Иванов а отчества у меня нет</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+    </test-case>
+    
+    <!--авторизовали мульти связку-->
+    <test-case id="54 InitMSHi RequestStreetAndHouse 1">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/base/info</query>
+            <response status="200">{
+                              "agreementId": 0,
+                              "agreementNumber": "string",
+                              "phoneStatus": 0,
+                              "suspension": true,
+                              "domofon": true,
+                              "cifral": true,
+                              "ktv": true,
+                              "gorsv": true,
+                              "dctv": true,
+                              "mobile": true,
+                              "tvPackagesInfo": [
+                                {
+                                  "packageId": 0,
+                                  "jetId": 0,
+                                  "paymentScheme": "string",
+                                  "dateFrom": "2023-10-20T06:23:02.066Z",
+                                  "dateTo": "2023-10-20T06:23:02.066Z",
+                                  "daysToClose": 0
+                                }
+                              ],
+                              "ktvSocial": true,
+                              "internet": true,
+                              "domRuTV": true,
+                              "appTypes": {
+                                "additionalProp1": {},
+                                "additionalProp2": {},
+                                "additionalProp3": {}
+                              },
+                              "errorMessage": "string",
+                              "errorCode": 0,
+                              "octpAppTypeTransfer": true,
+                              "subscriptionFeeIncrease": true,
+                              "tvSetup": "string",
+                              "hasIptv": true,
+                              "b2bexists": true
+                            }
+            </response>
+        </mockData>
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Иванов</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <!--<a state="/Init/GetBaseInfo"/>-->
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+</test>

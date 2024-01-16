@@ -1,0 +1,19 @@
+{
+  "positions" : [ {
+    "id" : "/PotentialClient/CheckAuth",
+    "x" : 329,
+    "y" : 613
+  }, {
+    "id" : "/PotentialClient/PhysicalOrLegal",
+    "x" : 36,
+    "y" : 185
+  }, {
+    "id" : "/PotentialClient/Device",
+    "x" : 46,
+    "y" : 219
+  }, {
+    "id" : "/PotentialClient/Service",
+    "x" : 50,
+    "y" : 243
+  } ]
+}

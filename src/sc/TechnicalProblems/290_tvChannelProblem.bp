@@ -1,0 +1,15 @@
+{
+  "positions" : [ {
+    "id" : "/TvChannelProblem/AreYouAtHome",
+    "x" : -854,
+    "y" : 2780
+  }, {
+    "id" : "/TvChannelProblem/CheckProactive",
+    "x" : -123,
+    "y" : 2179
+  }, {
+    "id" : "/TvChannelProblem/CheckSpas",
+    "x" : 7,
+    "y" : 282
+  } ]
+}

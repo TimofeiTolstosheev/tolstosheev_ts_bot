@@ -1,0 +1,244 @@
+<!--155_GUEST_1 НЕАВТОРИЗОВАННЫЙ, авторизовали успешно, Отмена приостановления. Домашний. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - да. Успешно, вопросов нет.-->
+<!--155_GUEST_2 НЕАВТОРИЗОВАННЫЙ, авторизовали успешно, Отмена приостановления. Мобильный. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - да. Успешно, вопросов нет-->
+<!--155_GUEST_3 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по ФИО, мобильный, 155 интент. На оператора-->
+<!--155_GUEST_4 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, мобильный, 155 интент. На оператора-->
+<!--155_GUEST_5 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, домашний, 155 интент. На оператора-->
+<test>
+    <test-case id="155_GUEST_1 НЕАВТОРИЗОВАННЫЙ, авторизовали успешно, Отмена приостановления. Домашний. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - да. Успешно, вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125214232",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "autoTest": true,
+                "suspension": true,
+                "phoneStatus": "1"       
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/suspension</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK"  
+                }
+            </response>
+        </mockData>
+
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>CancelSuspension. Вижу, что на вашем договоре имеется приостановление услуг. Я могу отменить приостановление всех услуг ближайшей датой.</a>
+        <a>CancelSuspension1. Если вы хотите снять приостановление скажите ДА, если у вас другой вопрос, либо нужно снять приостановление только одной услуги - скажите Нет</a>
+        <q>да</q>
+        <a>DiscontinuedSuspension. Приостановление снято. Услуги восстановятся в ближайшее время.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+    
+    <test-case id="155_GUEST_2 НЕАВТОРИЗОВАННЫЙ, авторизовали успешно, Отмена приостановления. Мобильный. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - да. Успешно, вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "suspension": true,
+                "phoneStatus": "1"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">auth.stage.dcc.movixlab.yc.r-one.io/dcc/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/suspension</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK"  
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>CancelSuspension. Вижу, что на вашем договоре имеется приостановление услуг. Я могу отменить приостановление всех услуг ближайшей датой.</a>
+        <a>CancelSuspension1. Если вы хотите снять приостановление скажите ДА, если у вас другой вопрос, либо нужно снять приостановление только одной услуги - скажите Нет</a>
+        <q>да</q>
+        <a>DiscontinuedSuspension. Приостановление снято. Услуги восстановятся в ближайшее время.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>   
+    
+    <test-case id="155_GUEST_3 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по ФИО, мобильный, 155 интент. На оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "suspension": true,
+                "phoneStatus": "1"       
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+    
+    <test-case id="155_GUEST_4 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, мобильный, 155 интент. На оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true,
+                "suspension": true,
+                "phoneStatus": "1"       
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="155_GUEST_5 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, домашний, 155 интент. На оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125214232",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "autoTest": true,
+                "suspension": true,
+                "phoneStatus": "1"       
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отменить приостановление</q>
+        <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

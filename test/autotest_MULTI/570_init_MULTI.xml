@@ -1,0 +1,218 @@
+<test>
+    <test-case id="4 /token: error code 9">
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+    </test-case>
+
+    <test-case id="43 InitMSHi RequestFIO 4">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest", "errorCode": "0" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович</q>
+        <a>zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Иван Иванович</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="51 InitMSHi RequestFIO 12">
+        <!--<state>Init/InitMSHi/RequestFIO</state>-->
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "user", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>я не помню на кого оформлен договор</q>
+        <a state="/Init/InitMSHi/RequestFIO/DontRemember"/>
+        <!--<q>вылетело из головы вот ей богу</q>-->
+        <q>не могу вспомнить</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="52 InitMSHi RequestFIO 13">
+        <!--<state>Init/InitMSHi/RequestFIO</state>-->
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "user", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>мне обидно</q>
+        <a state="/Init/InitMSHi/RequestFIO/CatchAll"/>
+        <q>совсем меня не понимают</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+    </test-case>
+    
+    <test-case id="53 InitMSHi RequestFIO 14">
+        <!--<state>Init/InitMSHi/RequestFIO</state>-->
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "user", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>вопрос про финансы</q>
+        <a state="/Init/InitMSHi/RequestFIO/ThemeMatch"/>
+        <q>вопрос про финансы</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion"/>
+    </test-case>
+    
+    <test-case id="55 InitMSHi RequestStreetAndHouse 2">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Иванов</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/GetAddress"/>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="56 InitMSHi RequestStreetAndHouse 3">
+        <context var="session">
+            {
+                "cisco": {
+                    "region": "dev-dcc-spb"
+                },
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                }
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Иванов</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+        <q>улица Большая Зеленина</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/GetAddress"/>
+        <q>улица Большая Зеленина дом 24</q>
+        <a state="/Init/HowCanIHelpYou"/>
+    </test-case>
+    
+    <test-case id="57 InitMSHi RequestStreetAndHouse 4">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иванов Иван Иванович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+        <!--<state>Init/InitMSHi/RequestStreetAndHouse</state>-->
+        <q>сирота я казанская</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll"/>
+        <q>мне страшно</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo"/>
+    </test-case>
+    
+    <test-case id="58 InitMSHi RequestStreetAndHouse 5">
+        <context var="session">{ "cisco": { "region": "dev-dcc-spb" } }</context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "errorCode": 9 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иванов Иван</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO"/>
+        <q>Иванов Иван Иванович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse"/>
+        <!--<state>Init/InitMSHi/RequestStreetAndHouse</state>-->
+        <q>вопрос про финансы</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/ThemeMatch"/>
+        <q>вопрос про финансы</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion"/>
+    </test-case> 
+</test>

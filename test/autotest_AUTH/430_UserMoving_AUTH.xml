@@ -1,0 +1,336 @@
+<!-- 430_USERMOVING_Строка 1 Авторизованный, интент 430, адрес подключен, информируем, на окц. -->
+<!-- 430_USERMOVING_Строка 2 Авторизованный, интент 430, адрес НЕ подключен, информируем, на окц. -->
+<!--3_430_USERMOVING Авторизованный - другой город - перевод на окц.-->
+<test>
+    <test-case id="430_USERMOVING_Строка 1 Авторизованный, интент 430, адрес подключен, информируем, на окц.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user"}</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>Благодатная 1</q>
+        <a>HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+        
+    <test-case id="430_USERMOVING_Строка 2 Авторизованный, интент 430, адрес НЕ подключен, информируем, на окц.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user"}</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>проспект Ленина 76</q>
+        <a>HouseNotConnected. К сожалению, данный адрес не подключен, сейчас соединю вас со специалистом для решения вопроса.  В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="3_430_USERMOVING Авторизованный - другой город - перевод на окц.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user"}</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>Кирово-Чепецк</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="430_USERMOVING_Строка 4 Авторизованный, интент 430, говорим лабуду х2. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>сильвуплемедам</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>сильвуплемедам</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 5 Авторизованный, интент 430, говорим тишину х2. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 6 Авторизованный, интент 430, говорим лабуду и существующий адрес на 2 уточнение. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>сильвуплемедам</a>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>адрес</a>
+        <a>HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>                  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 7 Авторизованный, интент 430, Просим оператора на уточнении адреса. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "proactiveResult": "spas",
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>дайте оператора</a>
+        <a>dssssssssssssssssssss.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>         
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 8 Авторизованный, интент оператора 405, потом 430, Адрес не подключен. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "proactiveResult": "spas",
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у вас вопрос</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>адрес</a>
+        <a>HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>    
+        
+    
+</test>

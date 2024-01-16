@@ -1,0 +1,312 @@
+<!--11 SetupRouter Множественная, сотовый - запрашиваем фио - нашли 1 уникальный договор - В проактиве ошибка: не активирован ТП-->
+<!--12 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - нашли 1 уникальный договор. В проактиве нет ошибок.На предложение СМС Да. На 2ую СМС - нет в БИ - 803 и 0, 130 и 0 696578C6905AB390C6A6DDA8BC340B58 580011100171 и 580002926302-->
+<!--13 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - нашли такой договор. В проактиве нет ошибок.На предложение СМС Нет. На 2ую СМС - 2 NoMatch. Перевод на оператора-->
+<!--14 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - НЕ нашли уникальный договор. На предложение 1ой СМС Нет. Перевод на оператора в БИ 130 и 6 B6424402A77CBE7D9C6D0BF39B2EC08F 580011100171 и 580002926302-->
+<!--15 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - НЕ нашли уникальный договор. На предложение СМС ДА .Доп вопросов нет. в БИ 130 и 0 803 и 0 46A049DAE6B5145B47010B9E38055F53 580011100171 и 580002926302-->
+<!--16 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - нашли 1 уникальный договор. В проактиве нет ошибок.На предложение СМС Да. На предложение 2 смс Да, вопросов нет. 803 и 0, 804 и 0, 130 и 0 B386076517D4E84B531BA0551B501772 580011100171 и 580002926302-->
+<test>
+    <test-case id="11 SetupRouter Множественная, сотовый - запрашиваем фио - нашли 1 уникальный договор - В проактиве ошибка: не активирован ТП">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "850,00",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "request-pending",
+                    "connectionRequest": true,
+                    "result": "mono_EnoughBalance_NotActive",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>настройка роутера</q>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_800_nom. восемьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="12 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - нашли 1 уникальный договор. В проактиве нет ошибок.На предложение СМС Да. На 2ую СМС - нет в БИ - 803 и 0, 130 и 0 696578C6905AB390C6A6DDA8BC340B58 580011100171 и 580002926302">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "phoneStatus": 1,
+                "autoTest": true
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
+            <response>{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="13 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - нашли такой договор. В проактиве нет ошибок.На предложение СМС Нет. На 2ую СМС - 2 NoMatch. Перевод на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "phoneStatus": 1,
+                "autoTest": true
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="14 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - НЕ нашли уникальный договор. На предложение 1ой СМС Нет. Перевод на оператора в БИ 130 и 6 B6424402A77CBE7D9C6D0BF39B2EC08F 580011100171 и 580002926302">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "autoTest": true
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "errorCode": 9, "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <!--<q>купил новый роутер</q>-->
+        <q>настроить роутер</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>Configuring_router_transfer. Для настройки роутера пожалуйста приготовьте логин и пароль от интернета, а так же убедитесь, что ваш компьютер подключён к роутеру проводным или беспроводным способом. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="15 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО - НЕ нашли договор. На предложение СМС ДА .Доп вопросов нет. в БИ 130 и 0 803 и 0 46A049DAE6B5145B47010B9E38055F53 580011100171 и 580002926302">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "autoTest": true
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
+            <response>{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="16 SetupRouter Множественная, сотовый - уточняем у Клиента ФИО, сузить круг не удалось, Запрашиваем адрес - нашли 1 уникальный договор. В проактиве нет ошибок.На предложение СМС Да. На предложение 2 смс Да, вопросов нет. 803 и 0, 804 и 0, 130 и 0 B386076517D4E84B531BA0551B501772 580011100171 и 580002926302">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementId": "",
+                "agreementNumber": "",
+                "cellPhone": true,
+                "phoneStatus": 1,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "errorCode": 9, "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
+            <response>{ "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response>{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

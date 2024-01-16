@@ -1,0 +1,131 @@
+<!--50_RECEIPT Строка 1 Множественная, мобильный, интент 50, на оператора-->
+<!--50_RECEIPT Строка 2 Множественная, домашний, интент 50, на оператора-->
+<!--50_RECEIPT Строка 3 Множественная, не смогли авторизовать по ФИО, домашний, интент 50, на оператора-->
+<!--50_RECEIPT Строка 3.1 Множественная, по ФИО 2 договора, не смогли авторизовать по адресу, домашний, интент 50, на оператора-->
+<test>
+    <test-case id="50_RECEIPT Строка 1 Множественная, мобильный, интент 50, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",                
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хочу получать чеки</q>
+        <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+
+    <test-case id="50_RECEIPT Строка 2 Множественная, домашний, интент 50, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",                
+                "cellPhone": false,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хочу получать чеки</q>
+        <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+
+    <test-case id="50_RECEIPT Строка 3 Множественная, не смогли авторизовать по ФИО, домашний, интент 50, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",                
+                "cellPhone": false,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хочу получать чеки</q>
+        <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>      
+    
+    <test-case id="50_RECEIPT Строка 3.1 Множественная, по ФИО 2 договора, не смогли авторизовать по адресу, домашний, интент 50, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",                
+                "cellPhone": false,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+
+    	<q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>улица Петра Великого. 999</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хочу получать чеки</q>
+        <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>      
+</test>

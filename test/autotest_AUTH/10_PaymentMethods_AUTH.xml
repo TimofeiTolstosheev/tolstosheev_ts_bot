@@ -1,0 +1,218 @@
+<test>
+   <test-case id="1 PaymentsMethods Авторизован. Городской номер - Запрос оператора. Потом Какие Способы оплаты? - Рассказываем. Вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78703530000",
+                "agree5mentNumber": "780046998264",
+                "cellPhone": false,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>оператор</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="2 PaymentsMethods Авторизован. Городской номер - Какие Способы оплаты? - Рассказываем. Вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="3 PaymentsMethods Авторизован. Актуальный номер - Какие Способы оплаты? - Рассказываем. СМС НЕ надо. Вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>    
+    </test-case>
+
+   <test-case id="4 PaymentsMethods Авторизован. Актуальный номер - Какие Способы оплаты? - Рассказываем. СМС Да. Отправлено успешно. Вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+   <test-case id="5 PaymentsMethods Авторизован. Актуальный номер - Какие Способы оплаты? - Рассказываем. СМС Да. Отправлено НЕуспешно. Ошибка биллинга. Перевод на OKC">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 1 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>да</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>transferToAgentForFurtherSMS. К сожалению, при отправке СМС возникла ошибка. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="6 PaymentsMethods Авторизован. Актуальный номер - Какие Способы оплаты? - Рассказываем. СМС 2 раза непонятное. Перевод на OKC">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>ккк</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="7 PaymentsMethods Авторизован. Актуальный номер - Какие Способы оплаты? - Рассказываем. СМС - 2 раза тишина. Перевод на OKC">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

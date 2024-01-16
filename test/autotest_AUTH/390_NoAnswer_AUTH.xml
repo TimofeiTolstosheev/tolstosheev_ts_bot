@@ -1,0 +1,267 @@
+<!--390_9 авторизованный, мобильный - алло (4 раза)-->
+<!--390_10 авторизованный, мобильный - алло (3 раза) - автоплатеж-->
+<!--390_11 авторизованный, мобильный - алло (3 раза) - noMatch - автоплатеж-->
+<!--390_12 авторизованный, мобильный - алло (2 раза) - автоплатеж-->
+<!--390_13 авторизованный, мобильный - алло (2 раза) - noMatch - автоплатеж-->
+<!--390_14 авторизованный, мобильный - алло (1 раз) - автоплатеж-->
+<!--390_15 авторизованный, мобильный - алло (1 раз) - noMatch - автоплатеж-->
+<!--390_16 авторизованный, мобильный - алло (1 раз) - noMatch - алло - автоплатеж-->
+<test>
+    <test-case id="390_9 авторизованный, мобильный - алло (4 раза)">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>алло</q>
+        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <q>алло алло</q>
+        <a>No_answer3. Пожалуйста, задайте вопрос голосом</a>
+        <q>алло</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="390_10 авторизованный, мобильный - алло (3 раза) - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>алло</q>
+        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <q>алло алло</q>
+        <a>No_answer3. Пожалуйста, задайте вопрос голосом</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="390_11 авторизованный, мобильный - алло (3 раза) - noMatch - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>алло</q>
+        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <q>алло алло</q>
+        <a>No_answer3. Пожалуйста, задайте вопрос голосом</a>
+        <q>выщ выщ</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="390_12 авторизованный, мобильный - алло (2 раза) - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>алло</q>
+        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="390_13 авторизованный, мобильный - алло (2 раза) - noMatch - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>алло ало</q>
+        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <q>выщ выщ</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+
+    <test-case id="390_14 авторизованный, мобильный - алло (1 раз) - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="390_15 авторизованный, мобильный - алло (1 раз) - noMatch - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>выщ выщ</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="390_16 авторизованный, мобильный - алло (1 раз) - noMatch - алло - автоплатеж">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>алло</q>
+        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <q>алло вы здесь</q>
+        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <q>выщ выщ</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>алле меня слышно</q>
+        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+</test>

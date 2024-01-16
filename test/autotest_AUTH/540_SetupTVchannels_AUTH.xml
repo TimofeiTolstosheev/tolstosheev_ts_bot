@@ -1,0 +1,334 @@
+<test>
+
+
+    <test-case id="540_TVCHSETUP_Строка 10 Авторизован. В блоке проактива нет ошибок. Клиент звонит с городского. Информируем клиента где можно гайти инст. Вопросов нет. 540 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        
+    </test-case>
+
+
+
+    <test-case id="540_TVCHSETUP_Строка 2 Авторизован. В блоке проактива нет ошибок. Клиент звонит с сотового. Предлагаем СМС. Клиент Да. СМС отправлено. Вопросов нет. 540 и 0, 805 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        
+    </test-case>
+
+
+        <test-case id="540_TVCHSETUP_Строка 3 Авторизован. В блоке проактива нет ошибок. Клиент звонит с сотового. Предлагаем СМС. Клиент Нет. Информируем клиента,где он сам может посомтреть инструкцию. Вопросов нет. 540 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>да</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        
+    </test-case>
+
+
+        <test-case id="540_TVCHSETUP_Строка 4 Авторизован. В блоке проактива нет ошибок. Клиент звонит с сотового. Предлагаем СМС. Клиент Не понятная фраза 2ы.Перевод на агента. 540 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>ввв</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>ввв</q>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру setting_tv</a>
+        
+    </test-case>
+
+
+
+        <test-case id="540_TVCHSETUP_Строка 5 Авторизован. В блоке проактива нет ошибок. Клиент звонит с сотового. Предлагаем СМС. Клиент Молчание 2ы.Перевод на агента. 540 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру setting_tv</a>
+        
+    </test-case>
+
+
+        <test-case id="540_TVCHSETUP_Строка 6 Авторизован. В блоке проактива нет ошибок. Клиент звонит с сотового. Предлагаем СМС. Клиент Молчание 1ый, на 2ой раз Нет.Информируем, где можно найти инструкцию.Вопросов нет. 540 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>нет</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        
+    </test-case>
+
+
+        <test-case id="540_TVCHSETUP_Строка 7 Авторизован. В блоке проактива нет ошибок. Клиент звонит с сотового. Предлагаем СМС. Клиент Да. СМС не отправилось из-за ош биллинга. Перевод на оператора. 540 и 1, 805 и 3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "spas",
+                "productId": "53",
+                "dvbc": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>SetupTVChannels_SMS.Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.</a>
+        <q>да</q>
+        <a>SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>transferToAgentForFurtherSMS. К сожалению, при отправке СМС возникла ошибка. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+        
+    </test-case>
+
+    <test-case id="540_TVCHSETUP_Строка 8 Авторизован. В блоке проактива ош ДЗ. 540 и 0 580009307593 ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "mono_NotEnoughBalance_NotActive",
+                "dvbc": "1",
+                "productId": "53",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>445,00</a>
+        <a>wait_for_the_payment. Если вы уже произвели оплату, пожалуйста подождите немного. обычно деньги поступают на счет мгновенно, но иногда это может занять несколько часов.</a>
+        <a>ask_promisedPay. Если вы еще не производили оплату, могу попробовать подключить вам услугу обещанный платеж. Вам это, интересно?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+        
+    </test-case>
+
+
+    <test-case id="540_TVCHSETUP_Строка 9 Авторизован. В блоке проактива ош Авария. 500 и 0 580010155350 ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "proactiveResult": "mono_NotEnoughBalance_NotActive",
+                "dvbc": "1",
+                "accidentHours": "1",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": true }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна помощь в настройке каналов</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>1</a>
+        <a>Ru_unit_hour_nom_sn. час</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему </a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+</test>

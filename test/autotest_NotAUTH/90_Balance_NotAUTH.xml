@@ -1,0 +1,113 @@
+<!--90_BALANCE_1 НЕавторизованный, мобильный - баланс - ищи инфу в ЛК дом ру - СМС успех - еще вопросы? - нет - прощание-->
+<!--90_BALANCE_2 НЕавторизованный, мобильный - баланс - ищи инфу в ЛК дом ру - СМС не_успех - еще вопросы? - нет - прощание-->
+<!--90_BALANCE_3 НЕавторизованный, домашний - баланс - ищи инфу в ЛК дом ру - еще вопросы? - нет - прощание-->
+<test>
+    <test-case id="90_BALANCE_1 НЕавторизованный, мобильный - баланс - ищи инфу в ЛК дом ру - СМС успех - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "city": { "code": "dev-dcc-spb", "name": "СПБ (DEV-DCC-SPB)" }
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор не на мое имя</q>
+        <a state="/Init/Initialization/InitializationNonOwner" />
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>Кирово-Чепецк</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+
+    <test-case id="90_BALANCE_2 НЕавторизованный, мобильный - баланс - ищи инфу в ЛК дом ру - СМС не_успех - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "city": { "code": "dev-dcc-spb", "name": "СПБ (DEV-DCC-SPB)" }
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 4, "status": false }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор не на мое имя</q>
+        <a state="/Init/Initialization/InitializationNonOwner" />
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>Кирово-Чепецк</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="90_BALANCE_3 НЕавторизованный, домашний - баланс - ищи инфу в ЛК дом ру - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "false",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор не на мое имя</q>
+        <a state="/Init/Initialization/InitializationNonOwner" />
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>Кирово-Чепецк</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test> 

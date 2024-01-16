@@ -1,0 +1,451 @@
+<test>
+
+    
+    
+    <test-case id="430_USERMOVING_Строка 1 НЕавторизованный, интент 430, адрес подключен, информируем, на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>адрес</q>
+        <a>HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 2 НЕавторизованный, интент 430, адрес НЕ подключен, информируем, на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>адрес</q>
+        <a>HouseNotConnected. К сожалению, данные адрес не подключен, сейчас соединю вас со специалистом для решения вопроса. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 4 НЕавторизованный, интент 430, говорим лабуду х2. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>сильвуплемедам</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>сильвуплемедам</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 5 НЕавторизованный, интент 430, говорим тишину х2. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 6 НЕавторизованный, интент 430, говорим лабуду и существующий адрес на 2 уточнение. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>сильвуплемедам</a>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>адрес</a>
+        <a>HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>                  
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 7 НЕавторизованный, интент 430, Просим оператора на уточнении адреса. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "proactiveResult": "spas",
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>дайте оператора</a>
+        <a>dssssssssssssssssssss.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>         
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 8 НЕавторизованный, интент оператора 405, потом 430, Адрес не подключен. Перевод на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "proactiveResult": "spas",
+                "cellPhone": true,
+                "canConnect": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у вас вопрос</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <a>адрес</a>
+        <a>HouseConnected. Данный дом подключен, сейчас соединю вас со специалистом, он поможет оформить заявку. В целях повышения качества обслуживания. все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>    
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 9 НЕавторизованный, не смогли авторизовать по адресу, интент 430, адрес НЕ подключен, информируем, на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Петра Великого. 999</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>адрес</q>
+        <a>HouseNotConnected. К сожалению, данные адрес не подключен, сейчас соединю вас со специалистом для решения вопроса. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>      
+        
+    
+    
+    <test-case id="430_USERMOVING_Строка 9.1 НЕавторизованный, не смогли авторизовать по ФИО, интент 430, адрес НЕ подключен, информируем, на ОКЦ.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "autoTest": true,
+                "cellPhone": true,
+                "canConnect": false
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>переезжаю на новый адрес</q>
+        <a>PereezdAdres. Назовите, пожалуйста, улицу и номер дома куда вы планируете переезжать. Я проверю техническую возможность.</a>
+        <q>адрес</q>
+        <a>HouseNotConnected. К сожалению, данные адрес не подключен, сейчас соединю вас со специалистом для решения вопроса. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>      
+    
+    
+    
+    
+    
+    
+</test>

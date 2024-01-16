@@ -1,0 +1,303 @@
+<!--1 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 3 непонятные фразы - перевод на ОКЦ-->
+<!--2 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 3 непонятные фразы - проблема в неактивном тарифе проактива. Озвучиваем.-->
+<!--3 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 1 непонятная фраза - переход в потенц. кл. Проходим сценарий-->
+<!--4 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 2 непонятные фразы, переход в потенц. кл. Проходим сценарий-->
+<!--5 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 2 непонятные фразы. Переход общие тех. вопросы.-->
+<!--6 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 1 непонятная фраза. Переход в общие фин. вопросы - баланс-->
+<test>
+    <test-case id="1 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 3 непонятные фразы - перевод на ОКЦ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>сильвуплемедам</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>    
+    </test-case>
+   
+    <test-case id="2 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 3 непонятные фразы - неактивный тариф. 2 ноуматча на вопрос об активации. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "proactiveResult": "mono_EnoughBalance_NotActive"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "325,00",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "request-pending",
+                    "connectionRequest": true,
+                    "result": "mono_EnoughBalance_NotActive",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>сильвуплемедам</q>
+        <a>NotUnderstandableRequest. К сожалению так и не поняла Вас, но</a>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_digit_20_nom. двадцать</a>
+        <a>ru_digit_5_nom. пять</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>кого</q>
+        <a>activeTPnow_CatchAll. Прошу прощения, возможно не верно вас поняла. Поэтому уточните, пожалуйста, вы хотите активировать тарифный план прямо сейчас?</a>
+        <q>кого</q>
+        <a>activeTPnow_CatchAll_2. Активировать тарифный план вы можете самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>    
+    </test-case>
+  
+    <test-case id="3 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 1 непонятная фраза - переход в потенц. кл. Проходим сценарий">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>хочу подключить услугу</q>
+        <a state="/PotentialClient/Service/CheckAuth">UtochneniePK. Я правильно поняла, что Вы хотите подключить новую услугу? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>     
+    
+    <test-case id="4 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 2 непонятные фразы, переход в потенц. кл. Проходим сценарий">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>хочу подключить услугу</q>
+        <a state="/PotentialClient/Service/CheckAuth">UtochneniePK. Я правильно поняла, что Вы хотите подключить новую услугу? Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case> 
+
+    <test-case id="5 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 2 непонятные фразы. Переход общие тех. вопросы.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true",
+                "int": "true",
+                "domrutv": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>технический вопрос</q>
+        <a>SpecifyIntTV. Подскажите Ваш вопрос по услуге телевидения или интернета?</a>
+        <q>интернет</q>
+        <a>SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи</a>
+        <q>кого</q>
+        <a>SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи</a>
+        <q>кого</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <test-case id="6 NoMatch АВТОРИЗОВАННЫЙ, мобильный - 1 непонятная фраза. Переход в общие фин. вопросы - баланс">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": "true",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "0,00",
+                    "nextPeriodDate": "01.02.2024",
+                    "chargesSum": "445,00",
+                    "textParam": 2,
+                    "periodDates": "2",
+                    "opEndDate": "",
+                    "curBalance": "2056,01",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 0,
+                    "retStr": "$1",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": "OK" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>финансовая консультация</q>
+        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>         
+        <a>ru_digit_50_nom. пятьдесят</a>         
+        <a>ru_digit_6_nom. шесть</a>         
+        <a>ru_unit_rub_gen_pl. рублей</a>         
+        <a>ru_digit_1_nom_fem. одна</a>         
+        <a>ru_unit_kop_nom_sn. копейка</a>
+        <a>StoimistZa. Стоимость услуг за</a>
+        <a>Ru_month_2_nom. февраль</a>
+        <a>ru_digit_400_nom. четыреста</a>     
+        <a>ru_digit_40_nom. сорок</a>        
+        <a>ru_digit_5_nom. пять</a>    
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>OplataDo. Чтобы сохранить доступ к услугам, оплатите до</a>
+        <a>Ru_ord_1_gen_mas. первого</a>      
+        <a>Ru_month_2_gen. февраля</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>    
+</test>

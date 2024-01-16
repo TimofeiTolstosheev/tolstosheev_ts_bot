@@ -1,0 +1,121 @@
+<!--80_97 множественная по фио и по адресу, не авторизовали - мобильный - перезвоните-->
+<!--80_97.1 множественная по фио, не авторизовали - мобильный - перезвоните-->
+<!--80_97.2 множественная, домашний - авторизовали по фио - ошибка 11 - Способы оплаты - вопросы есть? - нет - прощание-->
+<test>
+    <test-case id="80_97 множественная по фио и по адресу, не авторизовали - мобильный - перезвоните">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234",  "errorCode": 9 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Петров</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>3 микрорайон дом 23</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дай отсрочку на три дня</q>
+        <a>error_perevod_na_okc. Номер договора не найден. Перевожу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="80_97.1 множественная по фио, не авторизовали - мобильный - перезвоните">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234",  "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Петров</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дай отсрочку на три дня</q>
+        <a>promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+    
+    <test-case id="80_97.2 множественная, домашний - авторизовали по фио - ошибка 11 - Способы оплаты - вопросы есть? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125214232",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": false,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234",  "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/promised/payment</query>
+            <response status="200">
+                {
+                    "errorMessage": "Error11",
+                    "errorCode": 11,
+                    "canGet": false,
+                    "mono": true,
+                    "promisedPaymentMaxDay": 0,
+                    "promisedPaymentCost": 0,
+                    "balanceActiveFrom": "string",
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi/RequestFIO"/>
+        <q>Иван Иванович Петров</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>продлить общенанный платёж</q>
+        <a>promisedPayError11. К сожалению, я не могу подключить вам "Обещаный платеж", так как у вас не подключена услуга Интернет.</a>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
+        <q>замена кабеля</q>
+        <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>
+</test>

@@ -1,0 +1,16 @@
+<test integration="true">
+    <test-case id="Тестирование адресов">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000000",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>addressTest</q>
+        <a state="/AddressTest"/>
+        <q>улица куйбышева дом 31</q>
+        <a state="/AddressTest/AuthByAddress">msg</a>
+    </test-case>
+</test>

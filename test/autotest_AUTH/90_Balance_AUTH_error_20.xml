@@ -1,0 +1,47 @@
+<!--110_90_BALANCE_SCN_OTHER_Строка 1 АВТОРИЗОВАННЫЙ, Мобильный, запрос баланса по сценарию OTHER. На СМС соглашаемся. Отправка СМС ок. Вопросов нет-->
+<test>
+    <test-case id="110_90_BALANCE_SCN_OTHER_Строка 1 АВТОРИЗОВАННЫЙ, Мобильный, запрос баланса по сценарию OTHER. На СМС соглашаемся. Отправка СМС ок. Вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "666,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "2342,00",
+                    "textParam": 20,
+                    "periodDates": "15.07.2023-15.08.2023",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "15.08.2023",
+                    "lastPayment": 0,
+                    "retStr": "$1",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1">DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

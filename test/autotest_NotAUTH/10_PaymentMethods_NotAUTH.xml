@@ -1,0 +1,38 @@
+<test>
+    <test-case id="8 PaymentMethods НЕавторизованый - Какие Способы оплаты? - Рассказываем. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000000",
+                "agreementNumber": "",
+                "agreementId": "",
+                "cellPhone": true,
+                "dvbc": "1",
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization" />
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/InitializationNonOwner"/>
+        <a state="/Init/Initialization/ConfirmCity"/>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity"/>
+        <q>Кирово-чепецк</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>какие способы оплаты</q>
+        <a>paymentsMethods_ALL. Заплатить за услуги связи можно банковской картой через личный кабинет на сайте дом точка ру , либо наличными в платежном терминале или банкомате. Чтобы вовремя пополнять счет - рекомендую подключить автоплатеж. сделать это можно самостоятельно в личном кабинете или приложении, мой дом ру.</a>
+        <a>SMSpayment. Я могу отправить СМС ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите ДА. Если смс не нужна, скажите, НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+</test>

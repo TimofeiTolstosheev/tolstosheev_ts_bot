@@ -1,0 +1,1979 @@
+<test>
+
+
+
+    <test-case id="Кейс 1 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, admin down, СЗ ААО - согласны.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "aao": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 1.1 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, admin down, СЗ ААО - ноуматч, потом согласны.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "aao": "true",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>сильвуплемедам</q>
+        <a>doYouWant_admin_request_CatchAll. Извините, не поняла вас. Мне создать заявку на удаленную проверку оборудования?</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 1.2 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, admin down, СЗ ААО - ноуматч, потом согласны, вопросы есть, номер договора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "aao": "true",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>сильвуплемедам</q>
+        <a>doYouWant_admin_request_CatchAll. Извините, не поняла вас. Мне создать заявку на удаленную проверку оборудования?</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>какой у меня номер договора?</q>
+        <a>agreementNumber. Номер вашего договора:</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_digit_80_nom. восемьдесят</a>
+        <a>ru_digit_0_nom. ноль</a>
+        <a>ru_digit_40_nom. сорок</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>ru_digit_900_nom. девятьсот</a>
+        <a>ru_digit_90_nom. девяносто</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_4_nom. четыре</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>  
+    
+    
+    <test-case id="Кейс 2 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, admin down, СЗ ААО - не согласны, на оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "down",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "aao": "true",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>нет</q>
+        <a>perezagruzhayVsyo_transferToOKC. Пожалуйста, перезагрузите Ваше оборудование и проверьте плотность подключения всех кабелей. А я пока перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.</a>
+    </test-case>    
+
+
+
+    <!--<test-case id="Кейс 3 - 280 АВТОРИЗОВАННЫЙ, мобильный, интент 280, SPAS administrator_request, СЗ ААО - согласны.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "szRequired": "1",
+                    "aao": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>низкая скорость/q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>    -->
+
+
+
+    <!--<test-case id="Кейс 4 - 280 АВТОРИЗОВАННЫЙ, мобильный, интент 280, SPAS request, СЗ на ТС, сегодня, выбираем время, подтверждение - согласны. вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "szRequired": "1",
+                    "aao": "true",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>низкая скорость/q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+src/patterns/InitScenario.sc:84:26 Value -0,5 is not correct for $weight pattern
+DEPLOY FAILED!
+
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case> -->
+
+
+    <test-case id="Кейс 5 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, сегодня, первая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "13:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>сегодня</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <q>первая</q>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_eleven. с одиннадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_twelve. с двенадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>        
+        <q>в 13</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>today. сегодня</a>
+        <a>Ruord5nomneu. пятое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_13. тринадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>today. сегодня</a>
+        <a>Ruord5nomneu. пятое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_11. одиннадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>         
+
+
+
+    <test-case id="Кейс 6 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, завтра, первая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>завтра</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <q>первая</q>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_eleven. с одиннадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_twelve. с двенадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>в 11</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>tomorrow. завтра</a>
+        <a>Ruord6nomneu. шестое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_12. двенадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>tomorrow. завтра</a>
+        <a>Ruord6nomneu. шестое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_12. двенадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 7 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, послезавтра, первая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>послезавтра</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <q>первая</q>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_thirteen. с тринадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_twelve. с двенадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>в 13</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_13. тринадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_13. тринадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 8 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, сегодня, вторая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>сегодня</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <q>вторая</q>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_eighteen. с восемнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>в 18</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>today. сегодня</a>
+        <a>Ruord5nomneu. пятое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>today. сегодня</a>
+        <a>Ruord5nomneu. пятое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>         
+
+
+
+    <test-case id="Кейс 9 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, завтра, вторая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>завтра</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <q>вторая</q>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <a>from_eighteen. с восемнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <q>в 19</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>tomorrow. завтра</a>
+        <a>Ruord6nomneu. шестое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_19. девятнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>tomorrow. завтра</a>
+        <a>Ruord6nomneu. шестое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_19. девятнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 10 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, послезавтра, вторая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>послезавтра</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <a>from_eighteen. с восемнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <q>в 6</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 11 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, непонятная фраза, послезавтра, непонятная фраза, вторая половина, выбираем время - согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>сильвуплемедам</q>
+<!--    <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>           -->
+        <q>послезавтра</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>сильвуплемедам</q>
+<!--    <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>  -->
+        <a>from_eighteen. с восемнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <q>в 6</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 12 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, непонятная фраза, послезавтра, непонятная фраза, вторая половина, выбираем время - на подтверждении ноуматч, согласны, вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>послезавтра</q>
+        <a>mnogoPolovin. В какой половине дня Вам удобней принять нашего специалиста? Первая половина с 9 утра до 14 часов дня. Вторая половина с 15 до 20 часов. Пожалуйста скажите первая или вторая.</a>
+        <a>Isprosilu_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>Isprosilu_technica1. Пожалуйста назовите вариант из списка.</a>
+        <a>from_eighteen. с восемнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <q>в 6</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>сильвуплемедам</q>
+<!--    <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a> -->
+        <q>да</q>
+        <a>YaSozdal_TS_request. Спасибо, техник подойдет к Вам</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>Ruord7nomneu. седьмое</a> 
+        <a>Rumonth12_gen. декабря</a>
+        <a>at. в</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ruunithourgenpl. часов.</a>
+        <a state="/WhatElse/WhatElse">У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите: Да или Нет.</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+
+
+
+    <test-case id="Кейс 13 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, oper down, СЗ на ТС, непонятная фраза, послезавтра, запрос оператора х2, на оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "proactiveResult": "spas",
+                "cellPhone": "true",
+                "int": "1",
+                "ktv": "0",
+                "domrutv": "0",
+                "ktv_social": "0",
+                "dctv": "0",
+                "tvSetup": "unknownTvSetup",
+                "dvbc": "0",
+                "autoTest": "true"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">
+                {
+                    "token": "1234",
+                    "type": "user"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-12-05T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": true
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": true,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "11:00",
+                        "12:00",
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-12-05T00:00:00.000+00:00",
+                    "status": "OK"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/session</query>
+            <response status="200">
+                {
+                    "activeSessionAvailable": "false",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "rebootResult": "Success",
+                    "szRequired": "1",
+                    "autoTest": "true"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-12-05 18:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPASTSrequest. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWantTSrequest. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>after_tomorrow. послезавтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>оператор</q>
+<!--    <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>           -->
+        <q>оператор</q>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>    
+</test>
+
+
+
+
+
+
+
+
+<test integration="true">
+    <test-case id="Кейс 1 - 300 АВТОРИЗОВАННЫЙ, мобильный, интент ноулинка, admin down, СЗ ААО - согласны.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000017",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>      
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+    </test-case>
+    
+    <test-case id="270_64 авторизованный, мобильный - рябь на каналах - в спасе создаем СЗ - создать? - да - доступные дни - выбор дня - доступное время - выбор времени - проверка даты/времени, верно? - да - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000016",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <dateTime>2023-12-13 08:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>замирает картинка</q>
+        <a>SPAS_TS_request. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWant_TS_request. Я могу создать заявку на завтра или послезавтра, Вам нужно будет присутствовать дома. Заявка для Вас бесплатна. Если Вы готовы выбрать время визита техника, скажите Да. Если не готовы, скажите Нет.</a>
+        <q>готов</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>tomorrow. завтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>на сегодня</q>
+        <a>I_sprosil_u_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_eighteen. с восемнадцати</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>I_sprosil_u_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>в восемнадцать</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>today. сегодня</a>
+        <a>Ru_ord_18_nom_neu. восемнадцатое</a>
+        <a>Ru_month_10_gen. октября</a>
+        <a>DRT_18. восемнадцать</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>goZayavku2. Если все верно скажите Да. Если я неверно Вас понял, скажите Нет</a>
+        <q>да</q>
+        <a>YaNeSplaniroval_TS_request. Я создала заявку, но мне не удалось забронировать выбранное вами время. Перевожу звонок на оператора, он поможет завершить оформление заявки.</a>
+        <a state="/Transfer/Transfer" />
+    </test-case>    
+
+    <test-case id="5_420_AGREEMENT  АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС? - noMatch - СМС? - да. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "city": {
+                    "code": "dev-dcc-spb",
+                    "name": "СПБ (DEV-DCC-SPB)"
+                },
+                "phoneNumber": "79000000001",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>   
+    
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня номер договора?</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят  два</a>
+        <a>DRT_64. шестьдесят четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>сильвуплемедам</q>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>сильвуплемедам</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>

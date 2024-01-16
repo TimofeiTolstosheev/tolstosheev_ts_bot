@@ -1,0 +1,1962 @@
+<test>
+    <test-case id= "Сначала мне надо поговорить а потом будем уже что то вносить или вообще что то не вносить">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Сначала мне надо поговорить а потом будем уже что то вносить или вообще что то не вносить</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "У нас отключили интернет у у меня не прошла оплата вы можете дать ее 3 дня ну хотя бы 2 часа чтобы я воспользовалась">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> У нас отключили интернет у у меня не прошла оплата вы можете дать ее 3 дня ну хотя бы 2 часа чтобы я воспользовалась</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Неполадки с оборудованием.">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Неполадки с оборудованием.</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Ну какими словами у меня дорого стали брать какими словами я еще могу вам сказать">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Ну какими словами у меня дорого стали брать какими словами я еще могу вам сказать</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Очень плохое качество интернета последнее время не устраивает меня наверное буду я от вас отказываться">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Очень плохое качество интернета последнее время не устраивает меня наверное буду я от вас отказываться</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Так объясните ка нам пожалуйста я в том месяце платила очень много это 854 р и сейчас опять сколько же я должна">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Так объясните ка нам пожалуйста я в том месяце платила очень много это 854 р и сейчас опять сколько же я должна</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Я по поводу каналов что у меня каналов нету">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Я по поводу каналов что у меня каналов нету</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Я положила деньги на дом ру у меня все еще каналов никаких нету мне бы узнать почему">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Я положила деньги на дом ру у меня все еще каналов никаких нету мне бы узнать почему</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Продлить срок закрытия договора">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Продлить срок закрытия договора</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Я просто хочу я пользуюсь телевидением я хочу интернет">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Я просто хочу я пользуюсь телевидением я хочу интернет</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Был звонок о том то что есть задолженность">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Был звонок о том то что есть задолженность</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Вопрос по телевидению">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Вопрос по телевидению</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Здравствуйте посмотрите пожалуйста я вот переводила вам 10 10 декабря 555 р они поступили">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Здравствуйте посмотрите пожалуйста я вот переводила вам 10 10 декабря 555 р они поступили</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Не могу войти в приложение">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Не могу войти в приложение</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Посмотрите пожалуйста я вам перечислила деньги 555 р поступили они нет">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Посмотрите пожалуйста я вам перечислила деньги 555 р поступили они нет</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Сколько нужно мне платить за этот месяц хочу узнать я поменяла номер телефона">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Сколько нужно мне платить за этот месяц хочу узнать я поменяла номер телефона</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "У меня вопрос по оказанию услуг">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> У меня вопрос по оказанию услуг</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "2">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> 2</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Вай фай плохо ловит">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Вай фай плохо ловит</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Мой вай фай плохо ловит">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Мой вай фай плохо ловит</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Непостоянное соединение интернет">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Непостоянное соединение интернет</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Нужно ли сдавать приставку">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Нужно ли сдавать приставку</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "По поводу договора">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> По поводу договора</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Подключить на оператора">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Подключить на оператора</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Разговор с оператором">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Разговор с оператором</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "За интернет дом ру плачу ежемесячно 830 р">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> За интернет дом ру плачу ежемесячно 830 р</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Скидки снижение месячной платы">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Скидки снижение месячной платы</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Угу 2 томская 42 вырван доводчик на калитке возле автоматических ворот">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Угу 2 томская 42 вырван доводчик на калитке возле автоматических ворот</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Я хочу поговорить с оператором по поводу скидок за скидок">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Я хочу поговорить с оператором по поводу скидок за скидок</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Нам необходимо заявочку сделать чтобы человек пришел и">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Нам необходимо заявочку сделать чтобы человек пришел и</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Ничего не могу сказать финансово">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Ничего не могу сказать финансово</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "У меня не показывает youtube вообще не показывает">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> У меня не показывает youtube вообще не показывает</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Youtube не показывает у меня youtube не показывает соедините меня с">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Youtube не показывает у меня youtube не показывает соедините меня с</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Нет мне надо подключиться">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Нет мне надо подключиться</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "У меня не работает услуга соедините пожалуйста с оператором">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> У меня не работает услуга соедините пожалуйста с оператором</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Не согласен с оплатой">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Не согласен с оплатой</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Почему быстро закончились деньги на вай фай">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Почему быстро закончились деньги на вай фай</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Мне надо отключить приставку">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Мне надо отключить приставку</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Мне надо отключить мою приставку">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Мне надо отключить мою приставку</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Соедините мне надо отключить приставку">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Соедините мне надо отключить приставку</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "У вас не работает ваше приложение">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> У вас не работает ваше приложение</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Уточнение скорости работы интернета модем дома стоит">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Уточнение скорости работы интернета модем дома стоит</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Телевизор как шахматка сыпется экран">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Телевизор как шахматка сыпется экран</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Сигнал плохой">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Сигнал плохой</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Мне надо соединение с оператором я хочу узнать какое оборудование у меня находится в аренде">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Мне надо соединение с оператором я хочу узнать какое оборудование у меня находится в аренде</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Неправильный расчет денежных средств">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Неправильный расчет денежных средств</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Замена интернет кабеля">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Замена интернет кабеля</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "83 эс у 71 в течение 3 дней в случае отсутствия оплаты вы будете привлечены к административной ответственности">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> 83 эс у 71 в течение 3 дней в случае отсутствия оплаты вы будете привлечены к административной ответственности</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Закрыть счет">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Закрыть счет</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Как подключиться к общественному вай фаю">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Как подключиться к общественному вай фаю</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Мне нужен специалист">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Мне нужен специалист</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Подключение услуг на 12 месяцев со скидкой">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Подключение услуг на 12 месяцев со скидкой</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Вот я бы хотел бы почему отключили каналы">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Вот я бы хотел бы почему отключили каналы</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Связать с оператором">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Связать с оператором</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Трафик интернета не соответствует тарифу">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Трафик интернета не соответствует тарифу</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "У меня отключили каналы">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> У меня отключили каналы</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Я хочу узнать заплачено ли у меня за этот месяц">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Я хочу узнать заплачено ли у меня за этот месяц</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Мне нужны изменить договор">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Мне нужны изменить договор</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Нам нужно новый у нас телевизор работает с блоком такой старый с приборчиком и вот он сгорел по моему нет">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Нам нужно новый у нас телевизор работает с блоком такой старый с приборчиком и вот он сгорел по моему нет</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Подключиться к интернету и телевидению">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Подключиться к интернету и телевидению</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Соедините пожалуйста с оператором не работает телевизор рассыпаются каналы">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Соедините пожалуйста с оператором не работает телевизор рассыпаются каналы</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Хочу специалиста">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Хочу специалиста</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Все правильно">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Все правильно</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Да господи">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Да господи</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Подключить смарт тв">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Подключить смарт тв</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Вы знаете мне надо направить связь по телефону переносного дома домашнего">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Вы знаете мне надо направить связь по телефону переносного дома домашнего</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Меня соедините пожалуйста с оператором я выплатила все квитанции мне с меня пишут долг 195 я сегодня заплатила и вообще">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Меня соедините пожалуйста с оператором я выплатила все квитанции мне с меня пишут долг 195 я сегодня заплатила и вообще</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Перебои в услугах интернета вай фай плохо работает">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Перебои в услугах интернета вай фай плохо работает</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Перебой с интернетом">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Перебой с интернетом</q>
+            <a state="/DummyState"/> 
+    </test-case> 
+      
+    <test-case id= "Раньше пользовались">
+            <context var="session"> 
+                { 
+                    "region": "dev-dcc-spb", 
+                    "phoneNumber": "79703530000", 
+                    "agreementNumber": "780046998264", 
+                    "cellPhone": "true", 
+                    "proactiveResult": "spas", 
+                    "autoTest": "true" 
+                } 
+            </context> 
+             
+            <mockData> 
+                <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query> 
+                <response> 
+                    { 
+                        "token": "1234", 
+                        "type": "user" 
+                    } 
+                </response> 
+            </mockData> 
+            <q>/start</q> 
+            <a state="/Init/DIALOG_WELCOME_EVENT_1"/> 
+            <a state="/Init/HowCanIHelpYou"/> 
+            <q> Раньше пользовались</q>
+            <a state="/DummyState"/> 
+    </test-case>
+
+</test>
