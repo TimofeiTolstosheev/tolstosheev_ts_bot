@@ -1,13 +1,13 @@
 {
   "project" : {
-    "id" : "develop_jaicp_ivr-1000002-Fnd",
-    "name" : "develop_jaicp_ivr-1000002-Fnd",
+    "id" : "tolstosheev_ts-1000084025-CoU",
+    "name" : "tolstosheev_ts-1000084025-CoU",
     "folder" : "/platform"
   },
   "settings" : {
     "language" : "ru",
     "spellingCorrection" : true,
-    "classificationAlgorithm" : "deeplearning",
+    "classificationAlgorithm" : "transformer",
     "timezone" : "Europe/Moscow",
     "extendedSettings" : {
       "patternsEnabled" : true,
@@ -23,7 +23,16 @@
         "lr" : 0.001,
         "pooling_name" : "max"
       },
-      "allowedPatterns" : [ ]
+      "allowedPatterns" : [ ],
+      "mlp" : {
+        "restUrl" : "https://caila.io",
+        "mlpAccessKey" : "1000084025.57273.aLtxl5wBRBRoSJnPkV1AHFVWqNJjxSCnIwH851EO",
+        "noTraining" : false,
+        "trainingModel" : {
+          "account" : "just-ai",
+          "model" : "text-classifier-logreg-labse"
+        }
+      }
     },
     "shared" : false,
     "validation" : {
@@ -17730,6 +17739,8 @@
       "text" : "noInput"
     }, {
       "text" : "тишина"
+    }, {
+      "text" : "я молчу"
     } ],
     "classificationRules" : {
       "refs" : [ ]
@@ -23546,10 +23557,85 @@
   } ],
   "enabledSystemEntities" : [ "mystem.geo", "mystem.persn", "mystem.obsc", "mystem.patrn", "mystem.famn", "duckling.number", "duckling.ordinal", "duckling.amount-of-money", "duckling.time", "duckling.date", "duckling.time-of-day", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url", "duckling.interval" ],
   "spellerDictionary" : [ {
+    "word" : "Деповская",
+    "frequency" : -1
+  }, {
+    "word" : "tplink",
+    "frequency" : 1
+  }, {
+    "word" : "абонентскую",
+    "frequency" : 1
+  }, {
+    "word" : "антивирус",
+    "frequency" : 1
+  }, {
+    "word" : "моховая",
+    "frequency" : 1
+  }, {
+    "word" : "ютуб",
+    "frequency" : 2
+  }, {
+    "word" : "камеры",
+    "frequency" : 1
+  }, {
+    "word" : "warface",
+    "frequency" : 1
+  }, {
+    "word" : "вырван",
+    "frequency" : 1
+  }, {
     "word" : "movix",
     "frequency" : 1
   }, {
-    "word" : "голова",
+    "word" : "заславская",
+    "frequency" : 1
+  }, {
+    "word" : "кабанная",
+    "frequency" : 1
+  }, {
+    "word" : "эйджи",
+    "frequency" : 1
+  }, {
+    "word" : "тээнвэ",
+    "frequency" : 1
+  }, {
+    "word" : "перезагружал",
+    "frequency" : 1
+  }, {
+    "word" : "перезагрузила",
+    "frequency" : 1
+  }, {
+    "word" : "роутер",
+    "frequency" : 2
+  }, {
+    "word" : "рафисовна",
+    "frequency" : -1
+  }, {
+    "word" : "Берберовская",
+    "frequency" : -1
+  }, {
+    "word" : "перезагрузить",
+    "frequency" : 1
+  }, {
+    "word" : "заставская",
+    "frequency" : -1
+  }, {
+    "word" : "помощь",
+    "frequency" : -1
+  }, {
+    "word" : "gamer",
+    "frequency" : 1
+  }, {
+    "word" : "заработаю",
+    "frequency" : 1
+  }, {
+    "word" : "мальнова",
+    "frequency" : -1
+  }, {
+    "word" : "город",
+    "frequency" : 1
+  }, {
+    "word" : "ворфейс",
     "frequency" : 1
   }, {
     "word" : "заработал",
@@ -23558,178 +23644,133 @@
     "word" : "заработает",
     "frequency" : 1
   }, {
-    "word" : "моховая",
-    "frequency" : 1
-  }, {
-    "word" : "тплинк",
-    "frequency" : 1
-  }, {
-    "word" : "перезагрузить",
-    "frequency" : 1
-  }, {
-    "word" : "рафисовна",
-    "frequency" : -1
-  }, {
-    "word" : "смотрим",
-    "frequency" : 1
-  }, {
-    "word" : "касперский",
-    "frequency" : 1
-  }, {
-    "word" : "qwerty",
-    "frequency" : 1
-  }, {
-    "word" : "смотрели",
-    "frequency" : 1
-  }, {
-    "word" : "заславская",
-    "frequency" : 1
-  }, {
-    "word" : "гейминг",
-    "frequency" : 1
-  }, {
-    "word" : "самара",
-    "frequency" : 1
-  }, {
-    "word" : "антивируса",
-    "frequency" : 1
-  }, {
-    "word" : "mega",
-    "frequency" : 1
-  }, {
-    "word" : "антивирусов",
-    "frequency" : 1
-  }, {
-    "word" : "завтра",
-    "frequency" : -1
-  }, {
-    "word" : "Youtube",
-    "frequency" : 1
-  }, {
-    "word" : "мувикс",
-    "frequency" : 2
-  }, {
-    "word" : "фуфловый",
-    "frequency" : 1
-  }, {
-    "word" : "работаете",
-    "frequency" : 1
-  }, {
-    "word" : "заработать",
-    "frequency" : 1
-  }, {
-    "word" : "смотрю",
-    "frequency" : 1
-  }, {
-    "word" : "абонентская",
-    "frequency" : 1
-  }, {
-    "word" : "смотрел",
-    "frequency" : 1
-  }, {
-    "word" : "вырван",
-    "frequency" : 1
-  }, {
     "word" : "геймер",
     "frequency" : -1
   }, {
-    "word" : "камеры",
-    "frequency" : 1
-  }, {
-    "word" : "эйджи",
-    "frequency" : 1
-  }, {
-    "word" : "перезагружали",
-    "frequency" : 1
-  }, {
-    "word" : "замзамия",
-    "frequency" : -1
-  }, {
-    "word" : "смарт",
-    "frequency" : -1
-  }, {
-    "word" : "перезагрузил",
-    "frequency" : 1
-  }, {
-    "word" : "ютуб",
-    "frequency" : 2
-  }, {
-    "word" : "Деповская",
-    "frequency" : -1
-  }, {
-    "word" : "мальнева",
-    "frequency" : -1
-  }, {
-    "word" : "антивирус",
-    "frequency" : 1
-  }, {
-    "word" : "виасат",
-    "frequency" : 1
-  }, {
-    "word" : "обещанка",
+    "word" : "гейминг",
     "frequency" : 1
   }, {
     "word" : "кешбэк",
     "frequency" : 1
   }, {
-    "word" : "голову",
+    "word" : "заработаем",
+    "frequency" : 1
+  }, {
+    "word" : "работает",
+    "frequency" : 5
+  }, {
+    "word" : "mego",
     "frequency" : 1
   }, {
     "word" : "грицика",
     "frequency" : -1
   }, {
-    "word" : "голове",
-    "frequency" : 1
-  }, {
-    "word" : "юротдел",
-    "frequency" : -1
-  }, {
-    "word" : "работают",
-    "frequency" : -1
-  }, {
-    "word" : "эсэмэс",
-    "frequency" : 1
-  }, {
-    "word" : "перезагружала",
-    "frequency" : 1
-  }, {
-    "word" : "головы",
-    "frequency" : 1
-  }, {
-    "word" : "заработало",
+    "word" : "работы",
     "frequency" : 1
   }, {
     "word" : "города",
     "frequency" : -1
   }, {
-    "word" : "роутер",
-    "frequency" : 2
-  }, {
-    "word" : "антивирусы",
+    "word" : "смотрели",
     "frequency" : 1
   }, {
-    "word" : "быстро",
+    "word" : "mega",
+    "frequency" : 1
+  }, {
+    "word" : "эсэмэс",
+    "frequency" : 1
+  }, {
+    "word" : "смотрим",
+    "frequency" : 1
+  }, {
+    "word" : "смарт",
+    "frequency" : -1
+  }, {
+    "word" : "qwerty",
+    "frequency" : 1
+  }, {
+    "word" : "шахматка",
+    "frequency" : 1
+  }, {
+    "word" : "айпи",
     "frequency" : 1
   }, {
     "word" : "смотреть",
     "frequency" : 1
   }, {
-    "word" : "варфейс",
-    "frequency" : 1
-  }, {
-    "word" : "заставская",
+    "word" : "работают",
     "frequency" : -1
   }, {
-    "word" : "боровая",
+    "word" : "перезагружать",
     "frequency" : 1
   }, {
-    "word" : "сгорел",
+    "word" : "касперский",
     "frequency" : 1
   }, {
-    "word" : "роутера",
+    "word" : "кетчап",
     "frequency" : -1
   }, {
-    "word" : "Берберовская",
+    "word" : "карпатская",
+    "frequency" : -1
+  }, {
+    "word" : "самара",
+    "frequency" : 1
+  }, {
+    "word" : "голове",
+    "frequency" : 1
+  }, {
+    "word" : "антивирусы",
+    "frequency" : 1
+  }, {
+    "word" : "голова",
+    "frequency" : 1
+  }, {
+    "word" : "городе",
+    "frequency" : 1
+  }, {
+    "word" : "перезагрузил",
+    "frequency" : 1
+  }, {
+    "word" : "перезагружали",
+    "frequency" : 1
+  }, {
+    "word" : "быстро",
+    "frequency" : 1
+  }, {
+    "word" : "головы",
+    "frequency" : 1
+  }, {
+    "word" : "обещанка",
+    "frequency" : 1
+  }, {
+    "word" : "перезагружала",
+    "frequency" : 1
+  }, {
+    "word" : "голову",
+    "frequency" : 1
+  }, {
+    "word" : "тплинк",
+    "frequency" : 1
+  }, {
+    "word" : "ротек",
+    "frequency" : 1
+  }, {
+    "word" : "дорогая",
+    "frequency" : 1
+  }, {
+    "word" : "заработало",
+    "frequency" : 1
+  }, {
+    "word" : "вайфай",
+    "frequency" : -1
+  }, {
+    "word" : "громова",
+    "frequency" : -1
+  }, {
+    "word" : "дорама",
+    "frequency" : -1
+  }, {
+    "word" : "ариран",
     "frequency" : -1
   }, {
     "word" : "пароль",
@@ -23738,134 +23779,104 @@
     "word" : "палладиевна",
     "frequency" : -1
   }, {
-    "word" : "тэвэ",
-    "frequency" : 1
-  }, {
-    "word" : "парфеновская",
-    "frequency" : 1
-  }, {
-    "word" : "ротек",
-    "frequency" : 1
-  }, {
-    "word" : "перезагрузила",
-    "frequency" : 1
-  }, {
     "word" : "заработали",
     "frequency" : 1
   }, {
-    "word" : "роутере",
+    "word" : "мальнева",
     "frequency" : -1
   }, {
-    "word" : "мегого",
+    "word" : "фуфловый",
     "frequency" : 1
   }, {
-    "word" : "modul",
+    "word" : "смотрю",
     "frequency" : 1
   }, {
-    "word" : "кетчап",
-    "frequency" : -1
-  }, {
-    "word" : "заработаю",
+    "word" : "сгорел",
     "frequency" : 1
   }, {
-    "word" : "заработаем",
+    "word" : "заработать",
     "frequency" : 1
-  }, {
-    "word" : "перезагружал",
-    "frequency" : 1
-  }, {
-    "word" : "громова",
-    "frequency" : -1
-  }, {
-    "word" : "работы",
-    "frequency" : 1
-  }, {
-    "word" : "городе",
-    "frequency" : 1
-  }, {
-    "word" : "заработают",
-    "frequency" : -1
   }, {
     "word" : "Замена",
+    "frequency" : 1
+  }, {
+    "word" : "тэвэ",
+    "frequency" : 1
+  }, {
+    "word" : "антивирусов",
+    "frequency" : 1
+  }, {
+    "word" : "антивирусом",
     "frequency" : 1
   }, {
     "word" : "плиз",
     "frequency" : -1
   }, {
-    "word" : "дорама",
+    "word" : "Youtube",
+    "frequency" : 1
+  }, {
+    "word" : "заработают",
     "frequency" : -1
   }, {
-    "word" : "кидс",
-    "frequency" : 1
-  }, {
-    "word" : "дорогая",
-    "frequency" : 1
-  }, {
-    "word" : "абонентскую",
-    "frequency" : 1
-  }, {
-    "word" : "шахматка",
-    "frequency" : 1
-  }, {
-    "word" : "megogo",
-    "frequency" : 1
-  }, {
-    "word" : "gamer",
-    "frequency" : 1
-  }, {
-    "word" : "кабанная",
-    "frequency" : 1
-  }, {
-    "word" : "вайфай",
+    "word" : "завтра",
     "frequency" : -1
   }, {
-    "word" : "ариран",
+    "word" : "смотрел",
+    "frequency" : 1
+  }, {
+    "word" : "боровая",
+    "frequency" : 1
+  }, {
+    "word" : "парфеновская",
+    "frequency" : 1
+  }, {
+    "word" : "modul",
+    "frequency" : 1
+  }, {
+    "word" : "замзамия",
     "frequency" : -1
   }, {
-    "word" : "mego",
-    "frequency" : 1
-  }, {
-    "word" : "город",
-    "frequency" : 1
-  }, {
-    "word" : "карпатская",
-    "frequency" : -1
-  }, {
-    "word" : "айпи",
-    "frequency" : 1
-  }, {
-    "word" : "помощь",
-    "frequency" : -1
-  }, {
-    "word" : "тээнвэ",
-    "frequency" : 1
-  }, {
-    "word" : "ворфейс",
-    "frequency" : 1
-  }, {
-    "word" : "заебала",
-    "frequency" : 1
-  }, {
-    "word" : "мальнова",
-    "frequency" : -1
-  }, {
-    "word" : "перезагружать",
-    "frequency" : 1
-  }, {
-    "word" : "tplink",
-    "frequency" : 1
-  }, {
-    "word" : "работает",
-    "frequency" : 5
-  }, {
-    "word" : "warface",
+    "word" : "абонентская",
     "frequency" : 1
   }, {
     "word" : "антивирусами",
     "frequency" : 1
   }, {
-    "word" : "антивирусом",
+    "word" : "виасат",
     "frequency" : 1
+  }, {
+    "word" : "кидс",
+    "frequency" : 1
+  }, {
+    "word" : "мегого",
+    "frequency" : 1
+  }, {
+    "word" : "антивируса",
+    "frequency" : 1
+  }, {
+    "word" : "заебала",
+    "frequency" : 1
+  }, {
+    "word" : "мувикс",
+    "frequency" : 2
+  }, {
+    "word" : "юротдел",
+    "frequency" : -1
+  }, {
+    "word" : "роутере",
+    "frequency" : -1
+  }, {
+    "word" : "работаете",
+    "frequency" : 1
+  }, {
+    "word" : "варфейс",
+    "frequency" : 1
+  }, {
+    "word" : "megogo",
+    "frequency" : 1
+  }, {
+    "word" : "роутера",
+    "frequency" : -1
   } ],
   "systemEntities" : [ {
     "name" : "mystem.geo",

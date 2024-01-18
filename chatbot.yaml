@@ -65,7 +65,7 @@ tests:
     # autotest_NotAUTH/90_Balance_NotAUTH.xml
     
     - autotest_common/570.xml
-    # checkNLU.xml
+    - checkNLU.xml
     
     #address/address.xml
     
