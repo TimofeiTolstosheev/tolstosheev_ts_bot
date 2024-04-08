@@ -5,6 +5,7 @@ theme: /Domofon
         intent!: /370_Domofon
         script:
             startIntent('/370_Domofon');
+            $.session.clarifyDomofon = false;
         if: $.session.cifral
             go!: /Domofon/DomofonOKC/Cifral
         else:
@@ -17,7 +18,7 @@ theme: /Domofon
             script:
                 announceAudio(audioDict.CifralGo);
                 $.session.intent.resultCode = 32;
-                $.session.callerInput = 'cifral';
+                $.session.callerInput = 'dmf_cifral';
             go!: /Transfer/Transfer
             
         state: NotCifral

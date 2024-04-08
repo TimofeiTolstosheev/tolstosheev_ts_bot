@@ -35,8 +35,7 @@ patterns:
         | * { не работ* * @CatchUp } *
         | * { опци* * @CatchUp } *
         | * { опци* * @Subscription } *
-        | * { отключ* * @CatchUp } *
-        | * { отключ* * @Subscription } *
+        | * { отключ* * @TVServices } *
         | * { поддержк* * @CatchUp } *
         | * { поддержк* * @Subscription } *
         | * { подключ* * @CatchUp } *
@@ -137,7 +136,8 @@ patterns:
         | * { пролонг* * (@Discount/льгот*) } *
         | * { существу* * (@Discount/льгот*) } *
         | * { без [@My] ведома * (@Discount/льгот*) } *
-        | * как * сэкономить * )
+        | * как * сэкономить * 
+        | * { (не устраив*) * @Payment * @Beneficiary } * )
 
     $channelPackage = ( * { @Know * @TVChannelPackageName } *
         | * { (доп/дополнительн*) * @TVChannelName } *
@@ -331,6 +331,7 @@ patterns:
         | * { скорост* бонус* } * )
 
     $otherPromo = ( * { акци* * @PersonalAccount} *
+        | * @LookEverywhere *
         | * { *блокиров* * акци* } *
         | * { @Know * акци* } *
         | * { *обнов* * акци* } *
@@ -371,7 +372,8 @@ patterns:
         | * { без [@My] ведома * акци* } * 
         | * { платн* * акци* } *
         | * { платн* * опци* } * 
-        | * { @Operator * акци* } * )
+        | * { @Operator * акци* } * 
+        | * { (*дела*/*ключ*) * @StaticIP } * )
         
     $antivirus = ( * @Antivirus *
         | * { актив* * @Antivirus } *

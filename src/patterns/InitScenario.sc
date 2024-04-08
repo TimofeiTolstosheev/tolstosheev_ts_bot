@@ -14,9 +14,9 @@ patterns:
     # заменила $agreement на @SynonymsForAgreement
     # $agreement = ~договор
     $isNotMyAgreement = * ({(не (мой/на (меня/мое имя))/[на] $relatives) * [заключ*/оформл*/запис*/припис*/подпис*] * [@SynonymsForAgreement]}
-        | {{я [$oneWord] не} * (владел*/заключ*/оформл*/подписыва*)} | не (мой/по моему/по своему) ~договор ) *
+        | {{я [$oneWord] не} * (владел*/заключ*/оформл*/подписыва*)} | не (мой/по моему/по своему) @SynonymsForAgreement ) *
     $dontRememberWhoseAgreement = * {$dontRemember * (на (кого/чье имя)/{(на (кого/чье имя)/кто) * (оформл*/запис*/припис*) * [@SynonymsForAgreement]}/{чей * @SynonymsForAgreement})} *
-    $haveNoPatronymic = * {(нет/нету/без/отсутствует) * отчеств*} *
+    $haveNoPatronymic = * {(нет/нету/без/отсутствует) * (отчеств*/очества) } *
 
     $cant = (не (cмогу/сможем/получилось/удается/удалось/в силах)/$cannot)
     $dontRemember = * (не (знаю/узна*/помн*/вспомн*/в курсе/сохран*)/~забыть/запамят*
@@ -31,7 +31,7 @@ patterns:
     # $activateService = * {подключ* * услуг*} *
     
     # прилагательного м, ср рода И и Р падежи
-    $AdjectiveSg = $regexp_i<([А-Яа-яЁё]+(([ыио]й)|(ого|ова|ово)))>
+    $AdjectiveSg = $regexp_i<([А-Яа-яЁё]+(([ыио]й)|(ое|ого|ова|ово)))>
     # прилагательного ж рода И и Р падежи
     $AdjectiveSgF = $regexp_i<([А-Яа-яЁё]+(([ое]й)|([ая]я)))>
     
@@ -40,10 +40,10 @@ patterns:
     $streetsDict2 = $entity<streetsDict2>
     $streetsDict3 = $entity<streetsDict3>
     $streetsDict4 = $entity<streetsDict4>
-    $streetsDict = ($streetsDict1/$streetsDict2/$streetsDict3/$streetsDict4)
+    $streetsDict = ($streetsDict1/$streetsDict2/$streetsDict3/$streetsDict4) $weight<+1>
     
     $City = $entity<Cities> || converter = $converters.cityConverter;
-    $CityWord = (в городе/город)
+    $CityWord = (в городе/город/пгт/пэ гэ тэ/поселок городского типа/в поселке городского типа)
     $CityCombo = ( [$CityWord] $City
         | {(станица/в станице) $AdjectiveSgF} )
     # поселок, деревня, село, сельская местность/поселение (ед ч, все падежи)
@@ -177,6 +177,7 @@ patterns:
         | труд
         | труженик
         | урожай
+        | фантазия
         | химик [номер] [$regexp<[0-9]+>]
         | хуторок
         | цепник
@@ -191,9 +192,9 @@ patterns:
     # снт (обязательно!!!, чтобы не конфликтовать с улицей) + название
     $gardenCommunity = { $gardenCommunityWord $gardenCommunityDict}
     
-    $Street = ( $addressStreetRegexp 
-        | [$regexp<[0-9]+>] $MicroDistrict
+    $Street = ( [$regexp<[0-9]+>] $MicroDistrict
         # | [$addressStreetRegexp] $addressWordsRegexp [$addressWord]
+        | $MicroDistrict (юбилейный/авиаторов)
         | [$addressStreetRegexp] $addressWordsRegexp
         | $regexp_i<(ул|п(ер|р|л)|ш|бульв|м(кр.?)|наб)\.[А-Яа-я0-9]+(((\-|\s)(\w|[А-Яа-я]+))?((\-|\s)(\w|[А-Яа-я]+))?)?+>
         | $addressWordsRegexp $regexp_i<(л(иния|.?|-я)|пр(-кт|-т|оспект.?))> [$regexp_i<((в(\.|\s)?о\.?|п(\.|\s)?с\.?|васильевского о(строва|-ва))|петроградской стороны)?>]
@@ -202,7 +203,8 @@ patterns:
         | (МКАД|КАД) {($Number|$regexp_i<\d+-?й>) км}
         | [$addressStreetRegexp] {[$miscDict $weight<+0.7>] $streetsDict}
         | $streetsDict {[$miscDict $weight<+0.7>] [$addressStreetRegexp]}  
-        | $gardenCommunity [{[$addressStreetRegexp] $streetsDict}] )
+        | $gardenCommunity [{[$addressStreetRegexp] $streetsDict}] 
+        | $gardenCommunity )
 
     #перечисление только слов: ул., улица, переулок, проспект ... в разных вариантах
     $addressStreetRegexp = $regexp_i<(ул(\.[А-Яа-я]+|иц[а-я]{1,3})?|пер(-к|еул(ок)?|.?)?|пр(-кт|-т|оспект[а-я]{0,2}|осп[а-я]{0,5}|-д[а-я]?|оезд[а-я]{0,2})?|б(-р|ульвар[а-я]?|ульв[а-я]?)|ш(оссе|[а-я]?)|п(лощадь|л[а-я]?|-дь)|а(л[а-я]?|-я|ллея|лея)|с(ъезд|-д)|наб([а-я]{0,2}|ережная)|о(строва|-ва)|д(орога|ор|-а)|к(анал|-л)[а-я]{0,2}|тупик[а-я]{0,2}|магистрал[а-я]{1,3}|спуск[а-я]{0,2}|тракт[а-я]{0,2}|станц[ыи][ая])>
@@ -222,24 +224,26 @@ patterns:
         | адрес у (меня/нас)
         | (мой/наш) адрес
         | [на/по/с/со] адрес*
-        | (обращ* / обратил*) [с/со]
+        | [я] (обращ* / обратил*) [с/со]
         | сегодня / сейчас / подключить/ проводили 
         | где / понял* ) [$miscDict] [$miscDict] )
-        | на )
+        | на
+        | собственник )
         
-    $miscDict = ( ну / так [с/вот] / такс / значит / это / вот / мм / хм / короче / кароче / мол / вообще [то] / в общем / говорю / собственно говоря / как говорится / итак / как его [там] / типа / это самое / знаешь / как бы / по моему / если правильно помню / судя по всему / блин / понимаешь [меня/нас/вообще/ваще] / а именно / вроде [бы] / возможно)
+    $miscDict = ( ну / так [с/вот] / такс / значит / это / вот / мм / хм / короче / кароче / мол / вообще [то] / в общем / говорю / собственно говоря / как говорится / итак / как его [там] / типа / это самое / знаешь / как бы / по моему / если правильно помню / судя по всему / блин / понимаешь [меня/нас/вообще/ваще] / а именно / вроде [бы] / возможно / наверно* / если правильно помню / на / на $relatives)
 
     $corpus = $regexp_i<((к(орп?)?(\.?|\.?\s))|((к(орпус|орп?\.?))\s))\d+[А-Яа-я0-9]*>
     $liter = $regexp_i<((литера?|(л(ит)?(\.?)))\s[А-Яа-яa-zA-Z0-9]+)>
     $building = $regexp_i<(строени[ея])\s\d+[А-Яа-я0-9]*>
     $entrance = $regexp_i<((п(\.?|\.?\s))|((п(одъезд|ар(адная)?))\s))\d+[А-Яа-я0-9]*>
-    $Housing = ($regexp_i<[а-я]{1}>
+    $entrance2 = $regexp_i<([А-Яа-я0-9]*\s)(подъезд|парадная)>
+    $Housing = ($regexp_i<[а-я]{1}(\sдробь\s)?([0-9]{1,2})?>
         | {$corpus [$liter] [$building] [$entrance]}
         | {[$corpus] $liter [$building] [$entrance]}
         | {[$corpus] [$liter] $building [$entrance]}
-        | {[$corpus] [$liter] [$building] $entrance})
+        | {[$corpus] [$liter] [$building] ($entrance/$entrance2)})
     # дом или участок, если это снт
-    $HouseNumber = $regexp_i<((д(\.?\s|\.?))?|((дом)\s)?|(участо?к(а|е|у|ом)?))(\d+(-|\/)?(\sдробь\s)?[А-Яа-я0-9]*)+>
+    $HouseNumber = $regexp_i<((д(\.?\s|\.?))?|((дом)\s)?|(участо?к(а|е|у|ом)?)|номер)(\d+(-|\/)?(\sдробь\s)?[А-Яа-я0-9]*)+>
     #NOTE не использовать в квартир*, иначе корпус в уходит в $Flat
     $FlatWord = (квартира/в квартире/на квартире)
     $FlatNumber = $regexp<[0-9]+>
@@ -249,22 +253,34 @@ patterns:
     # TODO по адресу октябрьской квартира 49 - должно попадать в неполный адрес
     $Address = [$CityCombo/$Village] {($Street {$HouseNumber [$Housing] [$Flat]})} || converter = $converters.addressConverter
  
+    $monthNamesSgGen = ( января
+        | февраля
+        | марта
+        | апреля
+        | мая
+        | июня
+        | июля
+        | августа
+        | сентября
+        | октября
+        | ноября
+        | декабря )
     
-    # $IncompleteAddress = ( {$Street [{$HouseNumber [$Housing]}]}
-    #     | $addressWordsRegexp $Flat) || converter = $converters.addressConverter
     $IncompleteAddress = ( $addressStreetRegexp ([{$HouseNumber [$Housing]}]/[$Flat])
         | [$addressWordsRegexp $weight<-0.5>] $FlatWord $FlatNumber 
         | {[$addressStreetRegexp] $streetsDict} $FlatWord $FlatNumber
         | $Village
         | $Region ) || converter = $converters.addressConverter
     $NonExplicitStreet = ($HouseNumber|$Housing) || converter = $converters.addressConverter
+    $IncompleteAddress2 = [$addressStreetRegexp] $regexp<[0-9]+> ($monthNamesSgGen/((лет/летия) $regexp_i<[А-яЁё]>)/район/съезда влксм/года/партсъезда/дивизии/километр/пятилетки/[ударной] армии/окружная/набережная/майская/владимирск*/янтарный/школьный/заводской/донской/восточный/верхний/квартал/каменецкая/аллея) || converter = $converters.addressConverter
 
     $Name = $entity<Names> || converter = $converters.nameConverter;
-    $UserName = замзами*
-    $MiddleName = $regexp_i<[А-яЁё]+((ич)|(вна)|(чна))> || converter = $converters.middleAndLastNameConverter;
+    $UserName = $entity<userName> || converter = $converters.userNameConverter;
+    $MiddleName = ($regexp_i<[А-яЁё]+((ич)[аеу]?|(вн[аеу])|(чн[аеу])|кызы|[оа]глы)> /($Name/$UserName) (оглы/кызы)) || converter = $converters.middleAndLastNameConverter;
     # $LastName = $regexp_i<[А-яЁё]+((-|')[А-яЁё]+)?(ов|ова|ев|ева|ин|ина|ын|ына|ской|ский|ская|цкой|цкая|цкий|их|ых|енко|ко|ук|юк|ман|швили|ян|янц|ава|ты|ти|фельд|штерн|ес|ез|айтис|айте|сон)> || converter = $converters.middleAndLastNameConverter;
     $LastName = $regexp<[А-яЁё]+((-|')[А-яЁё]+)?> || converter = $converters.middleAndLastNameConverter;
-    $FIO = {($Name/$UserName) $MiddleName $LastName} || converter = $converters.FIOConverter;
-    $IncompleteFIO = ({(($Name/$UserName) [$MiddleName]) [$LastName]}
+    $FIO = [$miscDict] {(($Name/$UserName) $MiddleName) $LastName} || converter = $converters.FIOConverter;
+    $IncompleteFIO = [$miscDict] ({(($Name/$UserName) [$MiddleName]) [$LastName]}
         | {(($Name/$UserName) [$MiddleName]) $LastName}
         | $LastName) || converter = $converters.FIOConverter;
+        # /@mystem.persn

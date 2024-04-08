@@ -5,19 +5,23 @@ theme: /WhatElse
             announceAudio(audioDict.WhatElseIntent_1);
         
         state: HaveQuestions
-            q: ($yes / ад / lf / даа / $yes или $no $yes)
+            q: $yesWhatElse *
             q: * $yesQuestions *
-            q: $anotherQuestion
+            q: * $anotherQuestion *
             script:
                 announceAudio(audioDict.GetFirstIntent_3);
                 
             state: CatchAll || noContext = true
                 event: noMatch
+                intentGroup: /NoMatch
+                q: * (не @Successful) *
+                q: [о/ну] да
                 go!: /NoMatch/GetIntent
         
         state: NoQuestions
-            q: ($no / нт / ytn / нетт / $yes или $no $no) *
-            q: $noQuestions *
+            q: $noWhatElse *
+            q: (($yes ($no/не)) / ($no $yes))
+            q: * $noQuestions *
             go!: /WhatElse/ToExit
             
         state: ToOperator
@@ -32,7 +36,7 @@ theme: /WhatElse
                 stopIntent(); // завершаем основной интент
                 startIntent('405_AgentRequest'); // дополнительно кладем интент "запрос оператор"
                 // для технических сценариев проверяем ОЦТП метки
-                if($.injector.techProblemsIntents.indexOf($.session.lastIntent) > 0){
+                if($.session.userType == 'user' && $.injector.techProblemsIntents.indexOf($.session.lastIntent) > 0){
                     $reactions.transition("/Transfer/CheckOCTP");
                 }else{
                     $.session.intent.resultCode = 6;
@@ -41,10 +45,13 @@ theme: /WhatElse
                 
         state: CatchAll || noContext = true
             event: noMatch
-            q: {$no @SynonymsForAgreement $yes}
+            q: {($no/не) [@SynonymsForAgreement] $yes}
+            q: не (@Modal/@Give) $yes
+            q: с вами не договоришься
+            intentGroup: /NoMatch
             script:
                 if(countRepeatsInRow() < $injector.noMatchLimit) {
-                    $reactions.transition("/WhatElse/WhatElse");
+                    $reactions.transition("/NoMatch/GetIntent");
                 }else{
                     startIntent('0_NoMatch');
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
@@ -63,15 +70,15 @@ theme: /WhatElse
             announceAudio(audioDict.promisedPayWhatElse);
             
         state: NoQuestions
-            q: ($no / нт / ytn / нетт) *
+            q: $noWhatElse *
             q: $noQuestions *
             q: $yesAccess
             go!: /WhatElse/ToExit
             
         state: HaveQuestions
-            q: ($yes / lf )
+            q: $yesWhatElse *
             q: * $yesQuestions *
-            q: $anotherQuestion
+            q: * $anotherQuestion *
             go!: /WhatElse/WhatElse/HaveQuestions
             
         state: ToOperator
@@ -89,6 +96,7 @@ theme: /WhatElse
         state: CatchAll || noContext = true
             event: noMatch
             q: {$no @SynonymsForAgreement $yes}
+            intentGroup: /NoMatch
             script:
                 $.session.intent.stepsCnt++;
                 if(countRepeatsInRow() < $injector.noMatchLimit) {
@@ -106,8 +114,64 @@ theme: /WhatElse
 
     state: ToExit
         q!: $bye
+        q!: [$no/все] { ($no/все) ($regexp<с?пасиб[оа]?>/благодар*) } $bye 
+        q!: {большое $regexp<с?пасиб[оа]?>} $bye 
+        q!: * { [$regexp<с?пасиб[оа]?>] * {[я/мы] [все] $regexp<выяснил[аи]?>} * $bye } *
         script:
             stopIntent();
             announceAudio(audioDict.toExit);
             $.session.callerInput = 'toExit';
             $reactions.transition("/Transfer/Transfer");
+            
+    state: NoQuestionsFirstStep
+        intent!: /Thanks
+        go!: /WhatElse/WhatElse
+        
+    state: HaveQuestionsFirstStep
+        q!: $yesQuestions
+        q!: { [это] [я/мы] куда (позвонил*/звоню/звоним/дозвонил*) }
+        q!: { [это] [точно/вы [из]] @DomRu } [да]
+        q!: (мне (хотелось [бы]/хочется)) (узнать/задать вопрос)
+        go!: /WhatElse/WhatElse/HaveQuestions
+        
+    state: HaveNoQuestionsFirstStep
+        q!: $noQuestions
+        q!: { (ничем / никак / никого) $bye }
+        q!: (я/мы/мне/нам) [уже] (решил/решили) проблему
+        script:
+            announceAudio(audioDict.WhatElseIntent_2);
+
+        state: HaveQuestions
+            q: $yesWhatElse *
+            q: * $yesQuestions *
+            q: * $anotherQuestion *
+            go!: /WhatElse/WhatElse/HaveQuestions
+        
+        state: NoQuestions
+            q: $noWhatElse *
+            q: * $noQuestions *
+            go!: /WhatElse/ToExit
+            
+        state: ToOperator
+            q: $agentRequest
+            intent: /405_AgentRequest
+            script:
+                if(countAgentRequests($parseTree) < $injector.agentRequestLimit && !$.session.agentRequested) {
+                    $.session.agentRequested = true;
+                    announceAudio(audioDict.IUnderstoodUMust);
+                    $reactions.transition("/WhatElse/HaveNoQuestionsFirstStep");
+                }else{
+                    announceAudio(audioDict.perevod_na_okc);
+                    $.session.callerInput = 'agent';
+                    $.session.intent.resultCode = 6;
+                    stopIntent(); // завершаем основной интент
+                    startIntent('/405_AgentRequest');
+                    $.session.intent.resultCode = 6;
+                    $reactions.transition('/Transfer/Transfer');
+                }
+    
+    state: BotPraising
+        q!: $praising
+        q!: * $thanksForOtherIntent *
+        script:
+            announceAudio(audioDict.DRT_0004);

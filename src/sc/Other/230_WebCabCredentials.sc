@@ -23,8 +23,8 @@ theme: /WebCabCredentials
                 announceAudio(audioDict.SMS_authorization);
             
             state: Yes
-                q: $commonYes
-                q: $yesForSms
+                q: $commonYes 
+                q: * $yesForSms *
                 script:
                     $.session.intent.stepsCnt++;
                     announceAudio(audioDict.i_will_send_sms);                    
@@ -50,7 +50,7 @@ theme: /WebCabCredentials
                     
             state: No
                 q: $commonNo
-                q: $noForSms
+                q: * $noForSms *
                 script:
                     $.session.intent.stepsCnt++;
                 go!: /WebCabCredentials/WebCabCredentials/SMSLogPass/SMSRouter
@@ -59,7 +59,7 @@ theme: /WebCabCredentials
                     q: $agentRequest
                     intent: /405_AgentRequest
                     script:
-                        if(countRepeatsInRow() < $injector.noMatchLimit) {
+                        if(countRepeatsInRow() < $injector.noMatchLimit && !$.session.agentRequested) {
                             $reactions.transition("/WebCabCredentials/WebCabCredentials/SMSLogPass");
                         }else{
                             announceAudio(audioDict.perevod_na_okc);
@@ -77,7 +77,7 @@ theme: /WebCabCredentials
                 
                 state: Yes 
                     q: $commonYes
-                    q: $yesForSms
+                    q: * $yesForSms *
                     script:
                         $.session.intent.stepsCnt++;
                         sendSMS('808_SMSSetupRouter');
@@ -102,7 +102,7 @@ theme: /WebCabCredentials
                     
                 state: No
                     q: $commonNo
-                    q: $noForSms
+                    q: * $noForSms *
                     script:
                         $.session.intent.stepsCnt++;
                     go!: /WhatElse/WhatElse
@@ -137,6 +137,7 @@ theme: /WebCabCredentials
                             announceAudio(audioDict.Need_operator);
                         # подумать, возможно, $yesQuestions взять частично
                         q: [$yes] ($commonYes/$ok/$yesQuestions) || toState = "/WebCabCredentials/WebCabCredentials/SMSLogPass/SMSRouter/СatchAll/DoUNeedOperator/AgreeForOperator"
+                        q: { $need $yes } || toState = "/WebCabCredentials/WebCabCredentials/SMSLogPass/SMSRouter/СatchAll/DoUNeedOperator/AgreeForOperator"
                         event: noMatch || toState = "/WebCabCredentials/WebCabCredentials/SMSLogPass/SMSRouter/СatchAll/DoUNeedOperator/AgreeForOperator"
                         q: [$no] ($commonNo/$never/$noQuestions) * ||toState = "/WebCabCredentials/WebCabCredentials/SMSLogPass/SMSRouter/СatchAll/DoUNeedOperator/DisagreeForOperator"
                     

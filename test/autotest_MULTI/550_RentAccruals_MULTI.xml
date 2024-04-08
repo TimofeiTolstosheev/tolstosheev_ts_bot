@@ -1,52 +1,34 @@
-<test>
-    
+<!--550_RENTEQUIP Cтрока 1 Множественная, мобильный, интент 550, на оператора-->
+<!--550_RENTEQUIP Строка 2 Множественная, домашний, интент 550, на оператора-->
+<!--550_RENTEQUIP Строка 3 Множественная, не смогли авторизовать по ФИО, домашний, интент 550, на оператора-->
+<!--550_RENTEQUIP Строка 4 Множественная, по ФИО 2 договора, не смогли авторизовать по адресу, мобильный, интент 550, на оператора-->
+<test integration="true">
     <test-case id="550_RENTEQUIP Cтрока 1 Множественная, мобильный, интент 550, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000020"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Кошкина Татьяна Ивановна</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сколько платить за оборудование</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;550-6;</a>
     </test-case>
-    
-
     
     <test-case id="550_RENTEQUIP Строка 2 Множественная, домашний, интент 550, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412999920"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -54,29 +36,18 @@
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сколько платить за оборудование</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;550-6;</a>
     </test-case>
     
-
-    
     <test-case id="550_RENTEQUIP Строка 3 Множественная, не смогли авторизовать по ФИО, домашний, интент 550, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412999920"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -84,40 +55,29 @@
         <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сколько платить за оборудование</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;550-6;</a>
     </test-case>    
-    
 
-    
-    <test-case id="550_RENTEQUIP Строка 3.1 Множественная, по ФИО 2 договора, не смогли авторизовать по адресу, домашний, интент 550, на оператора">
-        
+    <test-case id="550_RENTEQUIP Строка 4 Множественная, по ФИО 2 договора, не смогли авторизовать по адресу, мобильный, интент 550, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "79000000021"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
-      	<q>/start</q>
+        <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>	
+        <q>Петров Иван Семенович</q>    
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
         <q>улица Петра Великого. 999.</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сколько платить за оборудование</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;550-6;</a>
     </test-case> 
-
 </test>

@@ -17,7 +17,7 @@ init:
     _.each({
         "/Proactive/Accident/AskSMS": "ThemeMatch",
         "/Proactive/PaymentMethods": "ThemeMatch",
-        "/Proactive/AskPromisedPayment": "ThemeMatch",
+        "/Proactive/AskPromisedPayment/WaitingForPromisedPaymentInfo": "ThemeMatch",
     }, interceptGlobalMatch);
     
 theme: /Proactive
@@ -53,7 +53,7 @@ theme: /Proactive
         if: $.session.proactiveResult == 'mono_EnoughBalance_NotActive'
             go!: /Proactive/mono_EnoughBalance_NotActive
         if: $.session.serviceRequest && $.session.serviceRequestStatus != 'request-overdue'
-            go!: /ServiceRequestInfo/CheckSRV
+            go!: /ServiceRequestInfo/CheckAuth
         script:
             // попали в проактив по ошибке
             $.session.proactiveProblem = false;
@@ -78,7 +78,13 @@ theme: /Proactive
             $temp.accEndDate = moment($.session.accidentEndDate, "DD.MM.YYYY HH:mm:ss Z").toDate();
             $temp.accidentHours = Math.round(($temp.accEndDate - $temp.now) / 1000 / 60 / 60);
             $temp.accidentHours = $temp.accidentHours < 1 ? 1 : $temp.accidentHours; // если время уже прошло, считаем, что закончится через час
-            announceTime($temp.accidentHours, 0);
+            try{
+                announceTime($temp.accidentHours, 0);
+            }catch(e){
+                // если вдруг не смогли озвучить время, то озвучим 3 часа
+                customLog("Failed to announce time. Error: " + e);
+                announceTime(3, 0);
+            }
             
             announceAudio(audioDict.techProblems_accident_ending);
             if($.session.cellPhone && $.session.askSms){
@@ -93,7 +99,7 @@ theme: /Proactive
                 
             state: SendSMS
                 q: $commonYes
-                q: $yesForSms
+                q: * $yesForSms *
                 script:
                     $.session.intent.stepsCnt++;
                     setTechServiceSmsNotification();
@@ -102,7 +108,7 @@ theme: /Proactive
                     
             state: NoSMS
                 q: $commonNo
-                q: $noForSms
+                q: * $noForSms *
                 script:
                     $.session.intent.stepsCnt++;
                 go!: /Proactive/CallAfterAccident
@@ -120,6 +126,7 @@ theme: /Proactive
         
             state: CatchAll || noContext = true
                 event: noMatch
+                intent: /NoMatch/Trash
                 script:
                     $.session.intent.stepsCnt++;
                     if(countRepeatsInRow() < $injector.noMatchLimit) {
@@ -127,8 +134,32 @@ theme: /Proactive
                     }else{
                         if($.session.applId){
                             closeAppeal($.session.applId);
+                            delete $.session.applId;
                         }
                         $reactions.transition('/WhatElse/WhatElse');
+                    }
+                    
+            state: LocalNoInput || noContext = true
+                event: speechNotRecognized
+                # для тестов
+                q: NoInput
+                intent: /NoInput
+                script:
+                    countRepeatsInRow();
+                    $.session.noInputCount = $.session.noInputCount || 0;
+                    $.session.noInputCount++;
+                    if($.session.noInputCount < $injector.noInputLimit) {
+                        announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
+                        $reactions.transition('/Proactive/Accident/AskSMS');
+                    }else{
+                        announceAudio(audioDict.No_Input3);
+                        $.session.intent.resultCode = 1;
+                        stopIntent(); // завершаем текущий интент
+                        startIntent("380_NoInput"); // дополнительно записываем NoInput
+                        $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || "silence";
+                        $.session.intent.resultCode = 10;
+                        stopIntent();
+                        $reactions.transition('/Transfer/Transfer');
                     }
         
     state: PPR
@@ -143,8 +174,23 @@ theme: /Proactive
             startIntent('500_Accident');
             $.session.intent.resultCode = 29; // у всего проактива один код 29
             announceAudio(audioDict.techProblems_ppr_header_1);
-            $temp.pprEndDate = moment($.session.currentPprEndDate, "DD.MM.YYYY HH:mm:ss Z").toDate();
-            announceTimeFromTimeTo(-1, -1, $temp.pprEndDate.getHours(), $temp.pprEndDate.getMinutes());
+            try{
+                var pprEndDate = $.session.currentPprEndDate.substring(0, 19); // убираем часовой пояс, чтобы не пересчитывать дату
+                var pprEndDate = moment(pprEndDate, "DD.MM.YYYY HH:mm:ss").toDate();
+                var timeZone = parseInt($.session.currentPprEndDate.substring(21, 23));
+                var now = new Date();
+                now.setHours(now.getHours() + timeZone); // переводим в часовой пояс клиента
+                if(now.getDate() == pprEndDate.getDate()){
+                    // если окончание сегодня, то говорим часы
+                    announceTimeFromTimeTo(-1, -1, pprEndDate.getHours(), pprEndDate.getMinutes());
+                }else{
+                    // только день
+                    announceAudio(audioDict.Do);
+                    announceDateGen(pprEndDate);
+                }
+            }catch(e){
+                customLog("Failed to announce time. Error: " + e);
+            }
             $reactions.transition('/Proactive/CallAfterAccident');
         
     state: PotentialAccident
@@ -166,6 +212,7 @@ theme: /Proactive
             announceAudio(audioDict.Avaria_Wait);
             if($.session.applId){
                 closeAppeal($.session.applId);
+                delete $.session.applId;
             }
             $reactions.transition('/WhatElse/WhatElse');
         
@@ -273,6 +320,7 @@ theme: /Proactive
                     announceAudio(audioDict.active_OK);
                     if($.session.applId){
                         closeAppeal($.session.applId);
+                        delete $.session.applId;
                     }
                     $reactions.transition('/WhatElse/WhatElse');
                 }
@@ -284,6 +332,7 @@ theme: /Proactive
                 $.session.intent.stepsCnt++;
                 if($.session.applId){
                     closeAppeal($.session.applId);
+                    delete $.session.applId;
                 }
             go!: /WhatElse/WhatElse
                 
@@ -298,6 +347,7 @@ theme: /Proactive
                     announceAudio(audioDict.activeTPnow_CatchAll_2);
                     if($.session.applId){
                         closeAppeal($.session.applId);
+                        delete $.session.applId;
                     }
                     $reactions.transition('/WhatElse/WhatElse');
                 }
@@ -320,6 +370,7 @@ theme: /Proactive
                 $.session.intent.stepsCnt++;
                 if($.session.applId){
                     closeAppeal($.session.applId);
+                    delete $.session.applId;
                 }
             go!: /WhatElse/WhatElse
 
@@ -359,6 +410,7 @@ theme: /Proactive
                 }else{
                     if($.session.applId){
                         closeAppeal($.session.applId);
+                        delete $.session.applId;
                     }
                     $reactions.transition('/WhatElse/WhatElse');
                 }
@@ -367,57 +419,84 @@ theme: /Proactive
         script:
             announceAudio(audioDict.wait_for_the_payment);
             announceAudio(audioDict.ask_promisedPay);
+        go!: ./WaitingForPromisedPaymentInfo
         
-        state: ToPromisedPayment
-            q: $commonYes
-            q: * $yesForPromisedPayment *
-            script:
-                $.session.intent.stepsCnt++;
-            go!: /PromisedPayment/CheckAuth
+        state: WaitingForPromisedPaymentInfo
             
-        state: ToPaymentMethods
-            q: $commonNo
-            q: * $noForPromisedPayment *
-            script:
-                $.session.intent.stepsCnt++;
-            go!: /Proactive/PaymentMethods
-
-        state: ThemeMatch || noContext = true
-            # перехватываем match в глобальную тематику при помощи interceptGlobalMatch в init-блоке
-            script:
-                countRepeatsInRow();
-            if: $session.repeatsInRow < 2
+            state: ToPromisedPayment
+                q: $commonYes *
+                q: * $yesForPromisedPayment *
                 script:
-                    announceAudio(audioDict.ask_promisedPay_ThemeMatch);
-                    $.session.themeMatched = true;
-            else:
-                go!: {{ $temp.matchTargetState }}
+                    $.session.intent.stepsCnt++;
+                go!: /PromisedPayment/CheckAuth
+                
+            state: ToPaymentMethods
+                q: $commonNo *
+                q: * $noForPromisedPayment *
+                script:
+                    $.session.intent.stepsCnt++;
+                go!: /Proactive/PaymentMethods
+    
+            state: ThemeMatch || noContext = true
+                # перехватываем match в глобальную тематику при помощи interceptGlobalMatch в init-блоке
+                script:
+                    countRepeatsInRow();
+                if: $session.repeatsInRow < 2
+                    script:
+                        announceAudio(audioDict.ask_promisedPay_ThemeMatch);
+                        $.session.themeMatched = true;
+                else:
+                    go!: {{ $temp.matchTargetState }}
+                
+            state: ToOperator
+                q: $agentRequest
+                intent: /405_AgentRequest
+                script:
+                    $.session.intent.stepsCnt++;
+                    $.session.agentRequested = true;
+                    announceAudio(audioDict.perevod_na_okc);
+                    $.session.intent.resultCode = 6;
+                    $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                    stopIntent();
+                    startIntent('405_AgentRequest');
+                    $.session.intent.resultCode = $.session.intent.resultCode || 6;
+                    stopIntent();
+                    $reactions.transition("/Transfer/Transfer");
             
-        state: ToOperator
-            q: $agentRequest
-            intent: /405_AgentRequest
-            script:
-                $.session.intent.stepsCnt++;
-                $.session.agentRequested = true;
-                announceAudio(audioDict.perevod_na_okc);
-                $.session.intent.resultCode = 6;
-                $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                stopIntent();
-                startIntent('405_AgentRequest');
-                $.session.intent.resultCode = $.session.intent.resultCode || 6;
-                stopIntent();
-                $reactions.transition("/Transfer/Transfer");
-        
-        state: CatchAll || noContext = true
-            event: noMatch
-            script:
-                $.session.intent.stepsCnt++;
-                if(countRepeatsInRow() < $injector.noMatchLimit) {
-                    announceAudio(audioDict.ask_promisedPay_CatchAll);
-                    $reactions.transition('/Proactive/AskPromisedPayment');
-                }else{
-                    if($.session.applId){
-                        closeAppeal($.session.applId);
+            state: CatchAll || noContext = true
+                event: noMatch
+                script:
+                    $.session.intent.stepsCnt++;
+                    if(countRepeatsInRow() < $injector.noMatchLimit) {
+                        announceAudio(audioDict.ask_promisedPay_CatchAll);
+                        $reactions.transition('/Proactive/AskPromisedPayment/WaitingForPromisedPaymentInfo');
+                    }else{
+                        if($.session.applId){
+                            closeAppeal($.session.applId);
+                            delete $.session.applId;
+                        }
+                        $reactions.transition('/WhatElse/WhatElse');
                     }
-                    $reactions.transition('/WhatElse/WhatElse');
-                }
+            
+            state: LocalNoInput || noContext = true
+                event: speechNotRecognized
+                # для тестов
+                q: NoInput
+                intent: /NoInput
+                script:
+                    countRepeatsInRow();
+                    $.session.noInputCount = $.session.noInputCount || 0;
+                    $.session.noInputCount++;
+                    if($.session.noInputCount < $injector.noInputLimit) {
+                        announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
+                        $reactions.transition('/Proactive/AskPromisedPayment');
+                    }else{
+                        announceAudio(audioDict.No_Input3);
+                        $.session.intent.resultCode = 1;
+                        stopIntent(); // завершаем текущий интент
+                        startIntent("380_NoInput"); // дополнительно записываем NoInput
+                        $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || "silence";
+                        $.session.intent.resultCode = 10;
+                        stopIntent();
+                        $reactions.transition('/Transfer/Transfer');
+                    }

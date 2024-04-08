@@ -4,7 +4,7 @@ theme: /FinanceQuestion
         q!: $financeQuestion
         intent!: /5_FinanceQuestion
         script:
-            startIntent('/5_FinanceQuestion');
+            startIntent('5_FinanceQuestion');
             $.session.intent.stepsCnt++;
             if(countRepeatsInRow() < $injector.noMatchLimit) {
                 $reactions.transition('/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion');

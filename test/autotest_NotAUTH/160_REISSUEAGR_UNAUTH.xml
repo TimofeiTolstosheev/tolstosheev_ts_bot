@@ -5,7 +5,7 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79999999988",
+                "phoneNumber": "79992999988",
                 "cellPhone": true
             }
         </context>
@@ -22,7 +22,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>нужно переоформить договор</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру contract_details</a>
+        <a>BI dialog log: 570-0;160-6;</a>
     </test-case>
     
 
@@ -32,7 +33,7 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79999999988",
+                "phoneNumber": "79999399988",
                 "cellPhone": true
             }
         </context>
@@ -49,7 +50,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>нужно переоформить договор</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру contract_details</a>
+        <a>BI dialog log: 570-1;160-6;</a>
     </test-case>  
     
 
@@ -59,7 +61,7 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79999999988",
+                "phoneNumber": "79994999988",
                 "cellPhone": true
             }
         </context>
@@ -70,11 +72,12 @@
         <a>verno_spb. Ваш город санкт петербург?</a>
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица Петра Великого 999</q>
+        <q>улица благодатная 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>нужно переоформить договор</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру contract_details</a>
+        <a>BI dialog log: 570-1;160-6;</a>
     </test-case>     
     
 
@@ -84,7 +87,7 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79999999988",
+                "phoneNumber": "79995999988",
                 "cellPhone": true
             }
         </context>
@@ -101,7 +104,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>нужно переоформить договор</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру contract_details</a>
+        <a>BI dialog log: 570-0;160-6;</a>
     </test-case>     
     
 
@@ -111,7 +115,7 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79999999988",
+                "phoneNumber": "79996699988",
                 "cellPhone": true
             }
         </context>
@@ -128,7 +132,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>нужно переоформить договор</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру contract_details</a>
+        <a>BI dialog log: 570-1;160-6;</a>
     </test-case>    
     
 
@@ -138,8 +143,8 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79999999988",
-                "cellPhone": true
+                "phoneNumber": "79997799988",
+                "cellPhone": true 
             }
         </context>
 
@@ -149,10 +154,11 @@
         <a>verno_spb. Ваш город санкт петербург?</a>
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица Петра Великого 999</q>
+        <q>улица благодатная 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>нужно переоформить договор</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру contract_details</a>
+        <a>BI dialog log: 570-1;160-6;</a>
     </test-case>     
 </test>

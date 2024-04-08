@@ -50,7 +50,7 @@ theme: /AgentRequest
                     state: Consulting
                         q: $financeQuestion
                         intent: /5_FinanceQuestion
-                        go!: /FinanceQuestion/FinanceQuestion/RouteFinanceQuestion
+                        go!: /FinanceQuestion/FinanceQuestion
                         
                     state: Tech
                         q: $commonTechnicalProblems
@@ -76,7 +76,14 @@ theme: /AgentRequest
             
                     state: CatchAll || noContext = true
                         event: noMatch
-                        go!: /NoMatch/GetIntent
+                        intent: /NoMatch/Trash
+                        if: !$.session.repeatsInRow
+                            script:
+                                $.session.repeatsInRow = 1;
+                                $reactions.transition("/NoMatch/GetIntent");
+                        else:
+                            script:
+                                $reactions.transition("/NoMatch/GetIntent/GetIntent2");
                 
         state: NotAuth
             script:
@@ -100,7 +107,7 @@ theme: /AgentRequest
                     intent: /5_FinanceQuestion
                     script:
                         $.session.intent.stepsCnt++;
-                    go!: /FinanceQuestion/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion
+                    go!: /FinanceQuestion/FinanceQuestion/RouteFinanceQuestion
                     
                 state: Tech
                     q: $commonTechnicalProblems
@@ -146,6 +153,7 @@ theme: /AgentRequest
             
             state: CatchAll || noContext = true
                 event: noMatch
+                intentGroup: /NoMatch
                 script:
                     $.session.intent.stepsCnt++;
                 go!: /NoMatch/GetIntent

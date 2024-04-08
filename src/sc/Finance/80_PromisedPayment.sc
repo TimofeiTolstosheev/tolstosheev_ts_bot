@@ -100,15 +100,27 @@ theme: /PromisedPayment
                     announceAudio(audioDict.request_days);
                     
                 state: ValidateDays
-                    q: * @duckling.number *
+                    q: * ([на] @duckling.number [@Days] / [на] @PromisedPaymentPeriod ) *
                     script:
                         $.session.intent.stepsCnt++;
-                        $.session.promisedPaymentDays = $parseTree['duckling.number'][0].value;
-                    if: $.session.promisedPaymentDays > $.session.promisedPaymentMaxDay
+                        # $reactions.answer(toPrettyString($parseTree["_duckling.number"]));
+                        # $.session.promisedPaymentDays = $parseTree['duckling.number'][0].value;
+                        $.session.promisedPaymentDays = $parseTree["_duckling.number"] || $parseTree["_PromisedPaymentPeriod"]
+                    if: $.session.promisedPaymentDays > $.session.promisedPaymentMaxDay || $.session.promisedPaymentDays <=0
                         go!: /PromisedPayment/CheckPromisedPayment/IncorrectDays
                     else:
                         go!: /PromisedPayment/CheckPromisedPayment/GetPP
                     
+                state: PromisedPaymentDisagree
+                    q: $commonNo
+                    q: $noForPromisedPayment
+                    q: $paymentsMethods
+                    intent: /10_PaymentsMethods
+                    script:
+                        $.session.intent.stepsCnt++;
+                        announceAudio(audioDict.promisedPaymentDisagree);
+                    go!: /WhatElse/WhatElse
+                
                 state: СatchAll || noContext = true
                     event: noMatch
                     script:
@@ -124,15 +136,15 @@ theme: /PromisedPayment
                     announceAudio(audioDict.ConfirmIntent);
                 
                 state: GetPP
-                    q: $commonYes
-                    q: $yesForPromisedPayment
+                    q: $commonYes *
+                    q: * $yesForPromisedPayment *
                     script:
                         $.session.intent.stepsCnt++;
                     go!: /PromisedPayment/CheckPromisedPayment/GetPP
                         
                 state: NotConfirmed
-                    q: $commonNo
-                    q: $noForPromisedPayment
+                    q: $commonNo *
+                    q: * $noForPromisedPayment *
                     script:
                         $.session.intent.stepsCnt++;
                     go!: /WhatElse/WhatElse
@@ -168,7 +180,7 @@ theme: /PromisedPayment
                         announceSum($.session.promisedPaymentTotalCost);
                     }else{
                         announceAudio(audioDict.promisedPaySetInfo_OK_besplatno);
-                    }  
+                    }
                     // у моно при подключении ОП после 15 числа надо активировать ТП
                     if($.session.mono && $.session.after15){
                         activateTP();
@@ -202,7 +214,7 @@ theme: /PromisedPayment
         state: CheckDebt
             script:
                 // $.session.balanceActiveFrom приходит строкой. Чтобы сравнить с нулем преобразуем в число
-                var balanceActiveFrom = Number($.session.balanceActiveFrom.replace(',', '.'));
+                var balanceActiveFrom = parseInt($.session.balanceActiveFrom.replace(',', '.'));
                 if(balanceActiveFrom < 0){
                     announceAudio(audioDict.UBalans);
                     announceSum($.session.balanceActiveFrom);

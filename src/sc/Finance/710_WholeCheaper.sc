@@ -19,8 +19,18 @@ theme: /WholeCheaper
         
         state: CheckOptom
             script:
-                checkOptom();
-            go!: ./AnnounceAvailablePromo
+                // параметры для await-экшна
+                $.session.awaitAction = $.session.awaitAction || {};
+                $.session.awaitAction.returnState = $context.currentState;
+                $.session.awaitAction.action = "checkOptom";
+                $.session.awaitAction.readTimeout = 3000;
+                $.session.awaitAction.audio = audioDict.initialWait;
+                if($.session.awaitAction.status){
+                    delete $.session.awaitAction;
+                    $reactions.transition("./AnnounceAvailablePromo/");
+                }else{
+                    $reactions.transition("/AwaitAction/RunAction");
+                }
                 
             # делаем отдельный стейт, чтобы можно было повторить доступные акции без запроса
             state: AnnounceAvailablePromo || modal = true
@@ -31,8 +41,8 @@ theme: /WholeCheaper
                         $reactions.transition("/WholeCheaper/SMS");
                     }else{
                         if(!$.session.optom3available && !$.session.optom6available && !$.session.optom12available){
+                            $.session.intent.resultCode = $.session.checkOptomError ? 3 : 1;
                             $reactions.transition('./ToOperator');
-                            $.session.intent.resultCode = 3;
                         }else{
                             // если доступна только одна акция
                             if(($.session.optom3available && !$.session.optom6available && !$.session.optom12available) ||
@@ -43,13 +53,13 @@ theme: /WholeCheaper
                                     announceAudio($.session.optom3available ? audioDict.montha : audioDict.months);
                                     $.session.optomSelected = $.session.optom3available ? 3 : ($.session.optom6available ? 6 : 12);
                                     if($.session.optom3available){
-                                        $reactions.transition($.session.optom3enoughBalance ? "./Confirm" : "./NotEnoughBalance");
+                                        $reactions.transition($.session.optom3enoughBalance ? "/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/Confirm" : "/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/NotEnoughBalance");
                                     }else{
                                         if($.session.optom6available){
-                                            $reactions.transition($.session.optom6enoughBalance ? "./Confirm" : "./NotEnoughBalance");
+                                            $reactions.transition($.session.optom6enoughBalance ? "/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/Confirm" : "/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/NotEnoughBalance");
                                         }else{
                                             if($.session.optom12available){
-                                                $reactions.transition($.session.optom12enoughBalance ? "./Confirm" : "./NotEnoughBalance");
+                                                $reactions.transition($.session.optom12enoughBalance ? "/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/Confirm" : "/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/NotEnoughBalance");
                                             }
                                         }
                                     }
@@ -66,13 +76,19 @@ theme: /WholeCheaper
                                     announceAudio(audioDict.ru_digit_12_nom);
                                 }
                                 announceAudio(audioDict.months);
-                                announceAudio(audioDict['23cheaper2']);
+                                $reactions.transition("/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/CheaperChoosePeriod");
                             }
                         }
                     }
-            
+                    
+                state: CheaperChoosePeriod
+                    script:
+                        announceAudio(audioDict['23cheaper2']);
+                    go: /WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo
+                
                 state: 3months
                     q: * @WholeCheaper3 *
+                    q: [на] 3
                     script:
                         $.session.intent.stepsCnt++;
                         $.session.optomSelected = 3;
@@ -81,9 +97,10 @@ theme: /WholeCheaper
                         }else{
                             $reactions.transition("../NotEnoughBalance");
                         }
-                    
+                        
                 state: 6months
                     q: * @WholeCheaper6 *
+                    q: [на] 6
                     script:
                         $.session.intent.stepsCnt++;
                         $.session.optomSelected = 6;
@@ -92,9 +109,10 @@ theme: /WholeCheaper
                         }else{
                             $reactions.transition("../NotEnoughBalance");
                         }
-                    
+                        
                 state: 12months
                     q: * @WholeCheaper12 *
+                    q: [на] 12
                     script:
                         $.session.intent.stepsCnt++;
                         $.session.optomSelected = 12;
@@ -103,11 +121,11 @@ theme: /WholeCheaper
                         }else{
                             $reactions.transition("../NotEnoughBalance");
                         }
-
-                state: Confirm
+    
+                state: Confirm || modal = true
                     script:
                         announceAudio(audioDict.EnoughMoney);
-
+    
                     state: GetOptom
                         q: $commonYes
                         q: $yesForPromo
@@ -124,24 +142,30 @@ theme: /WholeCheaper
                                 announceAudio(audioDict.ConnectedDiscount);
                                 $reactions.transition("/WhatElse/WhatElse");
                             }
-                            
+                                
                     state: Deny
                         q: $commonNo
                         q: $noForPromo
                         script:
                             $.session.intent.stepsCnt++;
                         go!: /WholeCheaper/SMS
-
+    
                     state: catchAll || noContext = true
                         event: noMatch
+                        q: $agentRequest
+                        intent: /405_AgentRequest
                         script:
                             $.session.intent.stepsCnt++;
-                            if(countRepeatsInRow() < $injector.noMatchLimit) {
+                            if(countRepeatsInRow() < $injector.noMatchLimit && !$.session.agentRequested) {
+                                if($parseTree._agentRequest){
+                                    $.session.agentRequested = true;
+                                    announceAudio(audioDict.Operator);
+                                }
                                 $reactions.transition("/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/Confirm");
                             }else{
                                 $reactions.transition("/WholeCheaper/SMS");
                             }
-
+    
                 state: NotEnoughBalance
                     script:
                         announceAudio(audioDict.NotEnoughMoney);
@@ -162,17 +186,23 @@ theme: /WholeCheaper
                         announceSum(paySum);
                         announceAudio(audioDict.NotEnoughMoney2);
                         $reactions.transition("/WholeCheaper/SMS");
-
+    
                 state: catchAll || noContext = true
                     event: noMatch
+                    q: $agentRequest
+                    intent: /405_AgentRequest
                     script:
                         $.session.intent.stepsCnt++;
-                        if(countRepeatsInRow() < $injector.noMatchLimit) {
-                            $reactions.transition("/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo");
+                        if(countRepeatsInRow() < $injector.noMatchLimit && !$.session.agentRequested) {
+                            if($parseTree._agentRequest){
+                                $.session.agentRequested = true;
+                                announceAudio(audioDict.Operator);
+                            }
+                            $reactions.transition("/WholeCheaper/CheckProducts/CheckOptom/AnnounceAvailablePromo/CheaperChoosePeriod");
                         }else{
                             $reactions.transition("../ToOperator");
                         }
-                
+                    
                 state: ToOperator
                     script:
                         announceAudio(audioDict.bonus_perevod_na_okc);

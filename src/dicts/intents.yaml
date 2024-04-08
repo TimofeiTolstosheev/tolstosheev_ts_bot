@@ -178,6 +178,24 @@
 530_PaymentIssue:
     intentCode: 530
     callerInput: balance
+91_PaymentQuestion:
+    intentCode: 91
+    callerInput: balance
+92_DebtQuestion:
+    intentCode: 92
+    callerInput: balance
+93_DebtReason:
+    intentCode: 93
+    callerInput: balance
+94_WhichSubscriptionFee:
+    intentCode: 94
+    callerInput: balance
+95_DebtQuestionDetails:
+    intentCode: 95
+    callerInput: balance
+96_ChangingSubscriptionFee:
+    intentCode: 96
+    callerInput: balance
 540_SetupTVChannels:
     intentCode: 540
     callerInput: setting_tv
@@ -195,10 +213,7 @@
     callerInput: otherintent
 610_CallsOnHold:
     intentCode: 610
-    callerInput: Silence
-650_СommonQuestion:
-    intentCode: 650
-    callerInput: selfInformation
+    callerInput: silence
 710_WholeCheaper:
     intentCode: 710
     callerInput: cheaper
@@ -226,6 +241,27 @@
 800_AccountBalanceSMS:
     intentCode: 800
     method: /ivr/billing/sms/balance
+839_PaymentIssueSMS:
+    intentCode: 839
+    method: /ivr/billing/sms/balance
+841_PaymentQuestionSMS:
+    intentCode: 841
+    method: /ivr/billing/sms/balance
+843_DebtQuestionSMS:
+    intentCode: 843
+    method: /ivr/billing/sms/balance
+845_DebtReasonSMS:
+    intentCode: 845
+    method: /ivr/billing/sms/balance
+847_WhichSubscriptionFeeSMS:
+    intentCode: 847
+    method: /ivr/billing/sms/balance
+849_DebtQuestionDetailsSMS:
+    intentCode: 849
+    method: /ivr/billing/sms/balance
+851_ChangingSubscriptionFeeSMS:
+    intentCode: 851
+    method: /ivr/billing/sms/balance
 801_AgreementNumber:
     intentCode: 801
     method: /ivr/billing/sms/balance
@@ -252,6 +288,27 @@
     smsTemplateName: tv-packages-sms
 834_SMSDetelBalance:
     intentCode: 834
+    smsTemplateName: detail-balance-sms
+840_SMSDetelPaymentIssue:
+    intentCode: 840
+    smsTemplateName: detail-balance-sms
+842_PaymentQuestionSMSDetel:
+    intentCode: 842
+    smsTemplateName: detail-balance-sms
+844_DebtQuestionSMSDetel:
+    intentCode: 844
+    smsTemplateName: detail-balance-sms
+846_DebtReasonSMSDetel:
+    intentCode: 846
+    smsTemplateName: detail-balance-sms
+848_WhichSubscriptionFeeSMSDetel:
+    intentCode: 848
+    smsTemplateName: detail-balance-sms
+850_DebtQuestionDetailsSMSDetel:
+    intentCode: 850
+    smsTemplateName: detail-balance-sms
+852_ChangingSubscriptionFeeSMSDetel:
+    intentCode: 852
     smsTemplateName: detail-balance-sms
 821_DiscountSMS:
     intentCode: 821
@@ -318,3 +375,9 @@
 570_Initialization:
     intentCode: 570
     callerInput: initial
+6_NoIntent:
+    intentCode: 6
+    callerInput: operator
+3_Greeting:
+    intentCode: 3
+    callerInput: operator

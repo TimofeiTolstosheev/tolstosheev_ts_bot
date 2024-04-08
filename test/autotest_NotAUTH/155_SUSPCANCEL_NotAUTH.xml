@@ -8,11 +8,9 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
+                "phoneNumber": "78125784232",
                 "agreementId": "121212",
                 "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
                 "suspension": true,
                 "phoneStatus": "1"       
             }
@@ -62,30 +60,34 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;155-0;</a>
     </test-case>  
     
     <test-case id="155_GUEST_2 НЕАВТОРИЗОВАННЫЙ, авторизовали успешно, Отмена приостановления. Мобильный. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - да. Успешно, вопросов нет">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
+                "phoneNumber": "79999979433",
                 "agreementId": "121212",
                 "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
                 "suspension": true,
                 "phoneStatus": "1"
             }
         </context>
         
         <mockData>
-            <query method="POST">auth.stage.dcc.movixlab.yc.r-one.io/dcc/token</query>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
             <response status="200">{ "token": "1234", "type": "guest" }</response>
         </mockData>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
             <response status="200">{ "type": "user" }</response>
         </mockData>
         
@@ -112,6 +114,8 @@
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
         <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мамаева светлана афанасьевна</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>CancelSuspension. Вижу, что на вашем договоре имеется приостановление услуг. Я могу отменить приостановление всех услуг ближайшей датой.</a>
@@ -121,37 +125,17 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;155-0;</a>
     </test-case>   
     
-    <test-case id="155_GUEST_3 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по ФИО, мобильный, 155 интент. На оператора">
+    <test-case id="155_GUEST_3 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по ФИО, мобильный, 155 интент. На оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "suspension": true,
-                "phoneStatus": "1"       
+                "phoneNumber": "79999999444"       
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest-with-house" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "type": "guest" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
@@ -161,61 +145,43 @@
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
         <q>благодатная 1</q>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Достоевский Федор Михайлович</q>
+        <q>Федор Михайлович</q>
+        <a>zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру cancel_suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;155-1;</a>
     </test-case> 
     
-    <test-case id="155_GUEST_4 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, мобильный, 155 интент. На оператора">
+    <test-case id="155_GUEST_4 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, мобильный, 155 интент. На оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "suspension": true,
-                "phoneStatus": "1"       
+                "phoneNumber": "79999992444"      
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>да</q>
         <a>verno_spb. Ваш город санкт петербург?</a>
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>благодатная 1</q>
+        <q>благодатная 451</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру cancel_suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;155-1;</a>
     </test-case>
     
     <test-case id="155_GUEST_5 НЕАВТОРИЗОВАННЫЙ, авторизовали НЕуспешно по адресу, домашний, 155 интент. На оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "suspension": true,
-                "phoneStatus": "1"       
+                "phoneNumber": "78125624232"      
             }
         </context>
         
@@ -239,6 +205,7 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру cancel_suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;155-1;</a>
     </test-case>
 </test>

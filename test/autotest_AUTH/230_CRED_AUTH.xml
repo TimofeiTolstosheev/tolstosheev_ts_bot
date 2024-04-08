@@ -1,1432 +1,1014 @@
-<test>
-    <test-case id="230_CRED Строка 1 АВТОРИЗОВАННЫЙ, домашний, авторизован. Интент 230. Озвучиваем, что нужна привязка для СМС. На оператора.">
+<!--230_CRED Строка 1   АВТОРИЗОВАННЫЙ, домашний. Интент 230. Озвучиваем, что нужна привязка для СМС. На оператора.-->
+<!--230_CRED Строка 2   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Вопросов нет.-->
+<!--230_CRED Строка 2.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Вопросы есть, номер договора.-->
+<!--230_CRED Строка 3   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 2 непонятные фразы. На оператора.-->
+<!--230_CRED Строка 3.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 тишина и 1 непонятная фраза. На оператора.-->
+<!--230_CRED Строка 3.2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 тишина потом да. СМС с инстр. - да. Успешны.  Вопросов нет.-->
+<!--230_CRED Строка 3.3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 непонятная фраза потом да. СМС с инстр. - да. Успешны.  Вопросов нет.-->
+<!--230_CRED Строка 6   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 непонятная фраза потом да. СМС с инстр. - нет.  Вопросов нет.-->
+<!--230_CRED Строка 8   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 непонятная фраза потом нет. СМС с инстр. - нет.  Вопросов нет.-->
+<!--230_CRED Строка 4   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. Ошибка отправки, на оператора.-->
+<!--230_CRED Строка 4.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - да. вторая СМС с ошибкой. На оператора.-->
+<!--230_CRED Строка 5   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - да. На оператора.-->
+<!--230_CRED Строка 5.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 непонятная фраза. На оператора.-->
+<!--230_CRED Строка 5.2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 тишина, потом да. На оператора.-->
+<!--230_CRED Строка 5.3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросов нет.-->
+<!--230_CRED Строка 5.4 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросы есть, номер договора.-->
+<!--230_CRED Строка 7   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - да. На оператора.-->
+<!--230_CRED Строка 7.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 непонятная фраза. На оператора.-->
+<!--230_CRED Строка 7.2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 тишина, потом да. На оператора.-->
+<!--230_CRED Строка 7.3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросов нет.-->
+<!--230_CRED Строка 7.4 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросы есть, номер договора.-->
+<!--230_CRED Строка 9   АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - нет. СМС с инстр. - да.  Вопросов нет.-->
+<!--230_CRED Строка 9.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - нет. СМС с инстр. - да.  Вопросы есть номер договора.-->
+<!--230_CRED Строка 10  АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - нет. СМС с инстр. - да. Ошибка отправки 2-й СМС. На оператора.-->
+<!--230_CRED Строка 11  АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Переход в тот же интент.-->
+<!--230_CRED Строка 12 10 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - ИНОЕ 1 раз, потом НЕТ. Вопросов НЕТ. \ 230 и 0 + 807 и 0 \-->
+<!--230_CRED Строка 13 20 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - ИНОЕ 1 раз, потом ДА. Вопросы ЕСТЬ - новый интент. \ 808 и 0 + 230 и 0 \-->
+<!--230_CRED Строка 14 21 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - ИНОЕ 1 раз, потом ДА. Вопросов НЕТ. \ 808 и 0 + 230 и 0 \-->
+<!--230_CRED Строка 15 22 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - НЕТ - вопросов нет \ 230 и 6 \-->
+<!--230_CRED Строка 16 10 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - ИНОЕ 1 раз, потом НЕТ. Вопросов НЕТ. \ 230 и 0 + 807 и 0 \-->
+<!--230_CRED Строка 17 26 Авторизован, 230 интент, номер НЕактуальный-->
+<!--230_CRED Строка 18 7 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - НЕТ. Вопросов НЕТ. \ 230 и 0 + 807 и 0 \-->
+<!--230_CRED Строка 19 8 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - НЕТ. Вопросы ЕСТЬ - новый инент. \ 230 и 0 + 807 и 0 \-->
+<!--230_CRED Строка 20 9 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - ИНОЕ 1 раз, потом ДА. Вопросов НЕТ. \ 230 и 0 + 807 и 0 + 808 и 0 \-->
+<!--230_CRED Строка 21 28 Авторизован, 230 интент, номер актуальный. Запрос оператора, потом 230 интент. Предложение СМС - ДА, СМС 2 - ДА. Вопросы есть? - дайте оператора. На оператора.-->
+<test integration="true">
+    <test-case id="230_CRED Строка 1 АВТОРИЗОВАННЫЙ, домашний. Интент 230. Озвучиваем, что нужна привязка для СМС. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>узнать учетные данные для входа</q>
+        <q>забыла пароль</q>
         <a>OKC_WebCabCredentials. Я умею отправлять вам данные для подключения в виде СМС, но для этого необходимо обращаться с актуального сотового телефона. Привязку можно выполнить самостоятельно в личном кабинете или через оператора. А сейчас я перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
     </test-case>
-    
-    
 
-    <test-case id="230_CRED Строка 2 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Вопросов нет.">
+    <test-case id="230_CRED Строка 2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000077"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>       
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>забыла пароль</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>нужна</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>да</q>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-0;230-0;</a>
     </test-case>
-    
-    
-
-    <test-case id="230_CRED Строка 2.1 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Вопросы есть, номер договора.">
+ 
+    <test-case id="230_CRED Строка 2.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000077"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>да</q>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>нужна</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>да</q>
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_83. восемьдесят три</a>
+        <a>DRT_76. семьдесят шесть</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-0;230-0;801-0;420-0;</a>
     </test-case>   
-    
-    
 
-    <test-case id="230_CRED Строка 3 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - 2 непонятные фразы. На оператора.">
+    <test-case id="230_CRED Строка 3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 2 непонятные фразы. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>сильвуплемедам</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>сильвуплемедам</q>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
     </test-case>
-    
-    
-
-    <test-case id="230_CRED Строка 3.1 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - 1 тишина и 1 непонятная фраза. На оператора.">
+ 
+    <test-case id="230_CRED Строка 3.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 тишина и 1 непонятная фраза. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>сильвуплемедам</q>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
     </test-case>
-        
-        
-        
-    <test-case id="230_CRED Строка 3.2 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - 1 тишина потом да. СМС с инстр. - да. Успешны.  Вопросов нет.">
+
+    <test-case id="230_CRED Строка 3.2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 тишина потом да. СМС с инстр. - да. Успешны.  Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>да</q>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-0;230-0;</a>
     </test-case>      
-    
-    
 
-    <test-case id="230_CRED Строка 3.3 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - 1 непогнятная фраза потом да. СМС с инстр. - да. Успешны.  Вопросов нет.">
+    <test-case id="230_CRED Строка 3.3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 непонятная фраза потом да. СМС с инстр. - да. Успешны.  Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>сильвуплемедам</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>да</q>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-0;230-0;</a>
     </test-case>
-    
-    
 
-    <test-case id="230_CRED Строка 4 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. Ошибка отправки, на оператора.">
+    <test-case id="230_CRED Строка 4 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. Ошибка отправки, на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000111"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>скинуть данные для входа в личный кабинет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>да</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-3;230-6;</a>
+    </test-case>
+
+    <test-case id="230_CRED Строка 4.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - да. вторая СМС с ошибкой. На оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79500000050"
+            }
+        </context>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Что-то пошло не так. Перевожу звонок на оператора, пожалуйста, ожидайте. В целях повышения качества обсулживания все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-3;230-6;</a>
     </test-case>
-    
-    
 
-    <test-case id="230_CRED Строка 4.1 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. СМС с инстр. - да. вторая СМС с ошибкой. На оператора.">
+    <test-case id="230_CRED Строка 5 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - да. На оператора. ">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000077"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>сильвуплемедам</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>сильвуплемедам</q>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>да</q>
-        <a>Что-то пошло не так. Перевожу звонок на оператора, пожалуйста, ожидайте. В целях повышения качества обсулживания все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-6;</a>
     </test-case>
-    
-    
 
-    <test-case id="230_CRED Строка 5 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - да. На оператора. ">
+    <test-case id="230_CRED Строка 5.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 непонятная фраза. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000077"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>забыл пароль</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>да</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>сильвуплемедам</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>сильвуплемедам</q>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
+        <q>сильвуплемедам</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-6;</a>
+    </test-case>
+
+    <test-case id="230_CRED Строка 5.2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 тишина, потом да. На оператора. ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <q>да</q>
-        <a>toAgentRequest Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-    
-    
-
-    <test-case id="230_CRED Строка 5.1 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - 1 непонятная фраза, потом да. На оператора.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
-        <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <a>сильвуплемедам</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <q>да</q>
-        <a>toAgentRequest Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-    
-
-    <test-case id="230_CRED Строка 5.2 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - 1 тишина, потом да. На оператора. ">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
-        <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>да</q>
-        <a>toAgentRequest Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-6;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 5.3 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - нет. Вопросов нет.">
+    <test-case id="230_CRED Строка 5.3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000077"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>нет</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-0;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 5.4 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - нет. Вопросы есть, номер договора.">
+    <test-case id="230_CRED Строка 5.4 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ да. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000077"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>скиньте эсэмэс с логином</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>нет</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>да</q>
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_83. восемьдесят три</a>
+        <a>DRT_76. семьдесят шесть</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-0;801-0;420-0;</a>
     </test-case> 
-        
-    
 
-    <test-case id="230_CRED Строка 6 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - 1 непогнятная фраза потом да. СМС с инстр. - нет.  Вопросов нет.">
+    <test-case id="230_CRED Строка 6 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 непонятная фраза потом да. СМС с инстр. - нет.  Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>сильвуплемедам</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>нет</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-0;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 7 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - да. На оператора.">
+    <test-case id="230_CRED Строка 7 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - да. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>да</q>
-        <a>toAgentRequest Хорошо, перевожу вас на специалиста.Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 7.1 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - 1 непонятная фраза, потом да. На оператора.">
+    <test-case id="230_CRED Строка 7.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 непонятная фраза, потом да. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <q>да</q>
-        <a>toAgentRequest Хорошо, перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 7.2 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - 1 тишина, потом да. На оператора. ">
+    <test-case id="230_CRED Строка 7.2 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - 1 тишина, потом да. На оператора. ">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>да</q>
-        <a>toAgentRequest Хорошо, перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 7.3 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - нет. Вопросов нет.">
+    <test-case id="230_CRED Строка 7.3 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>нет</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-0;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 7.4 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Предлагаем соединение с оператором - нет. Вопросы есть, номер договора.">
+    <test-case id="230_CRED Строка 7.4 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ нет. СМС с инстр. - 2 непонятных фразы. Соединить с оператором? - нет. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>сильвуплемедам</q>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
-        <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>Need_operator Соединить ли Вас с оператором для консультации?</a>
+        <a>Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?</a>
         <q>нет</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>да</q>
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_64. шестьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-0;801-0;420-0;</a>
     </test-case>
-        
-    
 
-    <test-case id="230_CRED Строка 8 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - 1 непогнятная фраза потом нет. СМС с инстр. - нет.  Вопросов нет.">
+    <test-case id="230_CRED Строка 8 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - 1 непонятная фраза потом нет. СМС с инстр. - нет.  Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
+ 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>сильвуплемедам</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>нет</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-0;</a>
     </test-case>
-            
-    
-
-    <test-case id="230_CRED Строка 9 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - нет. СМС с инстр. - да.  Вопросов нет.">
+ 
+    <test-case id="230_CRED Строка 9 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - нет. СМС с инстр. - да.  Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 808-0;230-0;</a>
     </test-case>
-            
     
-
-    <test-case id="230_CRED Строка 9.1 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - нет. СМС с инстр. - да.  Вопросы есть номер договора.">
+    <test-case id="230_CRED Строка 9.1 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - нет. СМС с инстр. - да.  Вопросы есть номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>требует пароль</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>какой у меня номер договора?</q>
+        <q>потерял номер договора и сам договор</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_64. шестьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 808-0;230-0;801-0;420-0;</a>
     </test-case> 
-                
     
-
-    <test-case id="230_CRED Строка 10 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. На вопрос СМС с УЗ - нет. СМС с инстр. - да. Ошибка отправки 2-й СМС. На оператора.">
+    <test-case id="230_CRED Строка 10 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - нет. СМС с инстр. - да. Ошибка отправки 2-й СМС. На оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79500000050"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>нет</q>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Что-то пошло не так. Перевожу звонок на оператора, пожалуйста, ожидайте. В целях повышения качества обсулживания все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 808-3;230-6;</a>
+    </test-case>
+
+    <test-case id="230_CRED Строка 11 АВТОРИЗОВАННЫЙ, сотовый. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Переход в тот же интент.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>узнать учетные данные для входа</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>да</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>узнать учетные данные для входа</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>да</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>узнать учетные данные для входа</q>
+        <a state="/Transfer/IntentLimiTransfer">perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-0;230-0;807-0;808-0;230-0;230-28;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 12 10 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - ИНОЕ 1 раз, потом НЕТ. Вопросов НЕТ. \ 230 и 0 + 807 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>утерян договор не могу найти имя пользователя и пароль для доступа в интернет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>да</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>зачем</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>не надо</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 13 20 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - ИНОЕ 1 раз, потом ДА. Вопросы ЕСТЬ - новый интент. \ 808 и 0 + 230 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>утерян договор не могу найти имя пользователя и пароль для доступа в интернет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <!--TODO @SMS-->
+        <!--<q>не надо эс эм эс</q>-->
+        <q>не надо эсэмэс</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>зачем</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>отправляй</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
+        <q>не знаю номер своего договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_83. восемьдесят три</a>
+        <a>DRT_76. семьдесят шесть</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 808-0;230-0;801-0;420-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 14 21 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - ИНОЕ 1 раз, потом ДА. Вопросов НЕТ. \ 808 и 0 + 230 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>утерян договор не могу найти имя пользователя и пароль для доступа в интернет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <!--TODO @SMS-->
+        <!--<q>не надо эс эм эс</q>-->
+        <q>не надо эсэмэс</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>зачем</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>отправляй</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 808-0;230-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 15 22 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - НЕТ - вопросов нет \ 230 и 6 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>утерян договор не могу найти имя пользователя и пароль для доступа в интернет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <!--TODO @SMS-->
+        <!--<q>не надо эс эм эс</q>-->
+        <q>не надо эсэмэс</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 16 10 Авторизован, 230 интент, номер актуальный. Предложение СМС - НЕТ, СМС 2 - ИНОЕ 1 раз, потом НЕТ. Вопросов НЕТ. \ 230 и 0 + 807 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>утерян договор не могу найти имя пользователя и пароль для доступа в интернет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>не надо эсэмэс</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>зачем</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>не отправляй</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-0;</a>
     </test-case>
     
     
-
-    <test-case id="230_CRED Строка 11 АВТОРИЗОВАННЫЙ, сотовый, авторизован. Интент 230. СМС с УЗ - да. СМС с инстр. - да. Успешны.  Переход в тот же интент.">
+    <test-case id="230_CRED Строка 17 26 Авторизован, 230 интент, номер НЕактуальный">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000391"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>       
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>забыл пароль для доступа в интернет</q>
+        <a>OKC_WebCabCredentials. Я умею отправлять вам данные для подключения в виде СМС, но для этого необходимо обращаться с актуального сотового телефона. Привязку можно выполнить самостоятельно в личном кабинете или через оператора. А сейчас я перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 230-6;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 18 7 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - НЕТ. Вопросов НЕТ. \ 230 и 0 + 807 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>да</q>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>не отправляй</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 19 8 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - НЕТ. Вопросы ЕСТЬ - новый инент. \ 230 и 0 + 807 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>узнать учетные данные для входа</q>
-        <a>SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
         <q>да</q>
-        <a>Сейчас отправлю вам СМС</a>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
-        <a>Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
-        <q>да</q>
-        <a>Я отправила вам смс с ссылкой, проверьте. Обычно доставка СМС не занимает более 2х минут</a>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>не отправляй</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>узнать учетные данные для входа</q>
-        <a state="/Transfer/Transfer"/>
+        <q>номер лицевого счета для пополнения баланса</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят  два</a>
+        <a>DRT_64. шестьдесят четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;230-0;420-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 20 9 Авторизован, 230 интент, номер актуальный. Предложение СМС - ДА, СМС 2 - ИНОЕ 1 раз, потом ДА. Вопросов НЕТ. \ 230 и 0 + 807 и 0 + 808 и 0 \">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>утерян договор не могу найти имя пользователя и пароль для доступа в интернет</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>отправляй</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>зачем</q>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>отправляй</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 807-0;808-0;230-0;</a>
+    </test-case>
+    
+    <test-case id="230_CRED Строка 21 28 Авторизован, 230 интент, номер актуальный. Запрос оператора, потом 230 интент. Предложение СМС - ДА, СМС 2 - ДА. Вопросы есть? - дайте оператора. На оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000077"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>буду говорить только с человеком</q> 
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>забыла пароль</q>
+        <a>SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ</a>
+        <q>нужна</q>
+        <a>i_will_send_sms. Сейчас отправлю вам СМС.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>Router_instructions. Также могу вам выслать СМС с инструкцией по настройке популярных моделей оборудования. Отправить ли вам СМС?</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a state="/WhatElse/WhatElse/ToOperator">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру credentials</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;807-0;808-0;230-0;405-6;</a>
     </test-case>
 </test>

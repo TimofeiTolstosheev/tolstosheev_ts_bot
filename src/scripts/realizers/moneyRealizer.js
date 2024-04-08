@@ -33,6 +33,11 @@ function announceSum(sum){
         rubHundred = rankList[2];
         rubThousandUnits = rankList[3];
         rubThousandDecimal = rankList[4];
+        if(rubThousandDecimal == 10000 && rubThousandUnits != 0){
+            // от 11 до 19 все запихнем в десятки тысяч
+            rubThousandDecimal = "1" + rubThousandUnits;
+            rubThousandUnits = "0";
+        }
     }else{
         if(rankList.length == 1) {
             rubUnits = rankList[0];
@@ -46,8 +51,8 @@ function announceSum(sum){
         // минус
         announceAudio(audioDict.minus);
     }
-    if(rubThousandDecimal && rubThousandDecimal  != '0'){
-        if(rubThousandDecimal > 10000){
+    if(rubThousandDecimal && rubThousandDecimal != '0'){
+        if(rubThousandDecimal >= 10000){
             // если больше 10000, проговариваем раздельно число и "тысяч"
             audio = audioNamePattern.replace('SUM', rubThousandDecimal / 1000);
             announceAudio(audioDict[audio]);

@@ -1,94 +1,656 @@
-<test>
-    
-     
-    <test-case id="290_TVCH_Строка 16 Множественная связка. Отсутствие вещания на каналах. Договор НЕ определен однозначно. По ФИО НЕ удалось определить. Перевод на оператора. 290 и 6 ">
+<!--290_TVCH_1 Множественная, НЕ авторизовали по ФИО. Не показывают каналы. на оператора. -->
+<!--290_TVCH_2 Множественная, НЕ авторизовали по адресу. Не показывают каналы. на оператора. -->
+<!--290_TVCH_3 Множественная, 2 договора на ФИО, авторизовали. Отсутствие вещания на каналах. В проактиве нужна активация ТП.-->
+<!--290_1 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - да - перевод на оператора-->
+<!--290_2 Множественная, домашний -  рябь на каналах - в проактиве проблем нет - вы дома? - да - перевод на оператора-->
+<!--290_3 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - нет - звони из дома - вопросов нет-->
+<!--290_4 Множественная, домашний -  рябь на каналах - в проактиве проблем нет - вы дома? - нет - звони из дома - вопросов нет-->
+<!--290_5 Множественная, мобильный - рябь на каналах - в проактиве авария - еще вопросы? - нет - прощание-->
+<!--290_6 Множественная, мобильный - рябь на каналах - в проактиве авария - переход в интент х2-->
+<!--290_7 Множественная, домашний -  рябь на каналах - в проактиве авария - еще вопросы? - автоплатеж-->
+<!--290_8 Множественная, мобильный - рябь на каналах - в проактиве ППР - еще вопросы? - нет - прощание-->
+<!--290_9 Множественная, домашний -  рябь на каналах - в проактиве ППР - еще вопросы? - нет - прощание-->
+<!--290_10 Множественная, мобильный - рябь на каналах - в проактиве Потенциальная авария - еще вопросы? - нет - прощание-->
+<!--290_11 Множественная, домашний - рябь на каналах - в проактиве Потенциальная авария - еще вопросы? - нет - прощание-->
+<!--290_12 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - оператор - дома - перевод на оператора-->
+<!--290_13 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - оператор х2 - перевод на оператора-->
+<!--290_14 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - оператор  - нет - вопросы? - оператор - перевод на оператора-->
+<test integration="true">
+    <test-case id="290_TVCH_1 Множественная, НЕ авторизовали по ФИО. Не показывают каналы. на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "cellPhone": "true",
-                "autoTest": "true"
-
+                "phoneNumber": "79000000020"
             }
         </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Достоевский Федор Михайлович</q>
+        <q>кривнов алексей афанасьевич</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>не показывает телевидение</q>
-        <a state="/WhatElse/ToOperator">toAgentRequest. Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются."</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дома</q>
+        <a>perevod_na_okc_from_TVChannelProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-6;</a>
+    </test-case>   
     
-     
-    <test-case id="290_TVCH_Строка 16.1 Множественная связка. Отсутствие вещания на каналах. Договор НЕ определен однозначно по адресу. По ФИО   удалось определить. Перевод на оператора. 290 и 6 ">
+    <test-case id="290_TVCH_2 Множественная, НЕ авторизовали по адресу. Не показывают каналы. на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "cellPhone": "true",
-                "autoTest": "true"
-
+                "phoneNumber": "79000000021"
             }
         </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-    	<q>/start</q>
+        
+        <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>петров иван семенович</q>
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
+        <q>улица Петра Великого 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>не показывает телевидение</q>
-        <a state="/WhatElse/ToOperator">toAgentRequest. Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются."</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>     
-    
-    
-    <test-case id="290_TVCH_Строка 17 Множественная связка. Отсутствие вещания на каналах. Договор определен. В проактиве тариф неактивен. Активировать Не нужно. Вопросов нет 290 и 0">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "proactiveResult": "mono_EnoughBalance_NotActive",
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
-        <q>не показывает телевидение</q>
-        <a>Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
-        <a>650,00</a>
-        <a>Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
         <q>нет</q>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <a>UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;</a>
+    </test-case>
+    
+    <test-case id="290_TVCH_3 Множественная, 2 договора на ФИО, авторизовали. Отсутствие вещания на каналах. В проактиве нужна активация ТП.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
 
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Бусыгин Максим Петр</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не показывает телевидение</q>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>да</q>
+        <a>active_OK. Тарифный план активирован. Доступ к услугам откроется через 5 минут. Не забудьте перезагрузить роутер.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;290-29;</a>
+    </test-case>
+
+    <test-case id="290_1" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>в доме меняли кабель сегодня изображения никакого нет</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дома</q>
+        <a>perevod_na_okc_from_TVChannelProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-6;</a>
+    </test-case>
     
+    <test-case id="290_2 Множественная, домашний - рябь на каналах - в проактиве проблем нет - вы дома? - да - перевод на оператора" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999920"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>телевизор отключается</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дома</q>
+        <a>perevod_na_okc_from_TVChannelProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-6;</a>
+    </test-case>
     
+    <test-case id="290_3" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>сегодня телевизор не работает</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>не дома</q>
+        <a>UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;</a>
+    </test-case>
     
+    <test-case id="290_4 Множественная, домашний - рябь на каналах - в проактиве проблем нет - вы дома? - нет - звони из дома - вопросов нет" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999920"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>пропало телевидение</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет</q>
+        <a>UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;</a>
+    </test-case>
     
+    <test-case id="290_5">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData> 
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 53,
+                    "accident": true,
+                    "accidentEndDate": "29.09.2023 14:30:56 +00:00",
+                    "ppr": 0,
+                    "currentPprEndDate": "string",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-09-29 13:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>почему отключили телевизор</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <!--<a>ru_digit_3_nom. три</a>-->
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;</a>
+    </test-case>
     
+    <test-case id="290_6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData> 
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 53,
+                    "accident": true,
+                    "accidentEndDate": "29.09.2023 14:30:56 +00:00",
+                    "ppr": 0,
+                    "currentPprEndDate": "string",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-09-29 13:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>ошибка выходит на канале</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>ошибка выходит на канале</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>ошибка выходит на канале</q>
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;290-0;500-29;290-28;</a>
+    </test-case>
+    
+    <test-case id="290_7 Множественная, домашний - рябь на каналах - в проактиве авария - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999999"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 53,
+                    "accident": true,
+                    "accidentEndDate": "29.09.2023 14:30:56 +00:00",
+                    "ppr": 0,
+                    "currentPprEndDate": "string",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-09-29 13:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>отказало телевидение от дом ру по адресу</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>автоплатеж</q>
+        <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру autopay</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;720-6;</a>
+    </test-case>
+    
+    <test-case id="290_8 Множественная, мобильный - рябь на каналах - в проактиве ППР - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 1,
+                    "currentPprEndDate": "10.10.2024 14:30:56 +00:00",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-10 12:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>новые каналы не работают</q>
+        <a>techProblems_ppr_header_1. Для улучшения качества услуг связи по вашему адресу будут проводиться планово профилактические работы</a>
+        <a>Do. до</a>
+        <a>Ru_ord_10_gen_mas. десятого</a>
+        <a>Ru_month_10_gen. октября</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;</a>
+    </test-case>
+    
+    <test-case id="290_9 Множественная, домашний - рябь на каналах - в проактиве ППР - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999999"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 1,
+                    "currentPprEndDate": "10.10.2024 14:30:56 +00:00",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-10 12:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет сигнала на всех каналах</q>
+        <a>techProblems_ppr_header_1. Для улучшения качества услуг связи по вашему адресу будут проводиться планово профилактические работы</a>
+        <a>Do. до</a>
+        <a>Ru_ord_10_gen_mas. десятого</a>
+        <a>Ru_month_10_gen. октября</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;</a>
+    </test-case>
+    
+    <test-case id="290_10 Множественная, мобильный - рябь на каналах - в проактиве Потенциальная авария - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": true,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "12.10.2023 23:00:56 +00:00",
+                    "futurePprEndDate": "13.10.2023 01:00:56 +00:00",
+                    "potentialAccident": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-12 12:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет картинки на телевизоре</q>
+        <a>potential_accident. Вижу, что по вашему адресу могут быть временно недоступны услуги телевидения и интернета. Мы уже устраняем аварию, работы продлятся в течение часа. Приносим извинения за временные неудобства. К сожалению, пока работы не завершены, провести диагностику и решить технический вопрос по телефону не удастся. Пожалуйста, после завершения работ проверьте работоспособность услуг и если ваш вопрос не будет решен - перезвоните в любое удобное время</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;</a>
+    </test-case>
+    
+    <test-case id="290_11 Множественная, домашний - рябь на каналах - в проактиве Потенциальная авария - еще вопросы? - нет - прощание">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999999"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/accidents/by/house</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "12.10.2023 23:00:56 +00:00",
+                    "futurePprEndDate": "13.10.2023 01:00:56 +00:00",
+                    "potentialAccident": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-12 12:23:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>пропадает все каналы</q>
+        <a>potential_accident. Вижу, что по вашему адресу могут быть временно недоступны услуги телевидения и интернета. Мы уже устраняем аварию, работы продлятся в течение часа. Приносим извинения за временные неудобства. К сожалению, пока работы не завершены, провести диагностику и решить технический вопрос по телефону не удастся. Пожалуйста, после завершения работ проверьте работоспособность услуг и если ваш вопрос не будет решен - перезвоните в любое удобное время</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;500-29;</a>
+    </test-case>
+    
+    <test-case id="290_12 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - оператор - дома - перевод на оператора" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002120"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет картинки на телевизоре</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дайте оператора</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дома</q>
+        <a>perevod_na_okc_from_TVChannelProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-6;</a>
+    </test-case>
+    
+    <test-case id="290_13 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - оператор х2 - перевод на оператора" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002220"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нам необходимо восстановить телевещание</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дайте оператора</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-6;405-6;</a>
+    </test-case>
+    
+    <test-case id="290_14 Множественная, мобильный - рябь на каналах - в проактиве проблем нет - вы дома? - оператор  - нет - вопросы? - оператор - перевод на оператора" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002320"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>семенова антонина павловна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>канала нет со вчерашнего дня</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дайте оператора</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет</q>
+        <a>UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;290-0;405-6;</a>
+    </test-case>
 </test>

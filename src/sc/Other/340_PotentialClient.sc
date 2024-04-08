@@ -15,8 +15,8 @@ theme: /PotentialClient
                     announceAudio(audioDict.UtochneniePK);
                 
             state: AuthServiceToOperator
-                q: $commonYes
-                q: $yesForNewService
+                q: $commonYes *
+                q: * $yesForNewService *
                 script:
                     $.session.intent.stepsCnt++;
                     announceAudio(audioDict.OCPOmilia);
@@ -25,8 +25,8 @@ theme: /PotentialClient
                 go!: /Transfer/Transfer
                 
             state: ToOperator
-                q: $commonNo
-                q: $noForNewService
+                q: $commonNo *
+                q: * $noForNewService *
                 script:
                     $.session.intent.stepsCnt++;
                     announceAudio(audioDict.OborudovaniePK);
@@ -78,7 +78,9 @@ theme: /PotentialClient
         
         state: LegalToOperator
             q: * @LegalEntity * 
-            q: (юридическ*/как юридическ*/как юридическ* лицо/как юридическ* $oneWord)
+            q: (юридическ*/как юридическ*/как юридическ* лицо/как юридическ* $oneWord/как @LegalEntity)
+            q: $legalEntity
+            intent: /580_LegalEntity
             script:
                 $.session.intent.stepsCnt++;
                 announceAudio(audioDict.yurikForFurther);
@@ -95,12 +97,7 @@ theme: /PotentialClient
                     $.session.agentRequested = true;
                     $.session.intent.resultCode = 12;
                     // запишем интент "Запрос оператора" с кодом 12
-                    try { 
-                        var intentId = getIntentParam("405_AgentRequest", "intentCode");
-                    } catch (e) { 
-                        var intenId = -1;
-                    }
-                    logIntent(intentId, getNow(), getNow(), 1, 12, '', $.session.stateLog || $.session.prevStateLog);
+                    logIntent($global.AGENT_REQUEST_INTENT_CODE, getNow(), getNow(), 1, 12, '', $.session.stateLog || $.session.prevStateLog);
                     $reactions.transition('/PotentialClient/PhysicalOrLegal');
                 }else{
                     $.session.callerInput = 'p_client';
@@ -108,8 +105,7 @@ theme: /PotentialClient
                     announceAudio(audioDict.OCPOmilia);
                     $reactions.transition("/Transfer/Transfer");
                 }
-                    
-                    
+                
         state: CatchAll || noContext = true
             event: noMatch
             script:

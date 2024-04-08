@@ -2,33 +2,14 @@
 <!--50_RECEIPT Строка 2 НЕавторизованный, домашний, интент 50, на оператора-->
 <!--50_RECEIPT Строка 3 НЕавторизованный, не смогли авторизовать по адресу, домашний, интент 50, на оператора-->
 <!--50_RECEIPT Строка 3.1 НЕавторизованный, не смогли авторизовать по ФИО, домашний, интент 50, на оператора-->
-<test>
+<test integration="true">
     <test-case id="50_RECEIPT Строка 1 НЕавторизованный, мобильный, интент 50, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999159999"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">auth.stage.dcc.movixlab.yc.r-one.io/dcc/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest-with-house" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -42,35 +23,17 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>хочу получать чеки</q>
         <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;50-6;</a>
     </test-case>  
 
     <test-case id="50_RECEIPT Строка 2 НЕавторизованный, домашний, интент 50, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "79999169999"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">auth.stage.dcc.movixlab.yc.r-one.io/dcc/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest-with-house" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -84,18 +47,15 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>хочу получать чеки</q>
         <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;50-6;</a>
     </test-case>  
 
     <test-case id="50_RECEIPT Строка 3 НЕавторизованный, не смогли авторизовать по адресу, домашний, интент 50, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "79991799999"
             }
         </context>
         
@@ -119,35 +79,17 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>хочу получать чеки</q>
         <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;50-6;</a>
     </test-case>      
 
     <test-case id="50_RECEIPT Строка 3.1 НЕавторизованный, не смогли авторизовать по ФИО, домашний, интент 50, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "79991899999"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">auth.stage.dcc.movixlab.yc.r-one.io/dcc/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest-with-house" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "type": "guest" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -161,6 +103,7 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>хочу получать чеки</q>
         <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;50-6;</a>
     </test-case>      
 </test>

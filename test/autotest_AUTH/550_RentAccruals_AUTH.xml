@@ -1,59 +1,64 @@
-<test>
-    
-    <test-case id="550_RENTEQUIP Cтрока 1 Авторизованный, мобильный, интент 550, на оператора">
-        
+<!--550_1_RENTEQUIP Авторизованный, мобильный, интент 550, на оператора-->
+<!--550_2_RENTEQUIP Авторизованный. Оператор - В проактиве неактивный ТП - 550 интент-->
+<!--550_3_RENTEQUIP Авторизованный, домашний, интент 550, на оператора-->
+<test integration="true">
+    <test-case id="550_1_RENTEQUIP Авторизованный, мобильный, интент 550, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сколько платить за оборудование</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 550-6;</a>
     </test-case>
     
-
-    
-    <test-case id="550_RENTEQUIP Строка 2 Авторизованный, домашний, интент 550, на оператора">
-        
+    <test-case id="550_2_RENTEQUIP Авторизованный. Оператор - В проактиве неактивный ТП - 550 интент">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "79000000002"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>сколько платить за оборудование</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>не хочу</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>сколько стоит аренда моего роутора</q>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-29;550-6;</a>
+    </test-case> 
     
-
-
+    <test-case id="550_3_RENTEQUIP Авторизованный, домашний, интент 550, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>сколько стоит аренда моего роутора</q>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 550-6;</a>
+    </test-case>
 </test>

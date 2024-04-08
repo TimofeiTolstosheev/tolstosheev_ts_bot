@@ -1,0 +1,98 @@
+        <!--НЕАВТОРИЗОВАННЫЙ == ВЕТКА "ТИШИНА"-->
+<!--***1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - тишина до победного-->
+<!--***2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - тишина - 90 интент-->
+<!--***3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - нет - тишина до победного-->
+<!--***4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - тишина, потом нет не клиент - оператор Х2-->
+<test integration="true">
+    <!--НЕАВТОРИЗОВАННЫЙ ВЕТКА "ТИШИНА"-->
+    <test-case id="***1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273433"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <event>speechNotRecognized</event>
+        <a state="/LocalNoInput/NoInput">DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <event>speechNotRecognized</event>
+        <a state="/LocalNoInput/NoInput">No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;380-10;</a>
+    </test-case>
+    
+    <test-case id="***2">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273433"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <event>speechNotRecognized</event>
+        <a state="/LocalNoInput/NoInput">DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>уточнить когда я должна погасить абонентскую плату</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>назови мой баланс</q>
+        <a state="/Init/Initialization/ConfirmCity/ThemeMatch">ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="***3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273433"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;380-10;</a>
+    </test-case>
+    
+    <test-case id="***4">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273433"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <event>speechNotRecognized</event>
+        <a state="/LocalNoInput/NoInput">DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>неа</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>хотелось бы задать вопрос оператору</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport">InitPodklOborudovanie_operator. Для того, чтобы мы смогли оперативно и качественно вам помочь уточните, пожалуйста, какой именно у вас вопрос?</a>
+        <q>соедини с человеком</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;</a>
+    </test-case>
+</test>

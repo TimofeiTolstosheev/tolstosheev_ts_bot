@@ -99,6 +99,29 @@ theme: /PageSpeedConnection
                 }else{
                     announceAudio(audioDict.UHomeInternet);
                 }
+                
+            state: LocalNoInput || noContext = true
+                event: speechNotRecognized
+                # для тестов
+                q: NoInput
+                intent: /NoInput
+                script:
+                    $.session.intent.stepsCnt++;
+                    countRepeatsInRow();
+                    $.session.noInputCount = $.session.noInputCount || 0;
+                    $.session.noInputCount++;
+                    if($.session.noInputCount < $injector.noInputLimit) {
+                        announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
+                        $reactions.transition("/PageSpeedConnection/CheckServices/AreYouHome");
+                    }else{
+                        announceAudio(audioDict.No_Input3);
+                        stopIntent(); // завершаем текущий интент
+                        startIntent("380_NoInput"); // дополнительно записываем NoInput
+                        $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || "silence";
+                        $.session.intent.resultCode = 10;
+                        stopIntent();
+                        $reactions.transition('/Transfer/Transfer');
+                    }
         
             state: CheckReboot
                 q: $commonYes
@@ -106,28 +129,38 @@ theme: /PageSpeedConnection
                 script:
                     $.session.intent.stepsCnt++;
                     $.session.atHome = true;
-                    // проверим результат перезагрузки и статус сессии
-                    if($.session.rebootAwaitRequestId){
-                        var response = getResponseByRequestId($.session.rebootAwaitRequestId);
-                        if(response.data){
-                            $.session.rebooted = response.data.rebooted;
-                            $.session.rebootResult = response.data.rebootResult;
-                            $.session.rebootPortResult = response.data.rebootPortResult;
-                            $.session.dropSessionResult = response.data.dropSessionResult;
-                            $.session.rebootRouterResult = response.data.rebootRouterResult;
-                            $.session.checkSessionResult = response.data.checkSessionResult;
-                            $.session.sessionStatus = response.data.sessionStatus;
-                            delete $.session.rebootAwaitRequestId;
-                        }
-                    }
-                if: $.session.rebooted
+                if: $.session.int
                     script:
-                        announceAudio(audioDict.RebootRouter);
-                        announceAudio(audioDict.lalaWait);
-                        announceAudio(audioDict.RebootRouter2);
-                    go!: /PageSpeedConnection/CheckServices/AreYouHome/CheckReboot/Rebooted
+                        // проверим результат перезагрузки и статус сессии
+                        if($.session.rebootAwaitRequestId){
+                            var response = getResponseByRequestId($.session.rebootAwaitRequestId);
+                            delete $.session.rebooted; // удаляем, если был, предыдущий результат перезагрузки
+                            if(response.data){
+                                $.session.rebooted = response.data.rebooted;
+                                $.session.rebootResult = response.data.rebootResult;
+                                $.session.rebootPortResult = response.data.rebootPortResult;
+                                $.session.dropSessionResult = response.data.dropSessionResult;
+                                $.session.rebootRouterResult = response.data.rebootRouterResult;
+                                $.session.checkSessionResult = response.data.checkSessionResult;
+                                $.session.sessionStatus = response.data.sessionStatus;
+                                delete $.session.rebootAwaitRequestId;
+                            }
+                        }
+                    # если точно знаем, что не смогли перезагрузить, то перевод на оператора
+                    if: $.session.rebooted === false
+                        go!: /PageSpeedConnection/CheckServices/AreYouHome/CheckReboot/NotRebooted
+                    # если смогли перезагрузить или не знаем результат перезагрузки, то уводим в проверку
+                    else:
+                        script:
+                            announceAudio(audioDict.RebootRouter);
+                            announceAudio(audioDict.lalaWait);
+                            announceAudio(audioDict.RebootRouter2);
+                        go!: /PageSpeedConnection/CheckServices/AreYouHome/CheckReboot/Rebooted
                 else:
-                    go!: /PageSpeedConnection/CheckServices/AreYouHome/CheckReboot/NotRebooted
+                    script:
+                        announceAudio(audioDict.noInternetProduct);
+                        $.session.intent.resultCode = $.session.intent.resultCode || 6;
+                        $reactions.transition("/Transfer/CheckOCTP");
 
                 state: Rebooted
                     script:
@@ -160,6 +193,29 @@ theme: /PageSpeedConnection
                             }else{
                                 announceAudio(audioDict.perevod_na_okc);
                                 $reactions.transition("/Transfer/CheckOCTP");
+                            }
+                            
+                    state: LocalNoInput || noContext = true
+                        event: speechNotRecognized
+                        # для тестов
+                        q: NoInput
+                        intent: /NoInput
+                        script:
+                            $.session.intent.stepsCnt++;
+                            countRepeatsInRow();
+                            $.session.noInputCount = $.session.noInputCount || 0;
+                            $.session.noInputCount++;
+                            if($.session.noInputCount < $injector.noInputLimit) {
+                                announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
+                                $reactions.transition("/PageSpeedConnection/CheckServices/AreYouHome/CheckReboot/Rebooted");
+                            }else{
+                                announceAudio(audioDict.No_Input3);
+                                stopIntent(); // завершаем текущий интент
+                                startIntent("380_NoInput"); // дополнительно записываем NoInput
+                                $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || "silence";
+                                $.session.intent.resultCode = 10;
+                                stopIntent();
+                                $reactions.transition('/Transfer/Transfer');
                             }
                 
                 state: NotRebooted

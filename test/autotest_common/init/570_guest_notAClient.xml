@@ -1,0 +1,350 @@
+        <!--НЕАВТОРИЗОВАННЫЙ == ВЕТКА "НЕ КЛИЕНТ"-->
+<!-- 3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Другой вопрос. Интент 280. Любая ветка.-->
+<!-- 3.1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Другой вопрос. Оператор. Ноуматч.-->
+<!-- 3.2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Другой вопрос. Оператор. Купить роутер. Переход в потенциальника. Физик-->
+<!-- 4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Запрос оператора Х2. В ОКЦ.-->
+<!-- 5 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Запрос оператора х1, потом ноуматч х3. В ОКЦ.-->
+<!-- 6 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Ноуматч х1, потом номер договора. Любая ветка.-->
+<!-- 7 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Ноуматч х2 - другой вопрос - сколько стоит подключиться (340 интент)-->
+<!-- 8 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Интент 300 - перевод на оператора-->
+<!--9.1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Купить роутер. Переход в потенциальника. Юрик-->
+<!--9.2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Купить роутер. Переход в потенциальника. Физик-->
+<!--10.1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Подключить телевидение. Переход в потенциальника. Юрик-->
+<!--10.2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - Подключить телевидение. Переход в потенциальника. Физик-->
+<!--11 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - 610-й интент (Hold) до 'победного завершения' диалога.-->
+<!--12 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Нет. Что вас интересует? - 610-й интент (Hold) х1, потом купить роутер. На потенциальника.-->
+<!--12.1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - купить роутер. На потенциальника.-->
+
+<test integration="true">
+    <!--НЕАВТОРИЗОВАННЫЙ ВЕТКА "НЕ КЛИЕНТ"-->
+    <test-case id="3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не являюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>другой вопрос</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>скорость упала постоянно перезагрузка идёт</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру lowspeed</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-22;280-6;</a>
+    </test-case>
+    
+    <test-case id="3.1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>другой вопрос</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оператора позови</q>
+        <a state="/AgentRequest/CheckAuth/NotAuth">GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>кого</q>
+        <a state="/NoMatch/GetIntent">DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>кого</q>
+        <a state="/NoMatch/GetIntent/GetIntent2">DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>кого</q>
+        <a state="/NoMatch/GetIntent/GetIntent2/CheckProactive/ToOperator">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру no_match</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-22;405-0;0-1;</a>
+    </test-case>
+    
+    <test-case id="3.2">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>другой вопрос</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оператора позови</q>
+        <a state="/AgentRequest/CheckAuth/NotAuth">GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>хочу купить роутер</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>физик</q>
+        <a state="/PotentialClient/PhysicalOrLegal/PhysicalToOperator">OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-22;405-0;340-12;</a>
+    </test-case>
+    
+    <test-case id="4">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не являюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>хотелось бы задать вопрос оператору</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport">InitPodklOborudovanie_operator. Для того, чтобы мы смогли оперативно и качественно вам помочь уточните, пожалуйста, какой именно у вас вопрос?</a>
+        <q>соедини с человеком</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;</a>
+    </test-case>
+     
+    <test-case id="5">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не являюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>хотелось бы задать вопрос оператору</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport">InitPodklOborudovanie_operator. Для того, чтобы мы смогли оперативно и качественно вам помочь уточните, пожалуйста, какой именно у вас вопрос?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll">InitPodklOborudovanie_CatchAll. Не уверена, что верно вас поняла. Скажите, вы хотите подключить наши услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll">InitPodklOborudovanie_CatchAll_2. Прошу вас повторить, какой у вас вопрос. подключение наших услуг, приобретение оборудования или другой вопрос?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;</a>
+    </test-case>
+    
+    <test-case id="6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>хотелось бы задать вопрос оператору</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CallSupport">InitPodklOborudovanie_operator. Для того, чтобы мы смогли оперативно и качественно вам помочь уточните, пожалуйста, какой именно у вас вопрос?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll">InitPodklOborudovanie_CatchAll. Не уверена, что верно вас поняла. Скажите, вы хотите подключить наши услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>номер договора</q>
+        <a state="/AgreementNumber/CheckAuth/NotAuth">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру agreement</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;420-1;</a>
+    </test-case>
+    
+    <test-case id="7">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll">InitPodklOborudovanie_CatchAll. Не уверена, что верно вас поняла. Скажите, вы хотите подключить наши услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie/CatchAll">InitPodklOborudovanie_CatchAll_2. Прошу вас повторить, какой у вас вопрос. подключение наших услуг, приобретение оборудования или другой вопрос?</a>
+        <q>другой вопрос</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>сколько стоит подключиться</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>физическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/PhysicalToOperator">OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-22;340-12;</a>
+    </test-case>
+    
+    <test-case id="8">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>раньше пользовался</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>нет соединения с интернетом</q>
+        <a state="/NoLink/CheckProactive">chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру nolink</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;300-6;</a>
+    </test-case>
+    
+    <test-case id="9.1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>хочу купить роутер</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/LegalToOperator">yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-11;</a>
+    </test-case>
+    
+    <test-case id="9.2">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>хочу купить роутер</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>физик</q>
+        <a state="/PotentialClient/PhysicalOrLegal/PhysicalToOperator">OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-12;</a>
+    </test-case>
+    
+    <test-case id="10.1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>подключить кабельное хочу</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/LegalToOperator">yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-11;</a>
+    </test-case>
+    
+    <test-case id="10.2">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>не пользуюсь</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>подключить кабельное хочу</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>физическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/PhysicalToOperator">OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-12;</a>
+    </test-case>
+    
+    <test-case id="11">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>неа</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1">Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1/CallsOnHold2">Answering4. К сожалению, я не смогу решить ваш вопрос, т.к вызов поставлен на удержание. Пожалуйста, перезвоните или напишите в чате, когда будете готовы продолжить разговор, а сейчас я вынуждена прервать вызов. Хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;610-0;</a>
+    </test-case>
+    
+    <test-case id="12">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>неа</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1">Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас</a>
+        <q>хочу купить ваш роутер</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/LegalToOperator">yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;610-0;340-11;</a>
+    </test-case>
+    
+    <test-case id="12.1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999526673"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>хочу купить ваш роутер</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/LegalToOperator">yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-11;</a>
+    </test-case>
+    
+    
+
+</test>
+
+
+

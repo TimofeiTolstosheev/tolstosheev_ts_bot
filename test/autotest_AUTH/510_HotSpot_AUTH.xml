@@ -1,29 +1,23 @@
-<test>
-    
-    <test-case id="510_HOTSPOT Строка 1 Авторизованный, мобильный, интент 510, на оператора">
+<test integration="true">
         
+    <test-case id="Авторизованный. Интент 510. на оператора">
+        
+       
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>бесплатный вай фай</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру hotspot</a>
+        <a>BI dialog log: 510-6;</a>
     </test-case>  
     
 
@@ -33,25 +27,18 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412999981",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>бесплатный вай фай</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру hotspot</a>
+        <a>BI dialog log: 510-6;</a>
     </test-case>  
     
     

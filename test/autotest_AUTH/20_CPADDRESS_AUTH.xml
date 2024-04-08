@@ -4,29 +4,18 @@
 <!--20_CPADDRESS Строка 4 АВТОРИЗОВАННЫЙ, мобильный, 20 интент. НЕуспешная отправка СМС. Вопросы есть, номер договора.-->
 <!--20_CPADDRESS Строка 5 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Вопросов нет.-->
 <!--20_CPADDRESS Строка 6 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Вопросы есть, номер договора.-->
-<!--20_CPADDRESS Строка 7 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Переход в тот же интент.-->
-<test>
+<!--20_CPADDRESS Строка 7 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Переход в тот же интентx3, на оператора.-->
+<!--20_CPADDRESS Строка 8 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Тишина 2 раза. Завершаем диалог.-->
+<!--20_CPADDRESS Строка 9 АВТОРИЗОВАННЫЙ, мобильный, запрос оператора, потом 20 интент. Успешная отправка СМС. Запрос оператора еще раз. На оператора.-->
+<!--20_CPADDRESS Строка 10 АВТОРИЗОВАННЫЙ, мобильный, запрос оператора, потом 20 интент. Успешная отправка СМС. номер договора. Вопросов нет. -->
+<test integration="true">
     <test-case id="20_CPADDRESS Строка 1 АВТОРИЗОВАННЫЙ, мобильный, 20 интент. Успешная отправка СМС. Вопросов нет">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -37,30 +26,17 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 815-0;20-0;</a>
     </test-case>
     
     <test-case id="20_CPADDRESS Строка 2 АВТОРИЗОВАННЫЙ, мобильный, 20 интент. НЕуспешная отправка СМС. Вопросов нет">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79500000050"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -70,35 +46,17 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 815-3;20-0;</a>
     </test-case>
     
     <test-case id="20_CPADDRESS Строка 3 АВТОРИЗОВАННЫЙ, мобильный, 20 интент. Успешная отправка СМС. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -120,41 +78,175 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 815-0;20-0;420-0;</a>
     </test-case>
 
     <test-case id="20_CPADDRESS Строка 4 АВТОРИЗОВАННЫЙ, мобильный, 20 интент. НЕуспешная отправка СМС. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79500000050"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>адреса офисов</q>
         <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>какой у меня номер договора?</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_33. тридцать три</a>
+        <a>DRT_87. восемьдесят семь</a>
+        <a>DRT_79. семьдесят девять</a>
+        <a>DRT_74. семьдесят четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 815-3;20-0;420-0;</a>
+    </test-case>
+
+    <test-case id="20_CPADDRESS Строка 5 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 20-0;</a>
+    </test-case>
+
+    <test-case id="20_CPADDRESS Строка 6 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Вопросы есть, номер договора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>какой у меня номер договора?</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят  два</a>
+        <a>DRT_64. шестьдесят четыре</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 20-0;420-0;</a>
+    </test-case>
+
+    <test-case id="20_CPADDRESS Строка 7 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Переход в тот же интент x3, на оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>адреса офисов</q>
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру address</a>
+        <a state="/Transfer/Transfer">BI dialog log: 20-0;20-0;20-28;</a>
+    </test-case>
+    
+    <test-case id="20_CPADDRESS Строка 8 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Тишина 2 раза. Завершаем диалог.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 20-0;380-10;</a>
+    </test-case>
+    
+    <test-case id="20_CPADDRESS Строка 9 АВТОРИЗОВАННЫЙ, мобильный, запрос оператора, потом 20 интент. Успешная отправка СМС. Запрос оператора еще раз. На оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру address</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;815-0;20-0;405-6;</a>
+    </test-case>
+    
+    <test-case id="20_CPADDRESS Строка 10 АВТОРИЗОВАННЫЙ, мобильный, запрос оператора, потом 20 интент. Успешная отправка СМС. номер договора. Вопросов нет. ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>адреса офисов</q>
+        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
@@ -169,102 +261,7 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="20_CPADDRESS Строка 5 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Вопросов нет.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>адреса офисов</q>
-        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="20_CPADDRESS Строка 6 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Вопросы есть, номер договора.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>адреса офисов</q>
-        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>DRT_78. семьдесят восемь</a>
-        <a>DRT_00. ноль ноль</a>
-        <a>DRT_46. сорок шесть</a>
-        <a>DRT_99. девяносто девять</a>
-        <a>DRT_82. восемьдесят  два</a>
-        <a>DRT_64. шестьдесят четыре</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="20_CPADDRESS Строка 7 АВТОРИЗОВАННЫЙ, домашний, 20 интент. Информируем. Переход в тот же интент.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>адреса офисов</q>
-        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>адреса офисов</q>
-        <a>no_servicecenters. На текущий момент в городах нет сервисных центров. Решить вопросы по начислениям, подключить и отключить пакеты каналов, приостановить или расторгнуть договор можно самостоятельно в личном кабинете на сайте дом точка ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;815-0;20-0;420-0;</a>
     </test-case>
 </test>

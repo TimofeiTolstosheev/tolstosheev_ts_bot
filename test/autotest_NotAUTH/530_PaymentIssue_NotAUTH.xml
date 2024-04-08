@@ -1,320 +1,238 @@
-<test>    
-    
-    <test-case id="530 Строка 1 НЕавторизованный, мобильный. Финансовый вопрос Номер договора">
+<!--530_1 НЕавторизованный. Авторизовали. Мобильный, фраза из начислений. Переходим.-->
+<!--530_2 НЕавторизованный. Авторизовали. Домашний. фраза из начислений. Переходим.-->
+<!--530_3 НЕавторизованный. НЕ авторизовали по адресу, сотовый. Фраза про платежи.-->
+<!--530_4 НЕавторизованный. НЕ авторизовали по ФИО, сотовый. Фраза про начисления.-->
+<test integration="true">
+    <test-case id="530_1 НЕавторизованный. Авторизовали. Мобильный, фраза из начислений. Переходим.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "proactiveResult": "spas",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79999999996"
             }
         </context>
         <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "666,0",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "2342,00",
+                    "textParam": 12,
+                    "periodDates": "8",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "15.08.2023",
+                    "lastPayment": 0,
+                    "retStr": "$1",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
         </mockData>
         
         <q>/start</q>
-       	<a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-       	<q>да</q>
-     	<a>verno_spb. Ваш город санкт петербург?</a>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
-    	<a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-     	<q>улица благодатная 1</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Соколов Максим Иванович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <q>Какой у меня срок оплаты</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>   
+        <a>ru_digit_50_nom. пятьдесят</a>   
+        <a>ru_digit_4_nom. четыре</a>      
+        <a>ru_unit_rub_gen_sn. рубля</a>   
+        <a>ru_digit_90_nom. девяносто</a>    
+        <a>ru_digit_9_nom. девять</a>        
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>StoimistZa. Стоимость услуг за</a>
+        <a>Ru_month_8_nom. август</a>
+        <a>ru_digit_2000_nom. две тысячи</a>   
+        <a>ru_digit_300_nom. триста</a>       
+        <a>ru_digit_40_nom. сорок</a>     
+        <a>ru_digit_2_nom. два</a>       
+        <a>ru_unit_rub_gen_sn. рубля</a>
+        <a>BalansChangeZa. Баланс может измениться после выставления счёта за</a>
+        <a>Ru_month_8_nom. август</a>
+        <a>Oplatite. Оплатите</a>
+        <a>ru_digit_600_nom. шестьсот</a>  
+        <a>ru_digit_60_nom. шестьдесят</a>  
+        <a>ru_digit_6_nom. шесть</a>        
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>Za. за</a>
+        <a>Ru_month_8_nom. август</a>
+        <a>saveServices. Чтобы сохранить доступ к услугам</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>нет</q>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
-
-
-
-    <test-case id="530 Строка 2 НЕавторизованный, мобильный. Финансовый вопрос молчание">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "proactiveResult": "spas",
-                "cellPhone": "true",
-                "int": "1",
-                "ktv": "0",
-                "domrutv": "0",
-                "ktv_social": "0",
-                "dctv": "0",
-                "tvSetup": "unknownTvSetup",
-                "dvbc": "0",
-                "autoTest": "true"
-            }
-        </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-       	<a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-       	<q>да</q>
-     	<a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-    	<a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-     	<q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>ррр</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>ррр</q>
-        <a state="/FinanceQuestion/RouteFinanceQuestion/ToOperator">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. Пожалуйста, ожидайте</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;841-0;842-0;91-0;</a>
     </test-case>
-        
-        
-        
-    <test-case id="530 Строка 3 НЕавторизованный, мобильный. Финансовый вопрос, номер договора, переход в тот же интент.">
+
+    <test-case id="530_2 НЕавторизованный. Авторизовали. Домашний. фраза из начислений. Переходим.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "proactiveResult": "spas",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "78120066000"
             }
         </context>
         <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "666,0",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "2342,00",
+                    "textParam": 12,
+                    "periodDates": "8",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "15.08.2023",
+                    "lastPayment": 0,
+                    "retStr": "$1",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
         </mockData>
-        
+
         <q>/start</q>
-       	<a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-       	<q>да</q>
-     	<a>verno_spb. Ваш город санкт петербург?</a>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
-    	<a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-     	<q>улица благодатная 1</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Соколов Максим Иванович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>нет</q>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>нет</q>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>Какой у меня срок оплаты</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>   
+        <a>ru_digit_50_nom. пятьдесят</a>   
+        <a>ru_digit_4_nom. четыре</a>      
+        <a>ru_unit_rub_gen_sn. рубля</a>   
+        <a>ru_digit_90_nom. девяносто</a>    
+        <a>ru_digit_9_nom. девять</a>        
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>StoimistZa. Стоимость услуг за</a>
+        <a>Ru_month_8_nom. август</a>
+        <a>ru_digit_2000_nom. две тысячи</a>   
+        <a>ru_digit_300_nom. триста</a>       
+        <a>ru_digit_40_nom. сорок</a>     
+        <a>ru_digit_2_nom. два</a>       
+        <a>ru_unit_rub_gen_sn. рубля</a>
+        <a>BalansChangeZa. Баланс может измениться после выставления счёта за</a>
+        <a>Ru_month_8_nom. август</a>
+        <a>Oplatite. Оплатите</a>
+        <a>ru_digit_600_nom. шестьсот</a>  
+        <a>ru_digit_60_nom. шестьдесят</a>  
+        <a>ru_digit_6_nom. шесть</a>        
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>Za. за</a>
+        <a>Ru_month_8_nom. август</a>
+        <a>saveServices. Чтобы сохранить доступ к услугам</a>
+        <a>DetelBalanceAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
-    
-    
-    
-    <test-case id="530 Строка 4 НЕавторизованный, домашний. Финансовый вопрос Номер договора">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "proactiveResult": "spas",
-                "cellPhone": "false",
-                "autoTest": "true"
-            }
-        </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-       	<a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-       	<q>да</q>
-     	<a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-    	<a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-     	<q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
-
-
-
-    <test-case id="530 Строка 5 НЕавторизованный, домашний. Финансовый вопрос молчание">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "proactiveResult": "spas",
-                "cellPhone": "false",
-                "int": "1",
-                "ktv": "0",
-                "domrutv": "0",
-                "ktv_social": "0",
-                "dctv": "0",
-                "tvSetup": "unknownTvSetup",
-                "dvbc": "0",
-                "autoTest": "true"
-            }
-        </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-       	<a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-       	<q>да</q>
-     	<a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-    	<a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-     	<q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>ррр</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>ррр</q>
-        <a state="/FinanceQuestion/RouteFinanceQuestion/ToOperator">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. Пожалуйста, ожидайте</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;91-0;</a>
     </test-case>
-        
-        
-        
-    <test-case id="530 Строка 6 НЕавторизованный, домашний. Финансовый вопрос, номер договора, переход в тот же интент.">
+    
+    <test-case id="530_3 НЕавторизованный. НЕ авторизовали по адресу, сотовый. Фраза про платежи.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "proactiveResult": "spas",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79005269999"
             }
         </context>
+        
         <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
         </mockData>
         
         <q>/start</q>
-       	<a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-       	<q>да</q>
-     	<a>verno_spb. Ваш город санкт петербург?</a>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
-    	<a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-     	<q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>финансовый вопрос</q>
-        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица Петра Великого 999</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Какой у меня срок оплаты</q>
+        <a>DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;842-0;91-0;</a>
+    </test-case>
+    
+    <test-case id="530_4 НЕавторизованный. НЕ авторизовали по ФИО, сотовый. Фраза про начисления.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000722000"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Какой у меня срок оплаты</q>
+        <a>DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;842-0;91-0;</a>
+    </test-case>      
 </test>

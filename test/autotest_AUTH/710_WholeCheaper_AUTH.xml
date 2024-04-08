@@ -1,21 +1,45 @@
-<test>
-    <test-case id="710_OPTOM_Строка 10 Авторизованный. Сотовый. Продукт КТВ. Озвучиваем, кто не судьба Оптом подключить. Вопросы есть. 710 и 0 + 420 и 0">
+<!--710_0  Авторизованный. Сотовый.  Продукт КТВ. Информируем, что Оптом недоступно. Вопросов нет.-->
+<!--710_1  Авторизованный. Сотовый.  Продукт КТВ. Информируем, что Оптом недоступно. Вопросы есть.-->
+<!--710_2  Авторизованный. Сотовый.  Оптом дешевле недоступна. Вопросов нет.-->
+<!--710_3  Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса НЕ достаточно для активации. Озвучиваем сумму. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_4  Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Нет. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_5  Авторизованный. Домашний. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Нет. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_6  Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 2 раза тишина. Дроп-->
+<!--710_7  Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 2 раза непонятное. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_8  Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 1 раз тишина, 2 раз непонятное. Отправка СМС. Есть вопросы? - 1 непонятная фраза - Перевод.-->
+<!--710_9  Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Вопросов нет. 710 и 0-->
+<!--710_10 Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Есть вопросы. Баланс. 710 и 0 + 420 и 0 ДИНАМИЧЕСКАЯ СУММА-->
+<!--710_11 Авторизованный. Сотовый.  Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. НЕ успешно. На оператора. 710 и 3-->
+<!--710_12 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 2 раза тишина. Уходим на оператора с РМом об акциях. 710 и 1-->
+<!--710_13 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 2 раза непонятное. Уходим на оператора с РМом об акциях. 710 и 1-->
+<!--710_13.1 Авторизованный. Сотовый. Доступны 3 варианта оптома. Оператор Х2. Уходим на оператора с РМом об акциях. 710 и 1-->
+<!--710_13.2 Авторизованный. Сотовый. Доступны 3 варианта оптома. Оператор - ноуматч. Уходим на оператора с РМом об акциях. 710 и 1-->
+<!--710_13.3 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 1 раз непонятное - потом оператор. Уходим на оператора с РМом об акциях. 710 и 1-->
+<!--710_14 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 12 месяцев. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_15 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяца.   Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_16 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев.  Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_17 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев.  Баланса достаточно для активации. Активировать? - 2 раза тишина. Дроп-->
+<!--710_18 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев.  Баланса достаточно для активации. Активировать? - 2 раза непонятное. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_19 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяца.   Баланса достаточно для активации. Активировать? - оператор. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_20 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 12 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_21 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев.  Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_22 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяцев.  Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_23 Авторизованный. Сотовый. Сперва запрос оператора, потом Оптома. Должно корректно уйти в Оптом. Доступны 3 варианта оптома. Хотим 3 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0-->
+<!--710_24 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Ошибка активации. На оператора-->
+<!--710_25 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросов нет. 710 и 0-->
+<!--710_26 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросы есть - новый интент. 710 и 0 + 420 и 0-->
+<!--710_27 Авторизованный. Сотовый. РА уже активна. Отправляем СМС. Вопросов нет. 710 и 0-->
+<!--710_28 Авторизованный. Домашний. РА уже активна. Вопросов нет. 710 и 0-->
+<!--710_29 Авторизованный. Домашний. РА уже активна. Есть Вопросы? - да - баланс ДИНАМИЧЕСКАЯ СУММА-->
+<!--710_30 Авторизованный. Сотовый. Продукт КТВ. Информируем, что Оптом недоступно. Переход в тот же интент Х2.-->
+<test integration="true">
+    <test-case id="710_0 Авторизованный. Сотовый. Продукт КТВ. Информируем, что Оптом недоступно. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "ktv": 1,
-                "int": 0,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000008"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -24,53 +48,55 @@
         <a>KTVcheaper. К сожалению, для клиентов без услуги интернет не доступно подключение акции Оптом дешевле.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;</a>
     </test-case>
-
-    <test-case id="710_OPTOM_Строка 11 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса НЕ достаточно для активации. Озвучиваем сумму. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    
+    <test-case id="710_1 Авторизованный. Сотовый. Продукт КТВ. Информируем, что Оптом недоступно. Вопросы есть.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000008"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>KTVcheaper. К сожалению, для клиентов без услуги интернет не доступно подключение акции Оптом дешевле.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>сколько платить за роутер</q>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру rent_accruals</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;550-6;</a>
+    </test-case>
+    
+    <test-case id="710_2 Авторизованный. Сотовый. Оптом дешевле недоступна. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000069"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-1;</a>
+    </test-case>
 
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">
-                {
-                    "SMSstatus": true,
-                    "status": 200
-                }
-            </response>
-        </mockData>
+    <test-case id="710_3 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса НЕ достаточно для активации. Озвучиваем сумму. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000061"
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -80,57 +106,26 @@
         <a>ru_digit_3_nom. три</a>
         <a>montha. месяца</a>
         <a>NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере</a>
-        <a>ru_digit_200_nom. двесте</a>
-        <a>ru_digit_30_nom. тридцать</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_digit_7_nom. семь</a>
         <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>NotEnoughMoney2. Далее в вашем ЛК активировать РА</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <a>NotEnoughMoney2. Далее в вашем личном кабинете активировать акцию</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>    
     </test-case>
 
-    <test-case id="710_OPTOM_Строка 12 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Нет. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_4 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Нет. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "optom3active": true,
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000062"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3paySum": true,
-                    "optom3enoughBalance": true,
-                    "optom3soId": 1234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -140,52 +135,46 @@
         <a>ru_digit_3_nom. три</a>
         <a>montha. месяца</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <a>нет</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <q>нет</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>    
     </test-case>
     
-    <test-case id="710_OPTOM_Строка 14 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 2 раза тишина. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_5 Авторизованный. Домашний. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Нет. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "optom3active": true,
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "78412999966"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": true,
-                    "optom3available": true,
-                    "optom3paySum": 234,
-                    "optom3enoughBalance": true,
-                    "optomDateTo": "01.09.2023",
-                    "optom3soId": 1234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200"/>
-        </mockData>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>1cheaper. Вам доступно подключение услуги оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>montha. месяца</a>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;</a>    
+    </test-case>
+    
+    <test-case id="710_6 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 2 раза тишина. Дроп">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000062"
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -199,58 +188,18 @@
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;380-10;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 15 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 2 раза непонятное. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_7 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 2 раза непонятное. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000062"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3paySum": 234,
-                    "optom3enoughBalance": true,
-                    "optom3soId": 1234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">
-                {
-                    "SMSstatus": true,
-                    "status": 200
-                }
-            </response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -260,107 +209,25 @@
         <a>ru_digit_3_nom. три</a>
         <a>montha. месяца</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>ддд</q>
+        <q>кого</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>ддд</q>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <q>кого</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 13 Авторизованный. Домашний. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Нет. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_8 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 1 раз тишина, 2 раз непонятное. Отправка СМС. Есть вопросы? - 1 непонятная фраза и прощание.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "79000000062"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": true,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3paySum": true,
-                    "optom3enoughBalance": true,
-                    "optomDateTo": "01.09.2023",
-                    "optom3soId": 1234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>оптом дешевле</q>
-        <a>1cheaper. Вам доступно подключение услуги оптом дешевле на</a>
-        <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
-        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>нет</q>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="710_OPTOM_Строка 16 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - 1 раз тишина, 2 раз непонятное. Отправка СМС. Вопросов нет. 710 и 0 + 817 и 0">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3paySum": 234,
-                    "optom3enoughBalance": true,
-                    "optom3soId": 1234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
+     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
@@ -372,60 +239,49 @@
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>ддд</q>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <q>кого</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <q>кого</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>до свидания</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;0-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 17 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Вопросов нет. 710 и 0">
+    <test-case id="710_9 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Вопросов нет. 710 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000062"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>1cheaper. Вам доступно подключение услуги оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>montha. месяца</a>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>подключай</q>
+        <a>ConnectedDiscount. Акция успешно подключена</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;</a>
+    </test-case>
 
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
+    <test-case id="710_10 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Есть вопросы. Баланс. 710 и 0 + 420 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000062"
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -438,134 +294,45 @@
         <q>да</q>
         <a>ConnectedDiscount. Акция успешно подключена</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-
-    <test-case id="710_OPTOM_Строка 18 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. Успешно. Вопросов есть. 710 и 0 + 420 и 0">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>оптом дешевле</q>
-        <a>1cheaper. Вам доступно подключение услуги оптом дешевле на</a>
-        <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
-        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>какой у меня баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_17_nom. семнадцать</a>
+        <a>digit_1000. тысяч</a>
+        <a>ru_digit_300_nom. триста</a>
+        <!--<a>ru_digit_30_nom. тридцать</a>-->
+        <!--<a>ru_digit_5_nom. пять</a>-->
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a>balance_period3. Со счёта будет списана оплата за период с</a>
+        <a>Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a>balance_period_po. по</a>
+        <a>Ru_ord_19_nom_neu. девятнадцатое</a>
+        <a>Ru_month_5_gen. мая</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_5_nom. пять</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
-        <a>ConnectedDiscount. Акция успешно подключена</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора:</a>
-        <a>780</a>
-        <a>046</a>
-        <a>998</a>
-        <a>264</a>
-        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
-        <q>да</q>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;800-0;834-0;90-0;</a>
     </test-case>
 
-    <test-case id="710_OPTOM_Строка 19 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. НЕ успешно. На оператора. 710 и 3">
+    <test-case id="710_11 Авторизованный. Сотовый. Доступен один вариант оптома. Баланса достаточно для активации. Активировать? - Да. НЕ успешно. На оператора. 710 и 3">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000063"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "setOptomStatus": false,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -576,57 +343,18 @@
         <a>montha. месяца</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <q>да</q>
-        <a>DiscountError. При подключении РА возникла ошибка, перевожу вас на агента.</a>
+        <a>DiscountError. К сожалению, при подключении акции возникла ошибка, перевожу вас на оператора, он поможет. Напоминаю, что мы записываем все разговоры.</a>
         <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">BI dialog log: 710-3;</a>
     </test-case>
     
-    <test-case id="710_OPTOM_Строка 20 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 2 раза тишина. Уходим на оператора с РМом об акциях. 710 и 1">
+    <test-case id="710_12 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 2 раза тишина. Уходим на оператора с РМом об акциях. 710 и 1">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -634,69 +362,33 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
         <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a state="/NoMatch/ToOperator">OperatorHelpUnderstand. К сожалению так и не поняла Вас, чтобы оператор смог вас проконсультировать сразу после перевода звонка уточните, пожалуйста, данные</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;380-10;</a>
     </test-case>
 
-    <test-case id="710_OPTOM_Строка 21 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 2 раза непонятное. Уходим на оператора с РМом об акциях. 710 и 1">
+    <test-case id="710_13 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 2 раза непонятное. Уходим на оператора с РМом об акциях. 710 и 1">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -704,71 +396,26 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>ддд</q>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>кого</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
         <q>ддд</q>
         <a>bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.</a>
         <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">BI dialog log: 710-1;</a>
     </test-case>
-
-    <test-case id="710_OPTOM_Строка 22 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 12 месяцев. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    
+    <test-case id="710_13.1 Авторизованный. Сотовый. Доступны 3 варианта оптома. Оператор Х2. Уходим на оператора с РМом об акциях. 710 и 1">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -776,75 +423,112 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>двенадцать месяцев</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>дайте оператора</q>
+        <a>Operator. Я могу оперативно и качественно вам помочь. Пожалуйста, давайте попробуем решить ваш вопрос в разговоре со мной</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>дайте оператора</q>
+        <a>bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-1;</a>
+    </test-case>
+    
+    <test-case id="710_13.2 Авторизованный. Сотовый. Доступны 3 варианта оптома. Оператор - ноуматч. Уходим на оператора с РМом об акциях. 710 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000065"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>дайте оператора</q>
+        <a>Operator. Я могу оперативно и качественно вам помочь. Пожалуйста, давайте попробуем решить ваш вопрос в разговоре со мной</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>кого</q>
+        <a>bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-1;</a>
+    </test-case>
+    
+    <test-case id="710_13.3 Авторизованный. Сотовый. Доступны 3 варианта оптома. Клиент 1 раз непонятное - потом оператор. Уходим на оператора с РМом об акциях. 710 и 1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000065"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>кого</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>дайте оператора</q>
+        <a>bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-1;</a>
+    </test-case>
+
+    <test-case id="710_14 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 12 месяцев. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000065"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>на 12</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <a>нет</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <q>нет</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 23 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяца. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_15 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяца. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -852,74 +536,29 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>три месяца</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>3 месяца</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <a>нет</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <q>нет</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-    <test-case id="710_OPTOM_Строка 24 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_16 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -927,75 +566,29 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>шесть месяцев</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>на 6 месяцев</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <a>нет</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <q>нет</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 25 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса достаточно для активации. Активировать? - 2 раза тишина. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_17 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса достаточно для активации. Активировать? - 2 раза тишина. Дроп">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -1003,78 +596,61 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>шесть месяцев</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>на 6 месяцев</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;380-10;</a>
     </test-case>
 
-    <test-case id="710_OPTOM_Строка 26 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса достаточно для активации. Активировать? - 2 раза непонятное. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_18 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса достаточно для активации. Активировать? - 2 раза непонятное. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>подключи оптом дешевле</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>6 месяцев</q>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>кого</q>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>кого</q>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
+    </test-case>
 
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
+    <test-case id="710_19 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяца. Баланса достаточно для активации. Активировать? - оператор. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000065"
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -1082,153 +658,70 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>шесть месяцев</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>3</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>ддд</q>
-        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>ддд</q>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-
-    <test-case id="710_OPTOM_Строка 27 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяца. Баланса достаточно для активации. Активировать? - Нет. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": true,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>оптом дешевле</q>
-        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
-        <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
-        <a>sound_i. и</a>
-        <a>ru_digit_12_nom. двенадцать</a>
-        <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>три месяца</q>
+        <q>дайте оператора</q>
+        <a>Operator. Я могу оперативно и качественно вам помочь. Пожалуйста, давайте попробуем решить ваш вопрос в разговоре со мной</a>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <q>нет</q>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 28 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 12 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_20 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 12 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000066"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>интересует льготная оплата на следующие полгода</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>12</q>
+        <a>NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере</a>
+        <a>ru_digit_1000_nom. тысяча</a>
+        <a>ru_digit_200_nom. двести</a>
+        <a>ru_digit_70_nom. семьдесят</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>ru_digit_70_nom. семьдесят</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_unit_kop_gen_sn. копейки</a>
+        <a>NotEnoughMoney2. Далее в вашем личном кабинете активировать акцию</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
+    </test-case>
 
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
+    <test-case id="710_21 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000066"
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -1236,79 +729,36 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>двенадцать месяцев</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>6</q>
         <a>NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере</a>
-        <a>ru_digit_200_nom. двесте</a>
-        <a>ru_digit_30_nom. тридцать</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>NotEnoughMoney2. Далее в вашем ЛК активировать РА</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <a>ru_digit_400_nom. четыреста</a>
+        <a>ru_digit_60_nom. шестьдесят</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_unit_rub_gen_sn. рубля</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_digit_8_nom. восемь</a>
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>NotEnoughMoney2. Далее в вашем личном кабинете активировать акцию</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 28.1 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 6 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_22 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000066"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": false,
-                    "optom12enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -1316,277 +766,78 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>шесть месяцев</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>3 месяца</q>
         <a>NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере</a>
-        <a>ru_digit_200_nom. двесте</a>
-        <a>ru_digit_30_nom. тридцать</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_digit_7_nom. семь</a>
         <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>NotEnoughMoney2. Далее в вашем ЛК активировать РА</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
+        <a>NotEnoughMoney2. Далее в вашем личном кабинете активировать акцию</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 28.2 Авторизованный. Сотовый. Доступны 3 варианта оптома. Хотим 3 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
+    <test-case id="710_23 Авторизованный. Сотовый. Сперва запрос оператора, потом Оптома. Должно корректно уйти в Оптом. Доступны 3 варианта оптома. Хотим 3 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000066"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": false,
-                    "optom6enoughBalance": true,
-                    "optom12enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/set/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "setOptomStatus": true,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>оптом дешевле</q>
-        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
-        <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
-        <a>sound_i. и</a>
-        <a>ru_digit_12_nom. двенадцать</a>
-        <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>три месяца</q>
-        <a>NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере</a>
-        <a>ru_digit_200_nom. двесте</a>
-        <a>ru_digit_30_nom. тридцать</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>NotEnoughMoney2. Далее в вашем ЛК активировать РА</a>
-        <a>DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-
-    <test-case id="710_OPTOM_Строка 28.3 Авторизованный. Сотовый. Сперва запрос оператора, потом Оптома. Должно корректно уйти в Оптом. Доступны 3 варианта оптома. Хотим 3 месяцев. Баланса НЕ достаточно для активации. Информируем. Отправляем СМС. Вопросов нет. 710 и 0 + 817 и 0">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "accidentId": 111,
-                "accident": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": false,
-                    "optom6enoughBalance": false,
-                    "optom12enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
-            <response>
-                {
-                    "accidentId": 111,
-                    "accident": 1,
-                    "accidentEndDate":  "02.09.2023",
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>дайте оператора</q>
         <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
-        <a>techProblems_accident_header.По техническим причинам по вашему адресу временно недоступны услуги связи. Восстановительные работы уже ведутся.</a>
-        <a>avaria_time.Время до завершения</a>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
         <a>ru_digit_1_nom. один</a>
         <a>Ru_unit_hour_nom_sn. час.</a>
-        <a>techProblems_accident_ending.Приносим извинения за временные неудобства</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?</a>
+        <q>нет</q>
         <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>три месяца</q>
-        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
-        <q>нет</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>3 месяца</q>
+        <a>NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_digit_7_nom. семь</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>NotEnoughMoney2. Далее в вашем личном кабинете активировать акцию</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;500-29;817-0;710-0;</a>
     </test-case>
 
-
-    <test-case id="710_OPTOM_Строка 30 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросов нет. 710 и 0">
+    <test-case id="710_24 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Ошибка активации. На оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000067"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": false,
-                    "optom6available": false,
-                    "optom12available": false,
-                    "optom3enoughBalance": false,
-                    "optom6enoughBalance": false,
-                    "optom12enoughBalance": false,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>оптом дешевле</q>
-        <a>bonus_perevod_na_okc. Всю актуальную информацию по существующим бонусам и акциям вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я перевожу вас на специалиста, пожалуйста ожидайте.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="710_OPTOM_Строка 30 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросов нет. 710 и 0">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": false,
-                    "optom12enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -1594,63 +845,56 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
-        <q>три месяца</q>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>3</q>
+        <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
+        <q>да</q>
+        <a>DiscountError. К сожалению, при подключении акции возникла ошибка, перевожу вас на оператора, он поможет. Напоминаю, что мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-3;</a>
+    </test-case>
+
+    <test-case id="710_25 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросов нет. 710 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000065"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
+        <a>ru_digit_3_nom. три</a>
+        <a>ru_digit_6_nom. шесть</a>
+        <a>sound_i. и</a>
+        <a>ru_digit_12_nom. двенадцать</a>
+        <a>months. месяцев</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
+        <q>3 месяца</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <q>да</q>
         <a>ConnectedDiscount. Акция успешно подключена</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;</a>
     </test-case>
 
-    <test-case id="710_OPTOM_Строка 31 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросы есть - новый интент. 710 и 0 + 420 и 0">
+    <test-case id="710_26 Авторизованный. Сотовый. Доступно несколько вариантов оптома. Баланса достаточно для активации на 3 месяцев. Хотим 3 месяца. Активировать? - Да. Все ок. Вопросы есть - новый интент. 710 и 0 + 420 и 0">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "int": 1,
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000065"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/special/offer/check/optom</query>
-            <response status="200">
-                {
-                    "status": 200,
-                    "optom3active": false,
-                    "optom3available": true,
-                    "optom6available": true,
-                    "optom12available": true,
-                    "optom3enoughBalance": true,
-                    "optom6enoughBalance": false,
-                    "optom12enoughBalance": false,
-                    "optom3soId": 1234,
-                    "optom3paySum": 234,
-                    "autoTest": "true"
-
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -1658,13 +902,11 @@
         <q>оптом дешевле</q>
         <a>23cheaper. Вам доступно для подключения оптом дешевле на</a>
         <a>ru_digit_3_nom. три</a>
-        <a>montha. месяца</a>
         <a>ru_digit_6_nom. шесть</a>
-        <a>months. месяцев</a>
         <a>sound_i. и</a>
         <a>ru_digit_12_nom. двенадцать</a>
         <a>months. месяцев</a>
-        <a>23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств</a>
+        <a>23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе</a>
         <q>три месяца</q>
         <a>EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?</a>
         <q>да</q>
@@ -1673,18 +915,129 @@
         <q>да</q>
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>номер договора</q>
-        <a>agreementNumber. Номер вашего договора:</a>
-        <a>780</a>
-        <a>046</a>
-        <a>998</a>
-        <a>264</a>
-        <a>SMSBalance. Я могу отправить СМС со ссылкой на оплату, номером договора и балансом. Если хотите получить смс - пожалуйста, скажите. да. Если смс не нужна, скажите. НЕТ</a>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_47. сорок семь</a>
+        <a>DRT_21. двадцать один</a>
+        <a>DRT_04. ноль четыре</a>
+        <a>DRT_20. двадцать</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;801-0;420-0;</a>
+    </test-case>
+
+    <test-case id="710_27 Авторизованный. Сотовый. РА уже активна. Отправляем СМС. Вопросов нет. 710 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000060"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>ActivCheaper. В данный момент РА на вашем договоре уже активна. Срок действия акции до</a>
+        <a>Ru_ord_5_gen_mas. пятого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a>DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 817-0;710-0;</a>
+    </test-case>
+    
+    <test-case id="710_28 Авторизованный. Домашний. РА уже активна. Вопросов нет. 710 и 0">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999977"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>ActivCheaper. В данный момент РА на вашем договоре уже активна. Срок действия акции до</a>
+        <a>Ru_ord_5_gen_mas. пятого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;</a>
+    </test-case>
+    
+    <test-case id="710_29 Авторизованный. Домашний. РА уже активна. Есть Вопросы? - да - баланс">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412999977"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>ActivCheaper. В данный момент РА на вашем договоре уже активна. Срок действия акции до</a>
+        <a>Ru_ord_5_gen_mas. пятого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a>GetFirstIntent_3. Какой у вас вопрос?</a>
+        <q>мой баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_1000_nom. тысяча</a>
+        <a>ru_digit_800_nom. восемьсот</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a>balance_period3. Со счёта будет списана оплата за период с</a>
+        <a>Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a>Ru_month_4_gen. апреля</a>
+        <a>balance_period_po. по</a>
+        <a>Ru_ord_19_nom_neu. девятнадцатое</a>
+        <a>Ru_month_5_gen. мая</a>
+        <a>ru_digit_700_nom. семьсот</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>DetelBalanceAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="710_30 Авторизованный. Сотовый. Продукт КТВ. Информируем, что Оптом недоступно. Переход в тот же интент Х2.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000008"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оптом дешевле</q>
+        <a>KTVcheaper. К сожалению, для клиентов без услуги интернет не доступно подключение акции Оптом дешевле.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>оптом дешевле</q>
+        <a>KTVcheaper. К сожалению, для клиентов без услуги интернет не доступно подключение акции Оптом дешевле.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>оптом дешевле</q>
+        <a state="/Transfer/IntentLimiTransfer">perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру cheaper</a>
+        <a state="/Transfer/Transfer">BI dialog log: 710-0;710-0;710-28;</a>
     </test-case>
 </test>

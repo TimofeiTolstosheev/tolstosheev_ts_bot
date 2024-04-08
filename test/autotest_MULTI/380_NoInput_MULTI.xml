@@ -1,123 +1,103 @@
-<!--380_13 множественная, мобильный - молчание (3 раза)-->
-<!--380_14 множественная, мобильный - молчание (2 раза) - замена кабеля-->
-<!--380_15 множественная, мобильный - молчание (2 раза) - noMatch - замена кабеля-->
-<!--380_16 множественная, мобильный - молчание (1 раз) - noMatch - замена кабеля-->
-<test>
-    <test-case id="380_13 множественная, мобильный - молчание (3 раза)">
+<!--1 380_13 множественная, мобильный - молчание (2 раза)-->
+<!--2 380_14 множественная, мобильный - молчание (1 раз) - замена кабеля-->
+<!--3 380_15 множественная, мобильный - молчание (1 раз) - noMatch - потом ФИО, авторизуем, замена кабеля-->
+<!--4 380_16 множественная, мобильный - запрос оператора, молчание (1 раз) - называем ФИО, НЕ авторизуем - замена кабеля-->
+<test integration="true">
+    <test-case id="380_1">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000020",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/InitMSHi"/>
-        <a state="/Init/InitMSHi/RequestFIO"/>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <event>speechNotRecognized</event>
-        <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
-        <event>speechNotRecognized</event>
-        <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <event>speechNotRecognized</event>
         <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 570-1;380-10;</a>
     </test-case>
     
-    <test-case id="380_14 множественная, мобильный - молчание (2 раза) - замена кабеля">
+    <test-case id="380_2">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000020",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/InitMSHi"/>
-        <a state="/Init/InitMSHi/RequestFIO"/>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <event>speechNotRecognized</event>
-        <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
-        <event>speechNotRecognized</event>
-        <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
-        <q>кот перегрыз провод</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>замена кабеля</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-1;750-6;</a>
     </test-case>
     
-    <test-case id="380_15 множественная, мобильный - молчание (2 раза) - noMatch - замена кабеля">
+    <test-case id="380_3">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000020",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/InitMSHi"/>
-        <a state="/Init/InitMSHi/RequestFIO"/>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <event>speechNotRecognized</event>
-        <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
-        <event>speechNotRecognized</event>
-        <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>неприемлемо</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <a>zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Соколов Максим Иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-0;750-6;</a>
     </test-case>
     
-    <test-case id="380_16 множественная, мобильный - молчание (1 раз) - noMatch - замена кабеля">
+    <test-case id="380_4">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000020",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/InitMSHi"/>
+        <a state="/Init/InitMSHi"/> 
         <a state="/Init/InitMSHi/RequestFIO"/>
-        <event>speechNotRecognized</event>
-        <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
-        <q>все сначала</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>дайте оператора</q>
+        <a>RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>сильвупле</q>
+        <a>zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-1;750-6;</a>
     </test-case>
 </test>

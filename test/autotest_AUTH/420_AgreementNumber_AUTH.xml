@@ -9,33 +9,17 @@
 <!--9_420_AGREEMENT Строка 4 АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. - есть вопросы? - замена кабеля-->
 <!--10_420_noInput авторизованный, мобильный - тестируем молчание после интента-->
 <!--11_420_AGREEMENT АВТОРИЗОВАННЫЙ, мобильный. Номер договора. - повтор интента еще 2 раза-->
-<test>
-    <test-case id="1_420_AGREEMENT Строка 1 АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС - да. Вопросов нет.">
+<test integration="true">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС - да. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "cellPhone": true
             }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>    
+        </context>  
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -54,40 +38,21 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 801-0;420-0;</a>
     </test-case>
 
-    <test-case id="2_420_AGREEMENT Строка 2 АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС - да. НЕуспешно. Вопросов нет.">
-        <context var="session">
+
+
+    <test-case id="АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС - да. НЕуспешно. Вопросов нет.">
+         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000111",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>    
-    
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
@@ -95,46 +60,27 @@
         <a>agreementNumber. Номер вашего договора</a>
         <a>DRT_78. семьдесят восемь</a>
         <a>DRT_00. ноль ноль</a>
-        <a>DRT_46. сорок шесть</a>
-        <a>DRT_99. девяносто девять</a>
-        <a>DRT_82. восемьдесят  два</a>
-        <a>DRT_64. шестьдесят четыре</a>
+        <a>DRT_47. сорок семь</a>
+        <a>DRT_22. двадцать два</a>
+        <a>DRT_48. сорок восемь</a>
+        <a>DRT_30. тридцать</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>отправляй</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 801-3;420-6;</a>
     </test-case>    
 
-    <test-case id="3_420_AGREEMENT Строка 3 АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС - да. Успешно. Вопросы есть. Номер договора.">
+
+
+    <test-case id="АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС - да. Успешно. Вопросы есть. Номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "cellPhone": true
             }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>    
+        </context>   
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -165,30 +111,20 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 801-0;420-0;801-0;420-0;</a>
     </test-case>    
     
-    <test-case id="4_420_AGREEMENT  АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС? - noMatch - СМС? - да. Вопросов нет.">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС? - noMatch - СМС? - да. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "cellPhone": true
             }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>    
+        </context> 
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -209,30 +145,20 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 801-0;420-0;</a>
     </test-case>
     
-    <test-case id="5_420_AGREEMENT АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС? - noMatch - СМС? - да. Вопросов нет.">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, мобильный. Номер договора. Озвучиваем. СМС? - noMatch - СМС? - да. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "cellPhone": true
             }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>    
+        </context>  
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -250,29 +176,20 @@
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>сильвуплемедам</q>
         <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 420-2;</a>
     </test-case>
     
-    <test-case id="6_420_AGREEMENT Строка 4 АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. Вопросов нет.">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -288,29 +205,20 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 420-0;</a>
     </test-case>
 
-    <test-case id="7_420_AGREEMENT Строка 5 АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. Вопросы есть. Номер договора.">
+
+
+    <test-case id="АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. Вопросы есть. Номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -334,30 +242,21 @@
         <a>DRT_64. шестьдесят четыре</a>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>какой у меня номер договора?</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>    
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 420-0;420-0;420-28;</a> 
     </test-case>
     
-    <test-case id="8_420_AGREEMENT Строка 4 АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. - есть вопросы? - да - какой вопрос? - замена кабеля">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. - есть вопросы? - да - какой вопрос? - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -375,29 +274,20 @@
         <a>GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>замена кабеля</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 420-0;750-6;</a>
     </test-case>
     
-    <test-case id="9_420_AGREEMENT Строка 4 АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. - есть вопросы? - замена кабеля">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, домашний. Номер договора. Озвучиваем. - есть вопросы? - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -413,35 +303,20 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>замена кабеля</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 420-0;750-6;</a>
     </test-case>
     
-    <test-case id="10_420_noInput авторизованный, мобильный - тестируем молчание после интента">
+    
+    
+    <test-case id="Авторизованный, мобильный - тестируем молчание после интента">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001",
+                "cellPhone": true
             }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>    
+        </context>   
         
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -460,30 +335,20 @@
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <event>speechNotRecognized</event>
         <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
-        <a state="/Transfer/Transfer"/>    
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 420-0;380-10;</a> 
     </test-case>
     
-    <test-case id="11_420_AGREEMENT АВТОРИЗОВАННЫЙ, мобильный. Номер договора. - повтор интента еще 2 раза">
+    
+    
+    <test-case id="АВТОРИЗОВАННЫЙ, мобильный. Номер договора. - повтор интента еще 2 раза">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "cellPhone": true
             }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>    
+        </context>  
     
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -497,6 +362,8 @@
         <a>DRT_82. восемьдесят  два</a>
         <a>DRT_64. шестьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
         <a>DRT_78. семьдесят восемь</a>
@@ -506,16 +373,44 @@
         <a>DRT_82. восемьдесят  два</a>
         <a>DRT_64. шестьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>DRT_78. семьдесят восемь</a>
-        <a>DRT_00. ноль ноль</a>
-        <a>DRT_46. сорок шесть</a>
-        <a>DRT_99. девяносто девять</a>
-        <a>DRT_82. восемьдесят  два</a>
-        <a>DRT_64. шестьдесят четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 420-0;420-0;420-28;</a>
+    </test-case>
+    
+    
+    
+    <test-case id="Авторизованный, запрос оператора, номер договора, запрос оператора. На оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>  
+    
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>номер договора</q>        
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят  два</a>
+        <a>DRT_64. шестьдесят четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 405-0;420-0;405-6;</a>
     </test-case>
 </test>

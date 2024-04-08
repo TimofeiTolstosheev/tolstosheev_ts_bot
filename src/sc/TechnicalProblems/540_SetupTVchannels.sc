@@ -53,8 +53,7 @@ theme: /SetupTVchannels
                     }
                     
                     if($.session.spas.tvProblem.technicalSupport){
-                        $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' :
-                                                ($.session.spas.tvProblem.technicalSupport ? 'tech_spas3' : 'tech_spas');
+                        $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' : 'tech_spas3';
                         announceAudio(audioDict.perevod_na_okc_from_TVChannelProblemIntent1);
                         $reactions.transition("/Transfer/CheckOCTP");
                     }else{
@@ -82,7 +81,7 @@ theme: /SetupTVchannels
             
             state: SendSMS
                 q: $commonYes
-                q: $yesForSms
+                q: * $yesForSms *
                 script:
                     $.session.intent.stepsCnt++;
                     sendSMSbyTemplate('805_SetupTVchannelsSMS');
@@ -106,7 +105,7 @@ theme: /SetupTVchannels
                     
             state: DontSendSMS
                 q: $commonNo
-                q: $noForSms
+                q: * $noForSms *
                 script:
                     $.session.intent.stepsCnt++;
                 go!: /SetupTVchannels/CheckServices/SetupInfo

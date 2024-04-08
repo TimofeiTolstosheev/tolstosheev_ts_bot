@@ -140,7 +140,7 @@ function createStreetOptions(string) {
         });
     }
 
-    return result.join(" | ");
+    return result.join("|");
 }
 
 // составление альтернатив с номерами/названиями

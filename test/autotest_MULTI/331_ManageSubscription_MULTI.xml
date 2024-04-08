@@ -1,406 +1,148 @@
-<test>    
+<!--
+1 Множественная связка - 331 -  домашний - смогли авторизовать - Управление подпиской - вопросов нет - прощание
+2 Множественная связка - 331 -  сотовый - смогли авторизовать - Управление подпиской - СМС успешно - инфа об СМС - вопросов нет - прощание
+3 Множественная связка - 331 -  сотовый - смогли авторизовать - Управление подпиской - СМС НЕ успешно - вопросов нет - прощание
+4 Множественная связка - 331 -  домашний - не смогли авторизовать - Управление подпиской - вопросов нет - прощание
+5 Множественная связка - 331 -  сотовый - не смогли авторизовать - Управление подпиской - СМС успешно - инфа об СМС - вопросов нет - прощание
+-->
+
+
+<test integration="true">
                 
 
     
-    <test-case id="331_SUB Строка 1 Множественная, мобильный, 331 интент. Озвучиваем инфу о тарифах. СМС успешно. Вопросов нет.">
+    <test-case id="Множественная связка - 331 -  1">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "78412999920",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
         <q>управление подписками</q>
         <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 570-0;331-0;</a>
     </test-case>
     
 
     
-    <test-case id="331_SUB Строка 1.1 Множественная, мобильный, 331 интент. Озвучиваем инфу о тарифах. СМС успешно. Вопросы есть, номер договора.">
+    <test-case id="Множественная связка - 331 -  2">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000002820",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Кошкина Татьяна Ивановна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
         <q>управление подписками</q>
         <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
         <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>да</q>
-        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 570-0;824-0;331-0;</a>
     </test-case>
                     
 
     
-    <test-case id="331_SUB Строка 2 Множественная, мобильный, 331 интент. Озвучиваем инфу о тарифах. СМС НЕуспешно. Вопросов нет.">
+    <test-case id="Множественная связка - 331 -  3">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000002420",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Петров Георгий Петрович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
         <q>управление подписками</q>
         <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 570-0;824-3;331-0;</a>
     </test-case>
     
 
     
-    <test-case id="331_SUB Строка 2.1 Множественная, мобильный, 331 интент. Озвучиваем инфу о тарифах. СМС НЕуспешно. Вопросы есть, номер договора.">
+    <test-case id="Множественная связка - 331 -  4">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "78412999920",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>да</q>
-        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-                    
-
-    
-    <test-case id="331_SUB Строка 3 Множественная, домашний, 331 интент. Озвучиваем инфу о тарифах. Вопросов нет.">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-    
-
-    
-    <test-case id="331_SUB Строка 3.1 Множественная, домашний, 331 интент. Озвучиваем инфу о тарифах. Вопросы есть, номер договора.">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-    
-
-    
-    <test-case id="331_SUB Строка 4 Множественная, домашний, 331 интент. Озвучиваем инфу о тарифах. Переход в тот же интент.">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>                    
-    
-
-    
-    <test-case id="331_SUB Строка 5 Множественная, не удалось авторизовать по ФИО, домашний, 331 интент. Озвучиваем инфу о тарифах. Переход в тот же интент.">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Достоевский Федор Михайлович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
         <q>управление подписками</q>
         <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>     
-    
+        <q>да</q>
+        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
+        <q>какой у меня номер договора?</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 570-1;331-0;420-1;</a>
+    </test-case>
+                    
 
     
-    <test-case id="331_SUB Строка 5 Множественная, 2 договора по ФИО, не удалось авторизовать по адресу, домашний, 331 интент. Озвучиваем инфу о тарифах. Переход в тот же интент.">
-        
+    <test-case id="Множественная связка - 331 -  5">
+ 
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "79000002520",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-	    <q>/start</q>
+        <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Достоевский Федор Михайлович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
         <q>управление подписками</q>
         <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>управление подписками</q>
-        <a>Subscription. Всю актуальную информацию по подключенным подпискам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.</a>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>    
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 570-1;824-0;331-0;</a>
+    </test-case>
+    
+
+    
 </test>

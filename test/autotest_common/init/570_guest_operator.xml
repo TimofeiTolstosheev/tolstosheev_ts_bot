@@ -1,0 +1,100 @@
+        <!--НЕАВТОРИЗОВАННЫЙ == "ОПЕРАТОР"-->
+<!--%%%1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - да - Ваш город X? - оператор - Ваш город X? - оператор - перевод-->
+<!--%%%2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - оператор - Ваш город X? - оператор - перевод-->
+<!--%%%3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - да - Ваш город X? - да - назовите адрес - чем могу помочь? (НЕ авторизовали) - оператор - какой вопрос? - оператор - перевод-->
+<!--%%%4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - да - Ваш город X? - оператор - Ваш город X? - оператор Х2 - перевод-->
+<!--TODO46 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор, потом да.  Данные от Киски не получены. Город присутствия ЭРТХ. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х2, переход в 650, любая ветка -->
+<!--TODO47 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор х2. Ваш город X? -  Да. Идем по ветке адрес.  guest-with-house=true, ФИО - отчества нет, говорим ФИ, ветка ФИО, user=true, запрос интента баланс-->
+<test integration="true">
+    <!--НЕАВТОРИЗОВАННЫЙ ВЕТКА "ОПЕРАТОР"-->
+    <test-case id="%%%1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - да - Ваш город X? - оператор - Ваш город X? - оператор - перевод">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273866"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>позовите оператора</q>
+        <a state="/Init/Initialization/CallOperator">Initialization_Operator. Понимаю, что вы хотите как можно скорее решить ваш вопрос. Уточните, пожалуйста, вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>мне нужен оператор</q>
+        <a state="/Init/ToOperator">Operator. Я могу оперативно и качественно вам помочь. Пожалуйста, давайте попробуем решить ваш вопрос в разговоре со мной</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>оператор</q>
+        <a state="/Init/ToOperator">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-6;405-6;</a>
+    </test-case>
+    
+    <test-case id="%%%2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - оператор - Ваш город X? - оператор - перевод">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79992273866"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>позовите оператора</q>
+        <a state="/Init/Initialization/CallOperator">Initialization_Operator. Понимаю, что вы хотите как можно скорее решить ваш вопрос. Уточните, пожалуйста, вы пользуетесь услугами нашей компании?</a>
+        <q>дай оператора</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>мне нужен оператор</q>
+        <a state="/Init/ToOperator">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-6;405-6;</a>
+    </test-case>
+    
+    <test-case id="%%%3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - да - Ваш город X? - да - назовите адрес - чем могу помочь? (НЕ авторизовали) - оператор - какой вопрос? - оператор - перевод">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79993273866"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>позовите оператора</q>
+        <a state="/Init/Initialization/CallOperator">Initialization_Operator. Понимаю, что вы хотите как можно скорее решить ваш вопрос. Уточните, пожалуйста, вы пользуетесь услугами нашей компании?</a>
+        <q>являюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>верно</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>петра великого 999</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/CheckAuth/NotAuth">GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>оператор</q>
+        <a state="/AgentRequest/CheckAuth/NotAuth/AgentRequest/CheckProactive/ToOperator">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру agent</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;405-6;</a>
+    </test-case>
+    
+    <test-case id="%%%4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - оператор - Являетесь клиентом? - да - Ваш город X? - оператор - Ваш город X? - оператор Х2 - перевод">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79994273866"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>мне нужен оператор</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/AgentRequest">requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>дай оператору трубку</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-6;405-6;</a>
+    </test-case>
+</test>

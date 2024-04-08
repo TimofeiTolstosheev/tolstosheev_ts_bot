@@ -1,62 +1,34 @@
-<!--150_SUSP Строка 1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - НРД. Переводим в НУА.-->
-<!--150_SUSP Строка 1.1 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - НРД. Переводим в НУА.-->
-<!--150_SUSP Строка 2 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросов нет.-->
-<!--150_SUSP Строка 2.1 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросы есть, номер договора.-->
-<!--150_SUSP Строка 3 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросов нет.-->
+<!--150_SUSP Строка 1   АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - НРД. Переводим в НУА.-->
+<!--150_SUSP Строка 1.1 АВТОРИЗОВАННЫЙ, домашний.  Интент 150. Причина - НРД. Переводим в НУА.-->
+<!--150_SUSP Строка 1.2 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - НРД. НЕрабочее время. В НУА. -->
+<!--150_SUSP Строка 2   АВТОРИЗОВАННЫЙ, домашний.  Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросов нет.-->
+<!--150_SUSP Строка 2.1 АВТОРИЗОВАННЫЙ, домашний.  Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросы есть, номер договора.-->
+<!--150_SUSP Строка 2.2 АВТОРИЗОВАННЫЙ, домашний.  Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Оператор-->
+<!--150_SUSP Строка 3   АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросов нет.-->
 <!--150_SUSP Строка 3.1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросы есть, номер договора.-->
-<!--150_SUSP Строка 4 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросов нет.-->
+<!--150_SUSP Строка 4   АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросов нет.-->
 <!--150_SUSP Строка 4.1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросы есть, номер договора.-->
-<!--150_SUSP Строка 5 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Повторный переход в тот же интент.-->
+<!--150_SUSP Строка 4.2 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Оператор.-->
+<!--150_SUSP Строка 5   АВТОРИЗОВАННЫЙ, домашний.  Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Повторный переход в тот же интент.-->
+<!--150_SUSP Строка 6   АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - оператор - переспрос - отпуск. Озвучиваем, где можно приостановить. Вопросов нет.-->
+<!--150_SUSP Строка 7   АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - оператор х2 - перевод-->
+<!--150_SUSP Строка 8   АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Оператор - Причина - оператор - перевод-->
+<!--150_SUSP Строка 9   АВТОРИЗОВАННЫЙ, домашний.   Интент 150. Причина - непонятная фраза. Озвучиваем, где можно приостановить. Вопросов нет.-->
+<!--150_SUSP Строка 10 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - непонятная фраза. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросов нет.-->
+<!--150_SUSP Строка 11 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - непонятная фраза. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросов нет.     -->
+<!--150_SUSP Строка 12 АВТОРИЗОВАННЫЙ, мобильный. оператор - Интент 150. Причина - ТИШИНА - оператор - перевод-->
+<!--150_SUSP Строка 13 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. - Причина - ТИШИНА х2-->
+<!--150_SUSP Строка 14 АВТОРИЗОВАННЫЙ, мобильный. ТИШИНА - Интент 150. - Причина - ТИШИНА х2-->
+<!--150_SUSP Строка 15 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - ТИШИНА - оператор х2 - перевод-->
+<!--150_SUSP Строка 16 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - ТИШИНА - оператор - ТИШИНА - перевод-->
 <test>
-    <test-case id="150_SUSP Строка 1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - НРД. Переводим в НУА.">
+    <test-case id="150_SUSP Строка 1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - НРД. Переводим в НУА." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>приостановить договор</q>
-        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
-        <q>расторжение договора</q>
-        <a>PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-    
-    <test-case id="150_SUSP Строка 1.1 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - НРД. Переводим в НУА.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -66,20 +38,36 @@
         <q>расторжение договора</q>
         <a>PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
         <a state="/Transfer/Transfer">Перевод по коллеру smart_nsk</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;360-8;</a>
     </test-case>
     
-    <test-case id="150_SUSP Строка 2 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросов нет.">
+    <test-case id="150_SUSP Строка 1.1 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - НРД. Переводим в НУА." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>расторжение договора</q>
+        <a>PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру smart_nsk</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;360-8;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 1.2 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - НРД. Нерабочее время">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
                 "agreementId": "121212",
                 "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "gskWorkTime": false
             }
         </context>
         
@@ -93,33 +81,41 @@
         <a state="/Init/HowCanIHelpYou"/>
         <q>приостановить договор</q>
         <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>расторжение договора</q>
+        <a>transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру operator</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;360-6;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 2 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
         <q>отпуск</q>
         <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;</a>
     </test-case>   
     
-    <test-case id="150_SUSP Строка 2.1 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросы есть, номер договора.">
+    <test-case id="150_SUSP Строка 2.1 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Вопросы есть, номер договора." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -142,38 +138,39 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;420-0;</a>
     </test-case> 
     
-    <test-case id="150_SUSP Строка 3 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросов нет.">
+    <test-case id="150_SUSP Строка 2.2 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Оператор." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "78412119921"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>отпуск</q>
+        <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;405-6;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 3 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
 
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -186,38 +183,17 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-0;150-0;</a>
     </test-case> 
     
-    <test-case id="150_SUSP Строка 3.1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросы есть, номер договора.">
+    <test-case id="150_SUSP Строка 3.1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросы есть, номер договора." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -243,38 +219,17 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-0;150-0;420-0;</a>
     </test-case>
   
-    <test-case id="150_SUSP Строка 4 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросов нет.">
+    <test-case id="150_SUSP Строка 4 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросов нет." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79500000050"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -286,38 +241,17 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-3;150-0;</a>
     </test-case>  
     
-    <test-case id="150_SUSP Строка 4.1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросы есть, номер договора.">
+    <test-case id="150_SUSP Строка 4.1 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросы есть, номер договора." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79500000050"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
-                
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -333,37 +267,48 @@
         <a>agreementNumber. Номер вашего договора</a>
         <a>DRT_78. семьдесят восемь</a>
         <a>DRT_00. ноль ноль</a>
-        <a>DRT_46. сорок шесть</a>
-        <a>DRT_99. девяносто девять</a>
-        <a>DRT_82. восемьдесят  два</a>
-        <a>DRT_64. шестьдесят четыре</a>
+        <a>DRT_33. тридцать три</a>
+        <a>DRT_87. восемьдесят семь</a>
+        <a>DRT_79. семьдесят девять</a>
+        <a>DRT_74. семьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>нет</q>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-3;150-0;420-0;</a>
     </test-case>
     
-    <test-case id="150_SUSP Строка 5 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Повторный переход в тот же интент.">
+    <test-case id="150_SUSP Строка 4.2 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Оператор." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "78125214232",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "int": true,
-                "domrutv": true,
-                "rebooted": true
+                "phoneNumber": "79500000050"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>отпуск</q>
+        <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-3;150-0;405-6;</a>
+    </test-case> 
+    
+    <test-case id="150_SUSP Строка 5 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - отпуск. Озвучиваем, где можно приостановить. Повторный переход в тот же интент." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
 
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -378,8 +323,265 @@
         <q>отпуск</q>
         <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>приостановить договор</q>
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;150-0;150-28;</a>
+    </test-case>  
+    
+    <test-case id="150_SUSP Строка 6 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - оператор - переспрос - отпуск. Озвучиваем, где можно приостановить. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>хотела бы отключить тв на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>уезжаю</q>
+        <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
+        <a>sms_Otpravlena_suspension. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-0;150-0;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 7 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - оператор х2 - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>хотела бы отключить тв на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-6;405-6;</a>
     </test-case>  
+    
+    <test-case id="150_SUSP Строка 8 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Оператор - Причина - оператор - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>хотела бы отключить интернет на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;150-6;405-6;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 9 АВТОРИЗОВАННЫЙ, домашний. Интент 150. Причина - непонятная фраза. Озвучиваем, где можно приостановить. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>кого</q>
+        <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;</a>
+    </test-case> 
+    
+    <test-case id="150_SUSP Строка 10 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - непонятная фраза. Озвучиваем, где можно приостановить. Отправляем СМС успешно. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>кого</q>
+        <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
+        <a>sms_Otpravlena_suspension. Я отправила вам сообщение, со ссылкой на личный кабинет. пожалуйста, проверьте</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-0;150-0;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 11 АВТОРИЗОВАННЫЙ, мобильный. Интент 150. Причина - непонятная фраза. Озвучиваем, где можно приостановить. Отправляем СМС НЕуспешно. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79500000050"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>приостановить договор</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>кого</q>
+        <a>suspensionLK. Приостановить одну или несколько услуг, выбрать сроки и уточнить стоимость приостановления вы можете самостоятельно в личном кабинете на сайте дом точка ру</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 814-3;150-0;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 12 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Оператор - Причина - ТИШИНА - оператор - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>хотела бы отключить интернет на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;150-6;405-6;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 13 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. - Причина - ТИШИНА х2" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хотела бы отключить интернет на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;380-10;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 14 АВТОРИЗОВАННЫЙ, мобильный. ТИШИНА - Интент 150. - Причина - ТИШИНА х2" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
+        <q>хотела бы отключить интернет на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 380-0;150-0;380-10;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 15 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - ТИШИНА - оператор х2 - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хотела бы отключить интернет на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-6;405-6;</a>
+    </test-case>
+    
+    <test-case id="150_SUSP Строка 16 АВТОРИЗОВАННЫЙ, мобильный.  Интент 150. Причина - ТИШИНА - оператор - ТИШИНА - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000059"
+            }
+        </context>
+
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>хотела бы отключить интернет на один месяц</q>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 150-0;380-10;</a>
+    </test-case>
 </test>

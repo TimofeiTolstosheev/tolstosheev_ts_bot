@@ -2,6 +2,633 @@
 <!--чем помочь? - оператор - скажи интент - интент - оператор - оператор - перевод-->
 <!--чем помочь? - оператор - скажи интент - оператор - интент - оператор - перевод-->
 <!--чем помочь? - оператор - скажи интент - интент - оператор - другой интент - оператор - перевод-->
-<test>
+<!--Авторизованный. оператор - В проактиве неактивный ТП. - Интент 550-->
+<test integration="true">
+    <test-case id="оператор - интент - оператор - перевод">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>номер договора</q>
+        <a>agreementNumber. Номер вашего договора</a>
+        <a>DRT_78. семьдесят восемь </a>
+        <a>DRT_00. ноль ноль </a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_64. шестьдесят четыре</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agreement</a>
+        <a>BI dialog log: 405-0;420-0;405-6;</a>
+    </test-case>
     
+    
+    
+    <test-case id="оператор - оператор - оператор - перевод">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU2. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agent</a>
+        <a>BI dialog log: 405-6;</a>
+    </test-case>
+  
+  
+
+    <test-case id="Авторизованный. Запрос оператора. Проактив - неактивный ТП.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000002",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 405-29;</a>
+    </test-case>
+
+
+    
+    <test-case id="Авторизованный. Запрос оператора. Проактив - ДЗ">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000003",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.</a>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>ru_digit_3000_nom. три тысячи</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 405-29;</a>
+    </test-case>    
+    
+    
+    
+    <test-case id="Авторизованный. Запрос оператора. Проактив - авария">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000004",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?</a>
+        <q>да</q>
+        <a>zakaz_sms_info2. Хорошо, я отправлю сообщение на ваш мобильный телефон, как только восстановительные работы будут завершены.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 405-0;500-29;</a>
+    </test-case>     
+    
+    
+    
+    <test-case id="Авторизованный. Запрос оператора. Проактив - ППР">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 1,
+                    "currentPprEndDate": "10.10.2023 14:30:56 +00:00",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "recommendSum": "string",
+                    "subscriptionFee": "string",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "10.10.2023 14:30:56 +00:00",
+                    "serviceRequestStatus": "request-pending",
+                    "connectionRequest": true,
+                    "result": "string",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": true
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-10 13:43:55</dateTime>
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>techProblems_ppr_header_1. Для улучшения качества услуг связи по вашему адресу будут проводиться планово профилактические работы</a>
+        <a>Do. до</a>
+        <a>Ru_ord_10_gen_mas. десятого</a>
+        <a>Ru_month_10_gen. октября</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 405-0;500-29;</a>
+    </test-case>     
+    
+    
+    
+    <test-case id="Авторизованный. Запрос оператора х1, ноуматч, запрос оператора х2 - на оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU2. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agent</a>
+        <a>BI dialog log: 405-0;0-0;405-6;</a>
+    </test-case>
+    
+    
+    
+    <test-case id="Авторизованный. Запрос оператора х1, ноуматч х2, оператора, на оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU2. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agent</a>
+        <a>BI dialog log: 405-0;0-0;405-6;</a>
+    </test-case>   
+    
+    
+    
+    <test-case id="Авторизованный. Запрос оператора х1, ноуматч х3 - на оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>сильвуплемедам</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру no_match</a>
+        <a>BI dialog log: 405-0;0-1;</a>
+    </test-case>   
+  
+  
+  
+    <test-case id="Авторизованный. Запрос оператора х1, ноуматч, запрос оператора х1, консультация. Переход в общие фин. вопросы. Далее любая ветка.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU2. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agent</a>
+        <a>BI dialog log: 405-0;0-0;405-6;</a>
+    </test-case> 
+  
+  
+  
+    <test-case id="Авторизованный. Запрос оператора х1, ноуматч, потом замена кабеля.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>замена кабеля</q>
+        <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 405-0;0-0;750-6;</a>
+    </test-case> 
+  
+  
+  
+    <test-case id="Авторизованный. Запрос оператора х1, потом не работает интернет, далее любая ветка.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000211",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>нет</q>
+        <a>UHomeInternet2. К сожалению, провести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и произвела его перезагрузку. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 405-0;300-0;</a>  
+    </test-case> 
+  
+  
+  
+    <test-case id="Авторизованный. Запрос оператора х2, потом замена оборудования.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU2. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>замена оборудования</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру equipment</a>
+        <a>BI dialog log: 405-0;240-6;</a>
+    </test-case>
+  
+  
+  
+    <test-case id="Авторизованный. Запрос оператора х1, потом ноуматч х1, потом другой договор.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>нужен другой договор</q>
+        <a>perevod_na_okc_from_othercontract. Я поняла, что вас интересует информация по другому договору. Чтобы в дальнейшем получать информирование по актуальному номеру договора, пожалуйста обновите контактные данные в личном кабинете на сайте дом точка ру или в мобильном приложении мой дом ру. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a>Перевод по коллеру othercontract</a>
+        <a>BI dialog log: 405-0;0-0;730-6;</a>
+    </test-case>
+  
+  
+  
+    <test-case id="405_OPER_17 строка. Авторизован. Запрос оператора. Омилия ДЗ. Вопросы есть. Не работает интернет. У Вас ДЗ! Вопросов нет. \ 405 и 29 + 300 и 29">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000003",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.</a>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>ru_digit_3000_nom. три тысячи</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.</a>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>ru_digit_3000_nom. три тысячи</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 405-29;300-29;</a>
+    </test-case>
+  
+  
+  
+    <test-case id="405_OPER_17.1 строка Авторизован. Финансовый вопрос и запрос оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>финансовый вопрос</q>
+        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>дайте оператора</q>
+        <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру o_fin</a>
+        <a>BI dialog log: 405-6;5-6;</a>
+    </test-case>
+  
+  
+  
+    <test-case id="Авторизованный. Запрос оператора, ноуматч, Начисление за оборудование">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>начисление за оборудование</q>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a>Перевод по коллеру rent_accruals</a>
+        <a>BI dialog log: 405-0;0-0;550-6;</a>
+    </test-case>
+
+
+    <test-case id="Авторизованный. Оператор - В проактиве неактивный ТП - 550 интент">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000002"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>не хочу</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>сколько стоит аренда моего роутора</q>
+        <a>perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals</a>
+        <a>Перевод по коллеру rent_accruals</a>
+        <a>BI dialog log: 405-29;550-6;</a>
+    </test-case> 
+    
+    
+    
+    <test-case id="BugList Line 6 modified">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": true,
+                    "accidentId": 0,
+                    "accident": true,
+                    "accidentEndDate": "20.10.2023 18:00:00 +07:00",
+                    "ppr": 0,
+                    "currentPprEndDate": "string",
+                    "futurePprStartDate": "string",
+                    "futurePprEndDate": "string",
+                    "potentialAccident": false,
+                    "recommendSum": "string",
+                    "subscriptionFee": "string",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "20.10.2023 18:00:00 +07:00",
+                    "serviceRequestStatus": "request-pending",
+                    "connectionRequest": true,
+                    "result": "string",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": true
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-16 14:23:55</dateTime>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Порыв интернета</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?</a>
+        <q>да</q>
+        <a>zakaz_sms_info2. Хорошо, я отправлю сообщение на ваш мобильный телефон, как только восстановительные работы будут завершены.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 490-0;500-29;</a>
+    </test-case>     
+
 </test>

@@ -1,6 +1,6 @@
 <test>
-    
-        <test-case id="360_Строка 1 Авторизованный, НРД. Время нерабочее, перевод на OKC">
+
+        <test-case id="Авторизован. НРД. Номер на одном договоре. НЕрабочее время. Перевод на ОКЦ. ">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
@@ -25,24 +25,21 @@
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>я покидаю дом ру</q>
-        <a state="/StopAgreement/CheckGSKworkTime/GSKnotWork">transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKnotWork">transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру operator</a>
+        <a>BI dialog log: 360-6;</a>
     </test-case>
 
 
     
-    <test-case id="360_Строка 2 Авторизованный, НРД. Время рабочее, перевод на НСК">
+    <test-case id="Авторизован. НРД. Номер на одном договоре. рабочее время. Перевод на GSK.">
         <context var="session">
             {
-                "region": "dev-dcc-spb",
+                "region": "ufa",
                 "phoneNumber": "79000000001",
                 "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "gskWorkTime": true,
-                "isFirstGskApplication": true
+                "agreementNumber": "780046998264"
+                <!--"gskWorkTime": true-->
             }
         </context>
         
@@ -51,17 +48,19 @@
             <response status="200">{ "token": "1234", "type": "user" }</response>
         </mockData>
         
+        <dateTime>2024-02-10 23:23:55</dateTime>
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>я покидаю дом ру</q>
         <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру smart_nsk</a>
+        <a>BI dialog log: 360-8;</a>
     </test-case>
 
 
 
-    <test-case id="360_Строка 3 Авторизованный, НРД. Время НЕрабочее, перевод на OKC">
+    <test-case id="Запрос оператора, НРД, время рабочее, на ГСК.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
@@ -71,7 +70,7 @@
                 "cellPhone": "true",
                 "autoTest": "true",
                 "int": "true",
-                "gskWorkTime": false,
+                "gskWorkTime": true,
                 "isFirstGskApplication": "true"
             }
         </context>
@@ -84,8 +83,11 @@
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
         <q>я покидаю дом ру</q>
-        <a>transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a>Перевод по коллеру smart_nsk</a>
+        <a>BI dialog log: 405-0;360-8;</a>
     </test-case>
 </test>

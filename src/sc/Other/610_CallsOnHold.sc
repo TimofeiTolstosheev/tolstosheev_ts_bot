@@ -29,25 +29,39 @@ theme: /CallsOnHold
             q: $agentRequest
             intent: /405_AgentRequest
             script:
-                startIntent('/405_AgentRequest');
-                if(countRepeatsInRow() < $injector.noMatchLimit) {
+                if(countRepeatsInRow() < $injector.noMatchLimit && !$.session.agentRequested) {
+                    $.session.agentRequested = true;
+                    // запишем интент "Запрос оператора" с кодом 0
+                    logIntent(AGENT_REQUEST_INTENT_CODE, getNow(), getNow(), 1, 0, '', $.session.stateLog || $.session.prevStateLog); // дергаем logIntent, чтобы не перетереть основной интент
                     announceAudio(audioDict.IUnderstoodUMust);
                     announceAudio(audioDict.No_answer4);
                 }else{
-                    announceAudio(audioDict.perevod_na_okc);
                     $.session.intent.resultCode = 6;
-                    $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                    // проверим, был ли уже запрос оператора
+                    // получим индекс интента оператора
+                    var agentRequestIndex = _.findLastIndex($.session.dialogLog, {
+                          intentCode: AGENT_REQUEST_INTENT_CODE});
+                    if(agentRequestIndex >= 0){
+                        $.session.dialogLog[agentRequestIndex].exitCode = 6;
+                    }else{
+                        // запишем интент "Запрос оператора" с кодом 6
+                        logIntent($global.AGENT_REQUEST_INTENT_CODE, getNow(), getNow(), 1, 6, '', $.session.stateLog || $.session.prevStateLog);
+                    }
+                    announceAudio(audioDict.toAgentRequest);
+                    $.session.callerInput = 'selfInformation';
                     $reactions.transition('/Transfer/Transfer');
                 }
         
-        state: СatchAll || noContext = true
+        state: СatchAll
             event: noMatch
             script:
                 $.session.intent.stepsCnt++;
-                if(countRepeatsInRow() < $injector.noMatchLimit) {
+                countRepeatsInRow();
+                if($.session.repeatsInRow < $injector.noMatchLimit) {
                     $reactions.transition('/CallsOnHold/CallsOnHold1/CallsOnHoldPickedUp');
                 }else{
                     announceAudio(audioDict.perevod_na_okc);
-                    $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                    $.session.intent.resultCode = 6;
+                    $.session.callerInput = getIntentParam('0_NoMatch', 'callerInput') || $.injector.defaultCallerInput;
                     $reactions.transition('/Transfer/Transfer');
                 }

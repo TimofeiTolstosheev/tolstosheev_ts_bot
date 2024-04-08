@@ -1,29 +1,17 @@
-<!--17 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не нашли - В проактиве нет ошибок - 1 смс ответ Нет - перевод на оператора-->
-<!--18 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да - Вопросов нет-->
-<!--19 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да (ошибка отправки) - перевод на оператора-->
-<!--20 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - В проактиве нет ошибок - 1я смс - 2 раза непонятное - перевод на оператора-->
+<!--24 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - В проактиве нет ошибок - 1 смс ответ Нет - перевод на оператора-->
+<!--25 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - Ошибок нет - 1 СМС ответ да - Вопросов нет-->
+<!--26 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - Ошибок нет - 1 СМС ответ да (ошибка отправки) - перевод на оператора-->
+<!--27 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - В проактиве нет ошибок - 1я смс - 2 раза непонятное - перевод на оператора-->
+<!--28 SetupRouter Неавторизованный, сотовый - АВТОРИЗОВАЛИ - В проактиве авария - Доп вопросов нет-->
+<!--29 SetupRouter Неавторизованный, сотовый - АВТОРИЗОВАЛИ - В проактиве у клиента ДЗ - тишина - вопросов нет-->
 <test>
-    <test-case id="17 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не нашли - В проактиве нет ошибок - 1 смс ответ Нет - перевод на оператора">
+    <test-case id="24 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - В проактиве нет ошибок - 1 смс ответ Нет - перевод на оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000000",
-                "agreementId": "",
-                "agreementNumber": "",
-                "cellPhone": true,
-                "phoneStatus": 2,
-                "autoTest": true    
+                "phoneNumber": "79939249992"   
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
         
         <q>/start</q>
         <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -40,30 +28,19 @@
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>нет</q>
         <a>Configuring_router_transfer. Для настройки роутера пожалуйста приготовьте логин и пароль от интернета, а так же убедитесь, что ваш компьютер подключён к роутеру проводным или беспроводным способом. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;130-7;</a>
     </test-case>
 
-    <test-case id="18 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да - Вопросов нет">
+    <test-case id="25 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - Ошибок нет - 1 СМС ответ да - Вопросов нет" integration="true">
+      
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "",
-                "agreementNumber": "",
-                "cellPhone": true,
-                "autoTest": true    
+                "phoneNumber": "79919259992" 
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
+
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
             <response>{ "errorCode": 0 }</response>
@@ -87,34 +64,18 @@
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;803-0;130-0;</a>
     </test-case>
 
-    <test-case id="19 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - Ошибок нет - 1 СМС ответ да (ошибка отправки) - перевод на оператора">
+    <test-case id="26 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - Ошибок нет - 1 СМС ответ да (ошибка отправки) - перевод на оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "",
-                "agreementNumber": "",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79988888888"
                 
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 0 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response>{ "errorCode": 1 }</response>
-        </mockData>
 
         <q>/start</q>
         <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -131,29 +92,17 @@
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>да</q>
         <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;803-3;130-7;</a>
     </test-case>
 
-    <test-case id="20 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе не находятся - В проактиве нет ошибок - 1я смс - 2 раза непонятное - перевод на оператора">
+    <test-case id="27 SetupRouter Неавторизованный, сотовый - НЕ АВТОРИЗОВАЛИ - В проактиве нет ошибок - 1я смс - 2 раза непонятное - перевод на оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000000",
-                "agreementId": "",
-                "agreementNumber": "",
-                "cellPhone": true,
-                "autoTest": true   
+                "phoneNumber": "79969279992"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 0 }</response>
-        </mockData>
 
         <q>/start</q>
         <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -173,6 +122,168 @@
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>ннн</q>
         <a>configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;130-7;</a>
+    </test-case>
+    
+    <test-case id="28 SetupRouter Неавторизованный, сотовый - АВТОРИЗОВАЛИ - В проактиве авария - Доп вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78120000000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998343"
+                
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "askSms": true,
+                    "accidentId": 1,
+                    "accident": true,
+                    "accidentEndDate": "18.03.2024 17:00:00 +05:00",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "0,00",
+                    "subscriptionFee": "800,00",
+                    "promisedPaymentAvailable": false,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "serviceRequestStatus": "request-undefined",
+                    "connectionRequest": false,
+                    "result": "spas",
+                    "rebooted": false,
+                    "portStateError": "No parameters for diagnostics",
+                    "tariffPlanActive": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Кошкина Татьяна Ивановна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна настройка роутера</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;130-0;500-29;</a>
+    </test-case>
+
+    <test-case id="29 SetupRouter Неавторизованный, сотовый - АВТОРИЗОВАЛИ - В проактиве у клиента ДЗ - тишина - вопросов нет">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79806650000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998343"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "type": "guest-with-house" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "3 300,00",
+                    "subscriptionFee": "800,00",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "serviceRequestStatus": "request-undefined",
+                    "connectionRequest": false,
+                    "result": "KP_DZ_NotActive",
+                    "rebooted": false,
+                    "portStateError": "No parameters for diagnostics",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Иванова Елена Васильевна</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нужна настройка роутера</q>
+        <a>Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.</a>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>ru_digit_3000_nom. три тысячи</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;130-29;</a>
     </test-case>
 </test>

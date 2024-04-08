@@ -14,7 +14,7 @@ theme: /DomofonActivate
             script:
                 announceAudio(audioDict.CifralGo);
                 $.session.intent.resultCode = 32;
-                $.session.callerInput = 'cifral';
+                $.session.callerInput = 'dmf_cifral';
             go!: /Transfer/Transfer
             
         state: NotCifral

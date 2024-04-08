@@ -6,85 +6,73 @@
 <!--380_10 авторизованный, домашний - молчание (2 раза) - замена кабеля-->
 <!--380_11 авторизованный, домашний - молчание (2 раза) - noMatch - замена кабеля-->
 <!--380_12 авторизованный, домашний - молчание (1 раз) - noMatch - замена кабеля-->
-<test>
+
+
+<test integration="true">
+    
+    
     <test-case id="380_5 авторизованный, мобильный - молчание (3 раза)">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <event>speechNotRecognized</event>
         <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
         <event>speechNotRecognized</event>
         <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 380-10;</a>
     </test-case>
+
+
     
     <test-case id="380_6 авторизованный, мобильный - молчание (2 раза) - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <event>speechNotRecognized</event>
         <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 380-0;750-6;</a>
     </test-case>
+  
+  
     
     <test-case id="380_7 авторизованный, мобильный - молчание (2 раза) - noMatch - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <event>speechNotRecognized</event>
@@ -93,116 +81,98 @@
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 380-0;0-0;750-6;</a>
     </test-case>
+
+
     
     <test-case id="380_8 авторизованный, мобильный - молчание (1 раз) - noMatch - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <q>все сначала</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 380-0;0-0;750-6;</a>
     </test-case>
+ 
+ 
     
     <test-case id="380_9 авторизованный, домашний - молчание (3 раза)">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <event>speechNotRecognized</event>
         <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
         <event>speechNotRecognized</event>
         <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 380-10;</a>
     </test-case>
+ 
+ 
     
     <test-case id="380_10 авторизованный, домашний - молчание (2 раза) - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <event>speechNotRecognized</event>
         <a>No_Input2. К сожалению, по-прежнему не слышу вас. Если вы используете громкую связь на телефоне, попробуйте ее отключить и говорите прямо в микрофон.</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 380-0;750-6;</a>
     </test-case>
+  
+  
     
     <test-case id="380_11 авторизованный, домашний - молчание (2 раза) - noMatch - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "79000000001",
+                "cellPhone": true
             }
+
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <event>speechNotRecognized</event>
@@ -211,35 +181,33 @@
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 380-0;0-0;750-6;</a>
     </test-case>
+    
+    
     
     <test-case id="380_12 авторизованный, домашний - молчание (1 раз) - noMatch - замена кабеля">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <event>speechNotRecognized</event>
         <a>No_Input1. Извините, я не слышу вас. Пожалуйста, проверьте, что микрофон телефона включён, и повторите фразу.</a>
         <q>все сначала</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>кот перегрыз провод</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 380-0;0-0;750-6;</a>
     </test-case>
+    
+
 </test>

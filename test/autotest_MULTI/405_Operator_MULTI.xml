@@ -1,146 +1,116 @@
-<test>
-    <test-case id="405_OPER_10Many">
+<test integration="true">
+    
+    
+    
+    <test-case id="Множественная, не авторизовали по ФИО. Запрос оператора х3, на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "cellPhone": "true",
-                "proactiveResult": "mono_EnoughBalance_NotActive",
-                "autoTest": "true"
-
+                "phoneNumber": "79000002120",
+                "cellPhone": true
             }
         </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "4321", "errorCode": 9 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "token": "4321", "type": "guest", "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/get/base/info</query>
-            <response status="200">
-                {
-                    "recommendSum": "0,00",
-                    "nextPeriodDate": "2023-07-15 00:00",
-                    "checkServiceApSum": "650,00",
-                    "firstPay": "",
-                    "leasDz": "0,00",
-                    "closeDate": "",
-                    "lastPayment": 0,
-                    "retStr": "$1",
-                    "errorCode": 0,
-                    "isDeny": true
-                }
-            </response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Смирнов Петр Иванович</q>    
+        <q>Достоевский Федор Михайлович</q>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agent</a>
+        <a>BI dialog log: 570-1;405-6;</a>
+    </test-case>
+    
+    
+    
+    <test-case id="Множественная, не авторизовали по адресу. Запрос оператора х1, далее ноуматч х1, потом оператора х2. На оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000022120",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>    
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
         <q>улица Петра Великого. 999.</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>дайте оператора</q>
-        <a>IUnderstoodUMust. Я поняла, что вы просите соединить с оператором, но</a>
-        <a>Вам необходимо активировать тарифный план.</a>
-        <a>Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру.</a>
-        <a>При этом с вашего счета спишется сумма</a>
-        <a>650</a>
-        <a>Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>сильвупле</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>дайте оператора</q>
+        <a>AgentHelpU. Пожалуйста выберите тему - у вас не работает услуга или вам нужна консультация</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a>Перевод по коллеру agent</a>
+        <a>BI dialog log: 570-1;405-0;0-6;405-6;</a>
+    </test-case> 
+    
+
+
+    <test-case id="Множественная, 2 договора на к.т. привязаны, авторизовали по ФИО. Запрос оператора х2, потом замена кабеля.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002020",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Соколов Максим Иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>дайте оператора</q>
+        <a state="/AgentRequest/CheckAuth/Auth/GetIntent/AgentRequest"></a>
+        <q>поменять кабель</q>
+        <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-0;405-0;750-6;</a>
+    </test-case>  
+
+    
+    
+    <test-case id="405_OPER_10 строка Множественная связка. Запрос оператора, проактив активации ТП">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002220",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Бусыгин Максим Петрович</q>    
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>IUnderstoodUMust. Я поняла, что Вы просите соединить с оператором, но</a>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
         <q>нет</q>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 570-0;405-29;</a>
+    </test-case>
 
-    <test-case id="405_OPER_11Many">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "cellPhone": "true",
-                "initWithPhoneAndAgreementOrFioError": "10",
-                "autoTest": "true"
-
-            }
-        </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/сheckServicesWithPhoneAndAgreementOrFio/</query>
-            <response status="200">
-                {
-                    "recommendSum": "0,00",
-                    "nextPeriodDate": "2023-07-15 00:00",
-                    "checkServiceApSum": "650,00",
-                    "firstPay": "",
-                    "leasDz": "0,00",
-                    "closeDate": "",
-                    "lastPayment": 0,
-                    "retStr": "$1",
-                    "errorCode": 0,
-                    "isDeny": true
-                }
-            </response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Смирнов Петр Иванович</q>    
-        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>дайте оператора</q>
-        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос.</a>
-        <q>дайте оператора</q>
-        <a>AgentHelpU. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
-        <q>дайте оператора</q>
-        <a>toAgentRequest. Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
-
-    <test-case id="405_OPER_9Many">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "cellPhone": "true",
-                "autoTest": "true"
-
-            }
-        </context>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Смирнов Петр Иванович</q>    
-        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>дайте оператора</q>
-        <a>IUnderstoodUMust. Я поняла, что вы просите соединить с оператором, но</a>
-        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос.</a>
-        <q>дайте оператора</q>
-        <a>AgentHelpU. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
-        <q>дайте оператора</q>
-        <a>toAgentRequest. Хорошо, .перевожу вас на специалиста..Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
 </test>

@@ -8,5 +8,5 @@ theme: /RentAccruals
             $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
             $.session.intent.resultCode = 6;
             stopIntent();
-            announceAudio(audioDict.perevod_na_okc);
+            announceAudio(audioDict.perevod_na_okc_RentAccruals);
         go!: /Transfer/Transfer

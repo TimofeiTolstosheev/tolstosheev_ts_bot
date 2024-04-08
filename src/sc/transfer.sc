@@ -2,53 +2,60 @@ theme: /Transfer
     state: CheckOCTP
         # TODO перенести проверку на технические сценарии из других тем в тему Transfer, чтобы определять только тут - проверять ОЦТП метки или нет
         # стейт, если не знаем коллер и надо проверить метки
-        script:
-            checkRedirectOctp();
-            if($.session.sessionOctp && ($.session.intent.currentIntent == '300_NoLink' || $.session.lastIntent == '300_NoLink')){
-                // для noLink проверяем sessionOctp
-                $.session.callerInput = "inetoctp";
-                $.session.intent.resultCode = 7;
-            }else{
-                if ($.session.flagOctp){
+        # если знаем, что клиент не дома, переводим без проверки меток
+        if: $.session.atHome === false
+            script:
+                $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                $.session.intent.resultCode = $.session.intent.resultCode || 6;
+            go!: /Transfer/Transfer
+        else:
+            script:
+                checkRedirectOctp();
+                if($.session.sessionOctp && ($.session.intent.currentIntent == '300_NoLink' || $.session.lastIntent == '300_NoLink')){
+                    // для noLink проверяем sessionOctp
+                    $.session.callerInput = "inetoctp";
                     $.session.intent.resultCode = 7;
-                    $.session.callerInput = "OCTPMetka";
                 }else{
-                    if (!$.session.octpAppTypeTransfer && ($.session.intent.currentIntent == '280_LowSpeed' || $.session.lastIntent == '280_LowSpeed')){
+                    if ($.session.flagOctp){
                         $.session.intent.resultCode = 7;
-                        $.session.callerInput = "octp_speed";
+                        $.session.callerInput = "OCTPMetka";
                     }else{
-                        if(($.session.intent.currentIntent == '290_TVChannelProblem' || $.session.lastIntent == '290_TVChannelProblem') &&
-                           $.session.iktvDevices["cam-module"] > 0 && !$.session.iktvDevices["dvbc"] &&
-                           !$.session.iktvDevices["movix"] && !$.session.iktvDevices["iptv"] &&
-                           !$.session.iktvDevices["virtualDevice"] && !$.session.iktvDevices["movixPro"] &&
-                           !$.session.iktvDevices["assortmentBox"]){
-                            // если интент 290 и только кам-модуль, то коллер cam_octp
+                        if (!$.session.octpAppTypeTransfer && ($.session.intent.currentIntent == '280_LowSpeed' || $.session.lastIntent == '280_LowSpeed')){
                             $.session.intent.resultCode = 7;
-                            $.session.callerInput = "cam_octp";
+                            $.session.callerInput = "octp_speed";
                         }else{
-                            // проверяем, получили ли до этого коллер СПАСа
-                            switch($.session.callerInput){
-                                case "tech_spas":
-                                    $.session.intent.resultCode = 6;
-                                    break;
-                                case "tech_spas2":
-                                    $.session.intent.resultCode = 6;
-                                    break;
-                                case "tech_spas3":
-                                    $.session.intent.resultCode = 7;
-                                    break;
-                                case "tech_octp":
-                                    $.session.intent.resultCode = 7;
-                                default:
-                                    $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                                    $.session.intent.resultCode = $.session.intent.resultCode || 6;
-                                    break;
-                                }
+                            if(($.session.intent.currentIntent == '290_TVChannelProblem' || $.session.lastIntent == '290_TVChannelProblem') &&
+                               $.session.iktvDevices["cam-module"] > 0 && !$.session.iktvDevices["dvbc"] &&
+                               !$.session.iktvDevices["movix"] && !$.session.iktvDevices["iptv"] &&
+                               !$.session.iktvDevices["virtualDevice"] && !$.session.iktvDevices["movixPro"] &&
+                               !$.session.iktvDevices["assortmentBox"]){
+                                // если интент 290 и только кам-модуль, то коллер cam_octp
+                                $.session.intent.resultCode = 7;
+                                $.session.callerInput = "cam_octp";
+                            }else{
+                                // проверяем, получили ли до этого коллер СПАСа
+                                switch($.session.callerInput){
+                                    case "tech_spas":
+                                        $.session.intent.resultCode = 6;
+                                        break;
+                                    case "tech_spas2":
+                                        $.session.intent.resultCode = 6;
+                                        break;
+                                    case "tech_spas3":
+                                        $.session.intent.resultCode = 7;
+                                        break;
+                                    case "tech_octp":
+                                        $.session.intent.resultCode = 7;
+                                    default:
+                                        $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                                        $.session.intent.resultCode = $.session.intent.resultCode || 6;
+                                        break;
+                                    }
+                            }
                         }
                     }
                 }
-            }
-        go!: /Transfer/Transfer
+            go!: /Transfer/Transfer
     
     state: IntentLimiTransfer
         script:
@@ -60,6 +67,8 @@ theme: /Transfer
     state: TransferOnError
         #стейт для перевод по непредвиденным ошибкам
         script:
+            $analytics.setScenarioAction("Перевод по ошибке");
+            if($.session.queryCnt == 1) $analytics.setScenarioAction("Ошибка на стейте Start");
             // если до этого уже пытались перевести по ошибке, но опять возникла ошибка, то сразу переводим по дефолтному коллеру
             if($.session.transferErrorFlag){
                 transferByCallerInput($.injector.defaultCallerInput);
@@ -68,10 +77,10 @@ theme: /Transfer
                 announceAudio(audioDict.perevod_na_okc);
                 if($.session.intent){
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 41;
+                    $.session.intent.resultCode = $global.BOT_ERROR_EXIT_CODE;
                 }else{
-                    startIntent('0_NoMatch');
-                    $.session.intent.resultCode = 41;
+                    startIntent('6_NoIntent');
+                    $.session.intent.resultCode = $global.BOT_ERROR_EXIT_CODE;
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
                     stopIntent();
                 }
@@ -94,12 +103,10 @@ theme: /Transfer
             if($.testContext || $.request.channelType == 'chatwidget'){
                 $reactions.answer("Перевод по коллеру {{$.session.callerInput}}");
             }
-            if($.session.dialogLog){
-                try{
-                    sendDialogLog();
-                }catch(e){
-                    customLog("Failed to send dialog to BI. Error: " + e.message);
-                }
+            try{
+                sendDialogLog();
+            }catch(e){
+                customLog("Failed to send dialog to BI. Error: " + e.message);
             }
             
             $analytics.setSessionData("Call end type", $.session.callEndType);

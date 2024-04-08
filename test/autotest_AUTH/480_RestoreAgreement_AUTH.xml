@@ -1,57 +1,45 @@
-<test>
+<test integration="true">
     
-    <test-case id="480_AGRRESTORE Cтрока 1 Авторизованный, мобильный, интент 480, на оператора">
+    <test-case id="480_AGRRESTORE_Строка 2_Авторизованный, Восстановить закрытый договор. Перевод на опера">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>требуется отменить расторжение</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RestoreAgreement. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.RestoreAgreement</a>
+        <a>Перевод по коллеру recovery</a>
+        <a>BI dialog log: 480-6;</a>
     </test-case>
     
 
     
-    <test-case id="480_AGRRESTORE Строка 2 Авторизованный, домашний, интент 480, на оператора">
+    <test-case id="480_AGRRESTORE_Строка 2.1_Авторизованный, Запрос оператора, потом восстановить закрытый договор. Перевод на опера">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
         <q>требуется отменить расторжение</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_RestoreAgreement. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.RestoreAgreement</a>
+        <a>Перевод по коллеру recovery</a>
+        <a>BI dialog log: 405-0;480-6;</a>
     </test-case>
     
     

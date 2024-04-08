@@ -1,27 +1,16 @@
-<test>  
-
-
-
+<!--720_AUTOPAY Строка 1 НЕавторизованный. Мобильный. 720. Перевод на оператора.-->
+<!--720_AUTOPAY Строка 2 НЕавторизованный. Домашний. 720. Перевод на оператора.-->
+<!--720_AUTOPAY Строка 3 НЕавторизованный. Не авторизовали по адресу. Мобильный. 720. Перевод на оператора.-->
+<!--720_AUTOPAY Строка 3.1 НЕавторизованный. Не авторизовали по ФИО. Мобильный. 720. Перевод на оператора.-->
+<test integration="true">   
     <test-case id="720_AUTOPAY Строка 1 НЕавторизованный. Мобильный. 720. Перевод на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true
+                "phoneNumber": "79999999991"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
@@ -34,32 +23,18 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>подключить автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру operator</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-0;720-6;</a>
     </test-case>
-
-
 
     <test-case id="720_AUTOPAY Строка 2 НЕавторизованный. Домашний. 720. Перевод на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true
+                "phoneNumber": "78129999666"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
@@ -72,32 +47,18 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>подключить автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру operator</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-0;720-6;</a>
     </test-case>
 
-
-
-    <test-case id="720_AUTOPAY Строка 3 НЕавторизованный. Не авторизовали по адресу. Домашний. 720. Перевод на оператора.">
+    <test-case id="720_AUTOPAY Строка 3 НЕавторизованный. Не авторизовали по адресу. Мобильный. 720. Перевод на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true
+                "phoneNumber": "79999999992"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
@@ -108,49 +69,31 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>подключить автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру operator</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>    
 
-
-
-    <test-case id="720_AUTOPAY Строка 3.1 НЕавторизованный. Не авторизовали по ФИО. Домашний. 720. Перевод на оператора.">
+    <test-case id="720_AUTOPAY Строка 3.1 НЕавторизованный. Не авторизовали по ФИО. Мобильный. 720. Перевод на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true
+                "phoneNumber": "79999999993"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
         <a>verno_spb. Ваш город санкт петербург?</a>
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
+        <q>благодатная 1</q>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>подключить автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру operator</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>      
-
-    
-    
-    
 </test>

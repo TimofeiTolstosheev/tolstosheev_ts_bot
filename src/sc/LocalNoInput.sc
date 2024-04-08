@@ -12,7 +12,12 @@ theme: /LocalNoInput
             $.session.noInputCount++;
             if($.session.noInputCount < $injector.noInputLimit) {
                 announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
-                $reactions.transition($.session.lastState);
+                if($.session.themeMatched){
+                    $.session.themeMatched = false;
+                    $reactions.transition($.session.prevContext);
+                }else{
+                    $reactions.transition($.session.lastState || $.session.lastEntryState);
+                }
             }else{
                 announceAudio(audioDict.No_Input3);
                 stopIntent(); // завершаем текущий интент

@@ -84,7 +84,7 @@ theme: /SetupRouter
         
         state: SendSMS
             q: $commonYes
-            q: $yesForSms
+            q: * $yesForSms *
             script:
                 $.session.intent.stepsCnt++;
                 sendSMS('803_SetupRouterSMS');
@@ -98,13 +98,13 @@ theme: /SetupRouter
                 }else{
                     announceAudio(audioDict.sms_neOtpravlena_transfer);
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 1;
+                    $.session.intent.resultCode = 7;
                     $reactions.transition("/Transfer/Transfer");
                 }
         
         state: NoSMS
             q: $commonNo
-            q: $noForSms
+            q: * $noForSms *
             script:
                 $.session.intent.stepsCnt++;
             if: $.session.phoneStatus == 1
@@ -113,7 +113,7 @@ theme: /SetupRouter
                 script:
                     announceAudio(audioDict.Configuring_router_transfer);
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 6;
+                    $.session.intent.resultCode = 7;
                     $reactions.transition("/Transfer/Transfer");
         
         state: AgentRequest || noContext = true
@@ -122,13 +122,14 @@ theme: /SetupRouter
             script:
                 if(countRepeatsInRow() < $injector.noMatchLimit) {
                     $reactions.transition("/SetupRouter/AskSMS");
+                    $.session.agentRequested = true;
                 }else{
                     announceAudio(audioDict.perevod_na_okc);
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 6;
+                    $.session.intent.resultCode = 7;
                     stopIntent(); // завершаем основной интент
                     startIntent('/405_AgentRequest');
-                    $.session.intent.resultCode = 6;
+                    $.session.intent.resultCode = 7;
                     $reactions.transition('/Transfer/Transfer');
                 }    
         
@@ -140,7 +141,7 @@ theme: /SetupRouter
                     $reactions.transition('/SetupRouter/AskSMS');
                 }else{
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 1;
+                    $.session.intent.resultCode = 7;
                     stopIntent();
                     announceAudio(audioDict.configuring_router_noMatchAnswer_transfer);
                     $reactions.transition("/Transfer/Transfer");
@@ -153,7 +154,7 @@ theme: /SetupRouter
         
         state: SendSMS
             q: $commonYes
-            q: $yesForSms
+            q: * $yesForSms *
             script:
                 $.session.intent.stepsCnt++;
                 sendSMS('804_CredentialsSMS');
@@ -163,13 +164,13 @@ theme: /SetupRouter
                 }else{
                     announceAudio(audioDict.sms_neOtpravlena_transfer);
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 1;
+                    $.session.intent.resultCode = 7;
                     $reactions.transition("/Transfer/Transfer");
                 }
         
         state: NoSMS
             q: $commonNo
-            q: $noForSms
+            q: * $noForSms *
             script:
                 $.session.intent.stepsCnt++;
             go!: /WhatElse/WhatElse
@@ -178,15 +179,15 @@ theme: /SetupRouter
             q: $agentRequest
             intent: /405_AgentRequest
             script:
-                if(countRepeatsInRow() < $injector.noMatchLimit) {
+                if(countRepeatsInRow() < $injector.noMatchLimit && !$.session.agentRequested) {
                     announceAudio(audioDict.doYouWant_sms);
                 }else{
                     announceAudio(audioDict.perevod_na_okc);
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 6;
+                    $.session.intent.resultCode = 7;
                     stopIntent(); // завершаем основной интент
                     startIntent('/405_AgentRequest');
-                    $.session.intent.resultCode = 6;
+                    $.session.intent.resultCode = 7;
                     $reactions.transition('/Transfer/Transfer');
                 }
         
@@ -198,7 +199,7 @@ theme: /SetupRouter
                     announceAudio(audioDict.doYouWant_sms);
                 }else{
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                    $.session.intent.resultCode = 1;
+                    $.session.intent.resultCode = 7;
                     stopIntent();
                     announceAudio(audioDict.configuring_router_noMatchAnswer_transfer);
                     $reactions.transition("/Transfer/Transfer");
@@ -208,6 +209,6 @@ theme: /SetupRouter
         script:
             $.session.intent.stepsCnt++;
             $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-            $.session.intent.resultCode = 6;
+            $.session.intent.resultCode = 7;
             announceAudio(audioDict.Configuring_router_transfer);
             $reactions.transition("/Transfer/Transfer");

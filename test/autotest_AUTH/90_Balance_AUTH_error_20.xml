@@ -41,7 +41,8 @@
         <a state="/Init/DIALOG_WELCOME_EVENT_1">DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>какой у меня баланс</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
         <a state="/Transfer/Transfer"/>
     </test-case>
 </test>

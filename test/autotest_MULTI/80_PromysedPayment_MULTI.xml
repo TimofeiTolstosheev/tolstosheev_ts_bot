@@ -6,11 +6,7 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79703530000"
             }
         </context>
         
@@ -32,18 +28,15 @@
         <a state="/Init/HowCanIHelpYou"/>
         <q>дай отсрочку на три дня</q>
         <a>error_perevod_na_okc. Номер договора не найден. Перевожу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте.</a>
-        <a state="/Transfer/Transfer" />
+        <a state="/Transfer/Transfer">Перевод по коллеру o_p</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;80-0;</a>
     </test-case>
     
     <test-case id="80_97.1 множественная по фио, не авторизовали - мобильный - перезвоните">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79703530000"
             }
         </context>
         
@@ -62,8 +55,9 @@
         <q>Иван Иванович Петров</q>
         <a state="/Init/HowCanIHelpYou"/>
         <q>дай отсрочку на три дня</q>
-        <a>promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору.</a>
-        <a state="/Transfer/Transfer" />
+        <a>promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору. Соединяю вас со специалистом для дальнейшей консультации. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру o_p</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;80-0;</a>
     </test-case>
     
     <test-case id="80_97.2 множественная, домашний - авторизовали по фио - ошибка 11 - Способы оплаты - вопросы есть? - нет - прощание">
@@ -116,6 +110,7 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>замена кабеля</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a state="/Transfer/Transfer">Перевод по коллеру replacement</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;80-0;10-0;750-6;</a>
     </test-case>
 </test>

@@ -1,59 +1,37 @@
-<test>
-    
+<!--560_RECALCAP Строка 1 Авторизованный, мобильный, интент 560, на оператора-->
+<!--560_RECALCAP Строка 2 Авторизованный, домашний, интент 560, на оператора-->
+<test integration="true">
     <test-case id="560_RECALCAP Строка 1 Авторизованный, мобильный, интент 560, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000001"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>пересчет платежа</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру recalculation</a>
+        <a state="/Transfer/Transfer">BI dialog log: 560-6;</a>
     </test-case>  
-    
-
     
     <test-case id="560_RECALCAP Строка 2 Авторизованный, домашний, интент 560, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412119921"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>пересчет платежа</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру recalculation</a>
+        <a state="/Transfer/Transfer">BI dialog log: 560-6;</a>
     </test-case>  
-    
-    
-
 </test>

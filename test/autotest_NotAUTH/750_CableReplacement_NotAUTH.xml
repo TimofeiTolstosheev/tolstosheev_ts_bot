@@ -1,22 +1,13 @@
-<test>
+<test integration="true">
     
     <test-case id="750_CABLEREPLACEMENT Cтрока 1 НЕавторизованный, мобильный, интент 750, на оператора">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79999999967"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -30,7 +21,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>поменять кабель</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-0;750-6;</a>
     </test-case>  
     
 
@@ -40,18 +32,9 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412999991"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -65,7 +48,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>поменять кабель</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-0;750-6;</a>
     </test-case>  
 
     
@@ -75,18 +59,9 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412999992"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -94,11 +69,12 @@
         <a>verno_spb. Ваш город санкт петербург?</a>
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица Петра Великого. 999</q>
+        <q>улица благодатная 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>поменять кабель</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-1;750-6;</a>
     </test-case>
     
 
@@ -108,19 +84,9 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78412999993"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
@@ -133,7 +99,8 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>поменять кабель</q>
         <a>perevod_na_okc_from_cable_replacement. Я поняла, что у вас возникли проблемы с линией по квартире. Сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру replacement</a>
+        <a>BI dialog log: 570-1;750-6;</a>
     </test-case>      
     
     

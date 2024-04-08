@@ -1,21 +1,15 @@
-<test>
-    <test-case id="460_SZ_Строка 3 Не авторизован - не смогли авторизовать - перевод на оператора 460/1">
+<test integration="true">
+    
+    
+    
+    <test-case id="НЕавторизованный, не авторизовали по ФИО, интент 460, на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "",
-                "agreementNumber": "",
-                "cellPhone": "true",
-                "proactiveResult": "",
-                "phoneStatus": "",
-                "autoTest": "true"
+                "phoneNumber": "79999999993",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -25,49 +19,24 @@
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
         <q>улица благодатная 1</q>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>где техник по заявке</q>
-        <a state="/ServiceRequestInfo/ToOperator">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
-        
+        <a>OperatorIzSZ. Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a>Перевод по коллеру request</a>
+        <a>BI dialog log: 570-1;460-1;</a>  
     </test-case>
 
-    <test-case id="460_SZ_Строка 37 невторизован, авторизовали - есть СЗ, нет времени выполнения - ОТМЕНИТЬ заявку - ДА - заявка отменена - вопросы ЕСТЬ - новый интент 460/0">
+
+
+    <test-case id="НЕавторизованный, не авторизовали по адресу, интент 460, на оператора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "proactiveResult": "",
-                "phoneStatus": "1",
-                "autoTest": "true"
+                "phoneNumber": "79999999996",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/services</query>
-            <response status="200">
-                {
-                    "serviceRequest": "true",
-                    "serviceRequestId": "1123",
-                    "result": "spas"
-                }
-            </response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/cancel/service/request</query>
-            <response status="200">
-                {
-                    "errorCode": "0"
-                }
-            </response>
-        </mockData>
         
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -75,19 +44,12 @@
         <a>verno_spb. Ваш город санкт петербург?</a>
         <q>да</q>
         <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>улица благодатная 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>где техник по заявке</q>
-        <a>TimeNOAvailable. Вижу, что на вашем договоре активна сервисная заявка. Работы по ней будут выполнены в ближайшее время.</a>
-        <a>ZayavkaBezOperatorPerenos. Если вы хотите отменить заявку, скажите Отмена. Если вы хотите перенести заявку, скажите Перенос. Если вам необходима помощь по другому вопросу, озвучьте его мне, и я помогу вам.</a>
-        <q>отмена</q>
-        <a>PodtverdiOtmeny. Пожалуйста, подтвердите, что хотите отказаться от сервисной заявки. Скажите Да если заявка больше не нужна - Нет если заявка все еще необходима.</a>
-        <q>да</q>
-        <a>ZayakaOtmena. Ваша заявка успешно отменена.</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit.Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн. с помощью мобильного приложения «мой дом ру», онлайн-чата на сайте дом точка ру, а также в социальных сетях. Всего вам доброго!</a>
+        <a>OperatorIzSZ. Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a>Перевод по коллеру request</a>
+        <a>BI dialog log: 570-1;460-1;</a>   
     </test-case>
+
 </test>

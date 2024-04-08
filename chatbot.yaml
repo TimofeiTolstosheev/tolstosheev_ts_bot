@@ -4,80 +4,221 @@ entryPoint: main.sc
 
 botEngine: v2
 language: ru
-
+bot:
+  test:
+    parallel: true
+        
 tests:
   include:
     # test.xml
-    - autotest_AUTH/0_NoMatch_AUTH.xml
-    # autotest_AUTH/10_PaymentMethods_AUTH.xml
-    # autotest_AUTH/130_SetupRouter_AUTH.xml
-    # autotest_AUTH/150_Suspension_AUTH.xml
-    # autotest_AUTH/20_CPADDRESS_AUTH.xml
-    - autotest_AUTH/280_LOWSPEED_AUTH.xml
-    # autotest_AUTH/50_RECEIPT_AUTH.xml
-    # autotest_AUTH/5_FinanceQuestion_AUTH.xml
-    # autotest_AUTH/80_PromisedPayment_AUTH.xml
-    # autotest_AUTH/90_Balance_AUTH.xml
-    # autotest_AUTH/90_Balance_AUTH_error_0.xml
-    # autotest_AUTH/90_Balance_AUTH_error_1.xml
-    # autotest_AUTH/90_Balance_AUTH_error_10.xml
-    # autotest_AUTH/90_Balance_AUTH_error_11.xml
-    # autotest_AUTH/90_Balance_AUTH_error_12.xml
-    # autotest_AUTH/90_Balance_AUTH_error_13.xml
-    # autotest_AUTH/90_Balance_AUTH_error_14.xml
-    # autotest_AUTH/90_Balance_AUTH_error_2.xml
-    # autotest_AUTH/90_Balance_AUTH_error_20.xml
-    # autotest_AUTH/90_Balance_AUTH_error_3.xml
-    # autotest_AUTH/90_Balance_AUTH_error_4.xml
-    # autotest_AUTH/90_Balance_AUTH_error_5.xml
-    # autotest_AUTH/90_Balance_AUTH_error_6.xml
-    # autotest_AUTH/90_Balance_AUTH_error_7.xml
+    # - autotest_AUTH/0_NoMatch_AUTH.xml
+    # - autotest_AUTH/5_FinanceQuestion_AUTH.xml
+    # - autotest_AUTH/10_PaymentMethods_AUTH.xml
+    # - autotest_AUTH/20_CPADDRESS_AUTH.xml
+    # - autotest_AUTH/50_RECEIPT_AUTH.xml
+    # - autotest_AUTH/80_PromisedPayment_AUTH.xml
+    # - autotest_AUTH/90_Balance_AUTH.xml
+    # - autotest_AUTH/90_Balance_91-96_AUTH.xml
+    # - autotest_AUTH/130_SetupRouter_AUTH.xml
+    # - autotest_AUTH/150_Suspension_AUTH.xml
     # - autotest_AUTH/155_SUSPCANCEL_AUTH.xml
     # - autotest_AUTH/160_REISSUEAGR_AUTH.xml
+    # - autotest_AUTH/170_SubscriptionFeeIncrease_AUTH.xml
+    # - autotest_AUTH/170_SubscriptionFeeIncrease_AUTH_mocks.xml
+    # - autotest_AUTH/230_CRED_AUTH.xml
     # - autotest_AUTH/240_DEVREPLACEMENT_AUTH.xml
-    # autotest_AUTH/250_CTP_AUTH.xml _____Нужно сделать моки будет и с таймаутами в получении данных с биллинга сделать подстановки на фикс. значения
-    - autotest_AUTH/320_Tariff_AUTH.xml
-    # autotest_MULTI/0_NoMatch_MULTI.xml
+    # - autotest_AUTH/250_CTP_AUTH.xml
+    # - autotest_AUTH/270_TVQuality_AUTH.xml
+    # - autotest_AUTH/275_OneChannelProblem_AUTH.xml
+    # - autotest_AUTH/280_LOWSPEED_AUTH.xml
+    # - autotest_AUTH/290_TVCH_AUTH.xml
+    # - autotest_AUTH/300_NoLink_AUTH.xml
+    # - autotest_AUTH/300_NoLink_AUTH_Actual.xml
+    # - autotest_AUTH/320_Tariff_AUTH.xml
+    # - autotest_AUTH/330_Bonuses_AUTH.xml
+    # - autotest_AUTH/331_ManageSubscription_AUTH.xml
+    # - autotest_AUTH/332_Antivirus_AUTH.xml
+    # - autotest_AUTH/333_ChannelPackage_AUTH.xml  
+    # - autotest_AUTH/334_NewBonuses_AUTH.xml   
+    # - autotest_AUTH/335_Discount_AUTH.xml 
+    # - autotest_AUTH/340_PotentialClient_AUTH.xml
+    # - autotest_AUTH/350_PhoneProblem_AUTH.xml    
+    # - autotest_AUTH/360_NRD_AUTH.xml
+    # - autotest_AUTH/370_Domofon_AUTH.xml
+    # - autotest_AUTH/380_NoInput_AUTH.xml
+    # - autotest_AUTH/390_NoAnswer_AUTH.xml
+    # - autotest_AUTH/405_Operator_AUTH.xml
+    # - autotest_AUTH/420_AgreementNumber_AUTH.xml
+    # - autotest_AUTH/430_UserMoving_AUTH.xml
+    # - autotest_AUTH/440_RestoreWiFiPass_AUTH.xml
+    # - autotest_AUTH/460_ServiceRequestInfo_AUTH.xml
+    # - autotest_AUTH/470_ChangeAgreementData_AUTH.xml
+    # - autotest_AUTH/475_TVServiceProblem_AUTH.xml
+    # - autotest_AUTH/480_RestoreAgreement_AUTH.xml
+    # - autotest_AUTH/485_TVEquipmentProblem_AUTH.xml
+    # - autotest_AUTH/490_CommonInternet_AUTH.xml
+    # - autotest_AUTH/495_CommonTV_AUTH.xml   
+    # - autotest_AUTH/510_HotSpot_AUTH.xml
+    - autotest_AUTH/530_PaymentIssue_AUTH.xml
+    # - autotest_AUTH/540_SetupTVchannels_AUTH.xml
+    # - autotest_AUTH/550_RentAccruals_AUTH.xml
+    # - autotest_AUTH/560_Recalculation_AUTH.xml
+    # - autotest_AUTH/580_LegalEntity_AUTH.xml
+    # - autotest_AUTH/590_OtherIntent_AUTH.xml
+    # - autotest_AUTH/610_Hold_AUTH.xml
+    # - autotest_AUTH/650_CommonQuestion_AUTH.xml
+    # - autotest_AUTH/710_WholeCheaper_AUTH.xml
+    # - autotest_AUTH/720_AutoPay_AUTH.xml
+    # - autotest_AUTH/730_OtherContract_AUTH.xml
+    # - autotest_AUTH/740_Pretension_AUTH.xml
+    # - autotest_AUTH/750_CableReplacement_AUTH.xml
+    
+    # - autotest_MULTI/0_NoMatch_MULTI.xml
+    # - autotest_MULTI/5_FinanceQuestion_MULTI.xml
+    # - autotest_MULTI/10_PaymentMethods_MULTI.xml
+    # - autotest_MULTI/20_CPADDRESS_MULTIPLE.xml
+    # - autotest_MULTI/50_RECEIPT_MULTIPLE.xml
+    # - autotest_MULTI/80_PromysedPayment_MULTI.xml
+    # - autotest_MULTI/90_Balance_MULTI.xml
     # - autotest_MULTI/130_SetupRouter_MULTI.xml
-    # autotest_MULTI/150_Suspention_MULTI.xml
+    # - autotest_MULTI/150_Suspention_MULTI.xml
     # - autotest_MULTI/155_SUSPCANCEL_MULTIPLE.xml
     # - autotest_MULTI/160_REISSUEAGR_MULTIPLE.xml
+    # - autotest_MULTI/170_SubscriptionFeeIncrease_MULTIPLE.xml
+    # - autotest_MULTI/230_CRED_MULTIPLE.xml        
     # - autotest_MULTI/240_DEVREPLACEMENT_MULTIPLE.xml
     # - autotest_MULTI/250_CTP_MULTIPLE.xml
-    - autotest_MULTI/320_Tariff_MULTI.xml
-    # autotest_MULTI/20_CPADDRESS_MULTIPLE.xml
-    # autotest_MULTI/50_RECEIPT_MULTIPLE.xml
-    # autotest_MULTI/5_FinanceQuestion_MULTI.xml
-    # autotest_MULTI/80_PromysedPayment_MULTI.xml
-    # autotest_NotAUTH/0_NoMatch_NotAUTH.xml
-    # autotest_NotAUTH/10_PaymentMethods_NotAUTH.xml
-    # autotest_NotAUTH/130_SetupRouter_NotAUTH.xml
-    # autotest_NotAUTH/150_Suspension_NotAUTH.xml
+    # - autotest_MULTI/270_TVQuality_MULTI.xml
+    # - autotest_MULTI/275_OneChannelProblem_MULTI.xml
+    # - autotest_MULTI/290_TVCH_MULTIPLE.xml
+    # - autotest_MULTI/320_Tariff_MULTI.xml
+    # - autotest_MULTI/330_Bonuses_MULTI.xml
+    # - autotest_MULTI/331_ManageSubscription_MULTI.xml
+    # - autotest_MULTI/332_Antivirus_MULTI.xml
+    # - autotest_MULTI/333_ChannelPackage_MULTI.xml
+    # - autotest_MULTI/334_NewBonuses_MULTI.xml
+    # - autotest_MULTI/335_Discount_MULTI.xml
+    # - autotest_MULTI/340_PotentialClient_MULTI.xml
+    # - autotest_MULTI/350_PhoneProblem_MULTI.xml
+    # - autotest_MULTI/360_NRD_MULTI.xml
+    # - autotest_MULTI/370_Domofon_MULTI.xml
+    # - autotest_MULTI/380_NoInput_MULTI.xml
+    # - autotest_MULTI/390_NoAnswer_MULTI.xml
+    # - autotest_MULTI/405_Operator_MULTI.xml
+    # - autotest_MULTI/420_AgreementNumber_MULTI.xml
+    # - autotest_MULTI/430_UserMoving_MULTI.xml
+    # - autotest_MULTI/440_RestoreWiFiPass_MILTI.xml
+    # - autotest_MULTI/460_ServiceRequestInfo_MULTI.xml  
+    # - autotest_MULTI/470_ChangeAgreementData_MULTI.xml 
+    # - autotest_MULTI/475_TVServiceProblem_MULTI.xml
+    # - autotest_MULTI/480_RestoreAgreement_MULTI.xml 
+    # - autotest_MULTI/485_TVEquipmentProblem_MULTI.xml    
+    # - autotest_MULTI/490_CommonInternet_MULTI.xml
+    # - autotest_MULTI/495_CommonTV_MULTI.xml 
+    # - autotest_MULTI/510_HotSpot_MULTI.xml
+    - autotest_MULTI/530_PaymentIssue_MULTI.xml
+    # - autotest_MULTI/540_SetupTVchannels_MULTI.xml
+    # - autotest_MULTI/550_RentAccruals_MULTI.xml
+    # - autotest_MULTI/560_Recalculation_MULTI.xml
+    # - autotest_MULTI/580_LegalEntity_MULTI.xml
+    # - autotest_MULTI/590_OtherIntent_MULTI.xml
+    # - autotest_MULTI/610_Hold_MULTI.xml
+    # - autotest_MULTI/650_CommonQuestion_MULTI.xml
+    # - autotest_MULTI/710_WholeCheaper_MULTI.xml
+    # - autotest_MULTI/720_AutoPay_MULTI.xml
+    # - autotest_MULTI/730_OtherContract_MULTI.xml
+    # - autotest_MULTI/740_Pretension_MULTI.xml
+    # - autotest_MULTI/750_CableReplacement_MULTI.xml
+    
+    # - autotest_NotAUTH/0_NoMatch_NotAUTH.xml
+    # - autotest_NotAUTH/5_FinanceQuestion_NotAUTH.xml
+    # - autotest_NotAUTH/10_PaymentMethods_NotAUTH.xml
+    # - autotest_NotAUTH/20_CPADDRESS_NotAUTH.xml
+    # - autotest_NotAUTH/50_RECEIPT_NotAUTH.xml
+    # - autotest_NotAUTH/80_PromisedPayment_NotAUTH.xml
+    # - autotest_NotAUTH/90_Balance_NotAUTH.xml
+    # - autotest_NotAUTH/130_SetupRouter_NotAUTH.xml
+    # - autotest_NotAUTH/150_Suspension_NotAUTH.xml
     # - autotest_NotAUTH/155_SUSPCANCEL_NotAUTH.xml
     # - autotest_NotAUTH/160_REISSUEAGR_UNAUTH.xml
-    # autotest_NotAUTH/20_CPADDRESS_NotAUTH.xml
+    # - autotest_NotAUTH/170_SubscriptionFeeIncrease_UNAUTH.xml
+    # - autotest_NotAUTH/230_CRED_UNAUTH.xml
     # - autotest_NotAUTH/240_DEVREPLACEMENT_UNAUTH.xml
     # - autotest_NotAUTH/250_CTP_UNAUTH.xml
-    - autotest_NotAUTH/320_Tariff_NotAuth.xml
-    # autotest_NotAUTH/50_RECEIPT_NotAUTH.xml
-    # autotest_NotAUTH/5_FinanceQuestion_NotAUTH.xml
-    # autotest_NotAUTH/80_PromisedPayment_NotAUTH.xml
-    # autotest_NotAUTH/90_Balance_NotAUTH.xml
+    # - autotest_NotAUTH/270_TVQuality_NotAUTH.xml
+    # - autotest_NotAUTH/275_OneChannelProblem_NotAUTH.xml
+    # - autotest_NotAUTH/290_TVCH_UNAUTH.xml
+    # - autotest_NotAUTH/320_Tariff_NotAuth.xml
+    # - autotest_NotAUTH/330_Bonuses_NotAUTH.xml
+    # - autotest_NotAUTH/331_ManageSubscription_NotAUTH.xml
+    # - autotest_NotAUTH/332_Antivirus_NotAUTH.xml
+    # - autotest_NotAUTH/333_ChannelPackage_NotAUTH.xml
+    # - autotest_NotAUTH/334_NewBonuses_NotAUTH.xml
+    # - autotest_NotAUTH/335_Discount_NotAUTH.xml
+    # - autotest_NotAUTH/340_PotentialClient_NotAUTH.xml
+    # - autotest_NotAUTH/350_PhoneProblem_NotAUTH.xml
+    # - autotest_NotAUTH/360_NRD_NotAUTH.xml   
+    # - autotest_NotAUTH/370_Domofon_NotAUTH.xml
+    # - autotest_NotAUTH/380_NoInput_NotAUTH.xml
+    # - autotest_NotAUTH/390_NoAnswer_NotAUTH.xml
+    # - autotest_NotAUTH/405_Operator_NotAUTH.xml
+    # - autotest_NotAUTH/420_AgreementNumber_NotAUTH.xml
+    # - autotest_NotAUTH/430_UserMoving_NotAUTH.xml
+    # - autotest_NotAUTH/440_RestoreWiFiPass_NotAUTH.xml
+    # - autotest_NotAUTH/460_ServiceRequestInfo_NotAUTH.xml
+    # - autotest_NotAUTH/470_ChangeAgreementData_NotAUTH.xml
+    # - autotest_NotAUTH/475_TVServiceProblem_NotAUTH.xml
+    # - autotest_NotAUTH/480_RestoreAgreement_NotAUTH.xml
+    # - autotest_NotAUTH/485_TVEquipmentProblem_NotAUTH.xml
+    # - autotest_NotAUTH/490_CommonInternet_NotAUTH.xml
+    # - autotest_NotAUTH/495_CommonTV_NotAUTH.xml
+    # - autotest_NotAUTH/510_HotSpot_NotAUTH.xml
+    - autotest_NotAUTH/530_PaymentIssue_NotAUTH.xml
+    # - autotest_NotAUTH/540_SetupTVchannels_UNAUTH.xml
+    # - autotest_NotAUTH/550_RentAccruals_NotAUTH.xml
+    # - autotest_NotAUTH/560_Recalculation_NotAUTH.xml
+    # - autotest_NotAUTH/580_LegalEntity_NotAUTH.xml
+    # - autotest_NotAUTH/590_OtherIntent_NotAUTH.xml
+    # - autotest_NotAUTH/610_Hold_NotAUTH.xml
+    # - autotest_NotAUTH/650_CommonQuestion_NotAUTH.xml
+    # - autotest_NotAUTH/710_WholeCheaper_NotAUTH.xml
+    # - autotest_NotAUTH/720_AutoPay_NotAUTH.xml
+    # - autotest_NotAUTH/730_OtherContract_NotAUTH.xml
+    # - autotest_NotAUTH/740_Pretension_NotAUTH.xml
+    # - autotest_NotAUTH/750_CableReplacement_NotAUTH.xml
+
     
-    - autotest_common/570.xml
-    - checkNLU.xml
+    # - autotest_common/init/570_underfined_guest.xml
+    # - autotest_common/init/570_user.xml
+    # - autotest_common/init/570_guest_notAClient.xml
+    # - autotest_common/init/570_guest_callsOnHold.xml
+    # - autotest_common/init/570_guest_catchAll.xml
+    # - autotest_common/init/570_guest_client.xml
+    # - autotest_common/init/570_guest_notMyAgreement.xml
+    # - autotest_common/init/570_guest_operator.xml
+    # - autotest_common/init/570_guest_silence.xml
+    # - autotest_common/init/570_guest_user.xml
+    # - autotest_common/init/570_multi.xml
     
-    #address/address.xml
+    
+    # - autotest_common/570.xml
+    # - autotest_common/570_FIO.xml
+    # - checkNLU.xml
+    # - ServiceRequest.xml
+    # - SR2.xml
+    # - address/address.xml
     
 injector:
-    version: "0.0.4"
+    version: "0.1.2"
     mode: test
     timeZone: "Europe/Moscow"
     dateFormat: "yyyy-MM-ddTH:m:s.521Z"
     defaultCallerInput: 'operator'
+    authTimeout: 10000
     actionTimeout: 7000
     actionReadTimeout: 4000
-    noMatchLimit: 2 # не разрешаем пока 3
+    actionSendTimeout: 7000
+    noMatchLimit: 2
     noInputLimit: 2
     agentRequestLimit: 2
     intentInArowLimit: 2
@@ -104,7 +245,7 @@ injector:
 
 nlp:
   considerContextDepthInStateSelectionV2: true
+  modifyRequestInPreMatch: true
   intentNoMatchThresholds:
     phrases: 0.4
     patterns: 0.4
-    

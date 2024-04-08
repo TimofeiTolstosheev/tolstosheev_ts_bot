@@ -24,7 +24,7 @@ function executeAction(method, inputParams){
         inputParams.body.readTimeout = $.session.awaitAction.readTimeout || inputParams.body.readTimeout;
     }
     logAction(method,'InputParams', toPrettyString(inputParams));
-    inputParams.body.dialogId = $.sessionId || "test";
+    inputParams.body.dialogId = $.testContext ? "autotest" : $.session.dialogId || $.sessionId || "test";
     var options = {
         dataType: "json",
         headers: {
@@ -36,6 +36,8 @@ function executeAction(method, inputParams){
     };
     
     var response;
+    var analyticErrorMessage = "";
+    var analyticMethod = $.session.currentAwaitMethod || method;
     try{
         response = $http.post(url, options);
         logAction(method, 'Response', toPrettyString(response));
@@ -53,17 +55,17 @@ function executeAction(method, inputParams){
                 $.session.waitResponse = true;
                 $.session.awaitRequestId = response.data.requestId;
                 logAction(method, "request id for await method", $.session.awaitRequestId);
+                $.session.currentAwaitMethod = $.session.currentAwaitMethod || method;
             }else{
                 $.session.waitResponse = false;
                 delete $.session.awaitRequestId;
+                delete $.session.currentAwaitMethod;
             }
         }
     }catch(e){
         logAction(method, 'Request failed. Error', e);
     }
     
-    var analyticErrorMessage = "";
-    var analyticMethod = method.match(/.await./) ? "await" : method;
     if(response.status != 200){
         logAction(method, 'Request failed with status', response.status);
         analyticErrorMessage = "Status: " + response.status + ". ";
@@ -83,14 +85,15 @@ function executeAction(method, inputParams){
         
         if(response.data.error){
             try{
-            response.data.errorCode = response.data.error.details.code;
-            response.data.errorMessage = response.data.error.details.message;
+                response.data.errorCode = response.data.error.details.code;
+                response.data.errorMessage = response.data.error.details.message;
             }catch(e){
                 logAction(method, "failed to parse error message", e);
             }
         }
+        
         if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
+            if(response.data.errorCode != 0){
                 analyticErrorMessage += "Error code: " + response.data.errorCode + ". Message: " + response.data.errorMessage;
             }
         }
@@ -108,7 +111,6 @@ function getBalance(){
           "dialogId": $.sessionId
         }
     var response = {};
-    
     // если есть request id, забираем ответ по нему
     if($.session.awaitRequestId){
         response = getResponseByRequestId($.session.awaitRequestId);
@@ -142,12 +144,27 @@ function getBalance(){
 }
 
 function sendDialogLog(){
+    if($.session.dialogLogIsSent){
+        // отправляем только один раз за диалог
+        customLog("Dialog log already has been sent");
+        return;  
+    }
+    
+    if(!$.session.dialogLog){
+        startIntent("6_NoIntent");
+        stopIntent();
+    }
+    
+    if($.testContext || $.request.channelType == 'chatwidget'){
+        var intentCode = '';
+        for(var i = 0; i < $.session.dialogLog.length; i++){
+            intentCode += $.session.dialogLog[i].intentCode + '-' + $.session.dialogLog[i].exitCode + ';';
+        }
+        $reactions.answer("BI dialog log: " + intentCode);
+    }
+    
     if($.testContext){
         // автотесты не отпрвляем
-        return;
-    }
-    if(!$.session.dialogLog){
-        customLog('dialogLog is undefined.');
         return;
     }
     
@@ -155,38 +172,28 @@ function sendDialogLog(){
     $.session.cisco = $.session.cisco || {};
     var inputParams = {};
     inputParams.body = {
-          "dialogId": $.sessionId,
+          "dialogId": $.session.dialogId || $.sessionId,
           "rck": $.session.cisco.rck || "undefined",
           "rckd": $.session.cisco.rckd || "undefined",
           "callerInput": $.session.callerInput || "undefined",
           "callEndType": $.session.callEndType || "undefined",
           "dialogLog": $.session.dialogLog
         }
-    if($.request.channelType == 'chatwidget'){
-        var intentCode = '';
-        for(var i = 0; i < $.session.dialogLog.length; i++){
-            intentCode += $.session.dialogLog[i].intentCode + '-' + $.session.dialogLog[i].exitCode + ';';
-        }
-        $reactions.answer("BI dialog log: " + intentCode);
-    }
-    $analytics.setSessionData("Caller input", $.session.callerInput);
+    
+    $analytics.setSessionData("Caller input", $.session.callerInput || "undefined");
     
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-        if($.request.channelType == 'chatwidget'){
-            $reactions.answer("BI log failed! Status:  " + response.status);
-        }
+    if(response.status != 200 && $.request.channelType == 'chatwidget'){
+        $reactions.answer("BI log failed! Status:  " + response.status);
     }
+    
+    $.session.dialogLogIsSent = true;
     
     if(response.data){
         if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-                if($.request.channelType == 'chatwidget'){
-                    $reactions.answer("BI log failed! Error:  " + response.data.errorMessage);
-                }
+            if(response.data.errorCode !== 0 && $.request.channelType == 'chatwidget'){
+                $reactions.answer("BI log failed! Error:  " + response.data.errorMessage);
             }
         }
     }
@@ -238,9 +245,12 @@ function sendSMSbyTemplate(intent){
     var intentCode = getIntentParam(intent, 'intentCode') || -1;
     var intentResultCode = 0;
     var method = '/ivr/billing/sms/by-template';
-    var inputParams = {
+    var inputParams = {};
+    inputParams.body = {
+          "dialogId": $.sessionId,
+          "smsTemplateName": smsTemplateName,
           "sendTimeout": 10000
-        };
+        }
     inputParams.timeout = 7000;
     
     // Иногда дата начала основного интента совпадает с датой начала интента отправки СМС.
@@ -248,15 +258,9 @@ function sendSMSbyTemplate(intent){
     var d = getDefaultTimeZoneDate();
     d.setSeconds(d.getSeconds() + 1);
     var beginDt = d.toISOString();
-    
-    inputParams.body = {
-          "dialogId": $.sessionId,
-          "smsTemplateName": smsTemplateName
-        }
     var response = executeAction(method, inputParams);
     
     if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
         $.session.SMSstatus = false;
         intentResultCode = 3;
     }
@@ -286,16 +290,7 @@ function createAppeal(comment, clientUtterance, productId, problem){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
     if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.applId = response.data.requestId;
     }
     return;
@@ -310,17 +305,6 @@ function closeAppeal(requestId){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
-    if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
-    }
     return;
 }
 
@@ -340,11 +324,6 @@ function checkSwitchAccident(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.switchAccident = response.data.switchAccident;
     }
     return;
@@ -367,12 +346,6 @@ function checkSession(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
-        
         $.session.activeSessionAvailable = response.data.activeSessionAvailable;
         $.session.serviceRequestRequired = false;
         $.session.aao = false;
@@ -405,17 +378,6 @@ function refreshCktv(){
     inputParams.timeout = 500;
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
-    if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
-    }
     return;
 }
 
@@ -438,7 +400,6 @@ function checkPromisedPayment(){
     if(response.data && !$.session.waitResponse){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.promisedPaymentError = response.data.errorCode;
             }
         }
@@ -462,19 +423,14 @@ function getPromisedPayment(days){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.promisedPaymentError = response.data.errorMessage;
             }
         }
         $.session.requestSuccess = response.data.requestSuccess;
-        $.session.promisedPaymentTotalCost = $.session.promisedPaymentCost * days;
+        $.session.promisedPaymentTotalCost = response.data.totalCost;
     }
     return;
 }
@@ -489,14 +445,12 @@ function activateTP(){
     var response = executeAction(method, inputParams);
     
     if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
         $.session.tpActivationStatus = false;
     }
     
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.tpActivationStatus = false;
             }
         }
@@ -515,16 +469,7 @@ function agreementTerminationRequest(){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
     if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.firstTerminationRequest = response.data.firstTerminationRequest;
     }
     return;
@@ -539,14 +484,9 @@ function checkTVpackageByChannels(){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.tPactivationStatus = false;
             }
         }
@@ -557,25 +497,28 @@ function checkTVpackageByChannels(){
 }
 
 function checkOptom(){
-    var method = '/ivr/billing/special/offer/check/optom';
+    var method = '/ivr/billing/await/special/offer/check/optom';
     var inputParams = {};
     inputParams.body = {
           "dialogId": $.sessionId,
           "optomNew": "new",
-          "sendTimeout": 10000,
-          "timeout": 30000
+          "sendTimeout": 30000,
+          "timeout": 35000
         }
-    var response = executeAction(method, inputParams);
+    var response = {};
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
+    // если есть request id, забираем ответ по нему
+    if($.session.awaitRequestId){
+        response = getResponseByRequestId($.session.awaitRequestId);
+    }else{
+        response = executeAction(method, inputParams);
     }
     
-    if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
+    $.session.checkOptomError = false;
+    if(response.data && !$.session.waitResponse){
+        if(response.data.errorMessage){
+            $.session.checkOptomError = true;
+            return;
         }
         $.session.optom3soId = response.data.optom3soId;
         $.session.optom3active = response.data.optom3active;
@@ -629,14 +572,12 @@ function setOptom(promo){
     var response = executeAction(method, inputParams);
     
     if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-                $.session.setOptomStatus = false;
+        $.session.setOptomStatus = false;
     }
     
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.setOptomStatus = false;
             }
         }
@@ -648,19 +589,18 @@ function cancelServiceRequest(){
     var inputParams = {};
     $.session.cancelSrvRequestStatus = true;
     inputParams.body = {
-          "dialogId": $.sessionId
+          "dialogId": $.sessionId,
+          "timeout": 8000
         }
     var response = executeAction(method, inputParams);
     
     if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
         $.session.cancelSrvRequestStatus = false;
     }
     
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.cancelSrvRequestStatus = false;
             }
         }
@@ -680,15 +620,10 @@ function checkAddress(){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
     $.session.checkAddressError = false;
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-                // $.session.canConnect = false;
                 $.session.checkAddressError = true;
             }
         }
@@ -711,13 +646,11 @@ function cancelSuspension(){
     var response = executeAction(method, inputParams);
     
     if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
         $.session.cancelSuspensionStatus = false;
     }
     if(response.data){
         if(response.data.errorCode){
             if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
                 $.session.cancelSuspensionStatus = false;
             }
         }
@@ -756,11 +689,6 @@ function checkServicesAuthorized(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.proactiveResult = response.data.result;
         $.session.askSms = response.data.askSms;
         $.session.accidentId = response.data.accidentId;
@@ -815,16 +743,7 @@ function checkAccidentByHouse(){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
     if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.askSms = response.data.askSms;
         $.session.accidentId = response.data.accidentId;
         $.session.accident = response.data.accident;
@@ -851,17 +770,6 @@ function setTechServiceSmsNotification(){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
-    if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
-    }
     return;
 }
 
@@ -887,14 +795,8 @@ function getSpasData(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorMessage){
-            if(response.data.errorMessage !== ''){
-                customLog(response.data.details.message);
-            }
-        }
-        
-        $.session.spas.internetProblem = response.data.internetProblem;
-        $.session.spas.tvProblem = response.data.tvProblem;
+        $.session.spas.internetProblem = response.data.internetProblem || {};
+        $.session.spas.tvProblem = response.data.tvProblem || {};
         // есть ли метрики по интернету
         if($.session.spas.internetProblem.technicalServiceRequest ||
            $.session.spas.internetProblem.networkAdministrationRequest ||
@@ -926,16 +828,7 @@ function checkRedirectOctp(){
         }
     var response = executeAction(method, inputParams);
     
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
     if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.flagOctp = response.data.flagOctp;
         $.session.sessionOctp = response.data.sessionOctp;
     }
@@ -959,11 +852,6 @@ function getAvaialbeServiceRequestDays(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.billingCurrentDate = response.data.currentDate;
         $.session.today = response.data.today;
         $.session.tomorrow = response.data.tomorrow;
@@ -993,11 +881,6 @@ function getAvaialbeServiceRequestTimeSlots(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.firstHalf = response.data.firstHalf;
         $.session.secondHalf = response.data.secondHalf;
         $.session.timeSlots = response.data.timeSlots;
@@ -1023,7 +906,7 @@ function createServiceRequest(){
           "comment": $.session.serviceRequestComment,
           "aao": $.session.aao,
           "dateTime": serviceRequestDate,
-          "sendTimeout": 10000
+          "sendTimeout": 20000
         }
     var response = {};
     
@@ -1035,11 +918,6 @@ function createServiceRequest(){
     }
     
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.serviceRequestStatus = response.data.status;
         $.session.serviceRequestInfo = response.data.info;
     }
@@ -1062,11 +940,6 @@ function checkRouter(){
         response = executeAction(method, inputParams);
     }
     if(response.data && !$.session.waitResponse){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.haveRouter = response.data.haveRouter;
         $.session.activeSession= response.data.activeSession;
         $.session.sessionType = response.data.sessionType;
@@ -1082,17 +955,11 @@ function getBaseInfo(){
           "dialogId": $.sessionId
         }
     var response = executeAction(method, inputParams);
-    
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
+    $.session.iktvDevices = {};
+    $.session.appTypes = {};
+    $.session.tvPackagesInfo = {};
     
     if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
         $.session.agreementId = response.data.agreementId;
         $.session.agreementNumber = response.data.agreementNumber;
         $.session.phoneStatus = response.data.phoneStatus;
@@ -1114,6 +981,8 @@ function getBaseInfo(){
         $.session.hasIptv = response.data.hasIptv;
         $.session.b2bexists = response.data.b2bexists;
         $.session.iktvDevices = response.data.iktvDevices;
+        $.session.oplataUk = response.data.oplataUk;
+        $.session.metacom = response.data.metacom;
         
         if($.session.agreementNumber){
             $analytics.setSessionData("Agreement number", $.session.agreementNumber);
@@ -1134,18 +1003,6 @@ function logDialogError(apiMethod, errorMessage){
           "apiMethod": apiMethod
         }
     var response = executeAction(method, inputParams);
-    
-    if(response.status != 200){
-        customLog('Request failed with status ' + response.status);
-    }
-    
-    if(response.data){
-        if(response.data.errorCode){
-            if(response.data.errorCode !== 0){
-                customLog(response.data.errorMessage);
-            }
-        }
-    }
 }
 
 function reboot(){

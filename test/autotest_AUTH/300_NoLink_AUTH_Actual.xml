@@ -1,0 +1,1516 @@
+<!--
+done 1 Авторизованный. nolink. В проактиве неактивный ТП. \ 290 и 29
+done 2 Авторизованный. nolink. В проактиве ДЗ. \ 290 и 29
+done 3 Авторизованный. nolink. В проактиве Авария. \ 500 и 29
+done 4 Авторизованный. nolink. В проактиве ППР.
+done 5 Авторизованный. nolink. В проактиве request.
+done 6 Авторизованный. nolink. В проактиве adminrequest. 
+done 7 Авторизованный. nolink. Проактив ок. 10s lalawait. Авария на свитче, вопросов нет. 
+done 7.1 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - нет. Вопросов нет. 
+done 8 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 1 тишина, потом нет. Вопросов нет. 
+done 9 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 2 тишины, завершение диалога. 
+done 10 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 1 тишина, 1 ноуматч, услуги интернета на договоре нет. На оператора. 
+WIP 11 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 2 ноуматча говорим. Сессии НЕТ. Рестарт порта - ошибка. На оператора с OCTPMetka
+WIP 12 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с inet_octp
+WIP 13 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с tech_spas3
+WIP 14 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с tech_spas2
+WIP 16 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с nolink
+WIP 17 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. У клиента DHCP. На оператора с OCTPMetka
+done 18 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в admin down. Заявка в ААО
+done 19 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в oper down. Заявка в ТС
+20 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up.  На оператора с OCTPMetka
+21 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up.  На оператора с tech_spas3
+22 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up.  На оператора с tech_spas2
+23 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up.  На оператора с tech_spas
+24 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up.  На оператора с inet_octp
+25 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up.  На оператора с nolink
+26 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 60s lalawait Сессия появилась. Помогло? - Да. Вопросов нет. 
+27 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 60s lalawait Сессия появилась. Помогло? - Да. Вопросы есть, номер договора. 
+28 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 60s lalawait Сессия появилась. Помогло? - Номатч, потом Да. Вопросов нет.
+29 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 60s lalawait Сессия появилась. Помогло? - Номатч х2, на оператора с OCTPMetka
+30 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 60s lalawait Сессия появилась. Помогло? - ноуматч, потом нет, на оператора с inet_octp
+31 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 90s lalawait Сессия появилась. Помогло? - тишина, потом нет, на оператора с tech_spas3
+32 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 120s lalawait Сессия появилась. Помогло? - нет, на оператора с tech_spas2
+33 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 150s lalawait Сессия появилась. Помогло? - нет, на оператора с tech_spas
+34 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 60s lalawait Сессия появилась. Помогло? - нет, на оператора с nolink
+35 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - нет. На оператора с OCTPMetka
+36 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - 1 ноуматч, потом нет. На оператора с inet_octp
+37 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - 1 тишина, потом нет. На оператора с tech_spas3
+38 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - 2 ноуматча. На оператора с tech_spas2
+39 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - нет. На оператора с tech_spas
+40 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - нет. На оператора с nolink
+41 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - 2 тишины, завершаем диалог. 
+42 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - 1 тишина, потом да. Вопросов нет.
+43 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? - 1 ноуматч, потом да. Вопросы есть, номер договора. 
+44 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта ок. lalawait 90s. Помогло? -  да. Вопросов нет. 
+45 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 2 ноуматча говорим. Сессия есть (старая). Рестарт порта - ошибка. На оператора с OCTPMetka
+46 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта - ошибка. На оператора с inet_octp
+47 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта - ошибка. На оператора с tech_spas3
+48 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта - ошибка. На оператора с tech_spas2
+49 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта - ошибка. На оператора с tech_spas
+50 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). Рестарт порта - ошибка. На оператора с nolink
+51 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (старая). У клиента DHCP. На оператора с OCTPMetka
+52 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - ноуматч, потом нет. Хотим оператора? - да. На оператора с OCTPMetka
+53 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - тишина, потом нет. Хотим оператора? - да. На оператора с  inet_octp
+54 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - нет. Хотим оператора? - ноуматч, потом да. На оператора с tech_spas3
+55 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - нет. Хотим оператора? - тишина, потом да. На оператора с tech_spas2
+56 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - нет. Хотим оператора? - 2 ноуматча. На оператора с tech_spas
+57 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - нет. Хотим оператора? - да. На оператора с nolink
+58 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - 2 тишины, завершаем диалог. 
+59 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - 2 ноуматча. Перевод на окс со стандартным РМ
+60 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? - 1 ноуматч, потом да. Вопросы есть, номер договора. 
+61 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессия есть (новая).  lalawait 60s. Помогло? -  да. Вопросов нет. 
+62 Запрос на соединение с оператором, Отсутствует подключение к сети или ошибка 678/651
+63 Авторизованный, интент неработающего интернета, у клиента monoKTV_DZ_NotActive. Вопросов нет.
+64 Авторизованный, интент неработающего интернета, у клиента KP_NoDZ_NotActive. Вопросов нет.
+65 Авторизованный, интент неработающего интернета, у клиента KP_NoDZ_NotActive. Вопросы есть, другой интент.
+66 Авторизованный, интент неработающего интернета, у клиента mono_NotEnoughBalance_NotActive. Вопросов нет.
+67 Авторизованный, интент неработающего интернета, у клиента mono_NotEnoughBalance_NotActive. Вопросы есть, другой интент.
+
+-->
+
+<test integration="true">
+  
+  
+    
+    <test-case id="1 Авторизованный. nolink. В проактиве неактивный ТП.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000002",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-29;</a>
+    </test-case>   
+  
+  
+    
+    <test-case id="2 Авторизованный. nolink. В проактиве ДЗ.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000003",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.</a>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>ru_digit_3000_nom. три тысячи</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-29;</a>
+    </test-case>       
+  
+  
+    
+    <test-case id="3 Авторизованный. nolink. В проактиве Авария.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000004",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?</a>
+        <q>да</q>
+        <a>zakaz_sms_info2. Хорошо, я отправлю сообщение на ваш мобильный телефон, как только восстановительные работы будут завершены.</a>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-0;500-29;</a>
+    </test-case>       
+  
+  
+    
+    <test-case id="4 Авторизованный. nolink. В проактиве ППР.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000104",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>techProblems_ppr_header_1. Для улучшения качества услуг связи по вашему адресу будут проводиться планово профилактические работы</a>
+        <a state="/Proactive/PPR"></a>
+        <a state="/Proactive/PPR"></a>
+        <a state="/Proactive/PPR"></a>
+        <a state="/Proactive/PPR"></a>
+        <a state="/Proactive/CallAfterAccident"></a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-0;500-29;</a>
+    </test-case>         
+  
+  
+    
+    <test-case id="5 Авторизованный. nolink. В проактиве SPAS request.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "int": true,
+                "productId": "5"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": true,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": true,
+                                  "requestComment": "string",
+                                  "flowLoss": true,
+                                  "technicalSupport": false,
+                                  "drtvTicket": true,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-10-18T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": false,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-10-18T00:00:00.000+00:00",
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "info": "string",
+                  "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <dateTime>2023-10-18 08:43:55</dateTime>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>SPAS_TS_request. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWant_TS_request. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>tomorrow. завтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>оператор</q>
+        <a>SZDostypno_timeIssue. Я смогу проверить доступное время только после того, как мы с вами выберем день. Для этого скажите, пожалуйста, какой из предложенных дней вы выбираете?</a>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>tomorrow. завтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>оператор</q>
+        <a>perezagruzhayVsyo_transferToOKC. Пожалуйста, перезагрузите Ваше оборудование и проверьте плотность подключения всех кабелей. А я пока перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.</a>
+        <a>Перевод по коллеру tech_spas</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>   
+  
+  
+    
+    <test-case id="6 Авторизованный. nolink. В проактиве SPAS adminrequest.">
+       
+         <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "int": true,
+                "productId": 53
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": true,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": true
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": false,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-40;</a>
+    </test-case>  
+  
+  
+    
+    <test-case id="7 Авторизованный. nolink. В проактиве ок, авария на свитче, вопросов нет.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000550051",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>CommutatorAvaria. По моим данным зафиксирована аварийная ситуация на сетевом оборудовании. Если в течение 10 минут услуги связи не восстановятся, вы можете перезвонить нам, я озвучу сроки устранения неисправности</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-0;</a>
+    </test-case>        
+  
+  
+    
+    <test-case id="7.1 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - нет. Вопросов нет">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>нет</q>
+        <a>UHomeInternet2. К сожалению, провести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и произвела его перезагрузку. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-0;</a>
+    </test-case>       
+  
+  
+    
+    <test-case id="8 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 1 тишина, потом нет. Вопросов нет.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000054",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>нет</q>
+        <a>UHomeInternet2. К сожалению, провести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и произвела его перезагрузку. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-0;</a>
+    </test-case>      
+  
+  
+    
+    <test-case id="9 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 2 тишины, Завершение диалога.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000054",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 300-0;380-10;</a>
+    </test-case>      
+  
+  
+    
+    <test-case id="10 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 1 тишина, 1 ноуматч, услуги интернета на договоре нет. На оператора.">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000008",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>            
+  
+  
+<!--
+ПОПРАВИТЬ МЕТД РЕСТАРТА 
+
+    <test-case id="11 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - 2 ноуматча говорим. Сессии НЕТ. Рестарт порта - ошибка. На оператора с OCTPMetka">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000211",
+                "cellPhone": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": false,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/check/redirect/octp</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "flagOctp": true,
+                    "sessionOctp": true
+                }
+            </response>
+        </mockData> 
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/reboot</query>
+            <response status="200">
+                {
+                      "status": "success",
+                      "requestId": "string",
+                      "response": 
+                        {
+                            "rebooted": "false",
+                            "errorCode": 1,
+                            "authorizationType": 4
+                        }
+                }
+            </response>
+        </mockData>   
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionSuccess. Здорово! Вижу, что сессия установилась. Пожалуйста, проверьте открываются ли страницы. Скажите Да или Нет.</a>
+        <q>сильвупле</q>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>perevod_na_okc_from_NoLink6xxIntent1 Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a>Перевод по коллеру OCTPMetka</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>          
+  
+  
+    
+    <test-case id="12 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с inet_octp">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000211",
+                "cellPhone": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": false,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/reboot</query>
+            <response status="200">
+                {
+                      "status": "success",
+                      "requestId": "string",
+                      "response": 
+                        {
+                            "rebooted": "false",
+                            "errorCode": 1,
+                            "errorMessage": "string"
+                        }
+                }
+            </response>
+        </mockData>  
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>         
+  
+  
+    
+    <test-case id="13 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с tech_spas3">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "int": true,
+                "productId": "5"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": false,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": true,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": true,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": false,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/reboot</query>
+            <response status="200">
+                {
+                      "status": "success",
+                      "requestId": "string",
+                      "response": 
+                        {
+                            "rebooted": "false",
+                            "errorCode": 1,
+                            "errorMessage": "string"
+                        }
+                }
+            </response>
+        </mockData>          
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>      
+  
+  
+    
+    <test-case id="14 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с tech_spas2">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "int": true,
+                "productId": "5"
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": false,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": true,
+                                        "requestComment": "",
+                                        "diagnostics": true,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": false,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/reboot</query>
+            <response status="200">
+                {
+                      "status": "success",
+                      "requestId": "string",
+                      "response": 
+                        {
+                            "rebooted": "false",
+                            "errorCode": 1,
+                            "errorMessage": "string"
+                        }
+                }
+            </response>
+        </mockData>  
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>    
+  
+ 
+
+    <test-case id="16 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта - ошибка. На оператора с nolink">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000211",
+                "cellPhone": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": false,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/reboot</query>
+            <response status="200">
+                {
+                      "status": "success",
+                      "requestId": "string",
+                      "response": 
+                        {
+                            "rebooted": "false",
+                            "errorCode": 1,
+                            "errorMessage": "string"
+                        }
+                }
+            </response>
+        </mockData>  
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>   
+  
+ 
+
+    <test-case id="17 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. У клиента DHCP. На оператора с OCTPMetka">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000211",
+                "cellPhone": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": false,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/reboot</query>
+            <response status="200">
+                {
+                      "status": "success",
+                      "requestId": "string",
+                      "response": 
+                        {
+                            "authorizationType": 4,
+                            "rebooted": "false",
+                            "errorCode": 1,
+                            "errorMessage": "string"
+                        }
+                }
+            </response>
+        </mockData>  
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>lalaWait10. Музыка 10 секунд</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>noinput</q>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>  
+
+
+-->  
+
+
+    <test-case id="18 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в admin down. Заявка в ААО">
+       
+         <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "int": true,
+                "serviceRequestRequired": true,
+                "aao": true,
+                "productId": 53
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "none",
+                    "authorizationType": "string",
+                    "adminStatus": "down",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.</a>
+        <a>doYouWant_admin_request. Я могу создать заявку на специалиста прямо сейчас. Скажите Да, чтобы создать заявку, скажите Нет, если заявка не нужна.</a>
+        <q>да</q>
+        <a>YaSozdal_admin_request. Заявка успешно создана - в течение суток инженер проверит работу оборудования. По результатам проверки я Вам перезвоню.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-40;</a>
+    </test-case>  
+
+
+    <test-case id="19 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в oper down. Заявка в ТС">
+       
+         <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "int": true,
+                "serviceRequestRequired": true,
+                "productId": 53
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": false,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "spas",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "none",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "down",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/get/available/service/days</query>
+            <response status="200">
+                {
+                    "errorMessage": "string",
+                    "errorCode": 0,
+                    "currentDate": "2023-10-18T08:51:23.732Z",
+                    "today": true,
+                    "tomorrow": true,
+                    "afterTomorrow": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/get/time-slots</query>
+            <response status="200">
+                {
+                    "errorMessage": null,
+                    "errorCode": 0,
+                    "firstHalf": false,
+                    "secondHalf": true,
+                    "timeSlots": [
+                        "18:00",
+                        "19:00"
+                    ],
+                    "billingDate": "2023-10-18T00:00:00.000+00:00",
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/send/service/request</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK",
+                  "info": "string"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NoConnectionDefeat. К сожалению вижу, что сессия не восстановилась.</a>
+        <a>SPAS_TS_request. Я проверила информацию по Вашему договору и обнаружила, что требуется создать заявку на техника для устранения неисправности.</a>
+        <a>doYouWant_TS_request. Я могу создать заявку на один из ближайших свободных дней. Визит техника для Вас бесплатный, но в случае наличия проблем на стороне вашего оборудования, техник может предложить их исправить за отдельную оплату. Вы готовы оформить визит специалиста?</a>
+        <q>да</q>
+        <a>SZProverilaDey. Я проверила информацию по доступным дням.</a>
+        <a>SZDostypno. Вот какие варианты доступны</a>
+        <a>today. сегодня</a>
+        <a>tomorrow. завтра</a>
+        <a>SZDostypno2. Пожалуйста выберите вариант из списка.</a>
+        <q>завтра</q>
+        <a>I_sprosil_u_technica. Я уточнила информацию о доступном времени, вот какие есть варианты.</a>
+        <a>from_eighteen. с восемнадцати</a>
+        <a>from_nineteen. с девятнадцати</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>I_sprosil_u_technica1. Пожалуйста назовите вариант из списка.</a>
+        <q>в 7</q>
+        <a>goZayavku1. Давайте проверим я передаю технику заявку на</a>
+        <a>tomorrow. завтра</a>
+        <a>Ru_ord_19_nom_neu. девятнадцатое</a>
+        <a>Ru_month_10_gen. октября</a>
+        <a>DRT_19. девятнадцать</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a>goZayavku2. Скажите, все верно?</a>
+        <q>да</q>
+        <a>SZYaSozdal_TS_request. Спасибо, техник подойдет к Вам (V2)</a>
+        <a>Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a>Ru_month_10_gen. октября</a>
+        <a>at. в</a>
+        <a>DRT_19. девятнадцать</a>
+        <a>Ru_unit_hour_gen_pl. часов.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 300-40;</a>
+    </test-case>  
+  
+  
+    
+    <test-case id="20 Авторизованный. nolink. Проактив ок. 10s lalawait. Не нашла неполадок. Дома? - да. Сессии НЕТ. Рестарт порта. 30s lalawait Сессия не появилась. Порт в up/up. На оператора с OCTPMetka">
+       
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000358",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает интернет</q>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>NoConnection. Вижу, что сессии нет. Пожалуйста, убедитесь, что провод идущий из подъезда плотно подключен в роутер или компьютер, а также не имеет повреждений. Я пока проведу проверку с нашей стороны и вернусь менее, чем через 3 минуты.</a>
+        <a>NewSessionReboot_short. NewSessionReboot Music Short</a>
+        <a>NewSessionReboot_short. NewSessionReboot Music Short</a>
+        <a>NewSessionReboot_short. NewSessionReboot Music Short</a>
+        <q>сильвупле</q>
+        <a>noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.</a>
+        <a>Перевод по коллеру nolink</a>
+        <a>BI dialog log: 300-6;</a>
+    </test-case>     
+
+
+
+
+
+ 
+
+
+</test>

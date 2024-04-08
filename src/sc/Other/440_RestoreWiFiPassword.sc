@@ -17,7 +17,7 @@ theme: /RestoreWiFiPassword
                 $.session.awaitAction.audio = audioDict.initialWait;
                 if($.session.awaitAction.status){
                     delete $.session.awaitAction;
-                    if($.session.haveRouter && $.session.activeSession && $.session.sessionType != "new"){
+                    if($.session.haveRouter && $.session.activeSession){
                         $reactions.transition('/RestoreWiFiPassword/AskSMS');
                     }else{
                         $reactions.transition("/RestoreWiFiPassword/FindPasswordByYourself");
@@ -36,7 +36,7 @@ theme: /RestoreWiFiPassword
         
         state: SendSMS
             q: $commonYes
-            q: $yesForSms
+            q: * $yesForSms *
             script:
                 $.session.intent.stepsCnt++;
                 sendSMS('806_RestoreWiFiPasswordSMS');
@@ -52,9 +52,10 @@ theme: /RestoreWiFiPassword
         
         state: NoSMS
             q: $commonNo
-            q: $noForSms
+            q: * $noForSms *
             script:
                 $.session.intent.stepsCnt++;
+                announceAudio(audioDict.RestoreWiFipassword_noActual);
             go!: /WhatElse/WhatElse
         
         state: СatchAll || noContext = true

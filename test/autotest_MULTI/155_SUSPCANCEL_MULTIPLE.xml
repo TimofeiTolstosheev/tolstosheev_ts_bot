@@ -2,70 +2,45 @@
 <!--155_MULTI_2 Множественная. Мобильный.  Не смогли авторизовать по ФИО. 155 интент. На оператора-->
 <!--155_MULTI_3 Множественная. Мобильный.  2 договора по ФИО, авторизовали по ФИО. Авторизовали. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - 2 непонятные фразы. СМС с мануалом по отмене успешно. Вопросов нет.-->
 <test>
-    <test-case id="155_MULTI_1 Множественная. Мобильный.  Не смогли авторизовать по адресу. 155 интент. На оператора">
+    <test-case id="155_MULTI_1 Множественная. Мобильный.  Не смогли авторизовать по адресу. 155 интент. На оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000020",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000021"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "errorCode": 9, "type": "guest" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>Благодатная 1</q>
+        <q>Благодатная 111</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру cancel_suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;155-1;</a>
     </test-case>
     
-    <test-case id="155_MULTI_2 Множественная. Мобильный.  Не смогли авторизовать по ФИО. 155 интент. На оператора">
+    <test-case id="155_MULTI_2 Множественная. Мобильный.  Не смогли авторизовать по ФИО. 155 интент. На оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000020",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000002120"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Исрафилов мамати анвер оглы</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>AgentGoP. Перевожу вас на специалиста. Спасибо за обращение! В целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру cancel_suspend</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;155-1;</a>
     </test-case>
-    
     
     <test-case id="155_MULTI_3 Множественная. Мобильный.  2 договора по ФИО, авторизовали по ФИО. Авторизовали. Договор приостановлен. Номер актуальный на 1 договоре. Отменяем? - 2 непонятные фразы. СМС с мануалом по отмене успешно. Вопросов нет.">
         <context var="session">
@@ -96,7 +71,7 @@
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>соколов Максим Иванович</q>
+        <q>соколов максим Иванович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>отменить приостановление</q>
         <a>CancelSuspension. Вижу, что на вашем договоре имеется приостановление услуг. Я могу отменить приостановление всех услуг ближайшей датой.</a>
@@ -109,6 +84,7 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+       <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;816-0;155-0;</a>
     </test-case>
 </test>

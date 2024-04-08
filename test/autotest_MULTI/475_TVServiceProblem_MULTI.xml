@@ -1,26 +1,16 @@
-<test>
+<test integration="true">
     
     
     
-    <test-case id="475_Строка 1, мобильный. Множественная. Проблема с ТВ-сервисом. На оператора.">
+    <test-case id="Множественная. Авторизовали. Не работают ТВ-сервисы. На оператора.">
+        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true",
-                "productId": "5"
+                "phoneNumber": "79000002220",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -28,61 +18,23 @@
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру service_problem</a>
+        <a>BI dialog log: 570-0;475-6;</a>
     </test-case>  
     
 
 
-    <test-case id="475_Строка 1.1 Домашний. Множественная. Проблема с ТВ-сервисом. На оператора.">
+    <test-case id="Множественная. Домашний. НЕ авторизовали по ФИО. Не работают ТВ-сервисы. Перевод на оператора">
+        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
+                "phoneNumber": "78412999920",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
-    
 
-
-    <test-case id="475_Строка 2 Домашний. Множественная. Не смогли авторизовать по ФИО. Проблема с ТВ-сервисом. На оператора.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -90,40 +42,59 @@
         <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру service_problem</a>
+        <a>BI dialog log: 570-1;475-6;</a>
     </test-case>  
     
 
 
-    <test-case id="475_Строка 2.1 Домашний. Множественная. 2 договора на ФИО. Не смогли авторизовать по адресу. Проблема с ТВ-сервисом. На оператора.">
+    <test-case id="Множественная. НЕ авторизовали по адресу. Не работают ТВ-сервисы. Перевод на оператора">
+        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
+                "phoneNumber": "79000000021",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-    	<q>/start</q>
+        <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
+        <q>Благодатная 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру service_problem</a>
+        <a>BI dialog log: 570-1;475-6;</a>
     </test-case>  
+    
+
+
+    <test-case id="Множественная. 2 договора на ФИО. Авторизовали. Не работают ТВ-сервисы. Перевод на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>Благодатная 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает портал</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру service_problem</a>
+        <a>BI dialog log: 570-0;475-6;</a>
+    </test-case>  
+    
 </test>

@@ -25,7 +25,7 @@ theme: /PhoneProblem
                     $.session.intent.resultCode = 6;
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
                     stopIntent();
-                    announceAudio(audioDict.transferToAgentForFurther);
+                    announceAudio(audioDict.transferToAgentForFurther_3);
                     $reactions.transition("/Transfer/Transfer");
                 }
             }else{

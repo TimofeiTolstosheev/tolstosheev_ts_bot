@@ -1,163 +1,85 @@
-<test>
+<!--
+1 НРД. Множественная связка. НЕрабочее время. Перевод на OKC.
+2 НРД. Множественная связка. НЕ авторизовали по ФИО. Рабочее время. Перевод на ГСК.
+3 НРД. Множественная связка. НЕ авторизовали по адресу. НЕрабочее время. Перевод на OKC.
+-->
+
+<test integration="true">
     
-        <test-case id="360_Строка 1 Множественная, НРД. Время нерабочее, перевод на OKC">
+        <test-case id="НРД. Множ. 360 - 1">
+        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "gskWorkTime": false
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>я покидаю дом ру</q>
-        <a state="/StopAgreement/CheckGSKworkTime/GSKnotWork">transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-
-    
-    <test-case id="360_Строка 2 Множественная, НРД. Время рабочее, перевод на НСК">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "gskWorkTime": true,
-                "isFirstGskApplication": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>я покидаю дом ру</q>
-        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-
-
-    <test-case id="360_Строка 3 Множественная, НРД. Время НЕрабочее, перевод на OKC">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
+                "phoneNumber": "79000000020",
+                "cellPhone": false,
                 "gskWorkTime": false,
                 "isFirstGskApplication": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>я покидаю дом ру</q>
-        <a>transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру operator</a>
+        <a>BI dialog log: 570-0;360-6;</a>
     </test-case>
-    
+
 
     
-    <test-case id="360_Строка 4 Множественная, не смогли авторизовать по ФИО, НРД. Время рабочее, перевод на НСК">
+    <test-case id="НРД. Множ. 360 - 2">
+       
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
+                "phoneNumber": "79000000020",
+                "cellPhone": false,
                 "gskWorkTime": true,
                 "isFirstGskApplication": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>я покидаю дом ру</q>
-        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a>Перевод по коллеру nrd_nua</a>
+        <a>BI dialog log: 570-1;360-8;</a>
     </test-case>
 
 
-    
-    <test-case id="360_Строка 4.1 Множественная, 2 договора по ФИО, не смогли авторизовать по адресу, НРД. Время рабочее, перевод на НСК">
+
+    <test-case id="НРД. Множ. 360 - 3">
+      
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "int": true,
-                "gskWorkTime": true,
+                "phoneNumber": "79000000021",
+                "cellPhone": false,
+                "gskWorkTime": false,
                 "isFirstGskApplication": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-	    <q>/start</q>
+        <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>Благодатная, 999</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>  
         <q>я покидаю дом ру</q>
-        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther_3. Перевожу на специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру operator</a>
+        <a>BI dialog log: 570-1;360-6;</a>
     </test-case>
+    
+
 </test>

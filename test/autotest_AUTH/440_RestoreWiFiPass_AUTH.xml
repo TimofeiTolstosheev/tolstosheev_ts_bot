@@ -1,37 +1,16 @@
-<test>
+<test integration="true">
     
     
     
-    <test-case id="440_WFKEY Строка 1 АВТОРИЗОВАННЫЙ, домашний, 440 интент. Говорим, где может посмотреть. Вопросов нет.">
+    <test-case id="Авторизованный. ГОРОДСКОЙ. Нужен пароль Wi-Fi. Смотрим на наклейке. Вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": false,
-                "phoneStatus": "1",
-                "haveRouter": false,
-                "activeSession": false
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -41,41 +20,21 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;</a>
     </test-case>   
     
     
     
-    <test-case id="440_WFKEY Строка 2 АВТОРИЗОВАННЫЙ, домашний, 440 интент. Говорим, где может посмотреть. Вопросы есть, номер договора">
+    <test-case id="Авторизованный. ГОРОДСКОЙ. Нужен пароль Wi-Fi. Смотрим на наклейке. Вопросы есть, номер договора">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": false,
-                "phoneStatus": "1",
-                "haveRouter": false,
-                "activeSession": false
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -87,55 +46,30 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят  два</a>
+        <a>DRT_64. шестьдесят четыре</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;420-0;</a>
     </test-case>   
     
     
     
-    <test-case id="440_WFKEY Строка 3 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер СВОЙ. Говорим, где может посмотреть. Вопросов нет">
+    <test-case id="Авторизованный. ГОРОДСКОЙ. Нужен пароль Wi-Fi. Смотрим на наклейке. Тройной переход в интент.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": false,
-                "activeSession": false
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -143,43 +77,26 @@
         <q>скажите пароль вай фай</q>
         <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <q>скажите пароль вай фай</q>
+        <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>скажите пароль вай фай</q>
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a>Перевод по коллеру network_key</a>
+        <a>BI dialog log: 440-0;440-0;440-28;</a>
     </test-case>           
    
     
     
-    <test-case id="440_WFKEY Строка 3.1 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер СВОЙ. Говорим, где может посмотреть. Вопросы есть, номер договора. ">
+    <test-case id="Авторизованный. ГОРОДСКОЙ. Нужен пароль Wi-Fi. Смотрим на наклейке. Вопросы? - Тишина х2. завершаем диалог.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": false,
-                "activeSession": false
+                "phoneNumber": "78412119921",
+                "cellPhone": false
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -191,58 +108,33 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>да</q>
-        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_64. шестьдесят четыре</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 440-0;420-0;380-10;</a> 
     </test-case>    
    
     
     
-    <test-case id="440_WFKEY Строка 4 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессии НЕТ. Говорим, где может посмотреть. Вопросов нет.">
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НЕ наш. Смотрим на наклейке. Вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": false
+                "phoneNumber": "79000000358",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -252,41 +144,21 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;</a>
     </test-case>       
    
     
     
-    <test-case id="440_WFKEY Строка 4.1 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессии НЕТ. Говорим, где может посмотреть. Вопросы есть, номер договора.">
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НЕ наш. Смотрим на наклейке. Вопросы есть, восстановление учетных данных. Вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": false
+                "phoneNumber": "79000000358",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -298,105 +170,57 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_47. сорок семь</a>
+        <a>DRT_21. двадцать один</a>
+        <a>DRT_14. четырнадцать</a>
+        <a>DRT_54. пятьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;801-0;420-0;</a>
     </test-case>
    
-    
-    
-    <test-case id="440_WFKEY Строка 5 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. От СМС отказ. Говорим, где может посмотреть. Вопросов нет.">
+
+
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессии НЕТ. Смотрим на наклейке. Вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
+                "phoneNumber": "79000000357",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>скажите пароль вай фай</q>
-        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>нет</q>
-        <a>sRestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
+        <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;</a>
     </test-case>    
    
     
     
-    <test-case id="440_WFKEY Строка 5.1 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - непонятная фраза, потом НЕТ. Говорим, где может посмотреть. Вопросы есть, номер договора.">
+    <test-case id="440_WFKEY Строка 5.1 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - непонятная фраза, потом НЕТ. Говорим, где может посмотреть. Вопросы есть">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
+                "phoneNumber": "79000000054",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -414,58 +238,33 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_47. сорок семь</a>
+        <a>DRT_21. двадцать один</a>
+        <a>DRT_05. ноль пять</a>
+        <a>DRT_98. девяносто восемь</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;801-0;420-0;</a>
     </test-case>   
     
 
 
-    <test-case id="440_WFKEY Строка 5.2 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - тишина, потом НЕТ. Говорим, где может посмотреть. Вопросы есть, номер договора.">
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Нет. Смотрим на наклейке, вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
+                "phoneNumber": "79000000054",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -480,60 +279,23 @@
         <q>нет</q>
         <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>да</q>
-        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;</a>
     </test-case>   
     
 
 
-    <test-case id="440_WFKEY Строка 5.3 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - 2 непонятные фразы - на оператора.">
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Нет. Смотрим на наклейке, Повторный переход в тот же интент, СМС нужна.  Успешно. Вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
+                "phoneNumber": "79000000054",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -541,103 +303,12 @@
         <q>скажите пароль вай фай</q>
         <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>сильвуплемедам</q>
-        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>сильвуплемедам</q>
-        <a>OKC_RestoreWiFipassword_NOMATCH. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры. (RestoreWiFipassword_NOMATCH)</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>     
-    
-    
-
-    <test-case id="440_WFKEY Строка 5.4 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - 1 тишина, 1 непонятная фраза. На оператора.">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет</q>
+        <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>да</q>
+        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>скажите пароль вай фай</q>
-        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>сильвуплемедам</q>
-        <a>OKC_RestoreWiFipassword_NOMATCH. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры. (RestoreWiFipassword_NOMATCH)</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>    
-    
-    
-
-    <test-case id="440_WFKEY Строка 6 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - 1 тишина, потом ДА. Успешно. Вопросов нет.">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>скажите пароль вай фай</q>
-        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <event>speechNotRecognized</event>
-        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
         <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>да</q>
@@ -645,41 +316,51 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
-    
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;806-0;440-0;</a>
+</test-case>
+
     
 
-    <test-case id="440_WFKEY Строка 6.1 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - 1 непонятная фраза, потом ДА. Успешно. Вопросы есть, номер договора.">
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Ноуматч, потом Нет. Смотрим на наклейке. Вопросов нет.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
+                "phoneNumber": "79000000054",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>скажите пароль вай фай</q>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>сильвуплемедам</q>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 440-0;</a>
+    </test-case>   
+    
+    
+
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Ноуматч, потом Да. Отправка успешна. Вопросов нет.">
         
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
+         <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000054",
+                "cellPhone": true
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -695,41 +376,107 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 806-0;440-0;</a>
+    </test-case>   
+    
+    
+
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Ноуматч х2, на оператора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000054",
+                "cellPhone": true
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>скажите пароль вай фай</q>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>сильвуплемедам</q>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>сильвуплемедам</q>
+        <a>OKC_RestoreWiFipassword_NOMATCH. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры. (RestoreWiFipassword_NOMATCH)</a>
+        <a>Перевод по коллеру network_key</a>
+        <a>BI dialog log: 440-1;</a>
     </test-case>      
     
     
 
-    <test-case id="440_WFKEY Строка 6.2 АВТОРИЗОВАННЫЙ, мобильный, 440 интент. Роутер наш. Сессия ЕСТЬ. На СМС - да. НЕуспешно. На оператора.">
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Тишина, потом Да. Отправка успешна. Вопросы есть, Оператор х2.">
         
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "haveRouter": true,
-                "activeSession": true
+                "phoneNumber": "79000000054",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>скажите пароль вай фай</q>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a>Перевод по коллеру toExit</a>
+        <a>BI dialog log: 806-0;440-0;</a>
+    </test-case>        
+    
+
+    
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Тишина х2, завершаем диалог.">
         
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000054",
+                "cellPhone": true
+            }
+        </context>
         
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>скажите пароль вай фай</q>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>sms_RestoreWiFipassword. Я могу отправить смс с данными для подключения к вай-фай.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a>Перевод по коллеру silence</a>
+        <a>BI dialog log: 440-0;380-10;</a>
+    </test-case>        
+
+
+
+    <test-case id="Авторизованный. Мобильный. Номер привязан к 1 дог. Роутер НАШ. Сессия ЕСТЬ. СМС нужна? - Да. Отправка НЕуспешна. На оператора.">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000111",
+                "cellPhone": false
+            }
+        </context>
         
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
@@ -739,56 +486,8 @@
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>да</q>
         <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>       
-    
-    
-    
-    <test-case id="440_WFKEY Строка 7 АВТОРИЗОВАННЫЙ, домашний, 440 интент. Говорим, где может посмотреть. Переход в тот же интент">
-        
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "autoTest": true,
-                "cellPhone": false,
-                "phoneStatus": "1",
-                "haveRouter": false,
-                "activeSession": false
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>скажите пароль вай фай</q>
-        <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>скажите пароль вай фай</q>
-        <a>RestoreWiFipassword_noActual. Вы можете посмотреть пароль от вашей вай-фай сети на коробке от роутера, либо в его настройках. Пожалуйста, проверьте.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>       
-    
+        <a>Перевод по коллеру network_key</a>
+        <a>BI dialog log: 806-3;440-1;</a>
+    </test-case>
+
 </test>

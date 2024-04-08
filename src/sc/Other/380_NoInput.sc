@@ -31,6 +31,8 @@
         state: AgentRequest
             q: $agentRequest
             intent: /405_AgentRequest
+            script:
+                countAgentRequests($parseTree);
             go!: /AgentRequest/CheckAuth
         
         state: NoMatch

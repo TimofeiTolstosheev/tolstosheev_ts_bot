@@ -38,18 +38,10 @@ theme: /UserMoving
                     if($.session.address){
                         checkAddress();
                     }
-                    if($.session.checkAddressError == false){
-                        if($.session.canConnect){
-                            $reactions.transition("/UserMoving/UserMoving/AskNewAddress/CheckAddress/CanConnect"); 
-                        }else{
-                            $reactions.transition("/UserMoving/UserMoving/AskNewAddress/CheckAddress/CannotConnect");
-                        }
+                    if(!$.session.checkAddressError && $.session.canConnect){
+                        $reactions.transition("/UserMoving/UserMoving/AskNewAddress/CheckAddress/CanConnect"); 
                     }else{
-                        $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                        $.session.intent.resultCode = 6;
-                        stopIntent();
-                        announceAudio(audioDict.transferToAgentForFurther);
-                        $reactions.transition('/Transfer/Transfer');
+                        $reactions.transition("/UserMoving/UserMoving/AskNewAddress/CheckAddress/CannotConnect");
                     }
                     
                 state: CanConnect

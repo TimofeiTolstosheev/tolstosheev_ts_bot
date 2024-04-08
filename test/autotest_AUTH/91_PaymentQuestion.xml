@@ -1,0 +1,103 @@
+<!--
+
+1 Вопрос по оплате, Оператор х2, на оператора
+2 Вопрос по оплате, оператор х1, баланс. Переход в баланс. 
+3 Вопрос по оплате, тишина х2, завершение диалога
+4 Вопрос по оплате тишина х1, переход в замену кабеля
+5 Вопрос по оплате, ноуматч х2, на оператора.
+6 Вопрос по оплате, ноуматч х1, переход в баланс
+
+-->
+
+
+<test integration: "true">
+    
+    
+    <test-case id="1 Вопрос по оплате, Оператор х2, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "cellPhone": true,
+                "autoTest": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "0,00",
+                    "nextPeriodDate": "15.10.2023",
+                    "chargesSum": "445,00",
+                    "textParam": 3,
+                    "periodDates": "15.07.2023-15.08.2023",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 0,
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1">DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>вопрос по оплате</q>
+        <a></a>
+        <q>какой у меня баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>     
+        <a>ru_digit_50_nom. пятьдесят</a>     
+        <a>ru_digit_4_nom. четыре</a>       
+        <a>ru_unit_rub_gen_sn. рубля</a>     
+        <a>ru_digit_90_nom. девяносто</a>   
+        <a>ru_digit_9_nom. девять</a>         
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>Ru_ord_15_gen_mas. пятнадцатого</a>    
+        <a>Ru_month_10_gen. октября</a>
+        <a>balance_period3. Со счёта будет списана оплата за период с</a>
+        <a>Ru_ord_15_gen_mas. пятнадцатого</a>
+        <a>Ru_month_7_gen. июля</a>
+        <a>balance_period_po. по</a>
+        <a>Ru_ord_15_nom_neu. пятнадцатое</a>
+        <a>Ru_month_8_gen. августа</a>
+        <a>ru_digit_400_nom. четыреста</a>     
+        <a>ru_digit_40_nom. сорок</a>       
+        <a>ru_digit_5_nom. пять</a>     
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 800-0;834-0;90-0;</a>
+    </test-case>

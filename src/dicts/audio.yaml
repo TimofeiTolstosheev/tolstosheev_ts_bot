@@ -27,7 +27,7 @@ WhatElseIntent_1:
   value: WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ
 WhatElseIntent_2:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_2.wav
-  value: WhatElseIntent_2. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ
+  value: WhatElseIntent_2. Могу ли я вам еще чем-то помочь?
 WhatElseIntent_3:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/WhatElseIntent_3.wav
   value: WhatElseIntent_3. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ
@@ -87,7 +87,7 @@ zapros_FIO:
   value: zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.
 promisedPaySetInfo:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPaySetInfo.wav
-  value: promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору.
+  value: promisedPaySetInfo. Уважаемый клиент, чтобы активировать услугу обещанный платеж, вам необходимо позвонить с актуального номера, который привязан к вашему договору. Соединяю вас со специалистом для дальнейшей консультации. В целях повышения качества обслуживания. все разговоры записываются.
 DRT_0001:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/DRT_0001.wav
   value: DRT_0001. Соединяю вас со специалистом для дальнейшей консультации.
@@ -216,10 +216,10 @@ perevod_na_okc_SetupTVChannels:
   value: perevod_na_okc_SetupTVChannels. Информацию по настройке каналов на разных моделях приставок и телевизоров вы можете найти на нашем сайте домру точка ру, либо в инструкциях к оборудованию. Пожалуйста, проверьте. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
 perevod_na_okc_Recalculation:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_Recalculation.wav
-  value: perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.Recalculation
+  value: perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation
 perevod_na_okc_RentAccruals:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_RentAccruals.wav
-  value: perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.RentAccruals
+  value: perevod_na_okc_RentAccruals. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.RentAccruals
 perevod_na_okc_Invoice:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/perevod_na_okc_Invoice.wav
   value: perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
@@ -351,7 +351,7 @@ DostuSave:
   value: DostuSave. Чтобы сохранить доступ к услугам оплатите за
 VostanovitDostup:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/VostanovitDostup.wav
-  value: VostanovitDostup. Чтобы восстановить доступ к услугам оплатите за
+  value: VostanovitDostup. Чтобы восстановить доступ к услугам оплатите за период с
 OplataDo:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/OplataDo.wav
   value: OplataDo. Чтобы сохранить доступ к услугам, оплатите до
@@ -711,7 +711,7 @@ zakaz_sms_info1:
   value: zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?
 zakaz_sms_info2:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/zakaz_sms_info2.wav
-  value: zakaz_sms_info2. Хорошо, мы отправим сообщение на ваш мобильный телефон, как только восстановительные работы будут завершены.
+  value: zakaz_sms_info2. Хорошо, я отправлю сообщение на ваш мобильный телефон, как только восстановительные работы будут завершены.
 Oplati_DZ_ktv:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/Oplati_DZ_ktv.wav
   value: Oplati_DZ_ktv. Вижу, что произошло физическое отключение. Телевидение включится после поступления оплаты в течение 24 часов.
@@ -1020,7 +1020,7 @@ pleaseSayYourAddress:
   value: pleaseSayYourAddress. Уточните, пожалуйста, ваш адрес название улицы, номер дома, корпус и номер квартиры, и я проверю техническую возможность подключения к нашим услугам.
 transferToAgentForFurther:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/transferToAgentForFurther.wav
-  value: transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.
+  value: transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.
 yurikForFurther:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/yurikForFurther.wav
   value: yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.
@@ -2034,7 +2034,7 @@ OKC_WebCabCredentials:
   value: OKC_WebCabCredentials. Я умею отправлять вам данные для подключения в виде СМС, но для этого необходимо обращаться с актуального сотового телефона. Привязку можно выполнить самостоятельно в личном кабинете или через оператора. А сейчас я перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.
 SMS_authorization:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/SMS_authorization.wav
-  value: SMS_authorization. Я могу отправить вам СМС с данными для авторизации в интернете. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ
+  value: SMS_authorization. Я могу отправить вам СМС с логином и паролем для входа в личный кабинет и для подключения к сети интернет. Если хотите получить СМС скажите ДА, если СМС не нужна, то скажите НЕТ
 Need_operator:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/Need_operator.wav
   value: Need_operator. Соединить ли Вас с оператором для дальнейшей консультации?
@@ -2152,6 +2152,18 @@ SPAS_TS_request:
 SPAS_admin_request:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/SPAS_admin_request.wav
   value: SPAS_admin_request. Я проверила информация по Вашему договору и обнаружила, что могут наблюдаться технические ограничения. Для их устранения потребуется удаленная проверка оборудования.
+from_one:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_one.wav
+  value: from_one. с одного
+from_two:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_two.wav
+  value: from_two. с двух
+from_three:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_three.wav
+  value: from_three. с трех
+from_four:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_four.wav
+  value: from_four. с четырех
 from_five:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_five.wav
   value: from_five. с пяти
@@ -2209,6 +2221,21 @@ from_twenty_two:
 from_twenty_three:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/from_twenty_three.wav
   value: from_twenty_three. с двадцати трех
+till_one:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_one.wav
+  value: till_one. до одного
+till_two:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_two.wav
+  value: till_two. до двух
+till_three:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_three.wav
+  value: till_three. до трех
+till_four:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_four.wav
+  value: till_four. до четырех
+till_one_night:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_one_night.wav
+  value: till_one_night. до часа ночи
 till_five:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/till_five.wav
   value: till_five. до пяти
@@ -2424,10 +2451,10 @@ kamyshin:
   value: kamyshin. Адреса в Камышине
 UHomeInternet:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternet.wav
-  value: UHomeInternet. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.
+  value: UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.
 UHomeInternetNoAvtor:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternetNoAvtor.wav
-  value: UHomeInternetNoAvtor. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите. да. или , Нет.
+  value: UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.
 UHomeInternet2:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/UHomeInternet2.wav
   value: UHomeInternet2. К сожалению, провести диагностику без вашего присутствия дома не получится. Я удаленно проверила работу оборудования и произвела его перезагрузку. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.
@@ -2598,7 +2625,7 @@ promisedPayError11:
   value: promisedPayError11. К сожалению, я не могу подключить вам "Обещаный платеж", так как у вас не подключена услуга Интернет.
 promisedPayError13_1:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError13_1.wav
-  value: promisedPayError13_1. Вы не можете активировать обещанный платеж, поскольку уже брали его в этом месяце. Повторная активация невозможна. Для того, чтобы услуги заработали, достаточно оплатить
+  value: promisedPayError13_1. Вы не можете активировать обещанный платеж, поскольку уже брали его в этом месяце. Повторная активация невозможна. Для того, чтобы услуги заработали, достаточно оплатить 
 promisedPayError14Mono_1:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPayError14Mono_1.wav
   value: promisedPayError14Mono_1. Я могу помочь активировать обещанный платеж только с первого по пятнадцатое число. Вы можете активировать самостоятельно обещанный платеж в любой день в личном кабинете. Обратите внимание, что при активации после 15 числа, стоимость абонентской платы пересчитается пропорционально оставшимся дням до конца месяца.
@@ -2673,19 +2700,19 @@ Avaria_Wait:
   value: Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.
 DiscountMessage:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/DiscountMessage.wav
-  value: DiscountMessage. Я отправила вам сообщение ссылкой на ваш ЛК
+  value: DiscountMessage. Я отправила вам сообщение с ссылкой на ваш личный кабинет. Пожалуйста, проверьте
 ConnectedDiscount:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/ConnectedDiscount.wav
   value: ConnectedDiscount. Акция успешно подключена
 DiscountError:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/DiscountError.wav
-  value: DiscountError. При подключении РА возникла ошибка, перевожу вас на агента.
+  value: DiscountError. К сожалению, при подключении акции возникла ошибка, перевожу вас на оператора, он поможет. Напоминаю, что мы записываем все разговоры.
 23cheaper:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/23cheaper.wav
   value: 23cheaper. Вам доступно для подключения оптом дешевле на
 23cheaper2:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/23cheaper2.wav
-  value: 23cheaper2. На какой срок желает подключить? Я проверю хватает ли вам денежных средств
+  value: 23cheaper2. На какой срок вы хотите подключить акцию? Я проверю хватит ли денежных средств на балансе
 1cheaper:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/1cheaper.wav
   value: 1cheaper. Вам доступно подключение услуги оптом дешевле на
@@ -2700,7 +2727,7 @@ ActivCheaper2:
   value: ActivCheaper2. Управлять своим договором вы всегда можете самостоятельно в вашем ЛК
 NoAvtorCheaper:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/NoAvtorCheaper.wav
-  value: NoAvtorCheaper. Подключить РА вы можете самостоятельно в ЛК
+  value: NoAvtorCheaper. Подключить акцию оптом дешевле вы можете самостоятельно в личном кабинете на сайте дом точка ру
 EnoughMoney:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/EnoughMoney.wav
   value: EnoughMoney. На вашем счете достаточно средств для активации. Подключить Вам акцию?
@@ -2709,7 +2736,7 @@ NotEnoughMoney:
   value: NotEnoughMoney. Для подключения рекламной акции необходимо внести на счет сумму в размере
 NotEnoughMoney2:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/NotEnoughMoney2.wav
-  value: NotEnoughMoney2. Далее в вашем ЛК активировать РА
+  value: NotEnoughMoney2. Далее в вашем личном кабинете активировать акцию
 month:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/month.wav
   value: month. месяц
@@ -2742,7 +2769,7 @@ Antivirus:
   value: Antivirus. Всю актуальную информацию по подключенным Антивирусам, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
 Channel_package:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/Channel_package.wav
-  value: Channel_package. Всю актуальную информацию по подключенным Пакетам каналов, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
+  value: Channel_package. Управлять пакетами каналов вы всегда можете в своем личном кабинете на сайте дом точка ру или в мобильном приложении мой домру. Там вы можете подключить или отключить пакет, а также ознакомиться со всеми доступными для вас предложениями.
 bonuses:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/bonuses.wav
   value: bonuses. Всю актуальную информацию по доступным бонусам и акциям, вы можете получить в любое время на сайте дом точка ру или в мобильном приложении мой дом ру.
@@ -3057,7 +3084,7 @@ aftererrorop_ThemeMatch:
   value: aftererrorop_ThemeMatch. С удовольствием отвечу на ваш вопрос далее. Но сначала уточните, требуется ли вам информация о способах оплаты?
 ask_promisedPay_ThemeMatch:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/ask_promisedPay_ThemeMatch.wav
-  value: ask_promisedPay_ThemeMatch. Поняла вас, в удовольствием отвечу на все ваши вопросы. Но перед этим, пожалуйста, уточните, вы бы хотели воспользоваться услугой обещанный платеж?
+  value: ask_promisedPay_ThemeMatch. Поняла вас, с удовольствием отвечу на все ваши вопросы. Но перед этим, пожалуйста, уточните, вы бы хотели воспользоваться услугой обещанный платеж?
 SetupTVChannels_SMS:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/SetupTVChannels_SMS.wav
   value: SetupTVChannels_SMS. Я могу отправить вам сообщение со ссылкой на инструкции для самостоятельной настройки различных моделей телевизоров. Если хотите получить сообщение, скажите ДА. Если смс не нужна, скажите НЕТ.
@@ -3147,7 +3174,7 @@ zapros_FIO_CatchAll:
   value: zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор. 
 requestStreetAndHouse_CatchAll:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/requestStreetAndHouse_CatchAll.wav
-  value: requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь. 
+  value: requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.
 requestStreetAndHouse_ThemeMatch:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/requestStreetAndHouse_ThemeMatch.wav
   value: requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес
@@ -3168,7 +3195,7 @@ pleaseSayYoutCity_ThemeMatch:
   value: pleaseSayYoutCity_ThemeMatch. Понимаю, что вы хотите как можно скорее решить ваш вопрос. И именно для этого, назовите, пожалуйста ваш город, чтобы я смогла определить необходимый договор.
 Operator:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/Operator.wav
-  value: Operator. Для того, чтобы мы смогли оперативно и качественно вам помочь, пожалуйста, ответьте на мой вопрос. 
+  value: Operator. Я могу оперативно и качественно вам помочь. Пожалуйста, давайте попробуем решить ваш вопрос в разговоре со мной 
 RequestFIO_ThemeMatch:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/RequestFIO_ThemeMatch.wav
   value: RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор
@@ -3181,3 +3208,36 @@ ConfirmCity_subject:
 noInternetProduct:
   audio: https://assets.dcc.movixlab.r-one.io/prerecords/noInternetProduct.wav
   value: noInternetProduct. Не вижу на вашем договоре услуги Интернет. Перевожу звонок на оператора, он поможет решить ваш вопрос. Напоминаю, что все разговоры записываются.
+promisedPaymentDisagree:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/promisedPaymentDisagree.wav
+  value: promisedPaymentDisagree. Мы всегда можем вернуться к вопросу обещанного платежа, только спросите у меня про него еще раз
+one_day:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/one_day.wav
+  value: one_day. одни сутки
+days:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/days.wav
+  value: days. суток
+amount_2_ord:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/amount_2_ord.wav
+  value: amount_2_ord. двое
+amount_3_ord:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/amount_3_ord.wav
+  value: amount_3_ord. трое
+amount_4_ord:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/amoutn_4_ord.wav
+  value: amoutn_4_ord. четверо
+DomofonUK:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DomofonUK.wav
+  value: DomofonUK. Всю интересующую информацию по балансу, начислениям и оплате домофон+ии вы можете узнать, обратившись в вашу управляющую компанию. телефоны для связи можно найти на квитанциях за оплату коммунальных услуг, либо на информационном стенде в подъезде.
+DomofonMetakom:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DomofonMetakom.wav
+  value: DomofonMetakom. Всю интересующую информацию по балансу, начислениям и оплате домофон+ии вы можете узнать, обратившись в компанию Метаком. по телефонам, два-два-два, пять-четыре, восемь-два. или, два-два-два, пять-четыре, шесть-два.
+DomofonBalanceCifral:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/DomofonBalanceCifral.wav
+  value: DomofonBalanceCifral. Для дальнейшей консультации перевожу вас в поддержку Цифрала. Пожалуйста оставайтесь на линии.
+Cognition:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Cognition.wav
+  value: Cognition. Познание.
+Payforaccess:
+  audio: https://assets.dcc.movixlab.r-one.io/prerecords/Payforaccess.wav
+  value: Payforaccess. Чтобы восстановить доступ к услугам оплатите за

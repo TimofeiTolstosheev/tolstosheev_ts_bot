@@ -33,6 +33,7 @@ function parseResteriskInputParams(){
             $.session.cisco.uw = headersObject.i || '';
         }else{
             customLog('tojustaivars parameter is undefined');
+            throw new Error('Cisco input headers undefined');
         }
         
         customLog("sipHeaders: " + toPrettyString($.session.sipHeaders));
@@ -57,6 +58,8 @@ function transferByCallerInput(callerInput){
     callerInput = callerInput || $.injector.defaultCallerInput;
     $.session.cisco = $.session.cisco || {};
     $.response.replies = $.response.replies || [];
+    $.session.lastIntentCode = $.session.lastIntentCode || getIntentParam("6_NoIntent", "intentCode") || 6;
+    $analytics.setSessionData("Naumen intent id", $.session.lastIntentCode || "undefined");
     var h = {
             "Fj": "a=" + $.session.callerInput + ";" +
                   "b=" + $.session.region + ";" +
@@ -65,10 +68,14 @@ function transferByCallerInput(callerInput){
                   "f=" + $.session.cisco.var4 + ";" +
                   "g=" + $.session.cisco.icm + ";" +
                   "h=" + $.session.cisco.a + ";" +
-                  "i=" + $.session.cisco.uw
+                  "i=" + $.session.cisco.uw + ";" +
+                  "j=" + $.session.lastIntentCode
         };
     
     $analytics.setSessionResult('Input headers: ' + toPrettyString($.session.sipHeaders) + '. Output headers: ' + toPrettyString(h));
+    $.session.dialogLogIsSent = $.session.dialogLogIsSent || false;
+    if(!$.session.dialogLogIsSent) $analytics.setScenarioAction("Не отправлено в BI");
+    if($.session.queryCnt == 1) $analytics.setScenarioAction("В диалоге только start");
     var phoneNumber = $env.get("isProd", false) ? $.injector.ciscoExitPhoneNumberProd : $.injector.ciscoExitPhoneNumberTest;
     $.response.replies.push({
         type: "switch",

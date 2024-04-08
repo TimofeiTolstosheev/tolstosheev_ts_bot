@@ -1,8 +1,7 @@
 <!--0_NOMATCH Строка 1 Множественная, мобильный, 3 непонятные фразы - на ОКЦ.-->
 <!--0_NOMATCH Строка 1.1 Множественная, мобильный, 3 непонятные фразы, проблема в неактивном тарифе проактива. Озвучиваем.-->
 <!--0_NOMATCH Строка 2 Множественная, мобильный, 1 непонятная фраза, переход в потенц. кл. Проходим сценарий-->
-<!--0_NOMATCH Строка 2.1 Множественная, мобильный, не авторизовали по адресу - 1 непонятная фраза, переход в потенц. кл. - физик/юрик - юрик - перевод-->
-<!--0_NOMATCH Строка 3 Множественная, мобильный, 2 непонятные фразы, переход в потенц. кл. Проходим сценарий-->
+<!--0_NOMATCH Строка 3 Множественная, мобильный, 2 множ связка - не авторизовали по адресу - 2 непонятные фразы, переход в потенц. кл. Проходим сценарий-->
 <!--0_NOMATCH Строка 3.1 Множественная, мобильный, не авторизовали по ФИО - 2 непонятные фразы, переход в потенц. кл. - физик/юрик - физик - перевод-->
 <!--0_NOMATCH Строка 4 Множественная, мобильный, 2 непонятные фразы. Переход общие тех. вопросы.-->
 <!--0_NOMATCH Строка 5 Множественная, мобильный, 1 непонятная фраза, переход в общ. тех. вопросы - 2 непонятные фразы - перевод-->
@@ -10,27 +9,24 @@
 <!--0_NOMATCH Строка 7 Множественная, не смогли авторизовать по ФИО. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора-->
 <!--0_NOMATCH Строка 7.1 Множественная, По ФИО нашли 2 договора. Авторизовали далее по адреасу успешно. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора-->
 <!--0_NOMATCH Строка 8 Множественная, по ФИО нашли 2 договора, не смогли отличить по адресу. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора-->
+
+        <!--МНОЖЕСТВЕННАЯ СВЯЗКА-->
+<!--=== 2 Начало. errorCode9=true, Множественная связка, ФИО - х2 ноуматч, переход в 650 интент, любая ветка.-->
+<!--===11 Начало. errorCode9=true, Множественная связка, ФИО - errorCode9=true - какой адрес? - Ноуматч Х2 - 650 интент-->
+<!--===12 Начало. errorCode9=true, Множественная связка, Запрос адреса - оператор х1, потом ноуматч х2 - 650 интент-->
+<!--===15 Начало. errorCode9=true, Множественная связка, Запрос адреса - ноуматч х1 - оператор - ноуматч х1, переводим в общий вопроспотом полный адрес, user=true, переход в интент. Запрос оператора.-->
+
+        <!--МНОЖЕСТВЕННУЮ СВЯЗКУ АВТОРИЗОВАЛИ-->
+<!--+++7 Начало. errorCode9=true, Множественная связка, Запрос адреса - ноуматч х1, потом неполный адрес. user=true, запрос интента, баланс. Любая ветка. ДИНАМИЧЕСКАЯ СУММА-->
+
 <test>
-    <test-case id="0_NOMATCH Строка 1 Множественная, мобильный, 3 непонятные фразы - на ОКЦ.">
+    <test-case id="0_NOMATCH Строка 1 Множественная, мобильный, 3 непонятные фразы - на ОКЦ." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000020",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000020"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -43,18 +39,17 @@
         <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
         <q>сильвуплемедам</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру no_match</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;0-1;</a>
     </test-case>
 
     <test-case id="0_NOMATCH Строка 1.1 Множественная, мобильный, 3 непонятные фразы, проблема в неактивном тарифе проактива. Озвучиваем.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
+                "phoneNumber": "79000000020",
                 "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "agreementNumber": "780046998264"
             }
         </context>
         
@@ -141,141 +136,49 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;0-29;</a>
     </test-case>
   
-    <test-case id="0_NOMATCH Строка 2 Множественная, мобильный, 1 непонятная фраза, переход в потенц. кл. Проходим сценарий">
+    <test-case id="0_NOMATCH Строка 2 Множественная, мобильный, 1 непонятная фраза, переход в потенц. кл. Проходим сценарий" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000020"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Глокая куздра штековна</q>
+        <a>zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Глокая куздра штековна</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
-        <q>хочу подключить услугу</q>
-        <a>UtochneniePK. Я правильно поняла, что Вы хотите подключить новую услугу? Скажите Да или Нет.</a>
-        <q>да</q>
+        <q>хочу узнать есть ли подключение по адресу</q>
+        <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>физическое</q>
         <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>    
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;0-0;340-12;</a>  
     </test-case>
     
-    <test-case id="0_NOMATCH Строка 2.1 Множественная, мобильный, не авторизовали по адресу - 1 непонятная фраза, переход в потенц. кл. - физик/юрик - юрик - перевод">
+    <test-case id="0_NOMATCH Строка 3 Множественная, мобильный, 2 множ связка - не авторизовали по адресу - 2 непонятные фразы, переход в потенц. кл. Проходим сценарий" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000021"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>сильвуплемедам</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
-        <q>хочу подключить услугу</q>
-        <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
-        <q>как юридическое</q>
-        <a>yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-        
-    <test-case id="0_NOMATCH Строка 3 Множественная, мобильный, 2 непонятные фразы, переход в потенц. кл. Проходим сценарий">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>сильвуплемедам</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
-        <q>сильвуплемедам</q>
-        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
-        <q>хочу подключить услугу</q>
-        <a>UtochneniePK. Я правильно поняла, что Вы хотите подключить новую услугу? Скажите Да или Нет.</a>
-        <q>да</q>
-        <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case> 
-
-    <test-case id="0_NOMATCH Строка 3.1 Множественная, мобильный, не авторизовали по ФИО - 2 непонятные фразы, переход в потенц. кл. - физик/юрик - физик - перевод">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>улица фучика 15 корпус 4</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
@@ -285,18 +188,42 @@
         <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
         <q>физическое</q>
         <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;0-0;340-12;</a> 
+    </test-case> 
+
+    <test-case id="0_NOMATCH Строка 3.1 Множественная, мобильный, не авторизовали по ФИО - 2 непонятные фразы, переход в потенц. кл. - физик/юрик - физик - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002820"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>на Агафонову Зинаиду Ахмедовну</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <q>сильвуплемедам</q>
+        <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
+        <q>хочу подключить услугу</q>
+        <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>физическое</q>
+        <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;0-0;340-12;</a>
     </test-case>
 
     <test-case id="0_NOMATCH Строка 4 Множественная, мобильный, 2 непонятные фразы. Переход общие тех. вопросы. - 2 непонятные фразы - перевод">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
+                "phoneNumber": "79000000020",
                 "agreementId": "121212",
                 "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true",
                 "int": "true",
                 "domrutv": "true"
             }
@@ -322,37 +249,21 @@
         <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
         <q>технический вопрос</q>
         <a>SpecifyIntTV. Подскажите Ваш вопрос по услуге телевидения или интернета?</a>
-        <q>интернет</q>
-        <a>SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи</a>
         <q>кого</q>
-        <a>SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи</a>
+        <a>SpecifyIntTV. Подскажите Ваш вопрос по услуге телевидения или интернета?</a>
         <q>кого</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру common_tech</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;0-0;250-1;</a>
     </test-case>
 
-    <test-case id="0_NOMATCH Строка 5 Множественная, мобильный, 1 непонятная фраза, переход в общ. тех. вопросы - 2 непонятные фразы - перевод">
+    <test-case id="0_NOMATCH Строка 5 Множественная, мобильный, 1 непонятная фраза, переход в общ. тех. вопросы - 2 непонятные фразы - перевод" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
+                "phoneNumber": "79000002720"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -366,208 +277,114 @@
         <q>технический вопрос</q>
         <a>SpecifyIntTV. Подскажите Ваш вопрос по услуге телевидения или интернета?</a>
         <q>интернет</q>
-        <a>SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи</a>
+        <a>chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a>wait_timeout. Сейчас я проверю работу оборудования. Мне потребуется не более 30 секунд для получения информации. Пожалуйста оставайтесь на линии.</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
         <q>кого</q>
-        <a>SpecifyQuestion. Пожалуйста уточните у вас не подключается интернет, не открываются сайты, низкая скорость соединения или разрывы связи</a>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
         <q>кого</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>NewSession. Вижу, что у Вас несколько минут назад была установлена сессия. Пожалуйста, проверьте возможно интернет уже работает. Я вернусь к Вам за ответом через минуту.</a>
+        <a>NewSessionReboot. NewSessionReboot Music</a>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>кого</q>
+        <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
+        <q>кого</q>
+        <a>perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру nolink</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;0-0;250-0;300-1;</a>
     </test-case>
 
-    <test-case id="0_NOMATCH Строка 6 Множественная, мобильный, 1 непонятная фраза, переход в общ. фин. вопросы - баланс">
+    <test-case id="0_NOMATCH Строка 6 Множественная, мобильный, 1 непонятная фраза, переход в общ. фин. вопросы - баланс" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
+                "phoneNumber": "79000022220"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
-            <response status="200">
-                {
-                    "recommendSum": "0,00",
-                    "nextPeriodDate": "2024-02-01 00:00",
-                    "chargesSum": "445,00",
-                    "textParam": 2,
-                    "periodDates": "2",
-                    "opEndDate": "",
-                    "curBalance": "2056,01",
-                    "firstPay": "",
-                    "leasDz": "0,00",
-                    "closeDate": "",
-                    "lastPayment": 0,
-                    "retStr": "$1",
-                    "errorCode": 0,
-                    "isDeny": true,
-                    "status": "success"
-                }
-            </response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "SMSstatus": "OK" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Шелохов Иван ардемидович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>финансовая консультация</q>
         <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
         <q>какой у меня баланс</q>
-        <a>UBalans. Ваш баланс</a>
-        <a>ru_digit_2000_nom. две тысячи</a>         
-        <a>ru_digit_50_nom. пятьдесят</a>         
-        <a>ru_digit_6_nom. шесть</a>         
-        <a>ru_unit_rub_gen_pl. рублей</a>         
-        <a>ru_digit_1_nom_fem. одна</a>         
-        <a>ru_unit_kop_nom_sn. копейка</a>
-        <a>StoimistZa. Стоимость услуг за</a>
-        <a>Ru_month_2_nom. февраль</a>
-        <a>ru_digit_400_nom. четыреста</a>     
-        <a>ru_digit_40_nom. сорок</a>        
-        <a>ru_digit_5_nom. пять</a>    
-        <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>OplataDo. Чтобы сохранить доступ к услугам, оплатите до</a>
-        <a>Ru_ord_1_gen_mas. первого</a>      
-        <a>Ru_month_2_gen. февраля</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>нет</q>
-        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;0-0;5-0;834-0;90-0;</a>
     </test-case>
 
-    <test-case id="0_NOMATCH Строка 7 Множественная, не смогли авторизовать по ФИО. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора">
+    <test-case id="0_NOMATCH Строка 7 Множественная, не смогли авторизовать по ФИО. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000002320"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-       
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
+        <q>Аксаков Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
         <q>проблема с интернетом</q>
-        <a>perevod_na_okc_from_CommonIssueInternet. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются. (CommonIssueInternet)</a>
-        <a state="/Transfer/Transfer"/>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет</q>
+        <a>UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;0-0;490-0;</a>
     </test-case>
         
-    <test-case id="0_NOMATCH Строка 7.1 Множественная, По ФИО нашли 2 договора. Авторизовали далее по адреасу успешно. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора">
+    <test-case id="0_NOMATCH Строка 7.1 Множественная, По ФИО нашли 2 договора. Авторизовали далее по адреасу успешно. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000021"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
         <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>благодатная 1</q>
+        <q>благодатная 13</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
         <q>проблема с интернетом</q>
+        <a>CommonInternetQuestion. Пожалуйста, опишите подробнее вашу проблему с услугой Интернет</a>
+        <q>кого</q>
+        <a>CommonInternetQuestion. Пожалуйста, опишите подробнее вашу проблему с услугой Интернет</a>
+        <q>кого</q>
         <a>perevod_na_okc_from_CommonIssueInternet. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются. (CommonIssueInternet)</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру common_tech</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;0-0;490-6;</a>
     </test-case>  
 
-    <test-case id="0_NOMATCH Строка 8 Множественная, по ФИО нашли 2 договора, не смогли отличить по адресу. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора">
+    <test-case id="0_NOMATCH Строка 8 Множественная, по ФИО нашли 2 договора, не смогли отличить по адресу. Мобильный, 2 непонятные фразы, переход в общ. тех. вопр. интернет. на оператора" integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79000000021"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
-            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -581,7 +398,180 @@
         <q>сильвуплемедам</q>
         <a>DnotUnderstandU2. Пожалуйста. выберите тему. У вас не работает услуга или вам нужна консультация</a>
         <q>проблема с интернетом</q>
-        <a>perevod_na_okc_from_CommonIssueInternet. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются. (CommonIssueInternet)</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>да</q>
+        <a>perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру common_tech</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;0-0;490-6;</a>
+    </test-case>
+    
+    <!--МНОЖЕСТВЕННАЯ СВЯЗКА-->
+    <test-case id="===2" integration="true">
+        <context var="session">
+            { 
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002820"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мне обидно</q>
+        <a state="/Init/InitMSHi/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>совсем меня не понимают</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===11" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>зачем это</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>чье</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===12" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>оператора дайте</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/AgentRequest">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>чей</q>
+        <a>requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>чей</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===15" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>чей</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>оператора дайте</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/AgentRequest">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>чей</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <!--МНОЖЕСТВЕННУЮ СВЯЗКУ АВТОРИЗОВАЛИ-->
+    <test-case id="+++7" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>чей</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>благодатная дом 13</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">UBalans. Ваш баланс</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_1000_nom. тысяча</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_600_nom. шестьсот</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Ru_month_4_gen. апреля</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">balance_period3. Со счёта будет списана оплата за период с</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Ru_ord_19_gen_mas. девятнадцатого</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Ru_month_4_gen. апреля</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">balance_period_po. по</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Ru_ord_19_nom_neu. девятнадцатое</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Ru_month_5_gen. мая</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_800_nom. восемьсот</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendBalanceSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-0;90-0;</a>
+    </test-case>
 </test>

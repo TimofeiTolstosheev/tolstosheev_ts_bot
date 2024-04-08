@@ -38,11 +38,26 @@ function announceDateGen(dt){
 
 // время: часы и минуты
 function announceTime(hours, minutes){
-    var hoursAudio = '';
-    var minutesAudio = '';
+    if(hours > 24){
+        // если больше 24 часов, то озвучиваем в днях
+        var days = Math.round(hours / 24);
+        if(days == 1){
+            announceAudio(audioDict.one_day);
+        }else{
+            if(days <= 4){
+                var audio = "amount_NUM_ord".replace('NUM', days);
+                announceAudio(audioDict[audio]);
+            }else{
+                announceNumber(days);
+            }
+            announceAudio(audioDict.days);
+        }
+        return;
+    }
     
+    var hoursAudio = dateTimeAudioDict.hour[hours];
+    var minutesAudio = '';
     var hoursUnits = hours % 10;
-    hoursAudio = dateTimeAudioDict.hour[hours];
     announceAudio(audioDict[hoursAudio]);
     if(hours == 1 || (hours > 20 && hoursUnits == 1)){
         announceAudio(audioDict.Ru_unit_hour_nom_sn);
@@ -92,15 +107,17 @@ function announceHoursFromDate(dt){
     announceTime(hours, minutes);
 }
 
-// время с до (c 5 до 23)
+// время с до
 function announceTimeFromTimeTo(hoursFrom, minutesFrom, hoursTo, minutesTo){
     var hoursAudio = '';
     var minutesAudio = '';
     
     if(hoursFrom > 0){
-        hoursAudio = dateTimeAudioDict.hourFrom[hoursFrom];
+        hoursAudio = hoursFrom == 1 ? "from_one_night" : dateTimeAudioDict.hourFrom[hoursFrom];
         announceAudio(audioDict[hoursAudio]);
-        announceAudio(audioDict.Ru_unit_hour_gen_pl);
+        if(hoursFrom > 1){
+            announceAudio(audioDict.Ru_unit_hour_gen_pl);
+        }
         
         if(minutesFrom > 0){
             var minutesUnits = minutesFrom % 10;
@@ -126,9 +143,12 @@ function announceTimeFromTimeTo(hoursFrom, minutesFrom, hoursTo, minutesTo){
     }
     
     if(hoursTo > 0){
-        hoursAudio = dateTimeAudioDict.hourTo[hoursTo];
+        
+        hoursAudio = hoursTo == 1 ? "till_one_night" : dateTimeAudioDict.hourTo[hoursTo];
         announceAudio(audioDict[hoursAudio]);
-        announceAudio(audioDict.Ru_unit_hour_gen_pl);
+        if(hoursTo > 1){
+            announceAudio(audioDict.Ru_unit_hour_gen_pl);
+        }
     
         if(minutesTo > 0){
             var minutesUnits = minutesTo % 10;
@@ -151,6 +171,18 @@ function announceTimeFromTimeTo(hoursFrom, minutesFrom, hoursTo, minutesTo){
                 announceAudio(audioDict.Ru_unit_min_gen_pl);
             }
         }
+    }
+}
+
+
+// часы для СЗ с (c 1 до 23)
+//цель не повторять "часов" если hoursFrom >0
+function announceTimeFrom(hoursFrom){
+    var hoursAudio = '';
+    
+    if(hoursFrom > 0){
+        hoursAudio = dateTimeAudioDict.hourFrom[hoursFrom];
+        announceAudio(audioDict[hoursAudio]);
     }
 }
 

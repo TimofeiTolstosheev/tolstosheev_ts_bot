@@ -1,0 +1,398 @@
+<test>
+    <!--TODO-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не знаю это юридическое лицо</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>не знаю это юридическое лицо</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--TODO-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>а я снимаю квартиру мне просто открыть подъезд</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>а я снимаю квартиру мне просто открыть подъезд</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--TODO-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мне нужно связаться с оператором я не хочу с ботом разговаривать</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>мне нужно связаться с оператором я не хочу с ботом разговаривать</q>
+        <a state="/Init/ToOperator">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer"/>
+    </test-case>
+    
+    <!--success-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>ой ну не знаю на кого оформлен договор это у нас жилой дом и плохо работает</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>ой ну не знаю на кого оформлен договор это у нас жилой дом и плохо работает</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--TODO побороть фио-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>дело в том что договор оформлен на 2 человека и поэтому у нас не работает приложение</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>дело в том что договор оформлен на 2 человека и поэтому у нас не работает приложение</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--success-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>абонент с которым вы разговаривали поставил вызов</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>абонент с которым вы разговаривали поставил вызов</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--success--><!--TODO предложить дополнить инит-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>ой я не знаю на сына наверное ой не знаю тогда да номер договора могу сказать</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>ой я не знаю на сына наверное ой не знаю тогда да номер договора могу сказать</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--ok-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не знаю на тсж</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>не знаю на тсж</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--TODO побороть фио-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>никаких договоров у меня нет у меня к вам вопрос мне вопрос нужен ответ не нужен от вас а договоров у меня нет никаких</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>никаких договоров у меня нет у меня к вам вопрос мне вопрос нужен ответ не нужен от вас а договоров у меня нет никаких</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--TODO побороть фио-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню дайте мне поговорить с этим сотрудником</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>не помню дайте мне поговорить с этим сотрудником</q>
+        <a>qwerty</a>
+    </test-case>
+    
+    <!--TODO предложить дополнить инит-->
+    <test-case id="Клиент/не клиент? - да - Ваш город X? - да - Какой адрес? - называем адрес (guest-with-house=true) - какие ФИО? - фраза Х">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "cellPhone": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>пока еще не оформил</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>пока еще не оформил</q>
+        <a>qwerty</a>
+    </test-case>
+</test>

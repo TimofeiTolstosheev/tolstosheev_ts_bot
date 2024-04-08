@@ -23,7 +23,8 @@ function executeAuthAction(method, inputParams){
     inputParams.body = inputParams.body || {};
     logAuthAction(method, "InputParams", toPrettyString(inputParams));
     inputParams.body.secretKey = $secrets.get("auth_secret_key", "null");
-    inputParams.body.dialogId = $.sessionId || "test";
+    inputParams.body.dialogId = $.testContext ? "autotest" : $.session.dialogId || $.sessionId || "test";
+    inputParams.body.sendTimeout = inputParams.body.sendTimeout || $.injector.actionSendTimeout;
     var options = {
         dataType: "json",
         headers: {
@@ -31,7 +32,7 @@ function executeAuthAction(method, inputParams){
             "Authorization": inputParams.auth ? "Bearer " + inputParams.auth : undefined
         },
         body: inputParams.body,
-        timeout: inputParams.timeout || $.injector.actionTimeout
+        timeout: inputParams.timeout || $.injector.authTimeout
     };
 
     var response;
@@ -39,13 +40,16 @@ function executeAuthAction(method, inputParams){
         response = $http.post(url, options);
         delete $.session.authErrorCode;
         logAuthAction(method, "Response", toPrettyString(response));
-
+        
+        var analyticErrorMessage = "";
         if (response.status == 500) {
             try{
                 var j = JSON.parse(response.error); // response.error приходит строкой
                 $.session.authErrorCode = j.details[0].code;
                 $.session.userType = "guest"; // считаем пользователя неавторизованным
                 logAuthAction(method, "AuthErrorMessage", j.details[0].message);
+                analyticErrorMessage = "Status: " + response.status + ". Error code: " + $.session.authErrorCode + ". Error: " + j.details[0].message;
+                $analytics.setSessionData(method, analyticErrorMessage);
                 return response;
             }catch(e){
                 customLog("Failed to parse error response. Error: " + e);
@@ -56,18 +60,24 @@ function executeAuthAction(method, inputParams){
             var errorMessage = toPrettyString(response.error) || "unknown error";
             if (response.status === -1) {
                 $.session.requestTimeout = true;
+                $analytics.setScenarioAction("Init timeout");
             }
-            $.session.userType = "guest"; // считаем пользователя неавторизованным
+            analyticErrorMessage = "Status: " + response.status + ". Error: " + errorMessage;
+            $.session.userType = "undefined-guest"; // считаем пользователя неопределенным
+            $analytics.setSessionData(method, analyticErrorMessage);
             throw new Error("Request failed with status " + response.status + ". Error: " + errorMessage);
         }
         
         if (response.data) {
             $.session.token = response.data.token;
             $.session.userType = response.data.type;
+        
             if(response.data.errorCode){
                 if (response.data.errorCode !== 0) {
                     logAuthAction(method, "AuthErrorMessage", response.data.errorMessage);
                     $.session.authErrorCode = response.data.errorCode;
+                    analyticErrorMessage = "Status: " + response.status + ". Error code: " + $.session.authErrorCode + ". Error: " + errorMessage;
+                    $analytics.setSessionData(method, analyticErrorMessage);
                 }
             }
         } else {
@@ -76,8 +86,8 @@ function executeAuthAction(method, inputParams){
     } catch(e) {
         logAuthAction(method, e.message);
     }
-    
     return response;
+    
 }
 
 function authByPhoneNumber() {
@@ -85,6 +95,7 @@ function authByPhoneNumber() {
     var inputParams = {};
     inputParams.body = {
           "phoneNumber": $.session.phoneNumber,
+          "timeout": 10000,
           "region": billingAlias[$.session.region] || 'perm' // если неизвестный регион, пробуем в Пермь
     };
     return executeAuthAction(method, inputParams);

@@ -1,33 +1,72 @@
+<!--170_INCREASEAP Строка 1    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка успешна. Вопросов нет. -->
+<!--170_INCREASEAP Строка 2    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 непонятная фраза, потом да. Отправка успешна. Вопросы есть, номер договора.-->
+<!--170_INCREASEAP Строка 2.1  Множественная, мобильный, 170 интент. Флаг повышения ЕСТЬ. На СМС - 1 непонятная фраза, потом да. Отправка успешна. Вопросов нет.-->
+<!--170_INCREASEAP Строка 3    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 тишина, потом да. Отправка успешна. Вопросы есть, номер договора.-->
+<!--170_INCREASEAP Строка 4    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 2 непонятные фразы. Вопросов нет.-->
+<!--170_INCREASEAP Строка 4.1  Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 2 непонятные фразы. Оператор.-->
+<!--170_INCREASEAP Строка 4.2  Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 2 тишины. Сброс.-->
+<!--170_INCREASEAP Строка 5    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 тишина и 1 непонятная фраза. Вопросы есть, номер договора.-->
+<!--170_INCREASEAP Строка 6    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка НЕуспешна. Вопросов нет.-->
+<!--170_INCREASEAP Строка 7    Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - нет. Вопросов нет.-->
+<!--170_INCREASEAP Строка 8    Множественная, мобильный, 170 интент. Флага повышения НЕТ. На СМС - да. Отправка успешна. Вопросов нет.-->
+<!--170_INCREASEAP Строка 9    Множественная, мобильный, 170 интент. Флага повышения НЕТ. На СМС - нет. Вопросов нет.-->
+<!--170_INCREASEAP Строка 10   Множественная, мобильный, 170 интент. Флага повышения НЕТ. На СМС - да. Ошибка отправки. Вопросы есть - номер договора.-->
+<!--170_INCREASEAP Строка 11   Множественная, домашний, 170 интент.  Флаг повышения есть. Информируем. Вопросов нет.-->
+<!--170_INCREASEAP Строка 12   Множественная, домашний, 170 интент.  Флага повышения НЕТ. Информируем, вопросов нет.-->
+<!--170_INCREASEAP Строка 13   Множественная, домашний, 170 интент.  Флаг повышения есть. Информируем. Вопросы есть, номер договора.-->
+<!--170_INCREASEAP Строка 14   Множественная, домашний, 170 интент.  Флага повышения НЕТ. Информируем, вопросы есть, номер договора.-->
+<!--170_INCREASEAP Строка 15   Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка успешна. Переход в тот же интент.-->
+<!--170_INCREASEAP Строка 16   Множественная, не авторизовали по адресу. Мобильный, 170 интент. Флага повышения НЕТ. Информируем, Вопросов нет.-->
+<!--170_INCREASEAP Строка 16.1 Множественная, не авторизовали по ФИО. Мобильный, 170 интент. Флага повышения НЕТ. Информируем, Вопросов нет.-->
 <test>
+    
+    <test-case id="170_INCREASEAP Строка 16 Множественная, не авторизовали по адресу. Мобильный, 170 интент. Флага повышения НЕТ. Информируем, Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021",
+                "subscriptionFeeIncrease": false
+            }
+        </context>
+
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров Иван Семенович</q>
+        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>благодатная 555</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>повышение оплаты</q>
+        <a>NoPovAP. Ознакомиться с актуальной информацией по начислениям и доступным предложениям вы всегда можете в личном кабинете или в мобильном приложении Мой дом ру.</a>
+        <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <q>не надо</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;170-0;</a>
+    </test-case>
+    
     <test-case id="170_INCREASEAP Строка 1 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка успешна. Вопросов нет. ">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
-        
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <response status="200">{ "SMSstatus": "OK" }</response>
         </mockData>
         
         <q>/start</q>
@@ -36,47 +75,42 @@
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>повышение оплаты</q>
-        <a>PovAP. В период роста цен на телекоммуникационное оборудование, стоимости поддержки и обслуживания сети в хорошем качестве нам важно продолжать обеспечивать вас надёжным и быстрым интернетом, поэтому мы изменили стоимость услуг по вашему договору. Мы подготовили для вас специальные бонусы, они доступны в личном кабинете или в мобильном приложении Мой дом ру.</a>
-        <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <a state="/SubscriptionFeeIncrease/Increase">PovAP. В период роста цен на телекоммуникационное оборудование, стоимости поддержки и обслуживания сети в хорошем качестве нам важно продолжать обеспечивать вас надёжным и быстрым интернетом, поэтому мы изменили стоимость услуг по вашему договору. Мы подготовили для вас специальные бонусы, они доступны в личном кабинете или в мобильном приложении Мой дом ру.</a>
+        <a state="/SubscriptionFeeIncrease/AskSMS">NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
         <q>да</q>
-        <a>SMSPovAP. Я отправила вам сообщение. Обычно доставка занимает не более минуты. Пожалуйста, проверьте.</a>
+        <a state="/SubscriptionFeeIncrease/AskSMS/SendSMS">SMSPovAP. Я отправила вам сообщение. Обычно доставка занимает не более минуты. Пожалуйста, проверьте.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-0;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 2 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 непонятная фраза, потом да. Отправка успешна. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "agreementNumber": "780046998376",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
-        
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <response status="200">{ "SMSstatus": "OK" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "SMSstatus": "OK" }</response>
         </mockData>
 
         <q>/start</q>
@@ -96,57 +130,94 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_83. восемьдесят три</a>
+        <a>DRT_76. семьдесят шесть</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-0;170-0;801-0;420-0;</a>
     </test-case>
     
-    
+    <test-case id="170_INCREASEAP Строка  2.1 Множественная, мобильный, 170 интент. Флаг ЕСТЬ. На СМС - 1 непонятная фраза, потом да. Отправка успешна. Вопросов нет.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "SMSstatus": "OK" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "SMSstatus": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>узнал что вы повысили ценник</q>
+        <a state="/SubscriptionFeeIncrease/Increase">PovAP. В период роста цен на телекоммуникационное оборудование, стоимости поддержки и обслуживания сети в хорошем качестве нам важно продолжать обеспечивать вас надёжным и быстрым интернетом, поэтому мы изменили стоимость услуг по вашему договору. Мы подготовили для вас специальные бонусы, они доступны в личном кабинете или в мобильном приложении Мой дом ру.</a>
+        <a state="/SubscriptionFeeIncrease/AskSMS">NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <q>сильвуплемедам</q>
+        <a state="/SubscriptionFeeIncrease/AskSMS">NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <q>отправляй</q>
+        <a state="/SubscriptionFeeIncrease/AskSMS/SendSMS">SMSPovAP. Я отправила вам сообщение. Обычно доставка занимает не более минуты. Пожалуйста, проверьте.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет больше вопросов у меня</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-0;170-0;</a>
+    </test-case>
     
     <test-case id="170_INCREASEAP Строка 3 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 тишина, потом да. Отправка успешна. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
+                "phoneNumber": "79000000020",
                 "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
         </mockData>
                         
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <response status="200">{ "SMSstatus": "OK" }</response>
         </mockData>  
         
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <response status="200">{ "SMSstatus": "OK" }</response>
         </mockData>
 
         <q>/start</q>
@@ -167,57 +238,38 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_64. шестьдесят четыре</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-0;170-0;801-0;420-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 4 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 2 непонятные фразы. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
         </mockData>
 
         <q>/start</q>
@@ -234,40 +286,108 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;</a>
     </test-case>
     
-    
-    
-    <test-case id="170_INCREASEAP Строка 5 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 тишина и 1 непонятная фраза. Вопросы есть, номер договора.">
+    <test-case id="170_INCREASEAP Строка 4.1 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 2 непонятные фразы. Оператор.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>повышение оплаты</q>
+        <a>PovAP. В период роста цен на телекоммуникационное оборудование, стоимости поддержки и обслуживания сети в хорошем качестве нам важно продолжать обеспечивать вас надёжным и быстрым интернетом, поэтому мы изменили стоимость услуг по вашему договору. Мы подготовили для вас специальные бонусы, они доступны в личном кабинете или в мобильном приложении Мой дом ру.</a>
+        <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <q>сильвуплемедам</q>
+        <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <q>сильвуплемедам</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>дайте оператора</q>
+        <a>toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру promotion</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;405-6;</a>
+    </test-case>
+    
+    <test-case id="170_INCREASEAP Строка 4.2 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 2 тишины. Сброс.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+
+        <q>/start</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Петров Иван Семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>повышение оплаты</q>
+        <a>PovAP. В период роста цен на телекоммуникационное оборудование, стоимости поддержки и обслуживания сети в хорошем качестве нам важно продолжать обеспечивать вас надёжным и быстрым интернетом, поэтому мы изменили стоимость услуг по вашему договору. Мы подготовили для вас специальные бонусы, они доступны в личном кабинете или в мобильном приложении Мой дом ру.</a>
+        <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;380-10;</a>
+    </test-case>
+    
+    <test-case id="170_INCREASEAP Строка 5 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - 1 тишина и 1 непонятная фраза. Вопросы есть, номер договора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020",
+                "agreementNumber": "780046998376",
+                "subscriptionFeeIncrease": true
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
+        
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <response status="200">{ "SMSstatus": "OK" }</response>
         </mockData>  
         
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <response status="200">{ "SMSstatus": "OK" }</response>
         </mockData>
 
         <q>/start</q>
@@ -287,54 +407,39 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_83. восемьдесят три</a>
+        <a>DRT_76. семьдесят шесть</a>
         <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
         <q>да</q>
         <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;801-0;420-0;</a>
     </test-case>
     
-    
-    
-    <test-case id="170_INCREASEAP Строка 6 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка НЕуспешна. Вопросы есть, номер договора.">
+    <test-case id="170_INCREASEAP Строка 6 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка НЕуспешна. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
-        
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>                
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
             <response status="200">{ "errorCode": 1 }</response>
@@ -350,63 +455,30 @@
         <a>NeedSMSPovAP. Чтобы вам было удобнее, я могу отправить смс со ссылками на личный кабинет и Мобильное приложение. Отправить ли вам сообщение?</a>
         <q>да</q>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>да</q>
-        <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
-        <q>какой у меня номер договора?</q>
-        <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
-        <q>да</q>
-        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-3;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 7 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - нет. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData>
         
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>
-
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
@@ -419,30 +491,26 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 8 Множественная, мобильный, 170 интент. Флага повышения НЕТ. На СМС - да. Отправка успешна. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": false
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
         </mockData>
                         
         <mockData>
@@ -468,40 +536,26 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-0;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 9 Множественная, мобильный, 170 интент. Флага повышения НЕТ. На СМС - нет. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": false
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
-            <response status="200">{ "errorCode": 0 }</response>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
         </mockData>
 
         <q>/start</q>
@@ -516,36 +570,28 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 10 Множественная, мобильный, 170 интент. Флага повышения НЕТ. На СМС - да. Ошибка отправки. Вопросы есть - номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
+                "phoneNumber": "79000000020",
+                "agreementNumber": "780046998376",
+                "subscriptionFeeIncrease": false
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 1 }</response>
-        </mockData>  
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData> 
         
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
@@ -566,45 +612,36 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_83. восемьдесят три</a>
+        <a>DRT_76. семьдесят шесть</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру agreement</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-3;170-0;801-3;420-6;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 11 Множественная, домашний, 170 интент. Флаг повышения есть. Информируем. Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "78419999999",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData> 
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -616,39 +653,30 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 12 Множественная, домашний, 170 интент. Флага повышения НЕТ. Информируем, вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
+                "phoneNumber": "78419999999",
+                "subscriptionFeeIncrease": false
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData> 
 
         <q>/start</q>
-        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-        <q>да</q>
-        <a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
+        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
         <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
@@ -657,31 +685,28 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 13 Множественная, домашний, 170 интент. Флаг повышения есть. Информируем. Вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "78419999999",
+                "agreementNumber": "780046998276",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData> 
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -695,45 +720,37 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_76. семьдесят шесть</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;420-0;</a>
     </test-case>
     
-    
-    
-    <test-case id="170_INCREASEAP Строка 14 Множественная, домашний, 170 интент. Флага повышения НЕТ. Информируем, вопросы есть, новый интент.">
+    <test-case id="170_INCREASEAP Строка 14 Множественная, домашний, 170 интент. Флага повышения НЕТ. Информируем, вопросы есть, номер договора.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
+                "phoneNumber": "78419999999",
+                "agreementNumber": "780046998276",
+                "subscriptionFeeIncrease": false
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData> 
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -747,50 +764,36 @@
         <a state="/WhatElse/WhatElse/HaveQuestions">GetFirstIntent_3. Какой у вас вопрос?</a>
         <q>какой у меня номер договора?</q>
         <a>agreementNumber. Номер вашего договора</a>
-        <a>ru_digit_700_nom. семьсот</a>
-        <a>ru_digit_80_nom. восемьдесят</a>
-        <a>ru_digit_0_nom. ноль</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_6_nom. шесть</a>
-        <a>ru_digit_900_nom. девятьсот</a>
-        <a>ru_digit_90_nom. девяносто</a>
-        <a>ru_digit_8_nom. восемь</a>
-        <a>ru_digit_200_nom. двести</a>
-        <a>ru_digit_60_nom. шестьдесят</a>
-        <a>ru_digit_4_nom. четыре</a>
+        <a>DRT_78. семьдесят восемь</a>
+        <a>DRT_00. ноль ноль</a>
+        <a>DRT_46. сорок шесть</a>
+        <a>DRT_99. девяносто девять</a>
+        <a>DRT_82. восемьдесят два</a>
+        <a>DRT_76. семьдесят шесть</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;170-0;420-0;</a>
     </test-case>
-    
-    
     
     <test-case id="170_INCREASEAP Строка 15 Множественная, мобильный, 170 интент. Флаг повышения есть. На СМС - да. Отправка успешна. Переход в тот же интент.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": true
+                "phoneNumber": "79000000020",
+                "subscriptionFeeIncrease": true
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
-                        
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
-            <response status="200">{ "errorCode": 0 }</response>
-        </mockData>  
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "user" }</response>
+        </mockData> 
         
         <mockData>
             <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
@@ -814,71 +817,29 @@
         <q>да</q>
         <a>SMSPovAP. Я отправила вам сообщение. Обычно доставка занимает не более минуты. Пожалуйста, проверьте.</a>
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-    
-    
-    
-    <test-case id="170_INCREASEAP Строка 16 Множественная, по ФИО 2 договора. Не смогли авторизовать по адресу. Домашний, 170 интент. Флага повышения НЕТ. Информируем, Вопросов нет.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
-        <q>/start</q>
-        <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
-        <q>улица Петра Великого. 999.</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>повышение оплаты</q>
-        <a>NoPovAP. Ознакомиться с актуальной информацией по начислениям и доступным предложениям вы всегда можете в личном кабинете или в мобильном приложении Мой дом ру.</a>
-        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру promotion</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;838-0;170-0;838-0;170-0;170-28;</a>
     </test-case>
     
-    
-    
-    <test-case id="170_INCREASEAP Строка 16.1 Множественная, не смогли авторизовать по ФИО. Домашний, 170 интент. Флага повышения НЕТ. Информируем, Вопросов нет.">
+    <test-case id="170_INCREASEAP Строка 16.1 Множественная, не авторизовали по ФИО. Домашний, 170 интент. Флага повышения НЕТ. Информируем, Вопросов нет.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true,
-                "proactiveResult": "spas",
-                "int": true,
-                "domrutv": true,
-                "subscriptionFeeInd": false
+                "phoneNumber": "78419999999",
+                "subscriptionFeeIncrease": false
             }
         </context>
         
         <mockData>
             <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
         </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData> 
 
         <q>/start</q>
         <a>InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
@@ -890,6 +851,7 @@
         <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;170-0;</a>
     </test-case>
 </test>

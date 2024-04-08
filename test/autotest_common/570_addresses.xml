@@ -1,0 +1,203 @@
+<test integration="true">
+    <test-case id="chck_full_address_1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Бульвар шубина дом 13 4 подъезд квартира 139</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_partly_address_1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Поселок камышеваха аксайский район ростовская область</q>
+        <a>requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу микропауза и номер дома.</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_2">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица имени 339 стрелковой дивизии дом 17/3</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_3">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Село исетское новоселов 14 квартира 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_4">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица новоселов 14 квартира 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_5">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>3 микрорайон дом 23</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_6">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>мичуринск Парковый 90 52</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_7">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_address_FIO_1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_address_8">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Пгт орел терешкова 46 а дробь 1</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <test-case id="chck_full_address_9">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999533143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Бульвар шубина дом 13 4 подъезд квартира 139</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+    </test-case>
+    
+    <!--Снт фантазия участок номер 10-->
+</test>

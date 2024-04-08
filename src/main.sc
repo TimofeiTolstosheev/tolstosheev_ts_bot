@@ -47,19 +47,70 @@ require: libraries/streetsDict4.csv
     name = streetsDict4
     var = $streetsDict4
     # strict = true
+require: libraries/userName.csv
+    name = userName
+    var = $userName
 
 require: require.sc
 
 init:
+    // константы
+    $global.AGENT_REQUEST_INTENT_CODE = 405;
+    $global.BOT_ERROR_EXIT_CODE = 41;
+    
+    bind("preMatch", function($context){
+        if($context.session.lastState == "/Init/HowCanIHelpYou" && $context.request.query){
+            $context.request.query = checkMiscWordsInString($context.request.query);
+            var isDigitsOnly = /^\d+/.test($context.request.query);
+            if(isDigitsOnly){
+                if($context.request.query.replace(/\s/g, "").replace(/\d+/g, "").length == 0){
+                    $reactions.transition("/NoMatch/GetIntent");
+                };
+            };
+            customLog("Filtered Phrase Result: " + toPrettyString($context.request.query));
+            return $context.request.query;
+        };
+    });
+    
     bind("preProcess", function($context){
         $.session.entryState = $context.currentState;
+        $.session.queryCnt = $.session.queryCnt || 0;
+        if($.request.query) $.session.queryCnt++;
+        if($.session.queryCnt > 10){
+            $analytics.setScenarioAction("Больше 10 фраз");
+        };
+        
+        if($.session.lastState == "/WhatElse/WhatElse"){
+            var interrupted = false;
+            try{
+                interrupted = $dialer.isBargeInInterrupted();
+            }catch(e){
+                customLog("Failed to check barge-in interruption. Error: " + e);
+            }
+            customLog("Interrupted: " + interrupted);
+            if(interrupted){
+                if($.session.entryState == "/WhatElse/WhatElse/ToOperator"){
+                    $analytics.setScenarioAction("Перебивание WhatElse. Запрос оператора.");
+                    $analytics.setSessionData("Перебивание WhatElse", "Запрос оператора");
+                }else{
+                    $analytics.setScenarioAction("Перебивание WhatElse. Другое.");
+                    $analytics.setSessionData("Перебивание WhatElse", "Другое");
+                }
+            }else{
+                $analytics.setScenarioAction("Нет перебивания WhatElse");
+            }
+        }
     });
 
     bind("postProcess", function($context){
         $.session.lastState = $context.currentState;
         $.session.lastEntryState = $.temp.entryState || $.session.entryState;
-        $.session.stateLog = $.session.stateLog || [];
-        $.session.stateLog.push($.session.lastEntryState);
+        $.session.intent = $.session.intent || {};
+        // для этих сценариев в ветке А не логируем обычные стейты, а логируем в самих сценариях через logState
+        if(!($.session.clientPathExperiment == "A" && ($.session.intent.currentIntent == "570_Initialization" || $.session.intent.currentIntent == "322_TariffInfo"))){
+            $.session.stateLog = $.session.stateLog || [];
+            $.session.stateLog.push($.session.lastEntryState);
+        }
         $dialer.setNoInputTimeout(5000);
     });
     
@@ -69,6 +120,7 @@ init:
         }
         customLog('ScriptError: ' + $context.exception.message);
         $analytics.setSessionData('Script error', $context.exception.message);
+        $analytics.setScenarioAction('Script error');
         $reactions.transition('/Transfer/TransferOnError');
     }, "/", "Handle script errors");
     
@@ -78,6 +130,7 @@ init:
         }
         customLog('DialogError: ' + $context.exception.message);
         $analytics.setSessionData('Dialog error', $context.exception.message);
+        $analytics.setScenarioAction('Dialog error');
         $reactions.transition('/Transfer/TransferOnError');
     }, "/", "Handle dialog errors");
     
@@ -87,6 +140,11 @@ init:
         }
         customLog('UnhandledError: '+ $context.exception.message);
         $analytics.setSessionData('Unhandled error', $context.exception.message);
+        $analytics.setScenarioAction('Unhandled error');
+        $analytics.setScenarioAction("Перевод по ошибке");
+        // записываем экспешн как метрику
+        $analytics.setScenarioAction($context.exception.message);
+        if($.session.queryCnt == 1) $analytics.setScenarioAction("Ошибка на стейте Start");
         
         // если до этого уже пытались перевести по ошибке, но опять возникла ошибка, то сразу переводим по дефолтному коллеру
         if($.session.transferErrorFlag){
@@ -96,12 +154,11 @@ init:
             announceAudio(audioDict.perevod_na_okc);
             if($.session.intent){
                 $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                $.session.intent.resultCode = 41;
+                $.session.intent.resultCode = $global.BOT_ERROR_EXIT_CODE;
             }else{
-                startIntent('0_NoMatch');
-                $.session.intent.resultCode = 41;
+                startIntent("6_NoIntent");
+                $.session.intent.resultCode = $global.BOT_ERROR_EXIT_CODE;
                 $.session.callerInput = $.injector.defaultCallerInput;
-                stopIntent();
             }
             stopIntent();
             $.session.callerInput = $.session.callerInput || $.injector.defaultCallerInput;
@@ -109,13 +166,13 @@ init:
             if($.testContext || $.request.channelType == 'chatwidget'){
                 $reactions.answer("Перевод по коллеру {{$.session.callerInput}}");
             }
-            if($.session.dialogLog){
-                try{
-                    sendDialogLog();
-                }catch(e){
-                    customLog("Failed to send dialog to BI. Error: " + e.message);
-                }
+            
+            try{
+                sendDialogLog();
+            }catch(e){
+                customLog("Failed to send dialog to BI. Error: " + e.message);
             }
+            
             $analytics.setSessionData("Call end type", $.session.callEndType);
             transferByCallerInput($.session.callerInput);
         }
@@ -156,7 +213,7 @@ init:
         // если получили новый результат, перезаписываем прошлый
         if(selected) $context.nluResults.selected = selected;
     });
-
+    
 theme: /
 
     state: Start
@@ -177,7 +234,7 @@ theme: /
                 authByPhoneNumber();
             }
         if: $.session.userType === "undefined-guest"
-            go!: {{ HOW_CAN_HELP_STATE }}
+            go!: /Init/HowCanIHelpYou
         elseif: $.session.userType === "user"
             go!: /Init/DIALOG_WELCOME_EVENT_1
         else:
@@ -199,28 +256,37 @@ theme: /
             stopIntent();
             $analytics.setSessionData("Call end type", $.session.callEndType);
             $analytics.setSessionData("Hang up", "client");
-            if($.session.dialogLog){
-                try{
-                    sendDialogLog();
-                }catch(e){
-                    customLog("Failed to send dialog to BI. Error: " + e.message);
-                }
+            try{
+                sendDialogLog();
+            }catch(e){
+                customLog("Failed to send dialog to BI. Error: " + e.message);
             }
+            $.session.dialogLogIsSent = $.session.dialogLogIsSent || false;
+            if(!$.session.dialogLogIsSent) $analytics.setScenarioAction("Не отправлено в BI");
+            if($.session.queryCnt == 1) $analytics.setScenarioAction("В диалоге только start");
     
     state: BotHangUp
-        event: botHangup
+        event!: botHangup
         script:
             $analytics.setSessionData("Hang up", "bot");
             // переведем как по ошибке
             $reactions.transition('/Transfer/TransferOnError');
             
     state: SessionLimit
-        event: sessionDataSoftLimitExceeded
+        event!: sessionDataSoftLimitExceeded
         script:
             $.session.intent.resultCode = 42;
             stopIntent();
+            $analytics.setScenarioAction('Session soft limit');
             logDialogError($.session.lastEntryState, "sessionDataSoftLimitExceeded");
         go!: /Transfer/TransferOnError
+    
+    state: TimeLimit
+        event!: timeLimit
+        script:
+            $analytics.setScenarioAction("Time limit");
+            // переведем как по ошибке
+            $reactions.transition('/Transfer/TransferOnError');
     
     state: GetPhoneNumber
         a: Введите номер телефона в формате 7**********.
@@ -233,7 +299,7 @@ theme: /
                     $.session.phoneNumber = p;
                     $reactions.transition("/Start");
                 }else{
-                    $reactions.answer("Неверный номер телефона");
+                    $reactions.answer("Неверный номер телефона!");
                     $reactions.transition("/GetPhoneNumber");
                 }
                 
@@ -278,4 +344,3 @@ theme: /
     #        script:
     #            $.session.msg += $request.query;
     #        a: адрес не распознан
-    

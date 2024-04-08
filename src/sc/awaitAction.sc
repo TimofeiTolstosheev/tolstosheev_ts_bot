@@ -45,6 +45,9 @@ theme: /AwaitAction
                     case "getAvaialbeServiceRequestDays":
                         getAvaialbeServiceRequestDays();
                         break;
+                    case "checkOptom":
+                        checkOptom();
+                        break;
                     default:
                         throw new Error("Unknown await action.");
                 }

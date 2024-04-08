@@ -1,0 +1,1499 @@
+    <!--НЕАВТОРИЗОВАННЫЙ ВЕТКА "ВАШ ГОРОД Х?" - ДА-->
+<!-- 1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х2. Переход в 650. Любая ветка далее.-->
+<!-- 2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х1. Потом 610 (Hold) до победного. Завершение диалога.-->
+<!-- 3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - номер договора х2. Переход в интент.-->
+<!-- 4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет неполный адрес Х2. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!-- 5 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Да. Ваш город X? - Да. Называет неполный и полный адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!-- 6 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет интент 90 потом адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!-- 7 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет интент 90 х2. Переходим в баланс -->
+<!-- 8 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Адрес - ноуматч х1, потом адрес.  guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!-- 9 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Адрес - ноуматч х2. Переход в 650 - финансы - баланс-->
+<!--10 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Не на меня оформлено, потом неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова неполные. Переход в Чем Могу помочь? - Интент 280. На оператора.-->
+<!--11 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=false. Переход в Чем Могу помочь? - Интент 270-->
+<!--12 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - интент 90, запрос ФИО еще раз, говорим полные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270, любая ветка. -->
+<!--13 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - интент 90 х2, переход в баланс-->
+<!--14 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - отчества нет, говорим ФИ, ветка ФИО, user=true, запрос интента баланс -->
+<!--15 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - не помню на кого. Потом называем неполные ФИО,  user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова не помню на кого. Переход в интент, интент 300. -->
+<!--16 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х1, потом полные ФИО. user=false. Запрос интента. 290-й интент, идем по любой ветке.-->
+<!--17 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х2, переход в 650, любая ветка -->
+<!--18 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х2, переход в 650, любая ветка -->
+<!--19 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Называет неполный адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент (ошибка отправки смс)-->
+<!--20 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Называет интент 90 потом адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!--21 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Называет ноуматч потом адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!--55 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. guest-with-house=true, ФИО - неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова неполные. Переход в Чем Могу помочь? - Интент 280. На оператора.-->
+<!--22 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город НЕ ЭРТХ. Уходим в запрос интента, интент 490.-->
+<!--23 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Называем город Y. НЕ город присутствия. Переход в запрос интента. Интент 300  -->
+<!--24 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Называем город Y. Город присутствия. Называет адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!--25 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Ноуматч х1, потом называем город Y. НЕ город присутствия. Переход в запрос интента. Интент 300  -->
+<!--26 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Ноуматч х2, на ОКЦ. -->
+<!--27 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. На запрос города интент 90 х2, переход в интент-->
+<!--28 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. На запрос города интент 90 х1, потом называем город Y. НЕ город присутствия. Переход в запрос интента. Интент 495 любая ветка.  -->
+<!--29 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х2. Переход в 650. - финансовая - баланс (смс не ок)-->
+<!--30 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х1. Потом 610 (Hold) до победного. Завершение диалога.-->
+
+<!--TODO33 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент-->
+<!--TODO38 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - да, потом неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова неполные. Переход в Чем Могу помочь? - Интент 280. На оператора.-->
+<!--TODO52 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Да. Ваш город X? - номер договора х1, потом Да. Называет неполный адрес. guest-with-house=true-->
+
+        <!--НЕАВТОРИЗОВАННОГО АВТОРИЗОВАЛИ-->
+<!--$$$1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270-->
+    <!--270 Помехи на каналах, клиент дома. Тип оборудования DVB-C, ролик о проблеме с кабелем, ожидание минуты. Помогло? - Да.Вопросов нет.-->
+<!--$$$2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - отчества нет, говорим ФИ, ветка ФИО, user=true, запрос интента баланс-->
+    <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+<!--$$$3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х1, потом полные ФИО. user=true. Запрос интента. 290-й интент, идем по любой ветке.-->
+    <!--290 в проактиве проблем нет - в спасе проблем нет - вы дома? - нет - еще вопросы? - нет - прощание-->
+<!--$$$4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - да - какой адрес? - называет адрес (guest-with-house=true), ФИО - неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим полные. user=true Переход в Чем Могу помочь? - Интент 280-->
+    <!--280 в проактиве mono_EnoughBalance_NotActive - сумма для активации - Активировать тарифный план? - да - успех - еще вопросы - нет - прощание-->
+<!--$$$5 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - интент 90, запрос ФИО еще раз, говорим неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270, любая ветка.">-->
+        <!--270 Помехи на каналах, нужна активация тарифа.-->
+<test>
+    
+    <test-case id="1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х2. Переход в 650. Любая ветка далее." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125966887"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>договор оформлен на меня</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>у лукоморья дуб зеленый</q>
+        <a state="/Init/Initialization/ConfirmCity/CatchAll">verno_CatchAll. Извините, не поняла.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>златая цепь на дубе том</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х1. Потом 610 (Hold) до победного. Завершение диалога." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125662212"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>у лукоморья дуб зеленый</q>
+        <a state="/Init/Initialization/ConfirmCity/CatchAll">verno_CatchAll. Извините, не поняла.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1">Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1/CallsOnHold2">Answering4. К сожалению, я не смогу решить ваш вопрос, т.к вызов поставлен на удержание. Пожалуйста, перезвоните или напишите в чате, когда будете готовы продолжить разговор, а сейчас я вынуждена прервать вызов. Хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;610-0;</a>
+    </test-case>
+    
+    <test-case id="3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - номер договора х2. Переход в интент." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79966273143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>какой у меня номер договора</q>
+        <a state="/Init/Initialization/ConfirmCity/ThemeMatch">ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>мой номер договора</q>
+        <a state="/AgreementNumber/CheckAuth/NotAuth">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру agreement</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;420-1;</a>
+    </test-case>
+    
+    <test-case id="4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет неполный адрес Х2. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125914232"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>пользуюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>по адресу октябрьской квартира 140</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>по адресу октябрьской квартира 140</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+    
+    <test-case id="5 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Да. Ваш город X? - Да. Называет неполный и полный адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125914292"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>подключен ваш интернет</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица значит октябрьская</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>по адресу октябрьской 6</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+
+    <test-case id="6 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет интент 90 потом адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125914232"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ваш провайдер у меня</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>какой у меня баланс</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/ThemeMatch">requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>мой адрес 40 лет октября</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>40 лет октября 11</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+
+    <test-case id="7 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Называет интент 90 х2. Переходим в баланс" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703590066"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>какой у меня баланс</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/ThemeMatch">requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>скажи мой баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="8 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Адрес - ноуматч х1, потом адрес.  guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703590023"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>все так</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>я живу на улице строителей</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>моя улица строителей</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-0;90-0;</a>
+    </test-case>
+
+    <test-case id="9 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Адрес - ноуматч х2. Переход в 650 - финансы - баланс" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125914239"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>являюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>зачем это мне</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;90-0;</a>
+    </test-case>
+
+    <test-case id="10 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Не на меня оформлено, потом неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова неполные. Переход в Чем Могу помочь? - Интент 280. На оператора." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79707530012"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>3 микрорайон дом 23</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор оформлен не на меня</q>
+        <a state="/Init/Initialization/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>ирину валентиновну</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>ирина валентиновна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>низкая скорость напрямую по кабелю</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет меня жена попросила позвонить</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;280-0;</a>
+    </test-case>
+
+    <test-case id="11 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=false. Переход в Чем Могу помочь? - Интент 270">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79706530013",
+                "productId": "53"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да пользуюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>карамзин</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>иван петрович карамзин</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>помехи по второй программе по россии один</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_TVChannelProblemIntent1. Сейчас я переведу вас на оператора технической поддержки, а пока Пожалуйста перезагрузите вашу тв-приставку и телевизор, а так же проверьте плотность подключения всех кабелей к оборудованию. Перевожу звонок и напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvquality_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;270-6;</a>
+    </test-case>
+    
+    <test-case id="12 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - интент 90, запрос ФИО еще раз, говорим неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270, любая ветка." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79708530014"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <!--<q>Оружейный переулок 25 строение 1</q>-->
+        <q>благодатная 40</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мне нужно узнать баланс</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>ивана петровича</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>иван петрович северьянов</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>низкая скорость напрямую по кабелю</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет меня</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;280-0;</a>
+    </test-case>
+
+    <test-case id="13 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - интент 90 х2, переход в баланс">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78129214282"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да являюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица имени 339 стрелковой дивизии дом 17/3</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мне нужно узнать баланс</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+
+    <test-case id="14 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - отчества нет, говорим ФИ, ветка ФИО, user=false, запрос интента баланс" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125894292"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>у меня нет отчества</q>
+        <a state="/Init/Initialization/RequestFIO/NoMiddleName">zapros_FIO_noMiddleName. Поняла вас. Тогда назовите, пожалуйста, фамилию  [микропауза] и имя на кого оформлен договор.</a>
+        <q>капитонов илья</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+
+    <test-case id="15 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - не помню на кого. Потом называем неполные ФИО,  user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова не помню на кого. Переход в интент, интент 300">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703590015",
+                "productId": "5"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица новоселов 14 квартира 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню на кого заполняли</q>
+        <a state="/Init/Initialization/RequestFIO/DontRemember">zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор.</a>
+        <q>ирина корнеевна</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>вылетело из головы ей богу</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не получается в интернет выйти</q>
+        <a state="/NoLink/CheckProactive">chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет меня жена попросила позвонить</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;300-0;</a>
+    </test-case>
+    
+    <test-case id="16 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х1, потом полные ФИО. user=false. Запрос интента. 290-й интент">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703520815",
+                "productId": "5"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>пользуюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица новоселов 14 квартира 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>зачем</q>
+        <a state="/Init/Initialization/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>Кошкина Татьяна Ивановна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не получается в интернет выйти</q>
+        <a state="/NoLink/CheckProactive">chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>свяжите с оператором</q>
+        <a state="/AreYouHome/AreYouHome/AgentRequest">ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>там мама моя живет</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;300-0;</a>
+    </test-case>
+
+    <test-case id="17 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х2, переход в 650, любая ветка">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703520816",
+                "productId": "5"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ну да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>чье</q>
+        <a state="/Init/Initialization/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>кого</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+
+    <test-case id="18 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х2, переход в 650, любая ветка">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703540316",
+                "productId": "5"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>Мичуринск</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>мичуринск Парковый 90 52</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>чье</q>
+        <a state="/Init/Initialization/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>кого</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+
+    <test-case id="19 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Называет неполный адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент (ошибка отправки смс)">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703550021"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 1, "status": "ERROR" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>Мичуринск</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица чайковского</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица чайковского</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-3;90-0;</a>
+    </test-case>
+
+    <test-case id="20 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Называет интент 90 потом адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125514812"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>Саратов</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>хочу спросить про баланс</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/ThemeMatch">requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>улица чайковского</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица чайковского</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+               
+    <test-case id="21 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. Называет ноуматч потом адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703560817"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>Саратов</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>чей</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>я живу на улице строителей</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>моя улица строителей</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-0;90-0;</a>
+    </test-case>
+               
+    <test-case id="55 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город ЭРТХ. guest-with-house=true, ФИО - неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим снова неполные. Переход в Чем Могу помочь? - Интент 280. На оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703570818"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>Ростов на дону</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>3 микрорайон дом 23</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>на караулову</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>ирина валентиновна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>низкая скорость напрямую по кабелю</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нету меня</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;280-0;</a>
+    </test-case>
+    
+    <test-case id="22 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ветка все где есть Город. Город НЕ ЭРТХ. Уходим в запрос интента, интент 490">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530819"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>Кирово-чепецк</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>уточнить работу вай фая по адресу</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру common_tech</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;490-6;</a>
+    </test-case>
+               
+    <test-case id="23 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Называем город Y. НЕ город присутствия. Переход в запрос интента. Интент 300">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530820"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity">pleaseSayYoutCity. Назовите, пожалуйста, ваш город.</a>
+        <q>Кирово-чепецк</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>сетевой кабель не подключен пишет</q>
+        <a state="/NoLink/CheckProactive">chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру nolink</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;300-6;</a>
+    </test-case>
+              
+    <test-case id="24 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Называем город Y. Город присутствия. Называет адрес. guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз - да. Переспрашиваем адрес, идем в ветку guest-with-house=false, $isIncompleteAddres=true и Проверка совершена только1 раз с кодом 1. Переход в Чем могу помочь? - 90 интент">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125214821"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да я ваш клиент</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity">pleaseSayYoutCity. Назовите, пожалуйста, ваш город.</a>
+        <q>Липецк</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>мой адрес 40 лет октября</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>40 лет октября дом 11</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;90-0;</a>
+    </test-case>
+               
+    <test-case id="25 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Ноуматч х1, потом называем город Y. НЕ город присутствия. Переход в запрос интента. Интент 300">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530822"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да являюсь</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity">pleaseSayYoutCity. Назовите, пожалуйста, ваш город.</a>
+        <q>чей</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity/CatchAll">pleaseSayYoutCity_CatchAll. Извините, не уверена, что верно вас услышала. Уточните, пожалуйста, из какого города вы обращаетесь?</a>
+        <q>кирово чепецк</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нет соединения с интернетом</q>
+        <a state="/NoLink/CheckProactive">chckSrvWithFioTimeout. Мне нужно немного времени, чтобы получить данные. Обычно это занимает не более 15 секунд. Пожалуйста, подождите.</a>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру nolink</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;300-6;</a>
+    </test-case>
+               
+    <test-case id="26 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. Ноуматч х2, на ОКЦ.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530823"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>являюсь да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity">pleaseSayYoutCity. Назовите, пожалуйста, ваш город.</a>
+        <q>чей</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity/CatchAll">pleaseSayYoutCity_CatchAll. Извините, не уверена, что верно вас услышала. Уточните, пожалуйста, из какого города вы обращаетесь?</a>
+        <q>чей</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity/CatchAll">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру initial</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;</a>
+    </test-case>
+               
+    <test-case id="27 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. На запрос города интент 90 х2, переход в интент">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530824"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>пользуюсь да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity">pleaseSayYoutCity. Назовите, пожалуйста, ваш город.</a>
+        <q>какой у меня баланс</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity/ThemeMatch">pleaseSayYoutCity_ThemeMatch. Понимаю, что вы хотите как можно скорее решить ваш вопрос. И именно для этого, назовите, пожалуйста ваш город, чтобы я смогла определить необходимый договор.</a>
+        <q>баланс</q> 
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-0;90-0;</a>
+    </test-case>
+               
+    <test-case id="28 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Нет. На запрос города интент 90 х1, потом называем город Y. НЕ город присутствия. Переход в запрос интента. Интент 495 любая ветка.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530825"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": true,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да мой договор</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>нет</q>
+        <a state="/Init/Initialization/ConfirmCity/PleaseSayYourCity">pleaseSayYoutCity. Назовите, пожалуйста, ваш город.</a>
+        <q>кирово чепецк</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>жалоба на работу кабельного телевидения</q>
+        <a state="/495_CommonTV/CheckServices/GetIntent">CommonTVQuestion. Пожалуйста, уточните конкретнее. у вас не работает телевидение? помехи на каналах? либо не работает ТВ приставка?</a>
+        <q>помехи на каналах</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет не дома</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;495-0;270-0;</a>
+    </test-case>
+
+    <test-case id="29 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х2. Переход в 650. - финансовая - баланс (смс не ок)">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78125214826"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0, "status": "OK" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>у лукоморья дуб зеленый</q>
+        <a state="/Init/Initialization/ConfirmCity/CatchAll">verno_CatchAll. Извините, не поняла.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>златая цепь на дубе том</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/GoToWebCab">DetelBalanceNoAvtorizGorod. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;90-0;</a>
+    </test-case>
+               
+    <test-case id="30 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - ноуматч х1. Потом 610 (Hold) до победного. Завершение диалога.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530827"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>у лукоморья дуб зеленый</q>
+        <a state="/Init/Initialization/ConfirmCity/CatchAll">verno_CatchAll. Извините, не поняла.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1">Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1/CallsOnHold2">Answering4. К сожалению, я не смогу решить ваш вопрос, т.к вызов поставлен на удержание. Пожалуйста, перезвоните или напишите в чате, когда будете готовы продолжить разговор, а сейчас я вынуждена прервать вызов. Хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;610-0;</a>
+    </test-case>
+
+    <!--НЕАВТОРИЗОВАННЫЙ - АВТОРИЗОВАЛИ-->
+    <test-case id="$$$1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270" integration="true">
+        <!--270 Помехи на каналах, клиент дома. Тип оборудования DVB-C, ролик о проблеме с кабелем, ожидание минуты. Помогло? - Да.Вопросов нет.-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273828"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <!--<q>Оружейный переулок 25 строение 1</q>-->
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>имя иван</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>петров иван</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>помехи по второй программе по россии один</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome">URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <!--<a state="/TVQualityProblem/CheckServices">initialWait. Мне нужно немного времени, чтобы получить данные.</a>-->
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv">RebutKabelTV. В большинстве случаев проблема заключается в телевизионном кабеле. Проверьте кабель на отсутствие повреждений, а так же достаньте и вставьте его назад в приставку. Не лишним будет так же перезагрузить приставку по питанию. Пожалуйста, сделайте это, а я пока проведу проверку со своей стороны. Вернусь к вам через минуту.</a>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv">MusicTV. Музыка минута</a>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv/ConfimrFix">RebootRouter3. Пожалуйста, уточните решило ли это проблему. Скажите Да или Нет.</a>
+        <q>да</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv/ConfimrFix/Fixed">HappySuccess. Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="$$$2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - отчества нет, говорим ИО, ветка ФИО, user=true, запрос интента баланс">
+        <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273143",
+                "agreementId": "121212",
+                "agreementNumber": "780046998829"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "0,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "445,00",
+                    "textParam": 4,
+                    "periodDates": "15.07.2023-15.08.2023",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "chargesSum": "815,00",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 1,
+                    "lastPaymentSum": "251,00",
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 1 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>у меня нет отчества</q>
+        <a state="/Init/Initialization/RequestFIO/NoMiddleName">zapros_FIO_noMiddleName. Поняла вас. Тогда назовите, пожалуйста, фамилию  [микропауза] и имя на кого оформлен договор.</a>
+        <q>капитонов илья</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">PaymentCame. Вижу, что недавно Вы пополнили счет на</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_200_nom. двести</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_1_nom. один</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_nom_sn. рубль</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">UBalans. Ваш баланс</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_2000_nom. две тысячи</a>     
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_4_nom. четыре</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_sn. рубля</a>  
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_90_nom. девяносто</a>   
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_9_nom. девять</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_kop_gen_pl. копеек</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Vnesite. Чтобы восстановить доступ к услугам, внесите</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_800_nom. восемьсот</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_15_nom. пятнадцать</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendBalanceSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-3;90-0;</a>
+    </test-case>
+    
+    <test-case id="$$$3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х1, потом полные ФИО. user=true. Запрос интента. 290-й интент, идем по любой ветке. ">
+        <!--290 в проактиве проблем нет - в спасе проблем нет - вы дома? - нет - еще вопросы? - нет - прощание-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998830",
+                "productId": "5"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица новоселов 14 квартира 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>зачем</q>
+        <a state="/Init/Initialization/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>Кошкина Татьяна Ивановна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>пропало тв</q>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": true,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": false,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <a state="/TvChannelProblem/AreYouAtHome">URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>не дома</q>
+        <a state="/TvChannelProblem/AreYouAtHome/NotAtHome">RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;290-0;</a>
+    </test-case>
+    
+    <test-case id="$$$4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - да - какой адрес? - называет адрес (guest-with-house=true), ФИО - неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим полные. user=true Переход в Чем Могу помочь? - Интент 280" integration="true">
+        <!--280 в проактиве mono_EnoughBalance_NotActive - сумма для активации - Активировать тарифный план? - да - успех - еще вопросы - нет - прощание-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273831"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 40</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>фамилия моя петров</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>низкая скорость напрямую по кабелю</q>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_digit_800_nom. восемьсот</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>да</q>
+        <a state="/Proactive/AskToActivateTP/ActivateTP">active_notOK. Что-то пошло не так. Тарифный план не активирован.</a>
+        <a state="/Proactive/AskToActivateTP/ActivateTP">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру lowspeed</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;280-1;</a>
+    </test-case>
+    
+    <test-case id="$$$5 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - интент 90, запрос ФИО еще раз, говорим неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270, любая ветка." integration="true">
+        <!--270 Помехи на каналах, нужна активация тарифа.-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999587263"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 40</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мне нужно узнать баланс</q>
+        <a state="/Init/Initialization/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>Иван петрович</q> <!-- поменять потом на брата ивана петровича -->
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>иван семенович петров</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>помехи по второй программе по россии один</q>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_digit_800_nom. восемьсот</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>да</q>
+        <a state="/Proactive/AskToActivateTP/ActivateTP">active_notOK. Что-то пошло не так. Тарифный план не активирован.</a>
+        <a state="/Proactive/AskToActivateTP/ActivateTP">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру tvquality_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;270-1;</a>
+    </test-case>
+</test>

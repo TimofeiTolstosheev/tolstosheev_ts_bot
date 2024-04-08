@@ -6,262 +6,215 @@
 <!--390_6 неавторизованный, мобильный - алло (1 раз) - автоплатеж-->
 <!--390_7 неавторизованный, мобильный - алло (1 раз) - noMatch - автоплатеж-->
 <!--390_8 неавторизованный, мобильный - алло (1 раз) - noMatch - алло - автоплатеж-->
-<test>
-    <test-case id="390_1 неавторизованный, мобильный - алло (4 раза)">
+<test integration="true">
+    <test-case id="390_1 неавторизованный, мобильный - алло до победного">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999999992",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
+
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>алло</q>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
+        <q>алло вы здесь</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>алло</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>алло</q>
         <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
-        <q>алло вы здесь</q>
+        <q>алло</q>
         <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
         <q>алло</q>
         <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
-        <q>алло алло</q>
+        <q>алло</q>
         <a>No_answer3. Пожалуйста, задайте вопрос голосом</a>
         <q>алло</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
-        <a state="/Transfer/Transfer" />
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру no_answer</a>
+        <a>BI dialog log: 570-1;390-6;</a>
     </test-case>
+    
+    
     
     <test-case id="390_2 неавторизованный, мобильный - алло (3 раза) - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999999993",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>алло</q>
-        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
-        <q>алло алло</q>
-        <a>No_answer3. Пожалуйста, задайте вопрос голосом</a>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
     
     <test-case id="390_3 неавторизованный, мобильный - алло (3 раза) - noMatch - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999999994",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>алло</q>
-        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
-        <q>алло алло</q>
-        <a>No_answer3. Пожалуйста, задайте вопрос голосом</a>
-        <q>выщ выщ</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>сильвупле</q>
+        <a>verno_CatchAll. Извините, не поняла.</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>автоплатеж</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
     
     <test-case id="390_4 неавторизованный, мобильный - алло (2 раза) - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999999995",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
-        <q>алло</q>
-        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>автоплатеж</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
     
     <test-case id="390_5 неавторизованный, мобильный - алло (2 раза) - noMatch - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999999996",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
-        <q>алло ало</q>
-        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
-        <q>выщ выщ</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>сильвупле</q>
+        <a>verno_CatchAll. Извините, не поняла.</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>автоплатеж</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>        
         <q>автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
 
     <test-case id="390_6 неавторизованный, мобильный - алло (1 раз) - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999955997",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
-        <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>автоплатеж</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>автоплатеж</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>автоплатеж</q>       
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
     
     <test-case id="390_7 неавторизованный, мобильный - алло (1 раз) - noMatch - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79999999998",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
-        <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>выщ выщ</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>автоплатеж</q>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>автоплатеж</q>        
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
     
     <test-case id="390_8 неавторизованный, мобильный - алло (1 раз) - noMatch - алло - автоплатеж">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79996659999",
+                "cellPhone": true
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        
         <q>/start</q>
-        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
         <q>алло</q>
-        <a>GetFirstIntent_greet. Здравствуйте. Как я могу вам помочь?</a>
-        <q>алло вы здесь</q>
-        <a>DIALOG_No_Input_Event_2. Я внимательно слушаю, какой у вас вопрос?</a>
+        <a>Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
         <q>выщ выщ</q>
-        <a>DnotUnderstandU1. Пожалуйста, задайте ваш вопрос другими словами</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>алле меня слышно</q>
-        <a>No_answer4. Я умею решать многие вопросы, чем Вам помочь?</a>
+        <a>ConfirmCity_subject. Я понимаю. что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста</a>
+        <a>verno_spb. Ваш город санкт петербург?</a>
         <q>автоплатеж</q>
         <a>perevod_na_okc_from_autopayment. Подключить или отключить автоплатёж, сменить реквизиты карты или проверить списания можно самостоятельно в личном кабинете на сайте дом точка ру, или в мобильном приложении мой дом ру. Пожалуйста, попробуйте. А сейчас я соединю вас с оператором, он поможет. Напоминаю, что в целях улучшения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer" />
+        <a>Перевод по коллеру autopay</a>
+        <a>BI dialog log: 570-1;720-6;</a>
     </test-case>
 </test>

@@ -5,10 +5,6 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "city": {
-                    "code": "dev-dcc-spb",
-                    "name": "СПБ (DEV-DCC-SPB)"
-                },
                 "phoneNumber": "79000000001",
                 "cellPhone": true
             }
@@ -19,8 +15,9 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>поломка пульта</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
+        <a>Перевод по коллеру equipment</a>
+        <a>BI dialog log: 240-6;</a>
+    </test-case>
     
 
     
@@ -29,12 +26,8 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "city": {
-                    "code": "dev-dcc-spb",
-                    "name": "СПБ (DEV-DCC-SPB)"
-                },
-                "phoneNumber": "78412999981",
-                "cellPhone": false
+                "phoneNumber": "78412119921",
+                "cellPhone": true
             }
         </context>
 
@@ -43,8 +36,9 @@
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>поломка пульта</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
+        <a>Перевод по коллеру equipment</a>
+        <a>BI dialog log: 240-6;</a>
+    </test-case>
     
 
     
@@ -53,10 +47,6 @@
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "city": {
-                    "code": "dev-dcc-spb",
-                    "name": "СПБ (DEV-DCC-SPB)"
-                },
                 "phoneNumber": "79000000001",
                 "cellPhone": true
             }
@@ -69,8 +59,9 @@
         <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
         <q>поломка пульта</q>
         <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
+        <a>Перевод по коллеру equipment</a>
+        <a>BI dialog log: 405-0;240-6;</a>
+    </test-case>
         
     
 </test>

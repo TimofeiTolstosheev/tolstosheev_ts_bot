@@ -2,7 +2,6 @@ theme: /OtherIntent
   
     state: OtherIntentOKC
         q!: $otherIntent
-        q!: * $thanksForOtherIntent *
         intent!: /590_OtherIntent
         script:
             startIntent('/590_OtherIntent');

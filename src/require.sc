@@ -7,6 +7,7 @@ require: scripts/resteriskAdapter.js
 require: scripts/backendActions/auth.js
 require: scripts/backendActions/actions.js
 require: scripts/backendActions/base64.js
+require: scripts/nlpHelper/preMatcher.js
 require: scripts/realizers/numberRealizer.js
 require: scripts/realizers/dateTimeRealizer.js
 require: scripts/realizers/moneyRealizer.js
@@ -41,6 +42,7 @@ require: sc/NoMatch.sc
 require: sc/transfer.sc
 require: sc/whatElse.sc
 require: sc/awaitAction.sc
+require: sc/CatchAll.sc
 
 # операции с договором
 require: sc/Agreement/150_Suspension.sc
@@ -85,6 +87,12 @@ require: sc/Finance/710_WholeCheaper.sc
 require: sc/Finance/720_Autopayment.sc
 require: sc/Finance/80_PromisedPayment.sc
 require: sc/Finance/90_Balance.sc
+require: sc/Finance/91_PaymentQuestion.sc
+require: sc/Finance/92_DebtQuestion.sc
+require: sc/Finance/93_DebtReason.sc
+require: sc/Finance/94_WhichSubscriptionFee.sc
+require: sc/Finance/95_DebtQuestionDetails.sc
+require: sc/Finance/96_ChangingSubscriptionFee.sc
 
 # тариф
 require: sc/Tariff/320_CommonInfoTariff.sc

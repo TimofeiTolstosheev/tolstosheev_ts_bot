@@ -43,7 +43,7 @@
         <q>вопрос по балансу</q>
         <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс и озвучить сумму рекомендованного платежа. Какой из этих вопросов вас интересует?</a>
         <q>откуда у меня долг</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
         <a state = "/Transfer/Transfer" />
         <a state="/Transfer/Transfer"/>
     </test-case>
@@ -96,7 +96,7 @@
         </mockData>  
             
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
             <response status="200">
                 {
                   "internetProblem": {
@@ -116,7 +116,8 @@
                     "drtvTicket": false,
                     "technicalSupport": false,
                     "technicalServiceRequest": false
-                  }
+                  },
+                  "status": "success"
                 }
             </response>
         </mockData>     
@@ -184,7 +185,7 @@
         <q>вопрос по балансу</q>
         <a>fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс и озвучить сумму рекомендованного платежа. Какой из этих вопросов вас интересует?</a>
         <q>откуда у меня долг</q>
-        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста.</a>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
         <a state = "/Transfer/Transfer" />
         <a state="/Transfer/Transfer"/>
     </test-case>
@@ -231,7 +232,7 @@
         </mockData>  
         
         <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/spas/data</query>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
             <response status="200">
                 {
                   "internetProblem": {
@@ -251,7 +252,8 @@
                     "drtvTicket": false,
                     "technicalSupport": false,
                     "technicalServiceRequest": false
-                  }
+                  },
+                  "status": "success"
                 }
             </response>
         </mockData>

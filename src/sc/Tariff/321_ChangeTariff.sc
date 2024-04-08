@@ -14,6 +14,13 @@ theme: /ChangeTariff
         
         state: CheckPhone 
             # не можем использовать * так как иначе можем сматчится с любым другим интентом
+            q: * @Change *
+            q: $changeTariff
+            intent: /321_ChangeTariff
+            q: $commonInfoTariff
+            intent: /320_CommonInfoTariff
+            q: $tariffInfo
+            intent: /322_TariffInfo
             event: noMatch
             script:
                 $.session.intent.stepsCnt++;
@@ -40,3 +47,8 @@ theme: /ChangeTariff
                     $.session.intent.resultCode = 6;
                     $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
                 go!: /Transfer/Transfer
+                
+        state: AgentRequest || noContext = true
+                q: $agentRequest
+                intent: /405_AgentRequest
+                go!: /ChangeTariff/ChangeTariffSMS/CheckPhone

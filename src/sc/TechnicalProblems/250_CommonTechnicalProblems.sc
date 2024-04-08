@@ -183,15 +183,16 @@ theme: /CommonTechnicalProblems
                 
                 state: Internet
                     q: * @Internet *
+                    q: * { @Internet и  @Television } *
                     script:
                         $.session.intent.stepsCnt++;
-                    go!: /CommonTechnicalProblems/StartIntent/GetIntent/MonoInternet
+                    go!: /NoLink/CheckProactive
                     
                 state: TV
                     q: * @Television *
                     script:
                         $.session.intent.stepsCnt++;
-                    go!: /CommonTechnicalProblems/StartIntent/GetIntent/MonoTv
+                    go!: /TvChannelProblem/CheckProactive
                     
                 state: Domofon
                     q: * (домофон*/@VideoThings) *

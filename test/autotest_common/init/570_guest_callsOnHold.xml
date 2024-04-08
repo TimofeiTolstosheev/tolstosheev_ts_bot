@@ -1,0 +1,45 @@
+        <!--НЕАВТОРИЗОВАННЫЙ == ВЕТКА "ЗВОНОК НА УДЕРЖАНИИ"-->
+<!--###1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - 610-й интент (Hold) до 'победного завершения' диалога.-->
+<!--###2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - 610-й интент (Hold) х1, потом купить роутер. На потенциальника.-->
+<test integration="true">
+    <!--НЕАВТОРИЗОВАННЫЙ ВЕТКА "ЗВОНОК НА УДЕРЖАНИИ"-->
+    <test-case id="###1">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999284143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>плиз холд зе лайн ор кол бэк лэйтер</q>
+        <a state="/CallsOnHold/CallsOnHold1">Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1/CallsOnHold2">Answering4. К сожалению, я не смогу решить ваш вопрос, т.к вызов поставлен на удержание. Пожалуйста, перезвоните или напишите в чате, когда будете готовы продолжить разговор, а сейчас я вынуждена прервать вызов. Хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;610-0;</a>
+    </test-case>
+    
+    <test-case id="###2">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999284143"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state ="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>неа</q>
+        <a state="/Init/Initialization/InitPodklOborudovanie">InitPodklOborudovanie. Вы хотите подключить услуги, приобрести оборудование или у вас другой вопрос?</a>
+        <q>абонент поставил звонок на удержание</q>
+        <a state="/CallsOnHold/CallsOnHold1">Answering1. Я слышу, что у вас включен автоответчик. Пожалуйста, снимите вызов с удержания и мы сможем продолжить разговор. Слушаю вас</a>
+        <q>хочу купить ваш роутер</q>
+        <a state="/PotentialClient/PhysicalOrLegal">fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a state="/PotentialClient/PhysicalOrLegal/LegalToOperator">yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;610-0;340-11;</a>
+    </test-case>
+</test>

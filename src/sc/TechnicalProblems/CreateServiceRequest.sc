@@ -77,6 +77,8 @@ theme: /CreateServiceRequest
                 q: * какой день *
                 q: * готов* *
                 q: * (создай*/создавай*) *
+                q: * (оформи*/оформля*) *
+                q: * {готов* оформить визит} *
                 script:
                     // параметры для await-экшна
                     $.session.awaitAction = $.session.awaitAction || {};
@@ -180,7 +182,7 @@ theme: /CreateServiceRequest
                             # $.session.billingCurrentDayOfWeek = (new Date($.session.billingCurrentDate)).getDay(); //здесь чт=3
                             var flag = 0;
                             if($parseTree.text.match(/сегодня/i)){flag = 1;}
-                            else if($parseTree.text.match(/завтра/i)){flag = 2;}
+                            else if($parseTree.text.match(/\sзавтра/i)){flag = 2;}
                             else if($parseTree.text.match(/послезавтра/i)){flag = 3;}
                             if(flag == 0){
                                 $.session.intent.stepsCnt++;
@@ -215,14 +217,14 @@ theme: /CreateServiceRequest
                                 $reactions.transition("/Transfer/CheckOCTP");
                             }
                             if($.session.firstHalf && $.session.secondHalf){
+                                $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/FirstAndSecond");
+                            }else{
                                 if($.session.firstHalf){
                                     $.session.serviceRequestDayHalf = 1;
                                 }
                                 if($.session.secondHalf){
                                     $.session.serviceRequestDayHalf = 2;
                                 }
-                                $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/FirstAndSecond");
-                            }else{
                                 $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/AskTime");
                             }
                         }else{
@@ -234,7 +236,7 @@ theme: /CreateServiceRequest
                             announceAudio(audioDict.mnogoPolovin);
                         
                         state: First
-                            q: * { (перв*/1) [половин*] } *
+                            q: * { (перв*/1/один) [половин*] } *
                             q: * { люб* [половин*/врем*] } *
                             script:
                                 $.session.intent.stepsCnt++;
@@ -242,7 +244,7 @@ theme: /CreateServiceRequest
                                 $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/AskTime");
                         
                         state: Second
-                            q: * { (втор*/2) [половин*] } * 
+                            q: * { (втор*/2/два) [половин*] } * 
                             script:
                                 $.session.intent.stepsCnt++;
                                 $.session.serviceRequestDayHalf = 2;
@@ -254,31 +256,36 @@ theme: /CreateServiceRequest
                             script:
                                 $.session.intent.stepsCnt++;
                                 if(countRepeatsInRow() < $injector.noMatchLimit) {
-                                    // проверим, есть ли озвученное время в доступных слотах
-                                    $temp.requiredTime = $parseTree["_duckling.time"] || $parseTree["_duckling.time-of-day"];
-                                    var hour = $temp.requiredTime.hour < 10 ? "0" + $temp.requiredTime.hour : $temp.requiredTime.hour;
-                                # ищем 1е совпадение с числом в парстри 
-                                    var searchingDigit = /.*?(\d+)/;
-                                # преобразуем 23 в 11, если диалог во 2 половине дня
-                                    var parseTreeHour = $parseTree.text.match(searchingDigit)[1];
-                                    if(parseTreeHour){
-                                        if(parseTreeHour.length < 2){
-                                            parseTreeHour = "0" + parseTreeHour
-                                        };
-                                        if(parseTreeHour != hour && $.session.serviceRequestDayHalf == 1){
-                                            hour = parseTreeHour
+                                    try{
+                                        // проверим, есть ли озвученное время в доступных слотах
+                                        $temp.requiredTime = $parseTree["_duckling.time"] || $parseTree["_duckling.time-of-day"];
+                                        var hour = $temp.requiredTime.hour < 10 ? "0" + $temp.requiredTime.hour : $temp.requiredTime.hour;
+                                        // ищем 1е совпадение с числом в парстри 
+                                        var searchingDigit = /.*?(\d+)/;
+                                        // преобразуем 23 в 11, если диалог во 2 половине дня
+                                        var parseTreeHour = $parseTree.text.match(searchingDigit)[1];
+                                        if(parseTreeHour){
+                                            if(parseTreeHour.length < 2){
+                                                parseTreeHour = "0" + parseTreeHour
+                                            };
+                                            if(parseTreeHour != hour && $.session.serviceRequestDayHalf == 1){
+                                                hour = parseTreeHour
+                                            }
                                         }
-                                    }
-                                    hour = hour + ":00";
-                                    if($.session.timeSlots.indexOf(hour) < 0){
-                                        announceAudio(audioDict.mnogoPolovin_outOfRangeHalfDay);
-                                        $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/FirstAndSecond");
-                                    }else{
-                                        $.session.serviceRequestDate = new Date($.session.serviceRequestDate);
-                                        hour = hour.replace(":00", "");
-                                        $.session.serviceRequestDate.setHours(parseInt(hour));
-                                        $.session.serviceRequestDate.setMinutes(0);
-                                        $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/ConfirmServiceRequest");
+                                        hour = hour + ":00";
+                                        if($.session.timeSlots.indexOf(hour) < 0){
+                                            announceAudio(audioDict.mnogoPolovin_outOfRangeHalfDay);
+                                            $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/FirstAndSecond");
+                                        }else{
+                                            $.session.serviceRequestDate = new Date($.session.serviceRequestDate);
+                                            hour = hour.replace(":00", "");
+                                            $.session.serviceRequestDate.setHours(parseInt(hour));
+                                            $.session.serviceRequestDate.setMinutes(0);
+                                            $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/ConfirmServiceRequest");
+                                        }
+                                    }catch (e){
+                                        announceAudio(audioDict.mnogoPolovin_CatchAll);
+                                        $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/AskDay");
                                     }
                                 }else{
                                     announceAudio(audioDict.callbackInThreeDays);
@@ -307,12 +314,17 @@ theme: /CreateServiceRequest
                                         var hour = parseInt(t[0]); // получаем час
                                         if($.session.serviceRequestDayHalf == 1 && hour < 15){
                                             // первая половина
-                                            announceTimeFromTimeTo(hour, 0, 0, 0);
+                                            announceTimeFrom(hour);
                                         }
                                         if($.session.serviceRequestDayHalf == 2 && hour >= 15){
                                             // вторая половина
-                                            announceTimeFromTimeTo(hour, 0, 0, 0);
+                                            announceTimeFrom(hour);
                                         }
+                                    }
+                                    if($.session.timeSlots.length == 1 && $.session.serviceRequestDayHalf == 2 && hour == 21){
+                                        announceAudio(audioDict.Ru_unit_hour_gen_sn);
+                                    }else{
+                                        announceAudio(audioDict.Ru_unit_hour_gen_pl);
                                     }
                                     announceAudio(audioDict.I_sprosil_u_technica1);
                                 }
@@ -324,45 +336,72 @@ theme: /CreateServiceRequest
                         state: CheckTime || noContext = true
                             q: * @duckling.time *
                             q: * @duckling.time-of-day *
-                            q: в час[ дня]
+                            q: в час [дня]
                             script:
                                 $.session.intent.stepsCnt++;
-                                // если попали не по ducklink, то считаем, что по фразе "в час" = 13:00
+                                // если попали не по duckling, то считаем, что по фразе "в час" = 13:00
                                 // TODO если логика будет усложняться, надо будет переделать
-                                $temp.requiredTime = $parseTree["_duckling.time"] || $parseTree["_duckling.time-of-day"] || "13:00";
-                                var hour = $temp.requiredTime.hour < 10 ? "0" + $temp.requiredTime.hour : $temp.requiredTime.hour;
-                                # ищем 1е совпадение с числом в парстри 
-                                var searchingDigit = /.*?(\d+)/;
-                                # преобразуем 23 в 11, если диалог во 2 половине дня
-                                var parseTreeHour = $parseTree.text.match(searchingDigit)[1];
-                                if(parseTreeHour){
-                                    if(parseTreeHour.length < 2){
-                                        parseTreeHour = "0" + parseTreeHour;
-                                    };
-                                    if(parseTreeHour != hour && $.session.serviceRequestDayHalf == 1){
-                                        hour = parseTreeHour;
+                                //# $.session.billingCurrentDayOfWeek = (new Date($.session.billingCurrentDate)).getDay(); //здесь чт=3
+                                
+                                var flag = 0;
+                                if($parseTree.text.match(/сегодня/i) && !$parseTree.text.match(/сегодня в/i) && !$parseTree.text.match(/сегодня с/i)){flag = 1;}
+                                else if($parseTree.text.match(/\sзавтра/i) && !$parseTree.text.match(/\sзавтра в/i) && !$parseTree.text.match(/\sзавтра с/i)){flag = 2;}
+                                else if($parseTree.text.match(/послезавтра/i) && !$parseTree.text.match(/послезавтра в/i) && !$parseTree.text.match(/послезавтра с/i)){flag = 3;}
+                                else if($parseTree.text.match(/другой/i)){flag = 4;}
+                                if(countRepeatsPerState(flag) < 2){     
+                                    if(flag == 0){
+                                        $temp.requiredTime = $parseTree["_duckling.time"] || $parseTree["_duckling.time-of-day"] || "13:00";
+                                        var hour = $temp.requiredTime.hour < 10 ? "0" + $temp.requiredTime.hour : $temp.requiredTime.hour;
+                                        // ищем 1е совпадение с числом в парстри 
+                                        var searchingDigit = /.*?(\d+)/;
+                                        // преобразуем 23 в 11, если диалог во 2 половине дня
+                                        if($parseTree.text.match(searchingDigit)){
+                                            var parseTreeHour = $parseTree.text.match(searchingDigit)[1];
+                                        
+                                            if(parseTreeHour){
+                                                if(parseTreeHour != hour && $.session.serviceRequestDayHalf == 2){
+                                                    hour = parseInt(parseTreeHour) + 12;
+                                                }
+                                                if(parseTreeHour.length < 2){
+                                                    parseTreeHour = "0" + parseTreeHour;
+                                                }
+                                                if(parseTreeHour != hour && $.session.serviceRequestDayHalf == 1){
+                                                    hour = parseTreeHour;
+                                                }
+                                            }
+                                        }
+                                        hour = hour + ":00";
+                                        //$reactions.answer(toPrettyString(hour));
+                                        // проверим, есть ли озвученное время в доступных слотах
+                                        if($.session.timeSlots.indexOf(hour) < 0){
+                                            if(countRepeatsInRow() < $injector.noMatchLimit) {
+                                                announceAudio(audioDict.I_sprosil_u_technica_unavailableTime);
+                                                $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/AskTime");
+                                            }else{
+                                                $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                                                $.session.intent.resultCode = 1;
+                                                announceAudio(audioDict.I_sprosil_u_technica_unavailableTime);
+                                                $reactions.transition("/Transfer/CheckOCTP");
+                                            }
+                                        }else{
+                                        // в $.session.serviceRequestDate лежит дата без времени 00:00.000Z, запишем полученные из диалога
+                                            $.session.serviceRequestDate = new Date($.session.serviceRequestDate);
+                                            hour = hour.replace(":00", "");
+                                            $.session.serviceRequestDate.setHours(parseInt(hour));
+                                            $.session.serviceRequestDate.setMinutes(0);
+                                            $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/ConfirmServiceRequest");
+                                        }
                                     }
-                                }
-                                hour = hour + ":00";
-                                // проверим, есть ли озвученное время в доступных слотах
-                                if($.session.timeSlots.indexOf(hour) < 0){
-                                    if(countRepeatsInRow() < $injector.noMatchLimit) {
-                                        announceAudio(audioDict.I_sprosil_u_technica_unavailableTime);
-                                        $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/AskTime");
-                                    }else{
-                                        $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                                        $.session.intent.resultCode = 1;
-                                        announceAudio(audioDict.I_sprosil_u_technica_unavailableTime);
-                                        $reactions.transition("/Transfer/CheckOCTP");
-                                    }
+                                    else if(flag == 1){$reactions.transition('/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/AskDay/Today');}
+                                    else if(flag == 2){$reactions.transition('/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/AskDay/Tomorrow');}
+                                    else if(flag == 3){$reactions.transition('/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/AskDay/AfterTomorrow');}
+                                    else if(flag == 4){$reactions.transition('/CreateServiceRequest/TSrequest/Ask/GetAvailableDays');}
                                 }else{
-                                # в $.session.serviceRequestDate лежит дата без времени 00:00.000Z, запишем полученные из диалога
-                                    $.session.serviceRequestDate = new Date($.session.serviceRequestDate);
-                                    hour = hour.replace(":00", "");
-                                    $.session.serviceRequestDate.setHours(parseInt(hour));
-                                    $.session.serviceRequestDate.setMinutes(0);
-                                    $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/ConfirmServiceRequest");
-                                }
+                                    $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                                    $.session.intent.resultCode = 1;
+                                    announceAudio(audioDict.perevod_na_okc);
+                                    $reactions.transition("/Transfer/CheckOCTP"); 
+                                }        
                             
                         state: CatchAll || noContext = true
                             event: noMatch
@@ -379,6 +418,7 @@ theme: /CreateServiceRequest
                                 }
                     
                     state: ConfirmServiceRequest || modal = true
+                        q: $commonYes *
                         script:
                             announceAudio(audioDict.goZayavku1);
                             if($.session.serviceRequestDay == 'today'){
@@ -390,12 +430,12 @@ theme: /CreateServiceRequest
                             if($.session.serviceRequestDay == 'after-tomorrow'){
                                 announceAudio(audioDict.after_tomorrow);
                             }
-                            announceDate($.session.serviceRequestDate);
-                            announceHoursFromDate($.session.serviceRequestDate);
+                            announceDate(new Date($.session.serviceRequestDate));
+                            announceHoursFromDate(new Date($.session.serviceRequestDate));
                             announceAudio(audioDict.goZayavku2);
                         
                         state: CreateServiceRequest
-                            q: $commonYes
+                            q: $commonYes *
                             script:
                                 $.session.aao = false;
                                 
@@ -411,11 +451,9 @@ theme: /CreateServiceRequest
                                         $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
                                         $.session.intent.resultCode = 40;
                                         announceAudio(audioDict.SZYaSozdal_TS_request);
-                                        // заново преобразуем в дату для аннонсов даты и времени
-                                        $.session.serviceRequestDate = new Date($.session.serviceRequestDate);
-                                        announceDateGen($.session.serviceRequestDate);
+                                        announceDateGen(new Date($.session.serviceRequestDate));
                                         announceAudio(audioDict.at);
-                                        announceHoursFromDate($.session.serviceRequestDate);
+                                        announceHoursFromDate(new Date($.session.serviceRequestDate));
                                         $reactions.transition("/WhatElse/WhatElse");
                                     }else{
                                         // TODO после доработки будем проверять три статуса
@@ -435,7 +473,7 @@ theme: /CreateServiceRequest
                                     }
                                 }else{
                                     $.session.intent.stepsCnt++;
-                                    if($.session.serviceRequestComment == ''){
+                                    if(!$.session.serviceRequestComment || $.session.serviceRequestComment == ''){
                                         if($.session.spas){
                                             if($.session.productId == 5){
                                                 $.session.serviceRequestComment = $.session.spas.internetProblem.requestComment;
@@ -444,8 +482,6 @@ theme: /CreateServiceRequest
                                                 $.session.serviceRequestComment = $.session.spas.tvProblem.requestComment;
                                             }
                                         }
-                                    }else{
-                                        $.session.serviceRequestComment;
                                     }
                                     $reactions.transition("/AwaitAction/RunAction");
                                 }
@@ -465,6 +501,7 @@ theme: /CreateServiceRequest
                                 $.session.intent.stepsCnt++;
                                 if(countRepeatsInRow() < $injector.noMatchLimit) {
                                     announceAudio(audioDict.goZayavku_CatchAll);
+                                    $.session.serviceRequestDate = new Date($.session.serviceRequestDate);
                                     $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays/GetAvailableTimeSlots/ConfirmServiceRequest");
                                 }else{
                                     $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
@@ -478,6 +515,8 @@ theme: /CreateServiceRequest
                 q: * не готов* *
                 q: * не создавай* *
                 q: * $noAtHome *
+                q: * (не [@Need] оформи*/не [@Need] оформля*) *
+                q: * {(не готов*) оформить визит} *
                 script:
                     $.session.intent.stepsCnt++;
                     $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
@@ -499,10 +538,7 @@ theme: /CreateServiceRequest
                     if(countRepeatsInRow() < $injector.noMatchLimit) {
                         $reactions.transition("/CreateServiceRequest/TSrequest/Ask");
                     }else{
-                        $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                        $.session.intent.resultCode = 6;
-                        announceAudio(audioDict.perezagruzhayVsyo_transferToOKC);
-                        $reactions.transition("/Transfer/CheckOCTP");
+                        $reactions.transition("/CreateServiceRequest/TSrequest/Ask/GetAvailableDays");
                     }
                     
     state: NetworkAdminRequest
@@ -535,16 +571,15 @@ theme: /CreateServiceRequest
                     // параметры для await-экшна
                     $.session.awaitAction = $.session.awaitAction || {};
                     $.session.awaitAction.returnState = $context.currentState;
-                    if($.session.serviceRequestComment == ''){
+                    if(!$.session.serviceRequestComment || $.session.serviceRequestComment == ''){
                         if($.session.productId == 5){
                             $.session.serviceRequestComment = $.session.spas.internetProblem.requestComment;
                         }
                         if($.session.productId == 53){
                             $.session.serviceRequestComment = $.session.spas.tvProblem.requestComment;
                         }
-                    }else{
-                        $.session.serviceRequestComment;
                     }
+                    
                     $.session.awaitAction.action = "createServiceRequest";
                     $.session.awaitAction.readTimeout = 4000;
                     $.session.awaitAction.audio = audioDict.initialWait;
@@ -590,8 +625,5 @@ theme: /CreateServiceRequest
                         announceAudio(audioDict.doYouWant_admin_request_CatchAll);
                         $reactions.transition("/CreateServiceRequest/NetworkAdminRequest/Ask");
                     }else{
-                        $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                        $.session.intent.resultCode = 1;
-                        announceAudio(audioDict.YaNeSozdal_noMatchAnswer);
-                        $reactions.transition("/Transfer/CheckOCTP");
+                        $reactions.transition("/CreateServiceRequest/NetworkAdminRequest/Ask/CreateNetworkAdminRequest");
                     }

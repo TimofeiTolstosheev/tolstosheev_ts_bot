@@ -34,16 +34,26 @@ function getCityDataByName(cityName, citiesDataDict) {
 
 // инициализация
 function init() {
-    //cisco
     $.session.cisco = $.session.cisco || {};
-    $.session.cisco.rck = $.session.cisco.rck  || '11111';
-    $.session.cisco.rckd = $.session.cisco.rckd || '222';
-    $.session.region = $.session.region || "dev-dcc-spb";
-    $.session.phoneNumber = $.session.phoneNumber || "79524002897"; 
+    // определим тестовые данные
+    if($.request.channelType == 'chatwidget' || $.testContext){
+        $.session.cisco.rck = $.session.cisco.rck  || '11111';
+        $.session.cisco.rckd = $.session.cisco.rckd || '222';
+        $.session.region = $.session.region || "dev-dcc-spb";
+        $.session.phoneNumber = $.session.phoneNumber || "79524002897";
+    }
     $.session.cellPhone = $.session.cellPhone || $.session.phoneNumber.substring(1, 2) == "9";
     $.session.city = citiesByRegion[$.session.region] || 'perm'; // не нашли город, считаем, что Пермь
-    $.session.callEndType = 'near-hup'; // по-умолчанию, считаем, 6что звонок завершится в боте
-  
+    $.session.callEndType = 'near-hup'; // по-умолчанию, считаем, что звонок завершится в боте
+    $.session.dialogLogIsSent = false;
+    $.session.dialogId = $.sessionId;
+    $.session.clientPathExperiment = "B";
+    try{
+        $.session.clientPathExperiment = $analytics.joinExperiment("Путь клиента");
+    }catch(e){
+        customLog("Failed to join experiment. Error: " + e);
+    }
+
     $analytics.setSessionData("Region", $.session.region);
     $analytics.setSessionData("RCKD", $.session.cisco.rckd);
     $analytics.setSessionData("RCK", $.session.cisco.rck);
@@ -72,6 +82,15 @@ function countRepeatsInRow() {
   }
   $.session.prevContext =  $.contextPath;
   return $.session.repeatsInRow;
+}
+
+// счетчик попаданий в один и тот же стейт внутри сценария (не подряд)
+function countRepeatsPerState(flag) {
+  var flag = flag || "default";
+  $.session.repeatPerState =  $.session.repeatPerState || {};
+  $.session.repeatPerState[$.currentState] =  $.session.repeatPerState[$.currentState] || {};
+  $.session.repeatPerState[$.currentState][flag] = $.session.repeatPerState[$.currentState][flag] + 1 || 1;
+  return $.session.repeatPerState[$.currentState][flag];
 }
 
 // счетчик вызова оператора
@@ -109,30 +128,36 @@ function getNow() {
 
 // определение рабочего времени ГСК по городу
 function checkGSKtime(city) {
+  customLog("Check GSK working time for city: " + city);
   if($.session.gskWorkTime === true || $.session.gskWorkTime === false){
       return;
   }
-  var now = new Date();
-  var gskWorkingTime = citiesData[city]["gskWorkingTime"];
-  var timeFrom = citiesData[city]["gskTimeFrom"];
-  var timeTo = citiesData[city]["gskTimeTo"];
-  var timeFromHour = parseInt(timeFrom.substring(0, 2));
-  var timeFromMin = parseInt(timeFrom.substring(3, 5));
-  var timeFromSec = parseInt(timeFrom.substring(6, 8));
-  var timeToHour = parseInt(timeTo.substring(0, 2));
-  var timeToMin = parseInt(timeTo.substring(3, 5));
-  var timeToSec = parseInt(timeTo.substring(6, 8));
-
-  var gskTimeFromDate = new Date();
-  var gskTimeToDate = new Date();
-  if (timeFromHour > timeToHour) {
-    gskTimeToDate.setDate(now.getDate() + 1);
+  try{
+    var now = new Date();
+    var gskWorkingTime = citiesData[city]["gskWorkingTime"];
+    var timeFrom = citiesData[city]["gskTimeFrom"];
+    var timeTo = citiesData[city]["gskTimeTo"];
+    var timeFromHour = parseInt(timeFrom.substring(0, 2));
+    var timeFromMin = parseInt(timeFrom.substring(3, 5));
+    var timeFromSec = parseInt(timeFrom.substring(6, 8));
+    var timeToHour = parseInt(timeTo.substring(0, 2));
+    var timeToMin = parseInt(timeTo.substring(3, 5));
+    var timeToSec = parseInt(timeTo.substring(6, 8));
+    
+    var gskTimeFromDate = new Date();
+    var gskTimeToDate = new Date();
+    if (timeFromHour > timeToHour) {
+      gskTimeToDate.setDate(now.getDate() + 1);
+    }
+    
+    gskTimeFromDate.setHours(timeFromHour, timeFromMin, timeFromSec);
+    gskTimeToDate.setHours(timeToHour, timeToMin, timeToSec);
+    
+    $.session.gskWorkTime = now > gskTimeFromDate && now < gskTimeToDate && gskWorkingTime;
+  }catch(e){
+      $.session.gskWorkTime = false;
+      customLog("Failed to check GSK working time. Error: " + e);
   }
-
-  gskTimeFromDate.setHours(timeFromHour, timeFromMin, timeFromSec);
-  gskTimeToDate.setHours(timeToHour, timeToMin, timeToSec);
-
-  $.session.gskWorkTime = now > gskTimeFromDate && now < gskTimeToDate && gskWorkingTime;
 }
 
 // получение списка каналов/пакетов из сущностей
@@ -160,9 +185,45 @@ function announceAudio(audio){
         $reactions.answer(audio.value);
         return;
     }
-    $reactions.audio({name: audio.value, value: audio.audio});
+    try{
+        $reactions.audio({name: audio.value, value: audio.audio});
+    }catch(e){
+        $analytics.setScenarioAction("Не найден текст аудио");
+        throw new Error("Audio announce not found");
+    }
 }
 
 function customLog(text){
     log("Custom log. " + text);
+}
+
+// убирает повторения в строке
+function removeRepeats(s){
+    var res = "";
+    var s_arr = s.split(" ");
+    for(var i = 0; i < s_arr.length; i++){
+        if(s_arr[i] == s_arr[i+1]){
+            continue;
+        }else{
+            res += s_arr[i] + " ";
+        }
+    }
+    return res.trim();
+}
+
+// преобразовываем все слова в тексте с заглавной буквы
+function capitalizeFirstLetters(str) {
+    var array = str.toLowerCase().split(" ");
+    for (var i = 0; i < array.length; i++) {
+        array[i] = array[i].charAt(0).toUpperCase() + array[i].slice(1);
+    }
+    return array.join(' ');
+}
+
+function logState(stateName){
+    // логируем только ветку А
+    if($.session.clientPathExperiment == "A"){
+        $.session.stateLog = $.session.stateLog || [];
+        $.session.stateLog.push(stateName);
+    }
 }

@@ -56,8 +56,7 @@ theme: /TvChannelProblem
                 }
                 
                 if($.session.spas.tvProblem.technicalSupport){
-                    $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' :
-                                            ($.session.spas.tvProblem.technicalSupport ? 'tech_spas3' : 'tech_spas');
+                    $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' : 'tech_spas3';
                 }else{
                     if($.session.spas.tvProblem.actionCategories){
                         // определяем коллер и код, чтобы потом по ним смогли перевести
@@ -106,7 +105,6 @@ theme: /TvChannelProblem
                         script:
                             $.session.intent.stepsCnt++;
                             $.session.allTVproblem = false; // считаем false, чтобы не уводить в ветку создания СЗ
-                            announceAudio(audioDict['1DecoderKTV']);
                         go!: /TvChannelProblem/AreYouAtHome/HowMuchChannels/CheckSwitchAccident
                     
                     state: HowMuchProblemTV
@@ -128,11 +126,11 @@ theme: /TvChannelProblem
                             script:
                                 $.session.intent.stepsCnt++;
                                 $.session.allTVproblem = true;
-                                announceAudio(audioDict['1DecoderKTV']);
                             go!: /TvChannelProblem/AreYouAtHome/HowMuchChannels/CheckSwitchAccident
             
                         state: catchAll || noContext = true
                             event: noMatch
+                            intentGroup: /NoMatch
                             script:
                                 # если два раза не поняли, переводим на оператора
                                 if(countRepeatsInRow() < $injector.noMatchLimit) {
@@ -168,6 +166,7 @@ theme: /TvChannelProblem
             
                     state: catchAll || noContext = true
                         event: noMatch
+                        intentGroup: /NoMatch
                         script:
                             # если два раза не поняли, считаем, что у клиента несколько телевизоров
                             if(countRepeatsInRow() < $injector.noMatchLimit && !$.session.localRepeats) {
@@ -175,7 +174,7 @@ theme: /TvChannelProblem
                                 announceAudio(audioDict['1or2TV']);
                                 $.session.localRepeats = true;
                             }else{
-                                $reactions.transition("/TvChannelProblem/AreYouAtHome/HowMuchChannels/AllChannels/HowMuchTV/HasOneProblemTV");
+                                $reactions.transition("/TvChannelProblem/AreYouAtHome/HowMuchChannels/AllChannels/HowMuchTV/HowMuchProblemTV");
                             }
                             
                 state: LocalTVNoInput || noContext = true
@@ -263,6 +262,7 @@ theme: /TvChannelProblem
                             $reactions.transition("/TvChannelProblem/AreYouAtHome/HowMuchChannels/CheckSwitchAccident/NoAccident");
                         }
                     }else{
+                        announceAudio(audioDict['1DecoderKTV']);
                         $reactions.transition("/AwaitAction/RunAction");
                     }
             
@@ -305,11 +305,16 @@ theme: /TvChannelProblem
                 # для тестов
                 q: NoInput
                 intent: /NoInput
+                q: $agentRequest
+                intent: /405_AgentRequest
                 script:
                     countRepeatsInRow();
                     $.session.noInputCount = $.session.noInputCount || 0;
                     $.session.noInputCount++;
                     if($.session.noInputCount < $injector.noInputLimit && $.session.repeatsInRow < 3) {
+                        if($parseTree._agentRequest){
+                            $.session.agentRequested = true;
+                        }
                         announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
                         $reactions.transition("/TvChannelProblem/AreYouAtHome/HowMuchChannels");
                     }else{

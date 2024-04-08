@@ -23,6 +23,15 @@ theme: /CommonQuestion
                 intent: /250_CommonTechnicalProblems
                 go!: /CommonTechnicalProblems/StartIntent
                 
+            state: Both
+                q: и то и [то/другое]
+                q: и та и та
+                q: $regexp<об[ае]>
+                q: {(и финансовая) (и техническая)}
+                q: * (@DontWork $regexp<услуг[аи]>) [и] (@Need консультац*) *
+                q: * (@Need консультац*) [и] (@DontWork $regexp<услуг[аи]>) *
+                go!: /CommonTechnicalProblems/StartIntent
+            
             state: СatchAll || noContext = true
                 event: noMatch
                 script:

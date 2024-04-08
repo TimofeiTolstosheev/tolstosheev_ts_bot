@@ -27,6 +27,10 @@ function logIntent(intentId, beginDt, endDt, stepsCnt, resultCode, info, states)
     accidentBillingId: info,
     states: states
   });
+  $.session.intentAnalyticData = $.session.intentAnalyticData || '';
+  $.session.intentAnalyticData += $.session.intentAnalyticData.length > 0 ? ";": "";
+  $.session.intentAnalyticData += intentId + "/" + resultCode;
+  $analytics.setSessionData("Intents", $.session.intentAnalyticData);
   customLog("dialogLog: " + toPrettyString($.session.dialogLog));
 }
 
@@ -50,21 +54,18 @@ function startIntent(intent) {
       $.session.intent.stepsCnt,
       $.session.intent.resultCode,
       $.session.intent.info,
-      $.session.stateLog || $.session.prevStateLog
+      $.session.stateLog || $.session.prevStateLog || ["undefined"]
     );
     $.session.prevStateLog = $.session.stateLog; // сохраняем stateLog, чтобы можно было использовать последний лог, если уже очистили текущий
     delete $.session.stateLog;
     delete $.session.callerInput;
-    $.session.intentAnalyticData = $.session.intentAnalyticData || '';
-    $.session.intentAnalyticData += $.session.intentAnalyticData.length > 0 ? ";": "";
-    $.session.intentAnalyticData = $.session.intentAnalyticData + intentId + "/" + $.session.intent.resultCode;
-    $analytics.setSessionData("Intents", $.session.intentAnalyticData);
   }
   $.session.intent.currentIntent = intent;
   $.session.intent.beginDt = getNow();
   $.session.intent.stepsCnt = 1;
   $.session.intent.resultCode = 0; // изначально считаем, что интент завершится успешно
   $.session.intent.info = "";
+  $.session.lastIntentCode = getIntentParam($.session.intent.currentIntent, "intentCode");
   // попадания в интенты
   $.session.intentCount = $.session.intentCount || {};
   var curCount = $.session.intentCount[intent] || 0;
@@ -97,10 +98,6 @@ function stopIntent() {
     );
     $.session.prevStateLog = $.session.stateLog; // сохраняем stateLog, чтобы можно было использовать последний лог, если уже очистили текущий
     delete $.session.stateLog;
-    $.session.intentAnalyticData = $.session.intentAnalyticData || '';
-    $.session.intentAnalyticData += $.session.intentAnalyticData.length > 0 ? ";": "";
-    $.session.intentAnalyticData = $.session.intentAnalyticData + intentId + "/" + $.session.intent.resultCode;
-    $analytics.setSessionData("Intents", $.session.intentAnalyticData);
     delete $.session.intent;
   }
 }

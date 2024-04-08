@@ -1,27 +1,326 @@
-<!--1 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ Нет - Перевод на оператора-->
-<!--2 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ ДА - Вопросов нет-->
-<!--3 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ Нет - Вопросов нет-->
-<!--4 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ ДА - Вопросов нет-->
-<!--5 SetupRouter Авторизованный, сотовый - В проактиве авария - Доп вопросов нет-->
-<!--6 SetupRouter Авторизованный, сотовый - В проактиве есть ошибки - у клиента ДЗ - запрос оператора-->
-<!--7 SetupRouter Авторизованный, городской - КТ. РМ перевода на агента-->
-<!--8 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС - да. Ошибка биллига на ПЕРВУЮ смс, перевод на ОКЦ.-->
-<!--9 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС 1 - нет. СМС 2 - да. Ошибка биллига на ВТОРУЮ смс, перевод на ОКЦ.-->
-<!--10 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС 1 - нет. СМС 2 - да - вопросов нет-->
-<!--21 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе находятся - В проактиве авария - Доп вопросов нет-->
-<!--22 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе находятся - В проактиве у клиента ДЗ - запрос оператора-->
+<!--1 SetupRouter  Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ Нет - Вопросов нет-->
+<!--2 SetupRouter  Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ ДА - Вопросов нет-->
+<!--3 SetupRouter  Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ Нет - Вопросов нет-->
+<!--4 SetupRouter  Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ ДА - Вопросов нет-->
+<!--5 SetupRouter  Авторизованный, сотовый - В проактиве авария - Доп вопросов нет-->
+<!--6 SetupRouter  Авторизованный, сотовый - В проактиве ДЗ - запрос оператора-->
+<!--7 SetupRouter  Авторизованный, городской - КТ. РМ перевода на агента-->
+<!--8 SetupRouter  Авторизованный, сотовый - требуется настройка роутера - СМС - да. Ошибка биллига на ПЕРВУЮ смс, перевод на ОКЦ.-->
+<!--9 SetupRouter  Авторизованный, сотовый - требуется настройка роутера - СМС 1 - нет. СМС 2 - да. Ошибка биллига на ВТОРУЮ смс, перевод на ОКЦ.-->
+<!--10 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ Нет - Переход в 130 интент х2-->
+<!--11 SetupRouter Авторизованный, сотовый - в проактиве mono_EnoughBalance_NotActive - сумма для активации - Активировать тарифный план? - да - успех - еще вопросы - нет - прощание-->
+<!--12 SetupRouter Авторизованный, сотовый - Проактив ок. Телефон НЕактуальный. СМС с мануалом отказ. Переходим в оператора.-->
+<!--13 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 2 непонятные фразы. На оператора.-->
+<!--14 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 1 непонятная фраза, да. Вопросов нет.-->
+<!--15 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 1 непонятная фраза, нет. Вопросов нет.-->
+<!--16 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 1 тишина, нет. Вопросов нет.-->
+<!--17 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 2 тишины. Завершение диалога.-->
+<!--18 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - непонятная фраза - нет - 2 СМС - 2 непонятные фразы. На оператора.-->
+<!--19 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - 2 непонятные фразы. На оператора.-->
+<!--20 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - тишина - Нет - 2 СМС ответ - нет. Вопросов нет.-->
+<!--21 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - 2 тишины. Завершение диалога.-->
+<!--22 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - оператор х2 - перевод-->
+<!--23 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - оператор - да - 2 смс - оператор - перевод-->
 <test>
-    <test-case id="1 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ Нет - Перевод на оператора">
+    <test-case id="1 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ Нет - Вопросов нет" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;</a>
+    </test-case>
+
+    <test-case id="2 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ ДА - Вопросов нет" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 804-0;130-0;</a>
+    </test-case>
+
+    <test-case id="3 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ Нет - Вопросов нет" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 803-0;130-0;</a>
+    </test-case>
+
+    <test-case id="4 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ ДА - Вопросов нет" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 803-0;804-0;130-0;</a>
+    </test-case>
+
+    <test-case id="5 SetupRouter Авторизованный, сотовый - В проактиве авария - Доп вопросов нет" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000004"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
+        <a>avaria_time. Время до завершения.</a>
+        <a>ru_digit_1_nom. один</a>
+        <a>Ru_unit_hour_nom_sn. час.</a>
+        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
+        <a>zakaz_sms_info1. Хотите получить смс сообщение о восстановлении доступа к услугам?</a>
+        <q>нет</q>
+        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;500-29;</a>
+    </test-case>
+
+    <test-case id="6 SetupRouter Авторизованный, сотовый - В проактиве есть ошибки - у клиента ДЗ - запрос оператора" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000003"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>Oplati_DZ. Вижу, что произошло физическое отключение. Интернет включится сразу после оплаты, а телевидение в течение 24 часов.</a>
+        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
+        <a>ru_digit_3000_nom. три тысячи</a>
+        <a>ru_digit_300_nom. триста</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-29;</a>
+    </test-case>
+    
+    <test-case id="7 SetupRouter Авторизованный, городской - КТ. РМ перевода на агента" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412119921"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>Configuring_router_transfer. Для настройки роутера пожалуйста приготовьте логин и пароль от интернета, а так же убедитесь, что ваш компьютер подключён к роутеру проводным или беспроводным способом. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-7;</a>
+    </test-case>
+
+    <test-case id="8 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС - да. Ошибка биллига на ПЕРВУЮ смс, перевод на ОКЦ." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000102"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 803-3;130-7;</a>
+    </test-case>
+
+    <test-case id="9 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС 1 - нет. СМС 2 - да. Ошибка биллига на ВТОРУЮ смс, перевод на ОКЦ.">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
                 "phoneNumber": "79703530000",
                 "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "dvbc": "1",
-                "accidentHours": "1",
-                "phoneStatus": "1",
-                "autoTest": true
+                "phoneStatus": 1
+            }
+        </context>
+        
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response>{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
+            <response>{ "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
+            <response>{ "errorCode": 1 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 804-3;130-7;</a>
+    </test-case>
+    
+    <test-case id="10 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ Нет - Переход в 130 интент х2" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нужна настройка роутера</q>
+        <a>perevod_na_okc_from_Repeat. Мне очень жаль, что я не смогла вам помочь. Перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;130-0;130-28;</a>
+    </test-case>
+    
+    <test-case id="11 SetupRouter Авторизованный, мобильный - 130 интент - в проактиве mono_EnoughBalance_NotActive - сумма для активации - Активировать тарифный план? - да - успех - еще вопросы - нет - прощание" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000002"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>настройка роутера</q>
+        <a>activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a>ru_digit_600_nom. шестьсот</a>
+        <a>ru_digit_50_nom. пятьдесят</a>
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>да</q>
+        <a>active_OK. Тарифный план активирован. Доступ к услугам откроется через 5 минут. Не забудьте перезагрузить роутер.</a>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-29;</a>
+    </test-case>
+    
+    <test-case id="12 SetupRouter Авторизованный, сотовый - Проактив ок. Телефон НЕактуальный. СМС с мануалом отказ. Переходим в оператора.">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                "phoneStatus": "2"
             }
         </context>
         
@@ -79,365 +378,18 @@
         <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>нет</q>
-        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>нет</q>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="2 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ ДА - Вопросов нет">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "phoneStatus": "1",
-                "cellPhone": true,
-                "dvbc": "1",
-                "accidentHours": "1",
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response>{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>
-        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>нет</q>
-        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>да</q>
-        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="3 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ Нет - Вопросов нет">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "phoneStatus": "1",
-                "cellPhone": true,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response>{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>
-        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>да</q>
-        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
-        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>нет</q>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="4 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ ДА - 2 смс ответ ДА - Вопросов нет">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "phoneStatus": "1",
-                "cellPhone": true,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response>{ "errorCode": 0 }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response>{ "errorCode": 0 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>
-        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>да</q>
-        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
-        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>да</q>
-        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="5 SetupRouter Авторизованный, сотовый - В проактиве авария - Доп вопросов нет">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
-            <response status="200">
-                {
-                    "errorCode": 0,
-                    "errorMessage": "accident",
-                    "askSms": false,
-                    "accidentId": "111",
-                    "accident": true,
-                    "accidentEndDate": "16.10.2023 14:30:56 +00:00",
-                    "ppr": 0,
-                    "currentPprEndDate": "string",
-                    "futurePprStartDate": "string",
-                    "futurePprEndDate": "string",
-                    "potentialAccident": false,
-                    "recommendSum": "string",
-                    "subscriptionFee": "string",
-                    "promisedPaymentAvailable": true,
-                    "serviceRequest": false,
-                    "serviceRequestId": 0,
-                    "serviceResult": 0,
-                    "servicePlanDate": "16.10.2023 14:30:56 +00:00",
-                    "serviceRequestStatus": "request-pending",
-                    "connectionRequest": true,
-                    "result": "string",
-                    "rebooted": true,
-                    "rebootResult": "string",
-                    "rebootPortResult": "string",
-                    "dropSessionResult": "string",
-                    "rebootRouterResult": "string",
-                    "checkSessionResult": "string",
-                    "sessionStatus": "new",
-                    "authorizationType": "string",
-                    "adminStatus": "up",
-                    "operStatus": "up",
-                    "portStateError": "string",
-                    "tariffPlanActive": true,
-                    "status": "success"
-                }
-            </response>
-        </mockData>
-        
-        <dateTime>2023-10-16 14:23:55</dateTime>
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>
-        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
-        <a>avaria_time. Время до завершения.</a>
-        <a>ru_digit_1_nom. один</a>
-        <a>Ru_unit_hour_nom_sn. час.</a>
-        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
-        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="6 SetupRouter Авторизованный, сотовый - В проактиве есть ошибки - у клиента ДЗ - запрос оператора">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
-            <response status="200">
-                {
-                    "errorCode": 0,
-                    "errorMessage": "string",
-                    "askSms": false,
-                    "accidentId": 0,
-                    "accident": false,
-                    "accidentEndDate": "string",
-                    "ppr": 0,
-                    "currentPprEndDate": "",
-                    "futurePprStartDate": "",
-                    "futurePprEndDate": "",
-                    "potentialAccident": false,
-                    "recommendSum": "545,50",
-                    "subscriptionFee": "string",
-                    "promisedPaymentAvailable": true,
-                    "serviceRequest": false,
-                    "serviceRequestId": 0,
-                    "serviceResult": 0,
-                    "servicePlanDate": "",
-                    "serviceRequestStatus": "request-pending",
-                    "connectionRequest": true,
-                    "result": "KP_NoDZ_NotActive",
-                    "rebooted": true,
-                    "rebootResult": "string",
-                    "rebootPortResult": "string",
-                    "dropSessionResult": "string",
-                    "rebootRouterResult": "string",
-                    "checkSessionResult": "string",
-                    "sessionStatus": "new",
-                    "authorizationType": "string",
-                    "adminStatus": "up",
-                    "operStatus": "up",
-                    "portStateError": "string",
-                    "tariffPlanActive": false,
-                    "status": "success"
-                }
-            </response>
-        </mockData>
-        
-        <dateTime>2023-10-10 13:43:55</dateTime>
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>.
-        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
-        <a>ru_digit_500_nom. пятьсот</a>
-        <a>ru_digit_40_nom. сорок</a>
-        <a>ru_digit_5_nom. пять</a>
-        <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>ru_digit_50_nom. пятьдесят</a>
-        <a>ru_unit_kop_gen_pl. копеек</a>
-        <a>wait_for_the_payment. Если вы уже произвели оплату, пожалуйста подождите немного. обычно деньги поступают на счет мгновенно, но иногда это может занять несколько часов.</a>
-        <a>ask_promisedPay. Если вы еще не производили оплату, могу попробовать подключить вам услугу обещанный платеж. Вам это, интересно?</a>
-        <q>не интересно</q>
-        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
-        <q>нет</q>
-        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
-        <q>нет</q>
-        <a>toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer" />
-    </test-case>
-    
-    <test-case id="7 SetupRouter Авторизованный, городской - КТ. РМ перевода на агента">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "78703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": false,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>
         <a>Configuring_router_transfer. Для настройки роутера пожалуйста приготовьте логин и пароль от интернета, а так же убедитесь, что ваш компьютер подключён к роутеру проводным или беспроводным способом. А я пока перевожу звонок на оператора и напоминаю, что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-7;</a>
     </test-case>
-
-    <test-case id="8 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС - да. Ошибка биллига на ПЕРВУЮ смс, перевод на ОКЦ.">
+    
+    <test-case id="13 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 2 непонятные фразы. На оператора." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000080"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/setup/router</query>
-            <response>{ "errorCode": 1 }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
-        <a state="/Init/HowCanIHelpYou"/>
-        <q>нужна настройка роутера</q>
-        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
-        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>да</q>
-        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
-
-    <test-case id="9 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС 1 - нет. СМС 2 - да. Ошибка биллига на ВТОРУЮ смс, перевод на ОКЦ.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "phoneStatus": 1,
-                "autoTest": true
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response>{ "errorCode": 1 }</response>
-        </mockData>
         
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -448,31 +400,21 @@
         <q>нет</q>
         <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
-        <q>да</q>
-        <a>sms_neOtpravlena_transfer. К сожалению, что-то пошло не так. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры</a>
-        <a state="/Transfer/Transfer"/>
+        <q>кого</q>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-7;</a>
     </test-case>
-
-    <test-case id="10 SetupRouter Авторизованный, сотовый - требуется настройка роутера - СМС 1 - нет. СМС 2 - да - вопросов нет">
+    
+    <test-case id="14 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 1 непонятная фраза, да. Вопросов нет." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79703530000",
-                "agreementNumber": "780046998264",
-                "cellPhone": true,
-                "phoneStatus": 1,
-                "autoTest": true
+                "phoneNumber": "79000000080"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/login</query>
-            <response>{ "errorCode": 0 }</response>
-        </mockData>
         
         <q>/start</q>
         <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
@@ -482,202 +424,274 @@
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>нет</q>
         <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
         <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <q>да</q>
         <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 804-0;130-0;</a>
     </test-case>
     
-    
-    <test-case id="21 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе находятся - В проактиве авария - Доп вопросов нет">
+    <test-case id="15 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 1 непонятная фраза, нет. Вопросов нет." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000000",
-                "agreementId": "",
-                "agreementNumber": "",
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "autoTest": true
-                
+                "phoneNumber": "79000000080"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest-with-house" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
-            <response status="200">
-                {
-                    "errorCode": 0,
-                    "errorMessage": "string",
-                    "askSms": false,
-                    "accidentId": 111,
-                    "accident": true,
-                    "accidentEndDate": "16.10.2023 14:30:56 +00:00",
-                    "ppr": 0,
-                    "currentPprEndDate": "",
-                    "futurePprStartDate": "",
-                    "futurePprEndDate": "",
-                    "potentialAccident": false,
-                    "recommendSum": "",
-                    "subscriptionFee": "850,00",
-                    "promisedPaymentAvailable": true,
-                    "serviceRequest": false,
-                    "serviceRequestId": 0,
-                    "serviceResult": 0,
-                    "servicePlanDate": "",
-                    "serviceRequestStatus": "request-pending",
-                    "connectionRequest": true,
-                    "result": "",
-                    "rebooted": true,
-                    "rebootResult": "string",
-                    "rebootPortResult": "string",
-                    "dropSessionResult": "string",
-                    "rebootRouterResult": "string",
-                    "checkSessionResult": "string",
-                    "sessionStatus": "new",
-                    "authorizationType": "string",
-                    "adminStatus": "up",
-                    "operStatus": "up",
-                    "portStateError": "string",
-                    "tariffPlanActive": false,
-                    "status": "success"
-                }
-            </response>
-        </mockData>
-        
         <q>/start</q>
-        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-        <q>да</q>
-        <a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
         <q>нужна настройка роутера</q>
-        <a>techProblems_accident_header. По техническим причинам по вашему адресу временно недоступны услуги связи, востановительные работы уже ведутся.</a>
-        <a>avaria_time. Время до завершения.</a>
-        <a>ru_digit_1_nom. один</a>
-        <a>Ru_unit_hour_nom_sn. час.</a>
-        <a>techProblems_accident_ending. Приносим извинения за временные неудобства.</a>
-        <a>Avaria_Wait. Любые технические вопросы мы сможем решить только после окончания работ. Пожалуйста, перезвоните нам, если ваш вопрос будет по прежнему актуален.</a>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>не хочу</q>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;</a>
     </test-case>
-
-
-    <test-case id="22 SetupRouter Неавторизованный, сотовый - озвучивает Адрес и ФИО, совпадения в базе находятся - В проактиве у клиента ДЗ - запрос оператора">
+    
+    <test-case id="16 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 1 тишина, нет. Вопросов нет." integration="true">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000000",
-                "agreementId": "",
-                "agreementNumber": "",
-                "cellPhone": true,
-                "phoneStatus": "1",
-                "autoTest": true
-                
+                "phoneNumber": "79000000080"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response>{ "token": "1234", "type": "guest" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
-            <response status="200">{ "type": "guest-with-house" }</response>
-        </mockData>
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
-            <response status="200">{ "type": "user" }</response>
-        </mockData>
-        
-        <mockData>
-            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
-            <response status="200">
-                {
-                    "errorCode": 0,
-                    "errorMessage": "string",
-                    "askSms": false,
-                    "accidentId": 0,
-                    "accident": false,
-                    "accidentEndDate": "string",
-                    "ppr": 0,
-                    "currentPprEndDate": "",
-                    "futurePprStartDate": "",
-                    "futurePprEndDate": "",
-                    "potentialAccident": false,
-                    "recommendSum": "3300,00",
-                    "subscriptionFee": "string",
-                    "promisedPaymentAvailable": true,
-                    "serviceRequest": false,
-                    "serviceRequestId": 0,
-                    "serviceResult": 0,
-                    "servicePlanDate": "",
-                    "serviceRequestStatus": "request-pending",
-                    "connectionRequest": true,
-                    "result": "monoKTV_DZ_NotActive",
-                    "rebooted": true,
-                    "rebootResult": "string",
-                    "rebootPortResult": "string",
-                    "dropSessionResult": "string",
-                    "rebootRouterResult": "string",
-                    "checkSessionResult": "string",
-                    "sessionStatus": "new",
-                    "authorizationType": "string",
-                    "adminStatus": "up",
-                    "operStatus": "up",
-                    "portStateError": "string",
-                    "tariffPlanActive": false,
-                    "status": "success"
-                }
-            </response>
-        </mockData>
-        
         <q>/start</q>
-        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-        <q>да</q>
-        <a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
         <q>нужна настройка роутера</q>
-        <a>Oplati_DZ_ktv. Вижу, что произошло физическое отключение. Телевидение включится после поступления оплаты в течение 24 часов.</a>
-        <a>Oplati_recplatezh. Для восстановления доступа к услугам вам необходимо внести платеж в размере</a>
-        <a>ru_digit_3000_nom. три тысячи</a>
-        <a>ru_digit_300_nom. триста</a>
-        <a>ru_unit_rub_gen_pl. рублей</a>
-        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
-        <a>aftererrorop. Рассказать вам о способах оплаты?</a>
-        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>не хочу</q>
         <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
         <q>нет</q>
         <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;</a>
     </test-case>
+    
+    <test-case id="17 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс ответ Нет - 2 СМС ответ - 2 тишины. Завершение диалога." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;380-10;</a>
+    </test-case>
+    
+    <test-case id="18 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - непонятная фраза - нет - 2 СМС - 2 непонятные фразы. На оператора." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-7;</a>
+    </test-case>
+    
+    <test-case id="19 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - 2 непонятные фразы. На оператора." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>кого</q>
+        <a>configuring_router_noMatchAnswer_transfer. К сожалению, не поняла Вас. Перевожу звонок на специалиста для дальнейшей консультации и напоминаю, что мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-7;</a>
+    </test-case>
+    
+    <test-case id="20 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - тишина - Нет - 2 СМС ответ - нет. Вопросов нет." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>не хочу</q>
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;</a>
+    </test-case>
+    
+    <test-case id="21 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - 2 тишины. Завершение диалога." integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000080"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <event>speechNotRecognized</event>
+        <a>No_Input3. К сожалению, ситуация не поменялась, вероятно со стороны вашего телефонного оператора связи возникла ошибка. пожалуйста, перезвоните повторно или напишите нам в чат, а сейчас я вынуждена прервать разговор, хорошего вам дня!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру silence</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-0;380-10;</a>
+    </test-case>
+    
+    <test-case id="22 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - оператор х2 - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>дайте оператора</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 130-7;405-7;</a>
+    </test-case>
+    
+    <test-case id="23 SetupRouter Авторизованный, сотовый - В проактиве нет ошибок - 1 смс - оператор - да - 2 смс - оператор - перевод" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>нужна настройка роутера</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>дайте оператора</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>дайте оператора</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру con_router</a>
+        <a state="/Transfer/Transfer">BI dialog log: 803-0;130-7;405-7;</a>
+    </test-case>
+
+
+    
+    <test-case id="Buglist Line 11" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/DIALOG_WELCOME_EVENT_1"/>
+        <a state="/Init/HowCanIHelpYou"/>
+        <q>В комнате в 1 плохо работает вай фай не могу подключиться постоянно вылетает</q>
+        <a>UHomeInternet. Пожалуйста уточните, находитесь ли вы сейчас дома? Скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру ppoe_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 310-6;</a>
+    </test-case>
+
 </test>

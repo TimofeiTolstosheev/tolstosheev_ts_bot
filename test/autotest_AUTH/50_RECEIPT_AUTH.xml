@@ -1,53 +1,56 @@
 <!--50_RECEIPT Строка 1 Авторизованный, мобильный, интент 50, на оператора-->
 <!--50_RECEIPT Строка 2 Авторизованный, домашний, интент 50, на оператора-->
-<test>
+<!--50_RECEIPT Строка 3 Авторизованный, мобильный, запрос оператора, потом интент 50, на оператора-->
+<test integration="true">
     <test-case id="50_RECEIPT Строка 1 Авторизованный, мобильный, интент 50, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": true,
-                "autoTest": true
+                "phoneNumber": "79000000001"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>хочу получать чеки</q>
         <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 50-6;</a>
     </test-case>  
    
     <test-case id="50_RECEIPT Строка 2 Авторизованный, домашний, интент 50, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true"
+                "phoneNumber": "78412119921"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>хочу получать чеки</q>
         <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer"/>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 50-6;</a>
+    </test-case>  
+    
+    <test-case id="50_RECEIPT Строка 3 Авторизованный, мобильный, запрос оператора, потом интент 50, на оператора">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000001"
+            }
+        </context>
+
+        <q>/start</q>
+        <a>DIALOG_WELCOME_EVENT_1. Пожалуйста, задайте свой вопрос голосом.</a>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>дайте оператора</q>
+        <a>GetFirstIntent_onAgentRequest_01. Для того, чтобы направить звонок на верного специалиста, мне нужно узнать, какой именно у Вас вопрос</a>
+        <q>хочу получать чеки</q>
+        <a>perevod_na_okc_Invoice. Информация по начислениям и платежам всегда доступна в личном кабинете на сайте дом точка ру, а так же в мобильном приложении Мой домру. Для получения чеков по электронным платежам у партнеров, рекомендую указывать адрес электронной почты при оплате услуг. А я пока перевожу звонок на оператора и напоминаю. что в целях повышения качества обслуживания мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру receipt</a>
+        <a state="/Transfer/Transfer">BI dialog log: 405-0;50-6;</a>
     </test-case>  
 </test>

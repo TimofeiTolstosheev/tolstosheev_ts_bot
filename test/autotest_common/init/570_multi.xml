@@ -1,0 +1,1011 @@
+        <!--МНОЖЕСТВЕННАЯ СВЯЗКА-->
+<!--=== 1 Начало. errorCode9=true, Множественная связка, ФИО - х2 баланс. Переход в интент 90-->
+<!--=== 2 Начало. errorCode9=true, Множественная связка, ФИО - х2 ноуматч, переход в 650 интент, любая ветка.-->
+<!--=== 3 Начало. errorCode9=true, Множественная связка, ФИО - не на меня оформлено. Потом неполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, снова говорит неполные. errorcode9=false, запрос интента, интент 490 далее по любой ветке.-->
+<!--=== 4 Начало. errorCode9=true, Множественная связка, ФИО - не на меня оформлено. НЕполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, полные ФИО. errorcode9=false, запрос интента, интент 490 далее по любой ветке.-->
+<!--=== 5 Начало. errorCode9=true, Множественная связка, ФИО - не на меня оформлено. Потом полные ФИО, user=false, isincompletenames=false, errorcode9=false, запрос интента, интент 490 далее по любой ветке.-->
+<!--=== 6 Начало. errorCode9=true, Множественная связка, ФИО - не помню на кого. Потом неполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, снова говорит неполные. errorcode9=false, запрос интента, интент 490 далее по любой ветке.-->
+<!--=== 7 Начало. errorCode9=true, Множественная связка, ФИО - не помню на кого. Потом неполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, полные ФИО. errorcode9=false, запрос интента, интент 490 далее по любой ветке.-->
+<!--=== 8 Начало. errorCode9=true, Множественная связка, ФИО - полные ФИО, user=false, errorCode9=false, переход в интент. Интент 495, любая ветка.-->
+<!--=== 9 Начало. errorCode9=true, Множественная связка, ФИО - user=false, errorcode9=true, какой адрес? - неполный адрес. isIncompleteAddres=true - запрашиваем адрес еще раз. снова неполный адрес. isIncompleteAddres=true, запрос интента, интент 270, по любой ветке далее.-->
+<!--===10 Начало. errorCode9=true, Множественная связка, ФИО - user=false, errorcode9=true, какой адрес? - называет адрес - user=false, запрос интента, интент 270, по любой ветке далее.-->
+<!--===11 Начало. errorCode9=true, Множественная связка, ФИО - errorCode9=true - какой адрес? - Ноуматч Х2 - 650 интент-->
+<!--===12 Начало. errorCode9=true, Множественная связка, Запрос адреса - оператор х1, потом ноуматч х2 - 650 интент-->
+<!--===13 Начало. errorCode9=true, Множественная связка, Запрос адреса - НРД, потом полный адрес, user=false, isIncompleteNames=false, запрос интента, интент 270, по любой ветке далее.-->
+<!--===14 Начало. errorCode9=true, Множественная связка, Запрос адреса - НРД, потом полный адрес, user=false, isIncompleteNames=false, запрос интента, интент 270, по любой ветке далее.-->
+<!--===15 Начало. errorCode9=true, Множественная связка, Запрос адреса - ноуматч х1 - оператор - ноуматч х1, переводим в общий вопроспотом полный адрес, user=true, переход в интент. Запрос оператора.-->
+
+        <!--МНОЖЕСТВЕННУЮ СВЯЗКУ АВТОРИЗОВАЛИ-->
+<!--+++  Начало. errorCode9=true, Множественная связка, ФИО - полные ФИО, user=true, переход в интент. Интент 420, любая ветка.-->
+<!--+++0 Начало. errorCode9=true, Множественная связка, ФИО - не на меня оформлено. Потом неполные ФИО, user=true, переход в интент. Интент 420, любая ветка.-->
+<!--+++1 Начало. errorCode9=true, Множественная связка, ФИО - не на меня оформлено. НЕполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, полные ФИО. user=true, запрос интента, интент 420-->
+<!--+++2 Начало. errorCode9=true, Множественная связка, ФИО - не на меня оформлено. Потом полные ФИО, user=true, запрос интента, интент 270">-->
+        <!--270 Помехи на каналах, клиент дома. Тип оборудования DVB-C, ролик о проблеме с кабелем, ожидание минуты. Помогло? - Да.Вопросов нет.-->
+<!--+++3 Начало. errorCode9=true, Множественная связка, ФИО - не помню на кого. Потом неполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, НЕполные ФИО. user=true, запрос интента, интент 130-->
+        <!--130 1 смс - да, 2 смс - нет-->
+<!--+++4 Начало. errorCode9=true, Множественная связка, ФИО - не помню на кого. Потом неполные ФИО, user=false, isincompletenames=true, проверка 1 раз, еще раз запрос ФИО, полные ФИО. user=true, запрос интента, интент 150-->
+<!--+++5 Начало. errorCode9=true, Множественная связка, ФИО - не помню на кого. Потом неполные ФИО, user=true, запрос интента, интент 90 ДИНАМИЧЕСКАЯ СУММА-->
+<!--+++6 Начало. errorCode9=true, Множественная связка, ФИО - user=false, errorcode9=true, какой адрес? - неполный адрес. isIncompleteAddres=true - запрашиваем адрес еще раз. полный адрес. user=true, запрос интента, интент 270, по любой ветке далее.-->
+<!--+++7 Начало. errorCode9=true, Множественная связка, Запрос адреса - ноуматч х1, потом неполный адрес. user=true, запрос интента, баланс. Любая ветка. ДИНАМИЧЕСКАЯ СУММА-->
+<!--+++8 Начало. errorCode9=true, Множественная связка, Запрос адреса - оператор х1, потом полный адрес, user=true, переход в интент. Запрос оператора.-->
+<test>
+    <!--МНОЖЕСТВЕННАЯ СВЯЗКА-->
+    <test-case id="===1" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002720"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>сколько денег у меня на счету</q>
+        <a state="/Init/InitMSHi/RequestFIO/ThemeMatch">RequestFIO_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстрее и качественнее его решить, уточните пожалуйста Фамилию Имя и Отчество на кого оформлен договор</a>
+        <q>мой баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===2" integration="true">
+        <context var="session">
+            { 
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002820"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>мне обидно</q>
+        <a state="/Init/InitMSHi/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>совсем меня не понимают</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===3" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002920"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор не мой</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>ирина валентиновна</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>ирина валентиновна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>уточнить работу вай фая по адресу</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру common_tech</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;490-6;</a>
+    </test-case>
+    
+    <test-case id="===4" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002020"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор не мой</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>Саргсян</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Саргсян артур араевич</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нестабильная работа роутера</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру ppoe_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;310-6;</a>
+    </test-case>
+    
+    <test-case id="===5" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002120"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор не мой</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>Так меньшенина светлана николаевна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нестабильная работа роутера</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру ppoe_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;310-6;</a>
+    </test-case>
+     
+    <test-case id="===6" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002220"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню на кого оформлен договор</q>
+        <a state="/Init/InitMSHi/RequestFIO/DontRemember">zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор.</a>
+        <q>Нигматов</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Нигматов</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нестабильная работа роутера</q>
+        <a>UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>дома</q>
+        <a>perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру ppoe_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;310-6;</a>
+    </test-case>
+    
+    <test-case id="===7" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002320"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню на кого оформлен договор</q>
+        <a state="/Init/InitMSHi/RequestFIO/DontRemember">zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор.</a>
+        <q>александр игоревич</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Кукарев александр игоревич</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>нестабильная работа роутера</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>я дома</q>
+        <a state="/AreYouHome/AreYouHome/Transfer">perevod_na_okc_from_NoLink6xxIntent1. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, перезагрузите роутер и устройство, с которого вы выходите в интернет, а также убедитесь, что между вашим устройством и роутером есть проводное или беспроводное соединение. Чаще всего ограничения в работе интернета связаны с необходимостью периодической перезагрузки оборудования и отсутствием подключения в роутеру. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (NoLink6xxIntent2)</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру ppoe_problem</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;310-6;</a>
+    </test-case>
+    
+    <test-case id="===8">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "token": "1234", "errorCode": 9 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house</query>
+            <response status="200">{ "token": "1234", "type": "guest", "errorCode": 0 }</response>
+        </mockData>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <!--TODO 495 из интентов-->
+        <!--<q>срок действия смарт-карты истек</q>-->
+        <q>девушка когда у нас сделают телевидение</q>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": true,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <a state="/495_CommonTV/CheckServices/GetIntent">CommonTVQuestion. Пожалуйста, уточните конкретнее. у вас не работает телевидение? помехи на каналах? либо не работает ТВ приставка?</a>
+        <q>помехи на каналах</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет не дома</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;495-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="===9" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>улица благодатная</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица благодатная</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>девушка когда у нас сделают телевидение</q>
+        <a state="/495_CommonTV/CheckServices/GetIntent">CommonTVQuestion. Пожалуйста, уточните конкретнее. у вас не работает телевидение? помехи на каналах? либо не работает ТВ приставка?</a>
+        <q>помехи на каналах</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет не дома</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;495-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="===10" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>петра великого 999</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>девушка когда у нас сделают телевидение</q>
+        <a state="/495_CommonTV/CheckServices/GetIntent">CommonTVQuestion. Пожалуйста, уточните конкретнее. у вас не работает телевидение? помехи на каналах? либо не работает ТВ приставка?</a>
+        <q>помехи на каналах</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет не дома</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;495-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="===11" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>зачем это</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>чье</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===12" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>оператора дайте</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/AgentRequest">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>чей</q>
+        <a>requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>чей</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="===13" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>хочу расторгнуть договор с вами</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/ThemeMatch">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>улица петра великого дом 999</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>девушка когда у нас сделают телевидение</q>
+        <a state="/495_CommonTV/CheckServices/GetIntent">CommonTVQuestion. Пожалуйста, уточните конкретнее. у вас не работает телевидение? помехи на каналах? либо не работает ТВ приставка?</a>
+        <q>помехи на каналах</q>
+        <a state="/AreYouHome/AreYouHome">UHomeInternetNoAvtor. Вы сейчас находитесь дома? Скажите. да. или , Нет.</a>
+        <q>нет не дома</q>
+        <a state="/AreYouHome/AreYouHome/NotAtHome">UHomeInternet3. К сожалению, провести диагностику без вашего присутствия дома не получится. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;495-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="===14" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>хочу расторгнуть договор с вами</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/ThemeMatch">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>хочу уйти от вас</q>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/NotAuth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру nrd_nua</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;360-8;</a>
+    </test-case>
+    
+    <test-case id="===15" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>чей</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>оператора дайте</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/AgentRequest">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>чей</q>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido. Какого рода консультация вас интересует?</a>
+        <a state="/CommonQuestion/CommonQuestion/WhatCanIdo">whatcanido2. Финансовая или Техническая?</a>
+        <q>финансовая</q>
+        <a state="/FinanceQuestion/FinanceQuestion/RouteFinanceQuestion">fin3. Я могу напомнить вам номер договора для оплаты, активировать обещанный платеж, а так же проверить ваш баланс, озвучить сумму рекомендованного платежа, помогу приостановить или возобновить договор и активировать скидку по программе оптом дешевле. Какой у вас вопрос?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">DetelBalanceNoAvtoriz. Если вас интересуют подробности начислений или возникли дополнительные вопросы, вы можете получить ответы на них в Личном кабинете на сайте Дом Точка Ру. Там же рекомендую привязать к договору свой действующий номер сотового телефона, чтобы в дальнейшем получать через меня больше информации.</a>
+        <a state="/Balance/Balance/CheckAuth/NotAuth/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;650-0;5-0;834-0;90-0;</a>
+    </test-case>
+    
+    <!--МНОЖЕСТВЕННУЮ СВЯЗКУ АВТОРИЗОВАЛИ-->
+    <test-case id="+++" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня номер договора</q>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">agreementNumber. Номер вашего договора</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_78. семьдесят восемь</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_00. ноль ноль</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_46. сорок шесть</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_99. девяносто девять</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_83. восемьдесят  три</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_76. семьдесят шесть</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber/AskSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;420-0;</a>
+    </test-case>
+    
+    <test-case id="+++0" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002520"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор не мой</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>Соколов Максим Иванович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня номер договора?</q>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">agreementNumber. Номер вашего договора</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_78. семьдесят восемь</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_00. ноль ноль</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_46. сорок шесть</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_99. девяносто девять</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_82. восемьдесят  два</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber">DRT_64. шестьдесят четыре</a>
+        <a state="/AgreementNumber/CheckAuth/AnnounceAgreementNumber/AskSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;420-0;</a>
+    </test-case>
+    
+    <test-case id="+++1" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000020"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор не мой</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>петров</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>специалист должен был прийти</q>
+        <a state="/ServiceRequestInfo/ToOperator">OperatorIzSZ. Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру request</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;460-1;</a>
+    </test-case>
+    
+    <test-case id="+++2" integration="true">
+        <!--270 Помехи на каналах, клиент дома. Тип оборудования DVB-C, ролик о проблеме с кабелем, ожидание минуты. Помогло? - Да.Вопросов нет.-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002320"
+            }
+        </context>
+        
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор не мой</q>
+        <a state="/Init/InitMSHi/RequestFIO/NonOwner">zapros_FIO_nonowner. Поняла. Уточните, пожалуйста, фамилию, имя и отчество человека, на которого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>помехи по второй программе по россии один</q>
+        <!--<mockData>-->
+        <!--    <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>-->
+        <!--    <response status="200">-->
+        <!--        {-->
+        <!--            "internetProblem": {"firstActionCategoryIsRequest": false,-->
+        <!--                                "requestComment": "",-->
+        <!--                                "diagnostics": false,-->
+        <!--                                "technicalSupport": false,-->
+        <!--                                "drtvTicket": false,-->
+        <!--                                "technicalServiceRequest": false,-->
+        <!--                                "networkAdministrationRequest": false-->
+        <!--                                },-->
+        <!--            "tvProblem": {"firstActionCategoryIsRequest": false,-->
+        <!--                          "requestComment": "string",-->
+        <!--                          "flowLoss": false,-->
+        <!--                          "technicalSupport": false,-->
+        <!--                          "drtvTicket": false,-->
+        <!--                          "technicalServiceRequest": false,-->
+        <!--                          "networkAdministrationRequest": false-->
+        <!--                         }-->
+        <!--        }-->
+        <!--    </response>-->
+        <!--</mockData>-->
+        <a state="/TVQualityProblem/CheckServices/AreYouHome">URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv">RebutKabelTV. В большинстве случаев проблема заключается в телевизионном кабеле. Проверьте кабель на отсутствие повреждений, а так же достаньте и вставьте его назад в приставку. Не лишним будет так же перезагрузить приставку по питанию. Пожалуйста, сделайте это, а я пока проведу проверку со своей стороны. Вернусь к вам через минуту.</a>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv">MusicTV. Музыка минута</a>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv/ConfimrFix">RebootRouter3. Пожалуйста, уточните решило ли это проблему. Скажите Да или Нет.</a>
+        <q>да</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv/ConfimrFix/Fixed">HappySuccess. Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="+++3" integration="true">
+        <!--130 1 смс - да, 2 смс - нет-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002920"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню на кого оформлен договор</q>
+        <a state="/Init/InitMSHi/RequestFIO/DontRemember">zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор.</a>
+        <q>петров</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не могу подключиться к вай фаю</q>
+        <a>sms_NastroykaRoutera. Я могу отправить смс с инструкциями по настройке популярных моделей оборудования.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>да</q>
+        <a>sms_Otpravlena. Я отправила Вам смс, обычно доставка занимает не более минуты</a>
+        <a>sms_AutorisationData. Также я могу отправить смс с логином и паролем для настройки подключения.</a>
+        <a>doYouWant_sms. Если Вы хотите получить смс, пожалуйста, скажите ДА. Если смс не нужна - скажите НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;803-0;130-0;</a>
+    </test-case>
+    
+    <test-case id="+++4" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002620"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню на кого оформлен договор</q>
+        <a state="/Init/InitMSHi/RequestFIO/DontRemember">zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор.</a>
+        <q>Светлана</q>
+        <a state="/Init/InitMSHi/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>Звягинцева Светлана Ивановна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>приостановить договор</q>
+        <a state="/Suspension/GetReason/Reason">ReasonBlocking. Пожалуйста, уточните причину приостановления</a>
+        <q>расторжение договора</q>
+        <a state="/StopAgreement/CheckGSKworkTime/GSKwork/Auth">PerevodNaStarshego. Перевожу на старшего специалиста. Пожалуйста, ожидайте. В целях повышения качества обслуживания. все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру smart_nsk</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;150-0;360-8;</a>
+    </test-case>
+    
+    <test-case id="+++5" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002620"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "350,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "545,00",
+                    "textParam": 0,
+                    "periodDates": "7",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 0,
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>не помню на кого оформлен договор</q>
+        <a state="/Init/InitMSHi/RequestFIO/DontRemember">zapros_FIO_dontRemember. Возможно договор оформлен на вашего родственника или близкого? Назовите, пожалуйста, Фамилию, Имя и отчество человека на которого может быть оформлен договор.</a>
+        <q>Звягинцева Светлана Ивановна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>         
+        <a>ru_digit_50_nom. пятьдесят</a>         
+        <a>ru_digit_4_nom. четыре</a>         
+        <a>ru_unit_rub_gen_sn. рубля</a>         
+        <a>ru_digit_90_nom. девяносто</a>         
+        <a>ru_digit_9_nom. девять</a>         
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>StoimistZa. Стоимость услуг за</a>
+        <a>Ru_month_7_nom. июль</a>
+        <a>ru_digit_500_nom. пятьсот</a>     
+        <a>ru_digit_40_nom. сорок</a>        
+        <a>ru_digit_5_nom. пять</a>    
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>OplataZa. Оплатите за</a>
+        <a>Ru_month_7_nom. июль</a>
+        <a>ru_digit_300_nom. триста</a>     
+        <a>ru_digit_50_nom. пятьдесят</a>        
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendBalanceSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendWebCabSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="+++6" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>улица благодатная</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/GetAddress">requestStreetAndHouse_fullAddress. К сожалению не смогла определить ваш договор. Назовите, пожалуйста, полный адрес Улицу [микропауза] и номер дома.</a>
+        <q>улица благодатная дом 13</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>рассыпается картинка</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome">URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a>RebutKabelTV. В большинстве случаев проблема заключается в телевизионном кабеле. Проверьте кабель на отсутствие повреждений, а так же достаньте и вставьте его назад в приставку. Не лишним будет так же перезагрузить приставку по питанию. Пожалуйста, сделайте это, а я пока проведу проверку со своей стороны. Вернусь к вам через минуту.</a>
+        <a>MusicTV. Музыка минута</a>
+        <a>RebootRouter3. Пожалуйста, уточните решило ли это проблему. Скажите Да или Нет.</a>
+        <q>да</q>
+        <a>HappySuccess. Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="+++7" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "350,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "545,00",
+                    "textParam": 0,
+                    "periodDates": "7",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 0,
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>чей</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>благодатная дом 13</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>         
+        <a>ru_digit_50_nom. пятьдесят</a>         
+        <a>ru_digit_4_nom. четыре</a>         
+        <a>ru_unit_rub_gen_sn. рубля</a>         
+        <a>ru_digit_90_nom. девяносто</a>         
+        <a>ru_digit_9_nom. девять</a>         
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>StoimistZa. Стоимость услуг за</a>
+        <a>Ru_month_7_nom. июль</a>
+        <a>ru_digit_500_nom. пятьсот</a>     
+        <a>ru_digit_40_nom. сорок</a>        
+        <a>ru_digit_5_nom. пять</a>    
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>OplataZa. Оплатите за</a>
+        <a>Ru_month_7_nom. июль</a>
+        <a>ru_digit_300_nom. триста</a>     
+        <a>ru_digit_50_nom. пятьдесят</a>        
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a>SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-0;90-0;</a>
+    </test-case>
+    
+    <test-case id="+++8" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000000021"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "350,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "545,00",
+                    "textParam": 0,
+                    "periodDates": "7",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 0,
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse">severalAgreements_requestStreetAndHouse. Я нашла несколько договоров и чтобы определить верный, пожалуйста, уточните название улицы и номер дома по тому адресу, по которому вы обращаетесь.</a>
+        <q>оператора дайте</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/AgentRequest">severalAgreements_requestStreetAndHouse_ThemeMatch. Я понимаю, что у вас есть вопрос. Чтобы быстро и качественно его решить, уточните пожалуйста ваш Адрес</a>
+        <q>чей</q>
+        <a state="/Init/InitMSHi/RequestStreetAndHouse/CatchAll">requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>улица благодатная 13</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a>UBalans. Ваш баланс</a>
+        <a>ru_digit_2000_nom. две тысячи</a>         
+        <a>ru_digit_50_nom. пятьдесят</a>         
+        <a>ru_digit_4_nom. четыре</a>         
+        <a>ru_unit_rub_gen_sn. рубля</a>         
+        <a>ru_digit_90_nom. девяносто</a>         
+        <a>ru_digit_9_nom. девять</a>         
+        <a>ru_unit_kop_gen_pl. копеек</a>
+        <a>StoimistZa. Стоимость услуг за</a>
+        <a>Ru_month_7_nom. июль</a>
+        <a>ru_digit_500_nom. пятьсот</a>     
+        <a>ru_digit_40_nom. сорок</a>        
+        <a>ru_digit_5_nom. пять</a>    
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>OplataZa. Оплатите за</a>
+        <a>Ru_month_7_nom. июль</a>
+        <a>ru_digit_300_nom. триста</a>     
+        <a>ru_digit_50_nom. пятьдесят</a>        
+        <a>ru_unit_rub_gen_pl. рублей</a>
+        <a>BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a>SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>позвони оператора</q>
+        <a state="/LocalAgentRequest/AgentRequest">toAgentRequest. Хорошо, перевожу вас на специалиста. Спасибо за обращение. В целях повышения качества обслуживания, все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру balance</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;405-6;90-6;</a>
+    </test-case>
+    
+    
+    
+    
+    <test-case id="+++8" integration="true">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79000002020"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "350,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "545,00",
+                    "textParam": 0,
+                    "periodDates": "7",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 0,
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/InitMSHi">InitMSHi. Вижу, что в моей базе Ваш телефон привязан к нескольким договорам.</a>
+        <a state="/Init/InitMSHi/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Договор оформлен на организацию</q>
+        <a>UEntity. Если я правильно поняла Ваш вопрос, то Вы обращаетесь как юридическое лицо или индивидуальный предприниматель. Пожалуйста, скажите ДА или НЕТ.</a>
+        <q>да</q>
+        <a>GoEntity. В таком случае перевожу Вас в поддержку юридических лиц. Пожалуйста, оставайтесь на линии, и дождитесь ответа оператора.</a>
+         <a state="/Transfer/Transfer">Перевод по коллеру b2bivr</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;580-11;</a>
+    </test-case>
+    
+    
+    
+</test>

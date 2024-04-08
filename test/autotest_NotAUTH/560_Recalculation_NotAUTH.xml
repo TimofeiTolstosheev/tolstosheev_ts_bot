@@ -1,23 +1,16 @@
-<test>
-    
+<!--560_RECALCAP Строка 1 НЕавторизованный, мобильный, интент 560, на оператора-->
+<!--560_RECALCAP Строка 2 НЕавторизованный, домашний, интент 560, на оператора-->
+<!--560_RECALCAP Строка 3 НЕавторизованный, не смогли авторизовать по адресу, мобильный, интент 560, на оператора-->
+<!--560_RECALCAP Строка 4 НЕавторизованный, не смогли авторизовать по ФИО, домашний, интент 560, на оператора-->
+<test integration="true">
     <test-case id="560_RECALCAP Строка 1 НЕавторизованный, мобильный, интент 560, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true"
+                "phoneNumber": "79999448877"
             }
         </context>
         
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
         <q>да</q>
@@ -29,29 +22,18 @@
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>пересчет платежа</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру recalculation</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;560-6;</a>
     </test-case>  
-    
-
     
     <test-case id="560_RECALCAP Строка 2 НЕавторизованный, домашний, интент 560, на оператора">
-        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78129991399"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -64,29 +46,18 @@
         <q>Петров Иван Семенович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>пересчет платежа</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру recalculation</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;560-6;</a>
     </test-case>  
     
-
-    
-    <test-case id="560_RECALCAP Строка 3 НЕавторизованный, не смогли авторизовать по адресу, домашний, интент 560, на оператора">
-        
+    <test-case id="560_RECALCAP Строка 3 НЕавторизованный, не смогли авторизовать по адресу, мобильный, интент 560, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "79999668270"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -97,29 +68,18 @@
         <q>улица Петра Великого. 999</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>пересчет платежа</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
+        <a>perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру recalculation</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;560-6;</a>
     </test-case>    
     
-
-    
-    <test-case id="560_RECALCAP Строка 3.1 НЕавторизованный, не смогли авторизовать по ФИО, домашний, интент 560, на оператора">
-        
+    <test-case id="560_RECALCAP Строка 4 НЕавторизованный, не смогли авторизовать по ФИО, домашний, интент 560, на оператора">
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "false",
-                "autoTest": "true"
+                "phoneNumber": "78129999909"
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
 
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -132,10 +92,10 @@
         <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>пересчет платежа</q>
-        <a>perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>    
-
+        <a>perevod_na_okc_Recalculation. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания мы записываем все разговоры.Recalculation</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру recalculation</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-1;560-6;</a>
+    </test-case>   
 </test>
 
 

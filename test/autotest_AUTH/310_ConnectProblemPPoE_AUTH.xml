@@ -82,7 +82,7 @@
         <a>RebootRouter3. Уточните, пожалуйста, восстановился ли доступ к услугам?</a>
         <q>нет</q>
         <a>perevod_na_okc_from_ConnectProblemPPoEIntent. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Пожалуйста, проверьте целостность интернет-кабеля, идущего из подъезда, а так же плотность его подключения в ваш роутер или компьютер. Зачастую разрывы связи вызваны физическими повреждениями линии или неплотным контактом. А я, пока перевожу звонок на специалиста. В целях улучшения качества обслуживания мы записываем все разговоры! (ConnectProblemPPoEIntent)</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру operator</a>
+        <a state="/Transfer/Transfer"/>
         
     </test-case>   
 
@@ -242,7 +242,7 @@
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
         <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру octp_speed</a>
+        <a state="/Transfer/Transfer"/>
         
     </test-case>
 
@@ -403,7 +403,7 @@
         <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
         <q>нет</q>
         <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer"/>
         
     </test-case>
 
@@ -440,7 +440,7 @@
         <event>speechNotRecognized</event>
         <a>DIALOG_NO_MATCH_EVENT_1. Извините, я не расслышала вас.</a>
         <a state="/WhatElse/ToOperator">SorryNotWork. Сожалею, что не смогла помочь. Перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer"/>
         
     </test-case>
 
@@ -474,7 +474,7 @@
         <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
         <q>ррр</q>
         <a state="/WhatElse/ToOperator">Сейчас я соединю вас с оператором, он поможет. Напоминаю в целях повышения качества обслуживания, все разговоры записываются</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer"/>
         
     </test-case>
 
@@ -545,7 +545,7 @@
         <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
         <q>нет</q>
         <a state="/WhatElse/ToOperator">SorryNotWork. Сожалею, что не смогла помочь. Перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer"/>
         
     </test-case>
 
@@ -581,9 +581,9 @@
         <a>NewSessionWorking. Уточните, пожалуйста, восстановился ли доступ к услугам? Скажите Да или Нет.</a>
         <q>нет</q>
         <a state="/WhatElse/ToOperator">SorryNotWork. Сожалею, что не смогла помочь. Перевожу звонок на оператора и напоминаю, что мы записываем все разговоры.</a>
-        <a state="/Transfer/Transfer">Перевод по коллеру tvchannel_problem</a>
+        <a state="/Transfer/Transfer"/>
             
-    
+    </test-case>
     
     
     </test>

@@ -17,7 +17,7 @@ theme: /ServiceRequestInfo
             $.session.awaitAction.action = "checkServices";
             $.session.awaitAction.readTimeout = 4000;
             $.session.awaitAction.audio = audioDict.initialWait;
-            if($.session.awaitAction.status || $.session.proactiveResult){
+            if($.session.awaitAction.status){
                 delete $.session.awaitAction;
                 
                 if(!$.session.serviceRequest || $.session.serviceRequestStatus == 'request-overdue'){
@@ -85,8 +85,6 @@ theme: /ServiceRequestInfo
                 go!: /ServiceRequestInfo/CheckSRV/Cancel
                 
             state: ServiceRequestInfo
-                q: $anotherQuestion || toState = "/WhatElse/WhatElse/HaveQuestions"
-                q: @Need помощ* || toState = "/WhatElse/WhatElse/HaveQuestions"
                 q: $serviceRequestInfo
                 intent: /460_ServiceRequestInfo
                 script:
@@ -138,7 +136,7 @@ theme: /ServiceRequestInfo
                 announceAudio(audioDict.PodtverdiOtmeny);
 
             state: Confirm
-                q: $yes
+                q: $yes *
                 q: * $cancelServiceRequest *
                 script:
                     $.session.intent.stepsCnt++;
@@ -156,7 +154,7 @@ theme: /ServiceRequestInfo
                     }
                 
             state: Deny
-                q: $no
+                q: $no *
                 q: необходим*
                 q: @Need
                 script:

@@ -56,9 +56,8 @@ theme: /AreYouHome
         state: AgentRequest || noContext = true
             q: $agentRequest
             intent: /405_AgentRequest
-            script:
-                countAgentRequests($parseTree);
-            if: $.session.agentRequestCount < 2 && !$.session.noInputCount && !$.session.repeatsInRow
+            # не ставим условие на !$.session.repeatsInRow иначе перевод с 1 же попытке, если ранее в диалоге попадали в один и тот же state после переспроса
+            if: countAgentRequests($parseTree) < $injector.agentRequestLimit && !$.session.noInputCount
                 script:
                     announceAudio(audioDict.ConfirmCity_subject);
                 go!: /AreYouHome/AreYouHome
@@ -109,6 +108,7 @@ theme: /AreYouHome
                     
         state: СatchAll || noContext = true
             event: noMatch
+            q: * $noMatchAtHome *
             script:
                 $.session.intent.stepsCnt++;
                 if(countRepeatsInRow() < $injector.noMatchLimit) {

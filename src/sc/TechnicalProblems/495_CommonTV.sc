@@ -54,8 +54,7 @@ theme: /495_CommonTV
                     }
                 
                     if($.session.spas.tvProblem.technicalSupport){
-                        $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' :
-                                                ($.session.spas.tvProblem.technicalSupport ? 'tech_spas3' : 'tech_spas');
+                        $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' : 'tech_spas3';
                         announceAudio(audioDict.perevod_na_okc_from_TVChannelProblemIntent1);
                         $reactions.transition("/Transfer/CheckOCTP");
                     }else{

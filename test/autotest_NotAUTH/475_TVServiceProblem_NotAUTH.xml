@@ -1,132 +1,14 @@
-<test>
+<test integration="true">
     
-    
-    
-    <test-case id="475_Строка 1, мобильный. НЕавторизованный. Проблема с ТВ-сервисом. На оператора.">
+    <test-case id="Неавторизованный, не удалось авторизовать. Мобильный. Не работают ТВ-сервисы. Перевод на оператора">
+        
         <context var="session">
             {
                 "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": "true",
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true",
-                "productId": "5"
+                "phoneNumber": "79999949997",
+                "cellPhone": true
             }
         </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-        <q>да</q>
-        <a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
-    
-
-
-    <test-case id="475_Строка 1.1 Домашний. НЕавторизованный. Проблема с ТВ-сервисом. На оператора.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-        <q>да</q>
-        <a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица благодатная 1</q>
-        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
-        <q>Петров Иван Семенович</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
-    
-
-
-    <test-case id="475_Строка 2 Домашний. НЕавторизованный. Не смогли авторизовать по адресу. Проблема с ТВ-сервисом. На оператора.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
-        
-        <q>/start</q>
-        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
-        <q>да</q>
-        <a>verno_spb. Ваш город санкт петербург?</a>
-        <q>да</q>
-        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
-        <q>улица Петра Великого. 999</q>
-        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
-        <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>  
-    
-
-
-    <test-case id="475_Строка 2.1 Домашний. НЕавторизованный. Не смогли авторизовать по ФИО. Проблема с ТВ-сервисом. На оператора.">
-        <context var="session">
-            {
-                "region": "dev-dcc-spb",
-                "phoneNumber": "79000000001",
-                "agreementId": "121212",
-                "agreementNumber": "780046998264",                
-                "cellPhone": false,
-                "autoTest": "true",
-                "int": "true",
-                "domrutv": "true"
-            }
-        </context>
-        
-        <mockData>
-            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
-            <response status="200">{ "token": "1234", "type": "user" }</response>
-        </mockData>
         
         <q>/start</q>
         <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
@@ -139,7 +21,38 @@
         <q>Достоевский Федор Михайлович</q>
         <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
         <q>не работает портал</q>
-        <a state="/TVServiceProblem/TVServiceProblem">transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
-        <a state="/Transfer/Transfer"/>
-    </test-case>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру service_problem</a>
+        <a>BI dialog log: 570-1;475-6;</a>
+    </test-case>  
+    
+
+
+    <test-case id="Неавторизованный. Авторизовали. Не работают ТВ-сервисы. Перевод на оператора">
+        
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "78412969981",
+                "cellPhone": false
+            }
+        </context>
+        
+        <q>/start</q>
+        <a>Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании? </a>
+        <q>да</q>
+        <a>verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a>requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>улица благодатная 1</q>
+        <a>zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>Соколов Максим Иванович</q>
+        <a>GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>не работает портал</q>
+        <a>transferToAgentForFurther. Для дальнейшей консультации перевожу вас на специалиста. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a>Перевод по коллеру service_problem</a>
+        <a>BI dialog log: 570-0;475-6;</a>
+    </test-case>  
+    
+
 </test>

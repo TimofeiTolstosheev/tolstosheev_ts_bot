@@ -1,0 +1,633 @@
+        <!--НЕАВТОРИЗОВАННОГО АВТОРИЗОВАЛИ-->
+<!--$$$1 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Не на меня оформлено. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - Неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим уже полные ФИО, user=true. Переход в Чем Могу помочь? - Интент 270-->
+    <!--270 Помехи на каналах, клиент дома. Тип оборудования DVB-C, ролик о проблеме с кабелем, ожидание минуты. Помогло? - Да.Вопросов нет.-->
+<!--$$$2 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Не на меня оформлено. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - отчества нет, говорим ИО, ветка ФИО, user=true, запрос интента баланс-->
+    <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+<!--$$$3 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Не на меня оформлено. Ваш город X? - Да. Идем по ветке адрес.  guest-with-house=true, ФИО - ноуматч х1, потом полные ФИО. user=true. Запрос интента. 290-й интент, идем по любой ветке.-->
+    <!--290 в проактиве проблем нет - в спасе проблем нет - вы дома? - нет - еще вопросы? - нет - прощание-->
+<!--$$$4 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - Не на меня оформлено. Ваш город X? - да - какой адрес? - называет адрес (guest-with-house=true), ФИО - неполные ФИО, user=false, $isIncompleteFIO == true и Проверка совершена только1 раз запрос ФИО еще раз, говорим полные. user=true Переход в Чем Могу помочь? - Интент 280-->
+    <!--280 в проактиве mono_EnoughBalance_NotActive - сумма для активации - Активировать тарифный план? - да - успех - еще вопросы - нет - прощание-->
+<!--$$$5 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - ноуматч, потом да. Ваш город X? - Да. Идем по ветке адрес. guest-with-house=true, ФИО - полное ФИО user=true интент 90, переход в баланс-->
+    <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+<!--$$$6 Начало. НЕавторизованный (errorCode9=false), Являетесь клиентом? - да. Ваш город X? - Да. Идем по ветке адрес. guest-with-house=true, ФИО - полное ФИО user=true интент 90, переход в баланс-->
+        <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+
+<test>
+    <!--НЕАВТОРИЗОВАННЫЙ - АВТОРИЗОВАЛИ-->
+    <test-case id="$$$1">
+        <!--270 Помехи на каналах, клиент дома. Тип оборудования DVB-C, ролик о проблеме с кабелем, ожидание минуты. Помогло? - Да.Вопросов нет.-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264",
+                <!--"dvbc": true,-->
+                <!--"productId": "53",-->
+                <!--"hasIptv": false,-->
+                "domrutv": true
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>договор на брата оформлен</q>
+        <a state="/Init/Initialization/InitializationNonOwner">Initialization_nonowner. Поняла вас.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>илья</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <q>илья петрович карамзин</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>помехи по второй программе по россии один</q>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": false,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 }
+                }
+            </response>
+        </mockData>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome">URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>да</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv">RebutKabelTV. В большинстве случаев проблема заключается в телевизионном кабеле. Проверьте кабель на отсутствие повреждений, а так же достаньте и вставьте его назад в приставку. Не лишним будет так же перезагрузить приставку по питанию. Пожалуйста, сделайте это, а я пока проведу проверку со своей стороны. Вернусь к вам через минуту.</a>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv">MusicTV. Музыка минута</a>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv/ConfimrFix">RebootRouter3. Пожалуйста, уточните решило ли это проблему. Скажите Да или Нет.</a>
+        <q>да</q>
+        <a state="/TVQualityProblem/CheckServices/AreYouHome/CheckProducts/RefreshCktv/ConfimrFix/Fixed">HappySuccess. Рада, что у нас получилось.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;270-0;</a>
+    </test-case>
+    
+    <test-case id="$$$2">
+        <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273166",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "0,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "445,00",
+                    "textParam": 4,
+                    "periodDates": "15.07.2023-15.08.2023",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "chargesSum": "815,00",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 1,
+                    "lastPaymentSum": "251,00",
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 1 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>договор на брата оформлен</q>
+        <a state="/Init/Initialization/InitializationNonOwner">Initialization_nonowner. Поняла вас.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>у меня нет отчества</q>
+        <a state="/Init/Initialization/RequestFIO/NoMiddleName">zapros_FIO_noMiddleName. Поняла вас. Тогда назовите, пожалуйста, фамилию  [микропауза] и имя на кого оформлен договор.</a>
+        <q>капитонов илья</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">PaymentCame. Вижу, что недавно Вы пополнили счет на</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_200_nom. двести</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_1_nom. один</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_nom_sn. рубль</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">UBalans. Ваш баланс</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_2000_nom. две тысячи</a>     
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_4_nom. четыре</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_sn. рубля</a>  
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_90_nom. девяносто</a>   
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_9_nom. девять</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_kop_gen_pl. копеек</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Vnesite. Чтобы восстановить доступ к услугам, внесите</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_800_nom. восемьсот</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_15_nom. пятнадцать</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendBalanceSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-3;90-0;</a>
+    </test-case>
+    
+    <test-case id="$$$3">
+        <!--290 в проактиве проблем нет - в спасе проблем нет - вы дома? - нет - еще вопросы? - нет - прощание-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79703530000",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264"
+                <!--"productId": "5"-->
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>мамин договор</q>
+        <a state="/Init/Initialization/InitializationNonOwner">Initialization_nonowner. Поняла вас.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Улица новоселов 14 квартира 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>зачем</q>
+        <a state="/Init/Initialization/RequestFIO/CatchAll">zapros_FIO_CatchAll. Извините, не уверена, что верно поняла. Назовите, пожалуйста, Фамилию [микропауза] Имя [микропауза] и Отчество [микропауза] на кого оформлен договор.</a>
+        <q>Кошкина Татьяна Ивановна</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>пропало тв</q>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/refresh/cktv</query>
+            <response status="200">
+                {
+                  "errorMessage": "string",
+                  "errorCode": 0,
+                  "status": "OK"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/check/services</query>
+            <response status="200">
+                {
+                    "errorCode": 0,
+                    "errorMessage": "string",
+                    "askSms": true,
+                    "accidentId": 0,
+                    "accident": false,
+                    "accidentEndDate": "string",
+                    "ppr": 0,
+                    "currentPprEndDate": "",
+                    "futurePprStartDate": "",
+                    "futurePprEndDate": "",
+                    "potentialAccident": false,
+                    "recommendSum": "",
+                    "subscriptionFee": "",
+                    "promisedPaymentAvailable": true,
+                    "serviceRequest": false,
+                    "serviceRequestId": 0,
+                    "serviceResult": 0,
+                    "servicePlanDate": "",
+                    "serviceRequestStatus": "1",
+                    "connectionRequest": true,
+                    "result": "",
+                    "rebooted": true,
+                    "rebootResult": "string",
+                    "rebootPortResult": "string",
+                    "dropSessionResult": "string",
+                    "rebootRouterResult": "string",
+                    "checkSessionResult": "string",
+                    "sessionStatus": "new",
+                    "authorizationType": "string",
+                    "adminStatus": "up",
+                    "operStatus": "up",
+                    "portStateError": "string",
+                    "tariffPlanActive": false,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/await/spas/data</query>
+            <response status="200">
+                {
+                    "internetProblem": {"firstActionCategoryIsRequest": false,
+                                        "requestComment": "",
+                                        "diagnostics": false,
+                                        "technicalSupport": false,
+                                        "drtvTicket": false,
+                                        "technicalServiceRequest": false,
+                                        "networkAdministrationRequest": false
+                                        },
+                    "tvProblem": {"firstActionCategoryIsRequest": false,
+                                  "requestComment": "string",
+                                  "flowLoss": false,
+                                  "technicalSupport": false,
+                                  "drtvTicket": false,
+                                  "technicalServiceRequest": false,
+                                  "networkAdministrationRequest": false
+                                 },
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        
+        <a state="/TvChannelProblem/AreYouAtHome">URatHomeTV. Я проверила техническую информацию по вашему договору и не нашла явных причин для неполадок. Если вы дома и готовы провести диагностику - скажите ДА, если такой возможности нет - скажите НЕТ</a>
+        <q>не дома</q>
+        <a state="/TvChannelProblem/AreYouAtHome/NotAtHome">RUNotAtHomeTV. К сожалению, провести диагностику без вашего присутствия дома не получится. Я проверила работу оборудования и обновила пакеты каналов. Когда будете дома - пожалуйста, проверьте, возможно проблема уже будет решена. При необходимости перезвоните повторно.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;290-0;</a>
+    </test-case>
+    
+    <test-case id="$$$4" integration="true">
+        <!--280 в проактиве mono_EnoughBalance_NotActive - сумма для активации - Активировать тарифный план? - да - успех - еще вопросы - нет - прощание-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273166"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>договор не на меня оформлен</q>
+        <a state="/Init/Initialization/InitializationNonOwner">Initialization_nonowner. Поняла вас.</a>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 40</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>фамилия моя петров</q>
+        <a state="/Init/Initialization/RequestFIO/GetFIO">zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>петров иван семенович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>низкая скорость напрямую по кабелю</q>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">activeTP. Вам необходимо активировать тарифный план. Это можно сделать самостоятельно в личном кабинете на сайте дом точка ру. При этом с вашего счета спишется сумма</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_digit_800_nom. восемьсот</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Proactive/mono_EnoughBalance_NotActive">activeTPnow. Я могу активировать вам тариф сейчас. Если хотите активировать его вместе со мной скажите да. Если не хотите – скажите нет.</a>
+        <q>да</q>
+        <a state="/Proactive/AskToActivateTP/ActivateTP">active_notOK. Что-то пошло не так. Тарифный план не активирован.</a>
+        <a state="/Proactive/AskToActivateTP/ActivateTP">perevod_na_okc. Сейчас я переведу вас на специалиста для дальнейшей консультации. Пожалуйста, ожидайте. В целях повышения качества обслуживания все разговоры записываются.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру lowspeed</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;280-1;</a>
+    </test-case>
+    
+    <test-case id="$$$5">
+        <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273166",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "0,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "445,00",
+                    "textParam": 4,
+                    "periodDates": "15.07.2023-15.08.2023",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "chargesSum": "815,00",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 1,
+                    "lastPaymentSum": "251,00",
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 1 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>кого</q>
+        <a state="/Init/Initialization/CatchAll">Initialization_CatchAll. Извините, не уверена, что верно поняла. Уточните еще раз вы пользуетесь услугами нашей компании?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>капитонов илья александрович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">PaymentCame. Вижу, что недавно Вы пополнили счет на</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_200_nom. двести</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_1_nom. один</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_nom_sn. рубль</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">UBalans. Ваш баланс</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_2000_nom. две тысячи</a>     
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_4_nom. четыре</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_sn. рубля</a>  
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_90_nom. девяносто</a>   
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_9_nom. девять</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_kop_gen_pl. копеек</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Vnesite. Чтобы восстановить доступ к услугам, внесите</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_800_nom. восемьсот</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_15_nom. пятнадцать</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendBalanceSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-3;90-0;</a>
+    </test-case>
+    
+    <test-case id="$$$6">
+        <!--90 Мобильный, запрос баланса по сценарию 4. На СМС соглашаемся. 2 СМС с ошибкой. Вопросов нет-->
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79999273166",
+                "agreementId": "121212",
+                "agreementNumber": "780046998264"
+            }
+        </context>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token</query>
+            <response status="200">{ "type": "guest" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/address</query>
+            <response status="200">{ "token": "1234", "type": "guest-with-house", "errorCode": 0 }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://auth.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/token/by/fio/and/house-id</query>
+            <response status="200">{ "token": "1234", "type": "user" }</response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/await/balance</query>
+            <response status="200">
+                {
+                    "recommendSum": "0,00",
+                    "nextPeriodDate": "15.07.2023",
+                    "chargesSum": "445,00",
+                    "textParam": 4,
+                    "periodDates": "15.07.2023-15.08.2023",
+                    "opEndDate": "",
+                    "curBalance": "2054,99",
+                    "chargesSum": "815,00",
+                    "firstPay": "",
+                    "leasDz": "0,00",
+                    "closeDate": "",
+                    "lastPayment": 1,
+                    "lastPaymentSum": "251,00",
+                    "retStr": "$5",
+                    "errorCode": 0,
+                    "isDeny": true,
+                    "status": "success"
+                }
+            </response>
+        </mockData>
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/by-template</query>
+            <response status="200">{ "errorCode": 1 }</response>
+        </mockData>
+        
+        <mockData>
+            <query method="POST">https://action.stage.dcc.movixlab.yc.r-one.io/dcc/ivr/billing/sms/balance</query>
+            <response status="200">{ "errorCode": 0 }</response>
+        </mockData>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>Оружейный переулок 25 строение 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>капитонов илья александрович</q>
+        <a state="/Init/HowCanIHelpYou">GetFirstIntent_1. Чем я могу вам помочь?</a>
+        <q>какой у меня баланс</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">PaymentCame. Вижу, что недавно Вы пополнили счет на</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_200_nom. двести</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_1_nom. один</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_nom_sn. рубль</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">UBalans. Ваш баланс</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_2000_nom. две тысячи</a>     
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_50_nom. пятьдесят</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_4_nom. четыре</a>    
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_sn. рубля</a>  
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_90_nom. девяносто</a>   
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_9_nom. девять</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_kop_gen_pl. копеек</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">Vnesite. Чтобы восстановить доступ к услугам, внесите</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_800_nom. восемьсот</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_digit_15_nom. пятнадцать</a>      
+        <a state="/Balance/Balance/CheckAuth/GetBalance">ru_unit_rub_gen_pl. рублей</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance">BalansChange. Обратите пожалуйста внимание, что баланс может измениться при выставлении счета за звонки на мобильные телефоны в другие города и страны, если вы их совершите.</a>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms">SMSBalance. Хотите ли получить смс с номером договора и текущим балансом?</a>
+        <q>да</q>
+        <a state="/Balance/Balance/CheckAuth/GetBalance/AskBalanceSms/SendBalanceSms">SMSGo. Я отправила Вам смс. обычно доставка занимает не более пары минут</a>   
+        <a>DetelBalance. Если вас интересует детализация начислений или остались какие-то дополнительные вопросы, то ответы на них есть в вашем Личном кабинете на сайте дом точка ру.</a>
+        <a state="/WhatElse/WhatElse">WhatElseIntent_1. У Вас остались еще какие-нибудь вопросы? Пожалуйста, скажите ДА или НЕТ</a>
+        <q>нет</q>
+        <a state="/WhatElse/ToExit">toExit. Благодарим вас за уделенное время. Оставайтесь, пожалуйста, на линии и оцените качество моей работы. Напоминаем, что вы можете получить консультацию онлайн с помощью мобильного приложения «мой домру», онлайн-чата на сайте домру.ru, а также в социальных сетях. Всего вам доброго!</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру toExit</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-0;800-0;834-3;90-0;</a>
+    </test-case>
+    
+    
+    
+    
+    <test-case id="Начало, НЕавторизованный, Являетесь клиентом? - Договор еще не оформлен. Физик. Переход в 340">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79986146671"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор еще не оформлен</q>
+        <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a>OCPOmilia. Спасибо за информацию. Сейчас я соединю Вас с отделом продаж и напоминаю, что в целях повышения качества обслуживания, мы записываем все разговоры.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру p_client</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-12;</a>
+    </test-case>    
+    
+    
+    
+    
+    <test-case id="Начало, НЕавторизованный, Являетесь клиентом? - да, запрос адреса, фио - Договор еще не оформлен. Юрик. Переход в 340">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "79976136677"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>подождите</q>
+        <a>zapros_FIO_FullName. К сожалению, не смогла определить по какому именно договору вы обращаетесь. Поэтому назовите, пожалуйста, полные Фамилию Имя и Отчество на кого оформлен договор.</a>
+        <q>договор еще не оформлен</q>
+        <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a>yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-11;</a>
+    </test-case>          
+    
+    
+    
+    
+    <test-case id="Начало, НЕавторизованный, Являетесь клиентом? - да, запрос адреса, фио - Договор еще не оформлен. Юрик. Переход в 340">
+        <context var="session">
+            {
+                "region": "dev-dcc-spb",
+                "phoneNumber": "7996612677"
+            }
+        </context>
+        
+        <q>/start</q>
+        <a state="/Init/Initialization">Initialization. К сожалению, не нашла в базе ваш договор. Пожалуйста, уточните. Вы пользуетесь услугами нашей компании?</a>
+        <q>ага</q>
+        <a state="/Init/Initialization/ConfirmCity">verno_spb. Ваш город санкт петербург?</a>
+        <q>да</q>
+        <a state="/Init/Initialization/ConfirmCity/RequestStreetAndHouse">requestStreetAndHouse. Назовите, пожалуйста, адрес, по которому вы обращаетесь, название улицы и номер дома.</a>
+        <q>подождите</q>
+        <a>requestStreetAndHouse_CatchAll. Извините, не уверена, что верно расслышала. Не могли бы еще раз уточнить Название улицы и номер дома, по которому вы обращаетесь.</a>
+        <q>благодатная 1</q>
+        <a state="/Init/Initialization/RequestFIO">zapros_FIO. Назовите, пожалуйста Фамилию Имя и Отчество, на кого оформлен договор.</a>
+        <q>договор еще не оформлен</q>
+        <a>fizik_yurik. Вы физическое или юридическое лицо?</a>
+        <q>юридическое</q>
+        <a>yurikForFurther. Для дальнейшей консультации перевожу вас в отдел по обслуживанию корпоративных клиентов.</a>
+        <a state="/Transfer/Transfer">Перевод по коллеру B2BFL</a>
+        <a state="/Transfer/Transfer">BI dialog log: 570-15;340-11;</a>
+    </test-case>      
+    
+    
+</test>

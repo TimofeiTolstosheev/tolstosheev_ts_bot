@@ -43,6 +43,7 @@ theme: /OneChannelProblem
             state: ParseChannels
                 q: * @TVChannelName *
                 q: * @TVChannelPackageName *
+                q: (перв*/1) [канал]
                 script:
                     $.session.intent.stepsCnt++;
                     $.session.malfunctionChannels = getTvChannelNamesFromEntities();
@@ -96,19 +97,19 @@ theme: /OneChannelProblem
                             
                         state: catchAll || noContext = true
                             event: noMatch
+                            intent: /NoMatch/Trash
                             script:
-                                # $.session.intent.stepsCnt++;
                                 if(countRepeatsInRow() < $injector.noMatchLimit) {
                                     announceAudio(audioDict.packageExpired_OneChannel);
                                 }else{
                                     $reactions.transition("/WhatElse/WhatElse");
                                 }
                    
-            state: AgentRequest
+            state: AgentRequest || noContext = true
                 q: $agentRequest
                 intent: /405_AgentRequest
                 script:
-                    if(countRepeatsInRow() < $injector.agentRequestLimit && !$.session.agentRequested) {
+                    if(countRepeatsInRow() < $injector.agentRequestLimit) {
                         $.session.agentRequested = true;
                         announceAudio(audioDict.channel_nameOneChannel);
                     }else{
@@ -116,7 +117,7 @@ theme: /OneChannelProblem
                     }
                     
             
-            state: catchAll
+            state: catchAll || noContext = true
                 q: (@duckling.number/@duckling.ordinal)
                 event: noMatch
                 script:
@@ -125,8 +126,8 @@ theme: /OneChannelProblem
                     }else{
                         $reactions.transition("/OneChannelProblem/CheckServices/AreYouHome");
                     }
-        
-        state: AreYouHome
+                    
+        state: AreYouHome || modal = true
             script:
                 if (typeof $.session.atHome !== 'undefined') {
                     if ($.session.atHome){
@@ -151,7 +152,7 @@ theme: /OneChannelProblem
                     $.session.awaitAction.audio = audioDict.spasTimeout;
                     if($.session.awaitAction.status){
                         delete $.session.awaitAction;
-                        $.session.returnState = '/OneChannelProblem/CheckServices/AreYouHome/CheckSpas/RefreshCktv'; // стейт, чтобы вернуться, из создания сз
+                        $.session.returnState = '/OneChannelProblem/CheckServices/RefreshCktv'; // стейт, чтобы вернуться, из создания сз
                         // проверяем необходимость сервисной заявки
                         if($.session.spas.tvProblem.technicalServiceRequest){
                             // заявка на техников сервиса
@@ -164,8 +165,7 @@ theme: /OneChannelProblem
                         }
                 
                         if($.session.spas.tvProblem.technicalSupport){
-                            $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' :
-                                                    ($.session.spas.tvProblem.technicalSupport ? 'tech_spas3' : 'tech_spas');
+                            $.session.callerInput = $.session.spas.tvProblem.flowLoss ? 'tech_octp' : 'tech_spas3';
                             announceAudio(audioDict.perevod_na_okc_from_TVChannelProblemIntent1);
                             $reactions.transition("/Transfer/CheckOCTP");
                         }else{
@@ -179,60 +179,7 @@ theme: /OneChannelProblem
                         $reactions.transition("/AwaitAction/RunAction");
                     }
                     
-                go!: /OneChannelProblem/CheckServices/AreYouHome/CheckSpas/RefreshCktv
-                
-                state: RefreshCktv
-                    script:
-                        announceAudio(audioDict.refreshTVpacks);
-                        refreshCktv();
-                        announceAudio(audioDict.lalaWait);
-                    go!: ./Ask
-                    
-                    state: Ask
-                        script:
-                            announceAudio(audioDict.after_refreshTVpacks);
-                    
-                        state: Fixed
-                            q: $commonYes
-                            q: * решил* *
-                            q: * { проблем* (нет/не сохран*/ушл*) } *
-                            script:
-                                $.session.intent.stepsCnt++;
-                            go!: /WhatElse/WhatElse
-                            
-                        state: NotFixed
-                            q: $commonNo
-                            q: * не решил* *
-                            q: * { проблем* (есть/сохран*/остал*) } *
-                            script:
-                                $.session.intent.stepsCnt++;
-                                if($.session.malfunctionChannels.length > 0){
-                                    announceAudio(audioDict.checked_OneChannel);
-                                    $reactions.transition("/SetupTVchannels/SetupTVchannels");
-                                }else{
-                                    if($.session.cellPhone){
-                                        announceAudio(audioDict.TV_dostupen_kanal_paket1);
-                                        sendSMSbyTemplate('833_TVpackagesSMS');
-                                        if($.session.SMSstatus){
-                                            announceAudio(audioDict.SMS_dostupen_kanal_paket);
-                                        }
-                                    }else{
-                                        announceAudio(audioDict.TV_dostupen_kanal_paket);
-                                    }
-                                }
-                            go!: /WhatElse/WhatElse
-        
-                        state: СatchAll || noContext = true
-                            event: noMatch
-                            script:
-                                if(countRepeatsInRow() < $injector.noMatchLimit) {     
-                                    announceAudio(audioDict.after_refreshTVpacks);
-                                }else{
-                                    announceAudio(audioDict.perevod_na_okc_from_TVChannelProblemIntent_noMatchAnswer);
-                                    $.session.intent.resultCode = $.session.intent.resultCode || 1;
-                                    $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                                    $reactions.transition('/Transfer/CheckOCTP');
-                                }
+                go!: /OneChannelProblem/CheckServices/RefreshCktv
                         
             state: NotHome
                 q: $commonNo
@@ -250,6 +197,7 @@ theme: /OneChannelProblem
     
             state: СatchAll || noContext = true
                 event: noMatch
+                intentGroup: /NoMatch
                 script:
                     # если больше двух раз, считаем, что клиент дома
                     if(countRepeatsInRow() < $injector.noMatchLimit) {
@@ -257,3 +205,84 @@ theme: /OneChannelProblem
                     }else{
                         $reactions.transition('/OneChannelProblem/CheckServices/AreYouHome/CheckSpas');
                     }
+                    
+            state: LocalTVNoInput || noContext = true
+                event: speechNotRecognized
+                # для тестов
+                q: NoInput
+                intent: /NoInput
+                script:
+                    countRepeatsInRow();
+                    $.session.noInputCount = $.session.noInputCount || 0;
+                    $.session.noInputCount++;
+                    if($.session.noInputCount < $injector.noInputLimit && $.session.repeatsInRow < 2) {
+                        announceAudio(audioDict.DIALOG_NO_MATCH_EVENT_1);
+                        $reactions.transition("/OneChannelProblem/CheckServices/AreYouHome");
+                    }else{
+                        $reactions.transition("/OneChannelProblem/CheckServices/AreYouHome/CheckSpas");
+                    }
+                
+        state: RefreshCktv
+            script:
+                announceAudio(audioDict.refreshTVpacks);
+                refreshCktv();
+                announceAudio(audioDict.lalaWait);
+            go!: ./Ask
+            
+            state: Ask
+                script:
+                    announceAudio(audioDict.after_refreshTVpacks);
+            
+                state: Fixed
+                    q: $commonYes *
+                    q: $yesAccess *
+                    q: * { (всё/вещан*/изображен*/@TVChannel) (есть/появил*/показ*) } *
+                    q: * { (всё/вещан*/изображен*/@TVChannel) *работ* } *
+                    script:
+                        $.session.intent.stepsCnt++;
+                    go!: /WhatElse/WhatElse
+                    
+                state: NotFixed
+                    q: $commonNo *
+                    q: $noAccess *
+                    q: * { (вещан*/изображен*/@TVChannel) (нет/отсутств*) } *
+                    q: * { (вещан*/изображен*/@TVChannel) (не *работ*/не показ*) } *
+                    q: * { (вещан*/изображен*/@TVChannel) (не появил*/не появляет*) } *
+                    q: $tvChannelProblem
+                    q: $tvQualityProblem
+                    q: $tvSeveralChannelsMalfunction
+                    q: $tvServiceProblem
+                    q: $tvEquipmentProblem
+                    q: $commonIssueTV
+                    q: $setupTVChannels
+                    intentGroup:: /TV
+                    script:
+                        $.session.intent.stepsCnt++;
+                        if($.session.malfunctionChannels.length > 0){
+                            announceAudio(audioDict.checked_OneChannel);
+                            $reactions.transition("/SetupTVchannels/SetupTVchannels");
+                        }else{
+                            if($.session.cellPhone){
+                                announceAudio(audioDict.TV_dostupen_kanal_paket1);
+                                sendSMSbyTemplate('833_TVpackagesSMS');
+                                if($.session.SMSstatus){
+                                    announceAudio(audioDict.SMS_dostupen_kanal_paket);
+                                }
+                            }else{
+                                announceAudio(audioDict.TV_dostupen_kanal_paket);
+                            }
+                        }
+                    go!: /WhatElse/WhatElse
+
+                state: СatchAll || noContext = true
+                    event: noMatch
+                    intentGroup: /NoMatch
+                    script:
+                        if(countRepeatsInRow() < $injector.noMatchLimit) {     
+                            announceAudio(audioDict.after_refreshTVpacks);
+                        }else{
+                            announceAudio(audioDict.perevod_na_okc_from_TVChannelProblemIntent_noMatchAnswer);
+                            $.session.intent.resultCode = $.session.intent.resultCode || 1;
+                            $.session.callerInput = $.session.callerInput || getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                            $reactions.transition('/Transfer/CheckOCTP');
+                        }

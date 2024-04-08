@@ -4,7 +4,7 @@ theme: /LegalEntity
         q!: $legalEntity
         intent!: /580_LegalEntity
         script:
-            startIntent('/580_LegalEntity');
+            startIntent('580_LegalEntity');
         go!: /LegalEntity/LegalEntity/AreYouLegalEntity
             
         state: AreYouLegalEntity
@@ -26,28 +26,34 @@ theme: /LegalEntity
                         $.session.intent.resultCode = 11;
                     go!: /Transfer/Transfer
                 
-            state: LegalNo
+            state: LegalNo || noContext = true
                 q: * $commonNo *
                 q: * @PhysicalEntity *
                 script:
                     $.session.intent.stepsCnt++;
                 go!: /LegalEntity/LegalEntity/AreYouLegalEntity/LegalNo/NoLegalEntity
                 
-                state: NoLegalEntity
+                state: NoLegalEntity || noContext = true
                     script:
-                        announceAudio(audioDict.ForgiveMe);
+                        $.session.repeatsInRow = $.session.repeatsInRow || 0;
+                        $.session.repeatsInRow += 1;
+                        if($.session.repeatsInRow < 3){
+                            announceAudio(audioDict.ForgiveMe);
+                        }else{
+                            announceAudio(audioDict.perevod_na_okc);
+                            $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                            $.session.intent.resultCode = 4;
+                            stopIntent();
+                            $reactions.transition('/Transfer/Transfer');
+                        }
             
-                    state: СatchAll ||  noContext = true
+                    state: СatchAll
                         event: noMatch
                         script:
                             $.session.intent.stepsCnt++;
-                            if(countRepeatsInRow() < $injector.noMatchLimit) {
-                                $reactions.transition('/LegalEntity/LegalEntity/AreYouLegalEntity/LegalNo/NoLegalEntity');
-                            }else{
-                                $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                                stopIntent();
-                                $reactions.transition('/Transfer/Transfer');
-                            }
+                            $.session.repeatsInRow = $.session.repeatsInRow || 0;
+                            $.session.repeatsInRow += 1;
+                        go!: /NoMatch/GetIntent
                         
             state: СatchAll || noContext = true
                 event: noMatch

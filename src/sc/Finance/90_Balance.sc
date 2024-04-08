@@ -7,7 +7,7 @@ theme: /Balance
         go!: CheckAuth
     
         state: CheckAuth
-            if: $.session.userType == 'user'
+            if: $.session.userType == 'user' && !$.session.cifral && !$.session.oplataUk && !$.session.metacom
                 go!: /Balance/Balance/CheckAuth/GetBalance
             else:
                 go!: /Balance/Balance/CheckAuth/NotAuth
@@ -27,7 +27,8 @@ theme: /Balance
                             announceSum($.session.lastPaymentSum);
                         }
                         // определяем шаблон РМ
-                        $analytics.setSessionData("Balance text param", $.session.textParam || "undefined");
+                        var textParam = $.session.textParam ? $.session.textParam.toString() : "undefined";
+                        $analytics.setSessionData("Balance text param", textParam);
                         switch($.session.textParam) {
                             case 0:
                                 announceAudio(audioDict.UBalans);
@@ -53,7 +54,11 @@ theme: /Balance
                                 }
                                 announcePeriod($.session.periodDates);
                                 announceSum($.session.chargesSum);
-                                announceAudio(audioDict.VostanovitDostup);
+                                if($.session.periodDates.indexOf("-") > 0){
+                                    announceAudio(audioDict.VostanovitDostup);
+                                }else{
+                                    announceAudio(audioDict.Payforaccess);
+                                }
                                 announcePeriod($.session.periodDates);
                                 announceSum($.session.recommendSum);
                                 break;
@@ -210,17 +215,44 @@ theme: /Balance
                     go!: /Balance/Balance/CheckAuth/GetBalance/AskBalanceSms
                 else:
                     go!: /Balance/Balance/CheckAuth/GetBalance/GoToWebCab
-                    
+                        
                 state: AskBalanceSms
                     script:
                         announceAudio(audioDict.SMSBalance);
                     
                     state: SendBalanceSms
-                        q: $commonYes
-                        q: $yesForSms
+                        q: $commonYes 
+                        q: * $yesForSms *
                         script:
                             $.session.intent.stepsCnt++;
-                            sendSMS('800_AccountBalanceSMS');
+                            //var smsTemplate = $.session.intent.currentIntent == "530_PaymentIssue" ? "839_PaymentIssueSMS" : "800_AccountBalanceSMS";
+                            switch($.session.intent.currentIntent) {
+                                case "530_PaymentIssue":
+                                    var smsTemplate = "839_PaymentIssueSMS";
+                                    break;
+                                case "91_PaymentQuestion":
+                                    var smsTemplate = "841_PaymentQuestionSMS";
+                                    break;
+                                case "92_DebtQuestion":
+                                    var smsTemplate = "843_DebtQuestionSMS";
+                                    break;
+                                case "93_DebtReason":
+                                    var smsTemplate = "845_DebtReasonSMS";
+                                    break;
+                                case "94_WhichSubscriptionFee":
+                                    var smsTemplate = "847_WhichSubscriptionFeeSMS";
+                                    break;
+                                case "95_DebtQuestionDetails":
+                                    var smsTemplate = "849_DebtQuestionDetailsSMS";
+                                    break;
+                                case "96_ChangingSubscriptionFee":
+                                    var smsTemplate = "851_ChangingSubscriptionFeeSMS";
+                                    break;
+                                default:
+                                    var smsTemplate = "800_AccountBalanceSMS";
+                                    break;
+                            }
+                            sendSMS(smsTemplate);
                             if($.session.SMSstatus){
                                 announceAudio(audioDict.SMSGo);
                             }
@@ -228,12 +260,39 @@ theme: /Balance
                         
                     state: SendWebCabSms
                         q: $commonNo
-                        q: $noForSms
+                        q: * $noForSms *
                         script:
                             $.session.intent.stepsCnt++;
                             announceAudio(audioDict.DetelBalance);
                             $.session.intent.stepsCnt++;
-                            sendSMSbyTemplate('834_SMSDetelBalance');
+                            //var smsTemplate = $.session.intent.currentIntent == "530_PaymentIssue" ? "840_SMSDetelPaymentIssue" : "834_SMSDetelBalance";
+                            switch($.session.intent.currentIntent) {
+                                case "530_PaymentIssue":
+                                    var smsTemplate = "840_SMSDetelPaymentIssue";
+                                    break;
+                                case "91_PaymentQuestion":
+                                    var smsTemplate = "842_PaymentQuestionSMSDetel";
+                                    break;
+                                case "92_DebtQuestion":
+                                    var smsTemplate = "844_DebtQuestionSMSDetel";
+                                    break;
+                                case "93_DebtReason":
+                                    var smsTemplate = "846_DebtReasonSMSDetel";
+                                    break;
+                                case "94_WhichSubscriptionFee":
+                                    var smsTemplate = "848_WhichSubscriptionFeeSMSDetel";
+                                    break;
+                                case "95_DebtQuestionDetails":
+                                    var smsTemplate = "850_DebtQuestionDetailsSMSDetel";
+                                    break;
+                                case "96_ChangingSubscriptionFee":
+                                    var smsTemplate = "852_ChangingSubscriptionFeeSMSDetel";
+                                    break;
+                                default:
+                                    var smsTemplate = "834_SMSDetelBalance";
+                                    break;
+                            }
+                            sendSMSbyTemplate(smsTemplate);
                             if($.session.SMSstatus){
                                 announceAudio(audioDict.SMSGo);
                             }
@@ -255,15 +314,68 @@ theme: /Balance
                     go!: /WhatElse/WhatElse
                     
             state: NotAuth
-                if: $.session.cellPhone
-                    go!: /Balance/Balance/CheckAuth/NotAuth/SendWebCabSms
+                if: $.session.cifral
+                    go!: ./Cifral
                 else:
-                    go!: /Balance/Balance/CheckAuth/NotAuth/GoToWebCab
+                    if: $.session.oplataUk
+                        go!: ./OplataUK
+                    else:
+                        if: $.session.metacom
+                            go!: ./Metacom
+                        else:
+                            if: $.session.cellPhone
+                                go!: /Balance/Balance/CheckAuth/NotAuth/SendWebCabSms
+                            else:
+                                go!: /Balance/Balance/CheckAuth/NotAuth/GoToWebCab
+                                
+                state: Cifral
+                    script:
+                        announceAudio(audioDict.DomofonBalanceCifral);
+                        $.session.intent.resultCode = 32;
+                        $.session.callerInput = 'dmf_cifral';
+                    go!: /Transfer/Transfer
+                    
+                state: OplataUK
+                    script:
+                        announceAudio(audioDict.DomofonUK);
+                    go!: /WhatElse/WhatElse
+                    
+                state: Metacom
+                    script:
+                        announceAudio(audioDict.DomofonMetakom);
+                    go!: /WhatElse/WhatElse
                 
                 state: SendWebCabSms
                     script:
                         announceAudio(audioDict.DetelBalanceNoAvtoriz);
-                        sendSMSbyTemplate('834_SMSDetelBalance');
+                        //var smsTemplate = $.session.intent.currentIntent == "530_PaymentIssue" ? "840_SMSDetelPaymentIssue" : "834_SMSDetelBalance";
+                        switch($.session.intent.currentIntent) {
+                            case "530_PaymentIssue":
+                                var smsTemplate = "840_SMSDetelPaymentIssue";
+                                break;
+                            case "91_PaymentQuestion":
+                                var smsTemplate = "842_PaymentQuestionSMSDetel";
+                                break;
+                            case "92_DebtQuestion":
+                                var smsTemplate = "844_DebtQuestionSMSDetel";
+                                break;
+                            case "93_DebtReason":
+                                var smsTemplate = "846_DebtReasonSMSDetel";
+                                break;
+                            case "94_WhichSubscriptionFee":
+                                var smsTemplate = "848_WhichSubscriptionFeeSMSDetel";
+                                break;
+                            case "95_DebtQuestionDetails":
+                                var smsTemplate = "850_DebtQuestionDetailsSMSDetel";
+                                break;
+                            case "96_ChangingSubscriptionFee":
+                                var smsTemplate = "852_ChangingSubscriptionFeeSMSDetel";
+                                break;
+                            default:
+                                var smsTemplate = "834_SMSDetelBalance";
+                                break;
+                        }
+                        sendSMSbyTemplate(smsTemplate);
                         if($.session.SMSstatus){
                             announceAudio(audioDict.SMSGo);
                         }

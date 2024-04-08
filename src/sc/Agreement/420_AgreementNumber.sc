@@ -5,7 +5,7 @@ theme: /AgreementNumber
         script:
             startIntent('/420_AgreementNumber');
         
-        if: $.session.userType == 'user'
+        if: $.session.userType == 'user' && !$.session.cifral && !$.session.oplataUk && !$.session.metacom
             go!: /AgreementNumber/CheckAuth/AnnounceAgreementNumber
         else:
             go!: /AgreementNumber/CheckAuth/NotAuth
@@ -31,7 +31,7 @@ theme: /AgreementNumber
                 
                 state: SendSms
                     q: $commonYes
-                    q: $yesForSms
+                    q: * $yesForSms *
                     script:
                         $.session.intent.stepsCnt++;
                         sendSMS('801_AgreementNumber');
@@ -50,8 +50,8 @@ theme: /AgreementNumber
                         }
                     
                 state: DontSendSms
-                    q: $commonNo
-                    q: $noForSms
+                    q: $commonNo 
+                    q: * $noForSms *
                     script:
                         $.session.intent.stepsCnt++;
                     go!: /WhatElse/WhatElse
@@ -71,8 +71,34 @@ theme: /AgreementNumber
                         }
             
         state: NotAuth
-            script:
-                $.session.intent.resultCode = 1;
-                $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
-                announceAudio(audioDict.perevod_na_okc);
-            go!: /Transfer/Transfer
+            if: $.session.cifral
+                go!: ./Cifral
+            else:
+                if: $.session.oplataUk
+                    go!: ./OplataUK
+                else:
+                    if: $.session.metacom
+                        go!: ./Metacom
+                    else:
+                        script:
+                            $.session.intent.resultCode = 1;
+                            $.session.callerInput = getIntentParam($.session.intent.currentIntent, 'callerInput') || $.injector.defaultCallerInput;
+                            announceAudio(audioDict.perevod_na_okc);
+                        go!: /Transfer/Transfer
+                        
+            state: Cifral
+                script:
+                    announceAudio(audioDict.DomofonBalanceCifral);
+                    $.session.intent.resultCode = 32;
+                    $.session.callerInput = 'dmf_cifral';
+                go!: /Transfer/Transfer
+                
+            state: OplataUK
+                script:
+                    announceAudio(audioDict.DomofonUK);
+                go!: /WhatElse/WhatElse
+                
+            state: Metacom
+                script:
+                    announceAudio(audioDict.DomofonMetakom);
+                go!: /WhatElse/WhatElse
