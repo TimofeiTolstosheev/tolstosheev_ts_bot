@@ -180,32 +180,101 @@ init:
     
     bind("selectNLUResult", function($context) {
         customLog("NLU results: " + toPrettyString($context.nluResults));
+        /*
+        смотрим на фразу, и:
+        1. если нет+интент = уходим в интент
+        2. если нет+оператор = уходим в оператора
+        3. если нет+ноу матч = уходим в ноу матч Пжлст задайте вопрос другими словами
+        4. если нет без ничего = прощаемся /ToExit
+        
+        1. если да+интент = уходим в интент
+        2. если да+оператор = уходим в оператора
+        3. если да+ноу матч = уходим в ноу матч Пжлст задайте вопрос другими словами
+        4. если да без ничего = какой вопрос?
+        
+        если что-то попадает в паттерны, то это да
+        
+        q: ($yes / ад / lf / даа / $yes или $no $yes) *
+        q: * $yesQuestions *
+        q: * $anotherQuestion *
+        
+        если что-то попадает в паттерны, то это нет
+        
+        q: ($no / нт / ytn / нетт / нету / $yes или $no $no / нет все) *
+        q: * $noQuestions *
+        */
         // получим все результаты от всех классификаторов
         var allResults = _.chain($context.nluResults)
             .omit("selected")
             .values()
             .flatten()
             .value();
-        
-        //очищаем все результаты от оператора
-        var noAgentRequestResults = allResults.filter(function(result){
-                if(result.ruleType == "pattern"){
-                    return !result.pattern.match(/agentRequest/gi) && result.hasOwnProperty("clazz");
+        var filteredResults = {};
+        if($context.currentState == "/WhatElse/WhatElse"){
+            //очищаем все результаты от "Да" и "Нет"
+            var resultsWithoutYesNo = allResults.filter(function(result){
+                    if(result.ruleType == "pattern"){
+                        return !result.pattern.match(/(yesQuestions|yes|noQuestions|no)/gi) && result.hasOwnProperty("clazz");
+                    }
+                });
+            customLog("resultsWithoutYesNo: " + toPrettyString(resultsWithoutYesNo));
+            if(resultsWithoutYesNo){
+                //очищаем все результаты от оператора
+                var resultsWithoutAgent = resultsWithoutYesNo.filter(function(result){
+                        if(result.ruleType == "pattern"){
+                            return !(result.pattern.match(/agentRequest/gi)) && result.hasOwnProperty("clazz");
+                        }
+                        if(result.ruleType == "intent" || result.ruleType == "intentGroup"){
+                            return !result.debugInfo.intent.path.match(/.405_AgentRequest/gi) && result.hasOwnProperty("clazz");
+                        }
+                    });
+                customLog("resultsWithoutAgent: " + toPrettyString(resultsWithoutAgent));
+                if(resultsWithoutAgent){
+                    //очищаем все результаты от явных НоуМатчей (intentGroup =/NoMatch)
+                    var resultsWithoutNoMatch = resultsWithoutAgent.filter(function(result){
+                            if(result.ruleType == "intentGroup"){
+                                return !result.debugInfo.intent.path.match(/.NoMatch/gi) && result.hasOwnProperty("clazz");
+                            }
+                        });
+                    customLog("resultsWithoutNoMatch: " + toPrettyString(resultsWithoutNoMatch));
+                    filteredResults = resultsWithoutNoMatch || resultsWithoutAgent;
+                }else{
+                    filteredResults = resultsWithoutYesNo;
                 }
-                if(result.ruleType == "intent" || result.ruleType == "intentGroup"){
-                    return !result.debugInfo.intent.path.match(/.405_AgentRequest/gi) && result.hasOwnProperty("clazz");
-                }
-            });
-        customLog("Filtered NLU results: " + toPrettyString(noAgentRequestResults));
+            }
+            
+        }else{
+            //очищаем все результаты от явных НоуМатчей (intentGroup =/NoMatch)
+            var resultsWithoutNoMatch = resultsWithoutAgent.filter(function(result){
+                    if(result.ruleType == "intentGroup"){
+                        return !result.debugInfo.intent.path.match(/.NoMatch/gi) && result.hasOwnProperty("clazz");
+                    }
+                });
+            customLog("resultsWithoutNoMatch: " + toPrettyString(resultsWithoutNoMatch));
+            
+            if(resultsWithoutNoMatch){
+                //очищаем все результаты от оператора и приветствия
+                var noAgentRequestResults = allResults.filter(function(result){
+                        if(result.ruleType == "pattern"){
+                            return !(result.pattern.match(/(agentRequest|hello)/gi)) && result.hasOwnProperty("clazz");
+                        }
+                        if(result.ruleType == "intent" || result.ruleType == "intentGroup"){
+                            return !result.debugInfo.intent.path.match(/.405_AgentRequest/gi) && result.hasOwnProperty("clazz");
+                        }
+                    });
+                filteredResults = noAgentRequestResults || resultsWithoutNoMatch;
+            }
+        }
+        customLog("Filtered NLU results: " + toPrettyString(filteredResults));
         
         // ищем результат с максимальным score среди отфильтрованных результатов
         var selected;
-        var maxScore = _.chain(noAgentRequestResults)
+        var maxScore = _.chain(filteredResults)
             .pluck("score")
             .max()
             .value();
         
-        selected = _.findWhere(noAgentRequestResults, {
+        selected = _.findWhere(filteredResults, {
             score: maxScore
         });
         
