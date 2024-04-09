@@ -245,7 +245,7 @@ init:
             
         }else{
             //очищаем все результаты от явных НоуМатчей (intentGroup =/NoMatch)
-            var resultsWithoutNoMatch = resultsWithoutAgent.filter(function(result){
+            var resultsWithoutNoMatch = allResults.filter(function(result){
                     if(result.ruleType == "intentGroup"){
                         return !result.debugInfo.intent.path.match(/.NoMatch/gi) && result.hasOwnProperty("clazz");
                     }
@@ -254,7 +254,7 @@ init:
             
             if(resultsWithoutNoMatch){
                 //очищаем все результаты от оператора и приветствия
-                var noAgentRequestResults = allResults.filter(function(result){
+                var noAgentRequestResults = resultsWithoutNoMatch.filter(function(result){
                         if(result.ruleType == "pattern"){
                             return !(result.pattern.match(/(agentRequest|hello)/gi)) && result.hasOwnProperty("clazz");
                         }
